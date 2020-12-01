@@ -1,8 +1,5 @@
 # Pokedex
-Simple web scraping example for collecting Pokémon stats from a Pokédex site.
-
-## Notebook
-The pokedex notebook will be expanded upon in the coming months into a full python package so stay tuned for updates. 
+Simple web scraping example for collecting Pokémon stats from a Pokédex site. This dataset is available at Kaggle under [The Complete Pokédex Dataset](https://www.kaggle.com/cristobalmitchell/pokedex)
 
 ## Dataset
 The output dataset file pokemon.csv contains all 898 pokémon from Gen I - Gen VIII and contains the following fields
