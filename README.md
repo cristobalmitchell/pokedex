@@ -1,4 +1,4 @@
-# Pokedex
+# Pokédex
 Simple web scraping example for collecting Pokémon stats from a Pokédex site. This dataset is available at Kaggle under [The Complete Pokédex Dataset](https://www.kaggle.com/cristobalmitchell/pokedex)
 
 ## Dataset
