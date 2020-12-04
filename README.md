@@ -1,6 +1,6 @@
 
 <center>
-  ![](https://assets.pokemon.com/assets/cms2/img/misc/countries/au/country_detail_pokemon.png)
+  <img src="https://assets.pokemon.com/assets/cms2/img/misc/countries/au/country_detail_pokemon.png" />
 </center>
 
 # The Complete Pokédex Dataset
