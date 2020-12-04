@@ -1,3 +1,5 @@
+<img src="https://assets.pokemon.com/assets/cms2/img/misc/countries/au/country_detail_pokemon.png" />
+
 # Pokédex
 Simple web scraping example for collecting Pokémon stats from a Pokédex site. This dataset is available at Kaggle under [The Complete Pokédex Dataset](https://www.kaggle.com/cristobalmitchell/pokedex)
 
