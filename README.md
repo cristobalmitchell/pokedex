@@ -1,10 +1,8 @@
 
-<center><img src="https://assets.pokemon.com/assets/cms2/img/misc/countries/au/country_detail_pokemon.png" /></center>
+<center>![](https://assets.pokemon.com/assets/cms2/img/misc/countries/au/country_detail_pokemon.png)</center>
 
 # The Complete Pokédex Dataset
 Simple web scraping example for collecting Pokémon stats from a Pokédex site. This dataset is available at Kaggle under [The Complete Pokédex Dataset](https://www.kaggle.com/cristobalmitchell/pokedex) 
-
-<img src="https://g2qkq20j3w22tgg8w3w482sr-wpengine.netdna-ssl.com/wp-content/uploads/2016/07/Pokemon_go_banner.png" />
 
 ## Dataset
 The output dataset file pokemon.csv contains all 898 pokémon from Gen I - Gen VIII and contains the following fields
