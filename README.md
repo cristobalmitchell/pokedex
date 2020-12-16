@@ -6,6 +6,12 @@
 # The Complete Pokédex Dataset
 Simple web scraping example for collecting Pokémon stats from a Pokédex site. This dataset is available at Kaggle under [The Complete Pokédex Dataset](https://www.kaggle.com/cristobalmitchell/pokedex) 
 
+## Imagesets
+The output imagesets can be found in the images folder and includes the following .png files
+* **small_images:** This image set contain all 898 primary pokemon forms with 215 x 215 pixel dimensions
+* **large_images:** This image set contain all 898 primary pokemon forms ranging from 300 x 300 to 1280 x 1280 pixel dimensions
+* **alt_images:** This image set contain all pokemon variant forms ranging from 215 x 215 to 1280 x 1280 pixel dimensions
+
 ## Dataset
 The output dataset file pokemon.csv contains all 898 pokémon from Gen I - Gen VIII and contains the following fields
 
