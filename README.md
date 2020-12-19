@@ -39,3 +39,4 @@ The output dataset file pokemon.csv contains all 898 pokémon from Gen I - Gen V
 * **is_sublegendary:** Denotes if the Pokémon is sublegendary
 * **is_legendary:** Denotes if the Pokémon is legendary
 * **is_mythical:** Denotes if the Pokémon is mythical
+* **evochain_*:** Four features that indicate the evolutionary chain
