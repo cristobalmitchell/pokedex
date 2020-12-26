@@ -34,9 +34,13 @@ The output dataset file pokemon.csv contains all 898 pokémon from Gen I - Gen V
 * **sp_attack:** The Base Special Attack of the Pokémon
 * **sp_defense:** The Base Special Defense of the Pokémon
 * **speed:** The Base Speed of the Pokémon
-* **abilities:** A list of abilities that the Pokémon is capable of having
+* **abilities_*:** Four features that denote abilities that the Pokémon is capable of having
 * **against_*:** Eighteen features that denote the amount of damage taken against an attack of a particular type
 * **is_sublegendary:** Denotes if the Pokémon is sublegendary
 * **is_legendary:** Denotes if the Pokémon is legendary
 * **is_mythical:** Denotes if the Pokémon is mythical
 * **evochain_*:** Seven features that indicate the evolutionary chain and triggers
+* **gigantamax:** Form of Pokémon if gigantamax capable
+* **mega_evolution:** Form of Pokémon if mega evolution capable
+* **mega_evolution_alt:** Alternative form of Pokémon if mega evolution capable
+* **description:** Pokédex description from official Pokémon website
