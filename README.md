@@ -4,7 +4,7 @@ Simple web scraping example for collecting Pokémon stats from a Pokédex site. 
 Gen IX added by jsvobo for SAN final project.
 
 
-## Dataset
+## Dataset (original dataset)
 The output dataset file pokemon.csv contains all 898 pokémon from Gen I - Gen VIII and contains the following fields
 
 * **national_number:** The entry number of the Pokémon in the National Pokédex
@@ -38,7 +38,7 @@ The output dataset file pokemon.csv contains all 898 pokémon from Gen I - Gen V
 * **mega_evolution_alt:** Alternative form of Pokémon if mega evolution capable
 * **description:** Pokédex description from official Pokémon website
 
-## Filtered data types
+## Filtered data types (after our changes)
 * **gen:** The numbered generation which the Pokémon was first introduced
 * **english_name:** ...
 * **primary_type:** The Primary Type of the Pokémon (18 types)
