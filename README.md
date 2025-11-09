@@ -1,11 +1,8 @@
 # The Complete Pokédex Dataset
 Simple web scraping example for collecting Pokémon stats from a Pokédex site. This dataset is available at Kaggle under [The Complete Pokédex Dataset](https://www.kaggle.com/cristobalmitchell/pokedex) 
 
-## Imagesets
-The output imagesets can be found in the images folder and includes the following .png files
-* **small_images:** This image set contain all 898 primary pokemon forms with 215 x 215 pixel dimensions
-* **large_images:** This image set contain all 898 primary pokemon forms ranging from 300 x 300 to 1280 x 1280 pixel dimensions
-* **alt_images:** This image set contain all pokemon variant forms ranging from 215 x 215 to 1280 x 1280 pixel dimensions
+Gen IX added by jsvobo for SAN final project.
+
 
 ## Dataset
 The output dataset file pokemon.csv contains all 898 pokémon from Gen I - Gen VIII and contains the following fields
@@ -42,8 +39,8 @@ The output dataset file pokemon.csv contains all 898 pokémon from Gen I - Gen V
 * **description:** Pokédex description from official Pokémon website
 
 ## Filtered data types
-* **national_number:** Index number
 * **gen:** The numbered generation which the Pokémon was first introduced
+* **english_name:** ...
 * **primary_type:** The Primary Type of the Pokémon (18 types)
 * **secondary_type:** The Secondary Type of the Pokémon (19 types)
 * **percent_male:** The percentage of the species that are male (0 if the Pokémon is genderless)
@@ -51,7 +48,7 @@ The output dataset file pokemon.csv contains all 898 pokémon from Gen I - Gen V
 * **height_m:** Height of the Pokémon in metres
 * **weight_kg:** The Weight of the Pokémon in kilograms
 * **capture_rate:** Capture Rate of the Pokémon __(not %! absolute value of some inner point system)__
-* **baseeggsteps:** The number of steps required to hatch an egg of the Pokémon
+* **base_egg_steps:** The number of steps required to hatch an egg of the Pokémon
 * **hp:** The Base HP of the Pokémon
 * **attack:** The Base Attack of the Pokémon
 * **defense:** The Base Defense of the Pokémon
@@ -59,6 +56,9 @@ The output dataset file pokemon.csv contains all 898 pokémon from Gen I - Gen V
 * **sp_defense:** The Base Special Defense of the Pokémon
 * **speed:** The Base Speed of the Pokémon
 * **against_*:** Eighteen features that denote the amount of damage taken against an attack of a particular type
+* **votes_first:** From a reddit survey. Number of voters who put the pokemon as most favourite
+* **votes_top_6:** From a reddit survey. Number of people, who had the pokemon in their top 6 most favourite pokemons.
+* **num_abilities:** Number of abilities and maybe a hidden ability. 0-4
 * **evo_length:** Length of evolution chain (with level triggers) 0-6
 * **has_mega_evolution:** 1 if has **mega_evolution** or **mega_evolution_alt** in the original dataset, else 0
 * **has_gigantamax:** 1 if has **gigantamax** in the original dataset, else 0
