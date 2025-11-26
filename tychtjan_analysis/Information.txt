@@ -1,0 +1,118 @@
+Link to google drive folder: https://docs.google.com/document/d/1RAvFqcXm-KtomyneWzaqctrl-VWXo-X29CDLjNOXWXs/edit?tab=t.0#heading=h.au1aool2dl11
+
+
+SAN semestrální práce návrh - Analýza bestiáře pokémonů 
+Tým: Svoboda, Hálová, Tehlár, Tychtl
+
+Hlavní otázka: Je v indexu pokémonů znatelný tzv. Power creep?
+
+Definice: 
+Power creep je jev, kdy s přibývajícími updaty,vydáními nebo sériemi nějaké hry,seriálu nebo např. karetních her autoři vydávají silnější a zajímavější oponenty, karty, schopnosti etc., Tímto posouvají děj/gameplay dopředu, ale nechávají starší objekty (postavy, schopnosti, jednotky) neužitečné nebo zastaralé. 
+
+Pokémoni mají tzv. generace. To jsou veliké skupiny, které vyjdou vždy najednou v nějaké z hlavních her pokemon. Máme dataset ze všech pokémonů generací 1-8 z Kaggle/gitu. Pokémonů je zde asi 900.
+
+Naše otázka by se mohla formalizovat několika způsoby v závislosti na tom, jak se tento “power creep” projevuje (zde v závislosti na tom, co je target variable):
+Attack (hodnota síly útoku)
+Jaké vlastnosti pokémonů korelují vysoce s touto target proměnnou?
+Je generace pokémona signifikantní prediktor ( v nějakém vybraném modelu)? 
+Má síla pokemonů vzrůstající tendenci s generací?
+Jak sa mení attack v závislosti na generácii po zohľadnení typu, rarity, hp, defense, speed, sp_attack, sp_deffense, … ? (lin. model / GLM)
+Zvyšuje sa naprieč generáciami všeobecne definovaná “sila” (kombinácia všetkých attack / defense stats) a nie len attack? (možno PCA - kombinácie premenných ako jednotlivé PC, kde PC1 je celková sila pokémona? možno lin. reg - nárast (a odhad) priemernej hodnoty celkovej sily s generačným postupom? porovnanie rozdelení celkovej sily medzi generáciami?)
+Zvyšuje sa počet “agresívnych” pokémonov v novších generáciach? (log. reg - pst v každej generácii? prípadne modelovať počet silných pokémonov na generáciu?)
+
+
+Jaké další vlastnosti pokémonů jsou dobrým prediktorem síly? (výber prediktorov pomocou L1, L2 a crossval MSE?)
+Je vzťah <attack; ostatné staty> nelineárny a líši sa naprieč generáciami? (snažím sa nejak našiť otázku na spliny…)
+jaké regresní modely nám dávají nejlepší předpověď? Jak volbu modelu ovlivňují outlieři?
+Rarita 
+Používají autoři pokémonů raritu (někteří pokémoni jsou například legendární, mýtičtí) k tomu, aby udělali hru zajímavější v následujících generacích?
+Jak se mění distribuce rarit pokemonů a je to nějak signifikantní pro vysvětlení změny attack power? 
+(Alt.: Je nárast legendárnych/mýtických pokémonov siginifikantný v  novších generáciach?)
+Majú legendárni/mýtickí pokémoni (t.j. nárast rarity) rovnaký náskok (asi naprieč všetkými abilitkami) pred ostatnými pokémonmi alebo sa to mení výhradne na úrovni generácie bez nejakého trendu? (log. reg.?)
+Třída pokémonů (představte si vodního, létajícího, ohnivého etc.)
+Jsou všechny typy stejně silově vyrovnané?
+Líšia sa priemerné útočné/obranné staty medzi primárnymi typmi (vzhľadom ku generácii a raritám) - (lin. model + interakcie)?
+Pokud ne, tak mění se balanc tříd pokémonů s generací vůči silnějším?
+Jsou nějaké třídy pokémonů, které jsou distinktivně jiné než ostatní, objevují se spíše dříve, později, nebo stále podobně v různých generacích pokemonů?
+Inšpirácia z c): Dajú sa odlíšiť typy pokémonov podľa spoločných statov a odolností (against XYZ)? Ak áno, sú nejaké signifikantne iné? (Toto by sa mohlo dať LDA nie? Vezmeme všetky staty a odolnosti a z toho predikujeme primary class - komponenty ti potom ukážu premenné, ktoré najviac ovplyvňujú typ?)
+Miscellaneous:
+Preferujú hráči silnejších alebo novších pokémonov (ak teda votes_first / votes_top_6 sú k tomuto)?
+Je na vizualizácii PCA vs t-SNE powercreepu vidieť, že novšie generácie spadajú do clustrov, kde je vyššia sila/obrana?
+
+
+Potřebujeme pomoct nakalibrovat šíři otázky, protože je víc způsobů, jakými k tomu můžeme přistoupit.
+Tady bych teda vyzdvihl zajímavé části a co si představujeme jako náplň:
+EDA čištění, příprava a agregace dat budou v každém případě.
+Pro bod 1 se hodí regrese, feature selection etc. víceméně co bylo doteď v předmětu.
+Pro bod 2 a něco v bodě 1 se hodí analýza outlierů.
+Pro bod 2 a 3 se můžou používat klasifikátory, diskriminativní modely.
+Pro bod 3 se asi hodí clustering, anomaly detection.
+
+Chtěli bychom mít obsažený bod 1, protože attack je (skoro) spojitá proměnná, a docela hezky souvisí s tím co je to feature creep/ power creep. Pak bysme se mohli zabývat buď jednotlivými třídami (18 celkem) nebo nějakou analýzou vzácnosti/rarity a outlierů.
+
+Jsou i další místa, kde se power creep může objevit, které jsme neuvedli. Zajímavější (více ojedinělé schopnosti), více možných evolucí v pozdějších sériích, mega evoluce, “gigantamax” evoluce (my taky nevíme co to je). 
+
+Abychom viděli, jestli jsou data vůbec zajímavá, protože jsou opravdu “man-made” nepopisují nějakou závislost “in the wild”, tak už jsme si rozdělali malou analýzu a čištění dat, víceméně základ analýzy zde: Git
+
+Máme vesměs základ EDA, jeden/dva lineární modely, čištění dat a nějaké ploty. 
+
+
+
+GLMs
+Úprava featur (jako úkol 3)
+mocniny, spliny, faktorizace etc.
+Lin modely, feature selection, statistické testy
+GLMs, jaké distribuce?, likelihood ratios …
+Porovnání modelů, interpretace, má vliv generace? (anova?)
+CV skrz time split? (udělám model DO gen e.g. 5 a predikuje dobře další generace?)
+
+
+
+OKRUH 2: GLMs a regresní modely (Jenda)
+Cíl =  Zjistit, zda generace sama o sobě signifikantně predikuje sílu Pokémonů (např. Attack nebo kombinaci statů) po zohlednění dalších atributů. (Téma: Lineární a nelineární regrese, GLMs, Model shrinkage)
+Postup
+Předzpracování
+Transformace skewed dat (log, sqrt).
+Dummy encoding pro typy a rarity.
+Nelineární efekty (Spline funkce) pro kontinuální proměnné (HP, Defense, Speed, ...).
+Modely
+Lineární regrese.
+Model shrinkage (ElasticNet / Lasso) pro robustní výběr prediktorů a zamezení přeučení.
+Zobecněné lineární modely (GLMs) – Gaussian pro staty, Poisson pro count features (např. num_abilities).
+ANOVA a Likelihood ratio testy pro formální ověření vlivu generace.
+Time-split CV (trénink na generacích ≤ 5, test na generacích ≥ 6) pro odhad prediktivní síly modelu v čase.
+Interpretace
+Je generace významná po zohlednění vlivu ostatních proměnných?
+Jak velký je odhadovaný nárůst síly (estimated slope) v čase?
+Potenciální problémy
+Závislost a interakce mezi typy a generacemi (řeší Spline funkce a interakční členy v GLMs).
+
+
+
+
+
+Filtered data types (after our changes)
+gen: The numbered generation which the Pokémon was first introduced
+english_name: ...
+primary_type: The Primary Type of the Pokémon (18 types)
+secondary_type: The Secondary Type of the Pokémon (19 types)
+percent_male: The percentage of the species that are male (0 if the Pokémon is genderless)
+percent_female: The percentage of the species that are female (0 if the Pokémon is genderless)
+height_m: Height of the Pokémon in metres
+weight_kg: The Weight of the Pokémon in kilograms
+capture_rate: Capture Rate of the Pokémon (not %! absolute value of some inner point system)
+base_egg_steps: The number of steps required to hatch an egg of the Pokémon
+hp: The Base HP of the Pokémon
+attack: The Base Attack of the Pokémon
+defense: The Base Defense of the Pokémon
+sp_attack: The Base Special Attack of the Pokémon
+sp_defense: The Base Special Defense of the Pokémon
+speed: The Base Speed of the Pokémon
+against_*: Eighteen features that denote the amount of damage taken against an attack of a particular type
+votes_first: From a reddit survey. Number of voters who put the pokemon as most favourite
+votes_top_6: From a reddit survey. Number of people, who had the pokemon in their top 6 most favourite pokemons.
+num_abilities: Number of abilities and maybe a hidden ability. 0-4
+evo_length: Length of evolution chain (with level triggers) 0-6
+has_mega_evolution: 1 if has mega_evolution or mega_evolution_alt in the original dataset, else 0
+has_gigantamax: 1 if has gigantamax in the original dataset, else 0
+rarity: Column 0-3 either normal, sublegendary, legendary or mythical in the original dataset.
