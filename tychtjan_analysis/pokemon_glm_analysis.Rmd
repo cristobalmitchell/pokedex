@@ -1,0 +1,2047 @@
+---
+title: "Pokémon Power Creep Analysis"
+subtitle: "Using Generalized Linear Models"
+author: "Jan Tychtl"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    theme: cosmo
+    highlight: tango
+    code_folding: show
+---
+
+# Introduction
+
+## Main Research Question
+
+**Is there Power Creep in the Pokémon Index?**
+
+- Does generation significantly predict Pokémon strength (Attack)?
+- How does attack change with generation after controlling for other factors?
+
+## Methods Applied
+
+Methods applied from SAN project reports analysis:
+
+- OLS Regression, GLMs (Gaussian, Poisson, Gamma, Negative Binomial)
+- LASSO/Ridge/ElasticNet regularization
+- Backward Stepwise Selection
+- ANOVA and Likelihood Ratio Tests
+- Time-split Cross-Validation
+- Spline functions and polynomial terms for non-linear effects
+- Dispersion tests for overdispersion detection
+- Comprehensive ablation study with caret cross-validation
+- Diagnostic plots and model comparison (AIC/BIC)
+
+*Inspired by: SAN_assignment_GLM_2.Rmd and glms.Rmd*
+
+---
+
+# 1. Setup and Data Loading
+
+```{r setup, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(glmnet)       # LASSO, Ridge, ElasticNet
+library(splines)      # Spline functions
+library(car)          # ANOVA, VIF
+library(MASS)         # stepAIC, robust regression, glm.nb (Negative Binomial)
+library(broom)        # tidy model outputs
+library(caret)        # Cross-validation with train()
+library(ggplot2)      # Visualization
+library(corrplot)     # Correlation plots
+library(lmtest)       # Likelihood ratio tests
+library(AER)          # dispersiontest() for overdispersion
+library(rcompanion)   # compareGLM() for model comparison
+library(gridExtra)    # Side-by-side plots
+library(DescTools)    # Jonckheere-Terpstra test
+```
+
+```{r load-data}
+# Set working directory and load data
+setwd("/home/jenda/Desktop/SAN/pokedex_analysis")
+pokemon <- read.csv("data/data_clean.csv")
+pokemon_clean <- read.csv("data/data_no_outliers.csv")
+
+cat("Full dataset:", nrow(pokemon), "Pokémon\n")
+cat("Outlier-free dataset:", nrow(pokemon_clean), "Pokémon\n")
+cat("Removed as outliers:", nrow(pokemon) - nrow(pokemon_clean), "Pokémon\n")
+```
+
+**Note:** We load both the full dataset and the outlier-free version. A third dataset (`pokemon_normal`) containing only Normal-rarity Pokémon will be created after preprocessing to isolate the power creep analysis from legendary/mythical effects.
+
+---
+
+# 2. Data Exploration and Preprocessing
+
+## 2.1 Data Overview
+
+```{r data-overview}
+cat("Dataset dimensions:", dim(pokemon), "\n")
+cat("Number of generations:", length(unique(pokemon$gen)), "\n")
+cat("Pokémon per generation:\n")
+print(table(pokemon$gen))
+
+# Check structure
+str(pokemon)
+summary(pokemon)
+```
+
+**Findings:** Dataset contains 1024 Pokémon across 9 generations. Generation sizes vary from 72 (Gen 6) to 156 (Gen 5), which may affect statistical power for certain comparisons.
+
+## 2.2 Convert Categorical Variables to Factors
+
+```{r convert-factors}
+# Convert factors for FULL DATA
+pokemon <- pokemon %>%
+  mutate(
+    gen = as.factor(gen),
+    rarity = as.factor(rarity),
+    class_primary = as.factor(class_primary),
+    class_secondary = as.factor(class_secondary),
+    has_mega_evolution = as.factor(has_mega_evolution),
+    has_gigantamax = as.factor(has_gigantamax)
+  )
+
+# Define rarity levels (from Information.txt)
+# 0 = normal, 1 = sublegendary, 2 = legendary, 3 = mythical
+levels(pokemon$rarity) <- c("Normal", "SubLegendary", "Legendary", "Mythical")
+
+# Convert factors for OUTLIER-FREE DATA (same transformations)
+pokemon_clean <- pokemon_clean %>%
+  mutate(
+    gen = as.factor(gen),
+    rarity = as.factor(rarity),
+    class_primary = as.factor(class_primary),
+    class_secondary = as.factor(class_secondary),
+    has_mega_evolution = as.factor(has_mega_evolution),
+    has_gigantamax = as.factor(has_gigantamax)
+  )
+levels(pokemon_clean$rarity) <- c("Normal", "SubLegendary", "Legendary", "Mythical")
+
+cat("\nRarity distribution (Full Data):\n")
+print(table(pokemon$rarity))
+cat("\nRarity distribution (Outlier-Free):\n")
+print(table(pokemon_clean$rarity))
+
+# Create NORMAL-ONLY dataset (excluding legendaries/mythicals)
+pokemon_normal <- pokemon %>% filter(rarity == "Normal")
+
+cat("\n--- Dataset Sizes ---\n")
+cat("Full dataset:", nrow(pokemon), "Pokémon\n")
+cat("Outlier-free:", nrow(pokemon_clean), "Pokémon\n
+")
+cat("Normal-only:", nrow(pokemon_normal), "Pokémon (", 
+    round(100 * nrow(pokemon_normal) / nrow(pokemon), 1), "% of full)\n")
+```
+
+**Findings:** Majority of Pokémon are Normal rarity. The `pokemon_normal` dataset excludes legendaries/mythicals to test if power creep exists among "regular" Pokémon.
+
+## 2.3 Create Derived Features
+
+```{r derived-features}
+# Create derived features for FULL DATA
+pokemon <- pokemon %>%
+  mutate(
+    # Total stats (overall power indicator)
+    total_stats = hp + attack + defense + sp_attack + sp_defense + speed,
+    
+    # Physical vs Special orientation
+    physical_power = attack + defense,
+    special_power = sp_attack + sp_defense,
+    offensive_power = attack + sp_attack,
+    defensive_power = defense + sp_defense,
+    
+    # Is legendary (any form of rare)
+    is_legendary = as.factor(ifelse(rarity != "Normal", 1, 0)),
+    
+    # BMI-like measure
+    bmi = weight_kg / (height_m^2),
+    
+    # Log transformations for skewed variables
+    log_weight = log1p(weight_kg),
+    log_capture_rate = log1p(capture_rate),
+    log_egg_steps = log1p(base_egg_steps),
+    
+    # Numeric generation for trend analysis
+    gen_numeric = as.numeric(as.character(gen))
+  )
+
+# Create derived features for OUTLIER-FREE DATA (same transformations)
+pokemon_clean <- pokemon_clean %>%
+  mutate(
+    total_stats = hp + attack + defense + sp_attack + sp_defense + speed,
+    physical_power = attack + defense,
+    special_power = sp_attack + sp_defense,
+    offensive_power = attack + sp_attack,
+    defensive_power = defense + sp_defense,
+    is_legendary = as.factor(ifelse(rarity != "Normal", 1, 0)),
+    bmi = weight_kg / (height_m^2),
+    log_weight = log1p(weight_kg),
+    log_capture_rate = log1p(capture_rate),
+    log_egg_steps = log1p(base_egg_steps),
+    gen_numeric = as.numeric(as.character(gen))
+  )
+
+# Create derived features for NORMAL-ONLY DATA
+# Note: pokemon_normal was filtered from pokemon after factor conversion,
+# so it already has rarity as factor. We just need derived features.
+pokemon_normal <- pokemon_normal %>%
+  mutate(
+    total_stats = hp + attack + defense + sp_attack + sp_defense + speed,
+    physical_power = attack + defense,
+    special_power = sp_attack + sp_defense,
+    offensive_power = attack + sp_attack,
+    defensive_power = defense + sp_defense,
+    is_legendary = as.factor(ifelse(rarity != "Normal", 1, 0)),
+    bmi = weight_kg / (height_m^2),
+    log_weight = log1p(weight_kg),
+    log_capture_rate = log1p(capture_rate),
+    log_egg_steps = log1p(base_egg_steps),
+    gen_numeric = as.numeric(as.character(gen))
+  )
+
+cat("--- All Datasets Ready ---\n")
+cat("pokemon:", nrow(pokemon), "rows,", ncol(pokemon), "cols\n")
+cat("pokemon_clean:", nrow(pokemon_clean), "rows,", ncol(pokemon_clean), "cols\n")
+cat("pokemon_normal:", nrow(pokemon_normal), "rows,", ncol(pokemon_normal), "cols\n")
+```
+
+---
+
+# 3. Exploratory Data Analysis (EDA)
+
+## 3.1 Attack by Generation
+
+```{r eda-summary}
+# Summary statistics of attack by generation - FULL DATA
+attack_summary <- pokemon %>%
+  group_by(gen) %>%
+  summarise(
+    n = n(),
+    mean_attack = mean(attack, na.rm = TRUE),
+    sd_attack = sd(attack, na.rm = TRUE),
+    median_attack = median(attack, na.rm = TRUE),
+    min_attack = min(attack, na.rm = TRUE),
+    max_attack = max(attack, na.rm = TRUE)
+  )
+#cat("--- Full Dataset ---\n")
+print(attack_summary)
+
+# Summary statistics - OUTLIER-FREE DATA
+attack_summary_clean <- pokemon_clean %>%
+  group_by(gen) %>%
+  summarise(
+    n = n(),
+    mean_attack = mean(attack, na.rm = TRUE),
+    sd_attack = sd(attack, na.rm = TRUE),
+    median_attack = median(attack, na.rm = TRUE),
+    min_attack = min(attack, na.rm = TRUE),
+    max_attack = max(attack, na.rm = TRUE)
+  )
+cat("\n--- Outlier-Free Dataset ---\n")
+print(attack_summary_clean)
+
+# Summary statistics - NORMAL RARITY ONLY
+attack_summary_normal <- pokemon_normal %>%
+  group_by(gen) %>%
+  summarise(
+    n = n(),
+    mean_attack = mean(attack, na.rm = TRUE),
+    sd_attack = sd(attack, na.rm = TRUE),
+    median_attack = median(attack, na.rm = TRUE),
+    min_attack = min(attack, na.rm = TRUE),
+    max_attack = max(attack, na.rm = TRUE)
+  )
+cat("\n--- Normal Rarity Only ---\n")
+print(attack_summary_normal)
+
+# Quick comparison of all three datasets
+cat("\n--- Mean Attack Comparison (All Datasets) ---\n")
+comparison_eda <- data.frame(
+  gen = 1:9,
+  full = attack_summary$mean_attack,
+  clean = attack_summary_clean$mean_attack,
+  normal = attack_summary_normal$mean_attack
+) %>% mutate(
+  diff_clean = round(full - clean, 1),
+  diff_normal = round(full - normal, 1)
+)
+print(comparison_eda)
+```
+
+**Findings:** Mean attack ranges from 68.3 (Gen 2) to 84.8 (Gen 7) in full data. The pattern is NOT monotonic — Gen 2 and Gen 6 dip below Gen 1. Normal-only means follow a similar pattern (66.3 to 81.4), confirming power creep isn't solely driven by legendaries.
+
+```{r eda-boxplot, fig.width=15, fig.height=5}
+# Plot: Attack distribution by generation (boxplot) - THREE-WAY COMPARISON
+p1_full <- ggplot(pokemon, aes(x = gen, y = attack, fill = gen)) +
+  geom_boxplot(alpha = 0.7) +
+  geom_jitter(width = 0.2, alpha = 0.2, size = 0.8) +
+  labs(title = "Full Dataset", x = "Generation", y = "Attack") +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  ylim(0, 200)
+
+p1_clean <- ggplot(pokemon_clean, aes(x = gen, y = attack, fill = gen)) +
+  geom_boxplot(alpha = 0.7) +
+  geom_jitter(width = 0.2, alpha = 0.2, size = 0.8) +
+  labs(title = "Outlier-Free", x = "Generation", y = "Attack") +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  ylim(0, 200)
+
+p1_normal <- ggplot(pokemon_normal, aes(x = gen, y = attack, fill = gen)) +
+  geom_boxplot(alpha = 0.7) +
+  geom_jitter(width = 0.2, alpha = 0.2, size = 0.8) +
+  labs(title = "Normal Rarity Only", x = "Generation", y = "Attack") +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  ylim(0, 200)
+
+gridExtra::grid.arrange(p1_full, p1_clean, p1_normal, ncol = 3,
+                        top = "Attack Distribution by Generation: Full vs Outlier-Free vs Normal-Only")
+```
+
+**Findings:** Visual inspection shows later generations (4, 5, 7, 8, 9) have higher median attack. The Normal-only plot removes legendary influence — if the pattern persists, power creep affects regular Pokémon too.
+
+```{r eda-total-stats, fig.width=10, fig.height=6}
+# Plot: Total stats by generation
+p2_total <- ggplot(pokemon, aes(x = gen, y = total_stats, fill = gen)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(title = "Total Stats Distribution by Generation",
+       x = "Generation", y = "Total Stats") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+p1_clean_total <- ggplot(pokemon_clean, aes(x = gen, y = total_stats, fill = gen)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(title = "Total Stats Distribution (Clean) by Generation",
+       x = "Generation", y = "Total Stats") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+p3_normal_total <- ggplot(pokemon_normal, aes(x = gen, y = total_stats, fill = gen)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(title = "Total Stats Distribution (Normal) by Generation",
+       x = "Generation", y = "Total Stats") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+gridExtra::grid.arrange( p2_total, p1_clean_total, p3_normal_total,ncol = 3,
+                        top = "Attack Distribution by Generation: Full vs Outlier-Free")
+```
+
+**Findings:** So far it seems that there is a slight upwards trend in the generations. In all versions.
+We ca also observe small interesting thing, in the normal dataset we can see that the sum of all the stats seems to have a set celling for stats sum for majority of the generations except 3, 8, 9.
+
+## 3.2 Correlation Matrix
+
+```{r correlation-matrix, fig.width=8, fig.height=8}
+# Correlation matrix for numeric variables
+numeric_vars <- pokemon %>%
+  dplyr::select(attack, hp, defense, sp_attack, sp_defense, speed, 
+                height_m, weight_kg, capture_rate, num_abilities, evo_length)
+
+cor_matrix <- cor(numeric_vars, use = "complete.obs")
+cat("\nCorrelation matrix (combat stats):\n")
+print(round(cor_matrix, 2))
+
+corrplot(cor_matrix, method = "color", type = "upper", 
+         addCoef.col = "black", tl.col = "black", tl.srt = 45,
+         title = "Correlation Matrix: Combat Stats & Features")
+```
+
+**Findings:** Attack correlates moderately with HP (0.42), Defense (0.44), and Speed (0.38). These correlations justify including them as controls — they explain shared variance but don't create severe multicollinearity (all < 0.7).
+
+## 3.3 Attack Distribution per Generation
+
+```{r attack-distribution, fig.width=12, fig.height=8}
+p_dist <- pokemon %>%
+  ggplot(aes(x = attack)) +
+  geom_histogram(bins = 20, fill = "steelblue", color = "white", alpha = 0.7) +
+  facet_wrap(~gen, ncol = 3) +
+  labs(title = "Attack Distribution per Generation",
+       subtitle = "Checking if distribution shape changes across generations",
+       x = "Attack", y = "Count") +
+  theme_minimal()
+print(p_dist)
+```
+
+```{r attack_normal-distribution, fig.width=12, fig.height=8}
+p_dist <- pokemon_normal %>%
+  ggplot(aes(x = attack)) +
+  geom_histogram(bins = 20, fill = "coral", color = "white", alpha = 0.7) +
+  facet_wrap(~gen, ncol = 3) +
+  labs(title = "Attack Distribution per Generation (Normal only)",
+       subtitle = "Checking if distribution shape changes across generations",
+       x = "Attack", y = "Count") +
+  theme_minimal()
+print(p_dist)
+```
+
+```{r total_stats-distribution, fig.width=12, fig.height=8}
+p_dist <- pokemon %>%
+  ggplot(aes(x = total_stats)) +
+  geom_histogram(bins = 20, fill = "steelblue", color = "white", alpha = 0.7) +
+  facet_wrap(~gen, ncol = 3) +
+  labs(title = "Total stats Distribution per Generation",
+       subtitle = "Checking if distribution shape changes across generations",
+       x = "Attack", y = "Count") +
+  theme_minimal()
+print(p_dist)
+```
+
+We can see slight shift in the total stats through generations. It was normal distribution like at the first generation, then it gets more skewed to heavy end tails.
+
+## 3.4 Rarity Analysis
+
+```{r rarity-analysis}
+cat("--- Attack by Rarity ---\n")
+rarity_summary <- pokemon %>%
+  group_by(rarity) %>%
+  summarise(
+    n = n(),
+    mean_attack = mean(attack),
+    sd_attack = sd(attack),
+    mean_total_stats = mean(total_stats)
+  )
+print(rarity_summary)
+```
+
+**Findings:** Legendary/Mythical Pokémon have substantially higher attack (~100-115) vs Normal (~75). This is a potential confound — if later generations have more legendaries, that could explain apparent power creep.
+
+```{r rarity-boxplot, fig.width=12, fig.height=6}
+# Visualize attack by rarity and generation
+p_rarity <- pokemon %>%
+  ggplot(aes(x = gen, y = attack, fill = rarity)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(title = "Attack by Generation and Rarity",
+       subtitle = "Do legendary Pokémon drive power creep?",
+       x = "Generation", y = "Attack", fill = "Rarity") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+print(p_rarity)
+
+# 3. Create a summary table of counts for each Generation and Rarity
+rarity_counts <- pokemon %>%
+  count(gen, rarity) %>%           # Count by Gen AND Rarity
+  pivot_wider(names_from = rarity, # Spread rarity into columns
+              values_from = n, 
+              values_fill = 0)     # Fill missing combinations with 0
+
+# Print the table
+print(rarity_counts)
+
+# If you want a nicer formatted table in RMarkdown, use kable:
+# knitr::kable(gen_counts, caption = "Number of Pokemon per Generation")
+```
+
+```{r rarity-bar, fig.width=8, fig.height=6}
+# Visualize mean attack per rarity (similar to SAN_assignment_GLM_2.Rmd bar chart)
+p_rarity_bar <- pokemon %>%
+  group_by(rarity) %>%
+  summarise(mean_attack = mean(attack)) %>%
+  ggplot(aes(x = rarity, y = mean_attack, fill = rarity)) +
+  geom_col() +
+  geom_text(aes(label = round(mean_attack, 1)), vjust = -0.5) +
+  labs(title = "Mean Attack by Rarity Category",
+       x = "Rarity", y = "Mean Attack") +
+  theme_minimal() +
+  theme(legend.position = "none")
+print(p_rarity_bar)
+```
+
+**Findings:** Here we can see that the rarity has some consequences on the stats. This is why we will also test things with just the normal pokemons to verify if power creep happens because of rarity, or if there is more to that. The biggest amount of sublegendary, legendary pokemons is by far in generation 7.
+
+
+## 3.5 Scatter Plot: Attack vs HP
+
+Similar to visualization in glms.Rmd.
+
+```{r scatter-plot, fig.width=10, fig.height=6}
+p_scatter <- pokemon %>%
+  ggplot(aes(x = hp, y = attack, color = gen)) +
+  geom_jitter(alpha = 0.5, size = 2) +
+  geom_smooth(method = "lm", se = FALSE, color = "black", linetype = "dashed") +
+  labs(title = "Attack vs HP by Generation",
+       x = "HP", y = "Attack", color = "Generation") +
+  theme_minimal()
+print(p_scatter)
+```
+
+---
+
+# 4. Linear Regression Models
+
+## 4.1 Basic OLS: Attack ~ Generation
+
+```{r lm-basic}
+# FULL DATA
+model_basic <- lm(attack ~ gen, data = pokemon)
+cat("--- Model 1: Basic OLS (Attack ~ Generation) - FULL DATA ---\n")
+summary(model_basic)
+
+# OUTLIER-FREE DATA
+model_basic_clean <- lm(attack ~ gen, data = pokemon_clean)
+cat("\n--- Model 1: Basic OLS (Attack ~ Generation) - OUTLIER-FREE ---\n")
+summary(model_basic_clean)
+
+# NORMAL RARITY ONLY
+model_basic_normal <- lm(attack ~ gen, data = pokemon_normal)
+cat("\n--- Model 1: Basic OLS (Attack ~ Generation) - NORMAL ONLY ---\n")
+summary(model_basic_normal)
+
+# Quick comparison
+cat("\n--- R² Comparison ---\n")
+cat("Full data R²:", round(summary(model_basic)$r.squared, 4), "\n")
+cat("Outlier-free R²:", round(summary(model_basic_clean)$r.squared, 4), "\n")
+cat("Normal-only R²:", round(summary(model_basic_normal)$r.squared, 4), "\n")
+```
+
+**Findings:** Generation alone explains only 3.2% of variance (R² = 0.032). Normal-only R² = 0.031, nearly identical — confirming power creep exists even among regular Pokémon, not just legendaries.
+
+```{r lm-basic-anova}
+# F-test for generation effect - ALL THREE DATASETS
+cat("--- F-test for generation effect (Full Data) ---\n")
+anova(model_basic)
+
+cat("\n--- F-test for generation effect (Outlier-Free) ---\n")
+anova(model_basic_clean)
+
+cat("\n--- F-test for generation effect (Normal Only) ---\n")
+anova(model_basic_normal)
+```
+
+**Findings:** ANOVA confirms generation is a significant predictor overall. Compare p-values across all three datasets — significance in Normal-only data confirms power creep isn't just legendary inflation.
+
+## 4.2 Multiple Regression: Attack ~ Generation + Controls
+
+```{r lm-full}
+# FULL DATA
+model_full <- lm(attack ~ gen + hp + defense + sp_attack + sp_defense + speed +
+                   height_m + weight_kg + rarity + num_abilities + evo_length,
+                 data = pokemon)
+cat("--- Model 2: Full OLS (Attack ~ Gen + Controls) - FULL DATA ---\n")
+summary(model_full)
+
+# OUTLIER-FREE DATA
+model_full_clean <- lm(attack ~ gen + hp + defense + sp_attack + sp_defense + speed +
+                         height_m + weight_kg + rarity + num_abilities + evo_length,
+                       data = pokemon_clean)
+cat("\n--- Model 2: Full OLS (Attack ~ Gen + Controls) - OUTLIER-FREE ---\n")
+summary(model_full_clean)
+
+# NORMAL RARITY ONLY (no rarity predictor needed since all are Normal)
+model_full_normal <- lm(attack ~ gen + hp + defense + sp_attack + sp_defense + speed +
+                          height_m + weight_kg + num_abilities + evo_length,
+                        data = pokemon_normal)
+cat("\n--- Model 2: Full OLS (Attack ~ Gen + Controls) - NORMAL ONLY ---\n")
+summary(model_full_normal)
+
+# Coefficient comparison for generation
+cat("\n--- Generation Coefficients Comparison (All Datasets) ---\n")
+gen_coef_full <- coef(model_full)[grep("^gen", names(coef(model_full)))]
+gen_coef_clean <- coef(model_full_clean)[grep("^gen", names(coef(model_full_clean)))]
+gen_coef_normal <- coef(model_full_normal)[grep("^gen", names(coef(model_full_normal)))]
+coef_comp <- data.frame(
+  Gen = paste0("gen", 2:9),
+  Full = round(gen_coef_full, 2),
+  Clean = round(gen_coef_clean, 2),
+  Normal = round(gen_coef_normal, 2)
+)
+print(coef_comp)
+
+cat("\n--- R² Comparison ---\n")
+cat("Full data R²:", round(summary(model_full)$r.squared, 4), "\n")
+cat("Outlier-free R²:", round(summary(model_full_clean)$r.squared, 4), "\n")
+cat("Normal-only R²:", round(summary(model_full_normal)$r.squared, 4), "\n")
+```
+
+**Findings:** After controlling for other stats, R² jumps to 0.473 (full), 0.478 (clean), and 0.445 (normal-only). Generation coefficients are similar across datasets — the Normal-only model confirms power creep exists independently of legendary inflation.
+
+```{r vif-check}
+# Check VIF for multicollinearity
+cat("\nVariance Inflation Factors (VIF) - Full Data:\n")
+vif(model_full)
+```
+
+**Findings:** All VIFs < 2.3, indicating no problematic multicollinearity. The model coefficients are reliable.
+
+## 4.3 Model with Interaction: Gen × Rarity
+
+```{r lm-interaction}
+model_interaction <- lm(attack ~ gen * rarity + hp + defense + sp_attack + 
+                          sp_defense + speed + height_m + weight_kg,
+                        data = pokemon)
+cat("--- Model 3: OLS with Gen × Rarity Interaction ---\n")
+summary(model_interaction)
+```
+
+## 4.4 Model Comparison
+
+```{r model-comparison}
+# Compare models using ANOVA
+cat("--- Model Comparison (ANOVA) ---\n")
+anova(model_basic, model_full, model_interaction)
+
+# AIC/BIC comparison
+cat("\nModel Comparison (AIC/BIC):\n")
+cat("Basic model: AIC =", AIC(model_basic), ", BIC =", BIC(model_basic), "\n")
+cat("Full model: AIC =", AIC(model_full), ", BIC =", BIC(model_full), "\n")
+cat("Interaction model: AIC =", AIC(model_interaction), ", BIC =", BIC(model_interaction), "\n")
+```
+
+**Findings:** The full model is significantly better than basic (p < 2e-16). The interaction model does NOT significantly improve over the full model (p = 0.33), meaning the generation effect doesn't vary much by rarity category. AIC/BIC both favor the full model.
+
+## 4.5 Diagnostic Plots
+
+```{r diagnostics, fig.width=12, fig.height=9}
+par(mfrow = c(2, 2))
+plot(model_full, main = "OLS Diagnostic Plots")
+plot(model_full_clean, main = "OLS Diagnostic Plots (clean)")
+plot(model_full_normal, main = "OLS Diagnostic Plots (normal)")
+
+```
+
+---
+
+# 5. Backward Stepwise Selection
+
+```{r stepwise}
+# Start with full model
+model_step_full <- lm(attack ~ gen + hp + defense + sp_attack + sp_defense + speed +
+                        height_m + log_weight + rarity + num_abilities + evo_length +
+                        capture_rate + has_mega_evolution,
+                      data = pokemon)
+
+# Backward selection using AIC
+model_step <- stepAIC(model_step_full, direction = "backward", trace = FALSE)
+cat("--- Backward Stepwise Selection Result ---\n")
+summary(model_step)
+cat("\nFinal model formula:\n")
+formula(model_step)
+```
+
+**Findings:** Stepwise selection retains generation in the model, confirming it has predictive value. The final model typically keeps gen, hp, defense, sp_defense, speed, and weight. Features like num_abilities and evo_length are often dropped.
+
+---
+
+# 6. LASSO, Ridge, and Elastic Net Regression
+
+## 6.1 Prepare Data
+
+```{r regularization-prep}
+# Create design matrix with generation dummies - FULL DATA
+X <- model.matrix(~ gen + hp + defense + sp_attack + sp_defense + speed +
+                    height_m + weight_kg + capture_rate + num_abilities + evo_length +
+                    rarity - 1, data = pokemon)
+y <- pokemon$attack
+
+# OUTLIER-FREE DATA
+X_clean <- model.matrix(~ gen + hp + defense + sp_attack + sp_defense + speed +
+                          height_m + weight_kg + capture_rate + num_abilities + evo_length +
+                          rarity - 1, data = pokemon_clean)
+y_clean <- pokemon_clean$attack
+```
+
+## 6.2 Ridge Regression (α = 0)
+
+```{r ridge}
+set.seed(42)
+cv_ridge <- cv.glmnet(X, y, alpha = 0, nfolds = 10)
+cat("--- Ridge Regression ---\n")
+cat("Optimal lambda (min):", cv_ridge$lambda.min, "\n")
+cat("Optimal lambda (1se):", cv_ridge$lambda.1se, "\n")
+
+ridge_model <- glmnet(X, y, alpha = 0, lambda = cv_ridge$lambda.min)
+cat("\nRidge coefficients:\n")
+print(coef(ridge_model))
+```
+
+## 6.3 LASSO Regression (α = 1)
+
+```{r lasso}
+# FULL DATA
+set.seed(42)
+cv_lasso <- cv.glmnet(X, y, alpha = 1, nfolds = 10)
+cat("--- LASSO Regression (Full Data) ---\n")
+cat("Optimal lambda (min):", cv_lasso$lambda.min, "\n")
+
+lasso_model <- glmnet(X, y, alpha = 1, lambda = cv_lasso$lambda.min)
+cat("\nLASSO coefficients (non-zero only = selected features):\n")
+lasso_coef <- coef(lasso_model)
+print(lasso_coef[lasso_coef[,1] != 0, ])
+
+n_selected <- sum(lasso_coef[,1] != 0) - 1
+cat("\nNumber of features selected by LASSO:", n_selected, "\n")
+
+# OUTLIER-FREE DATA
+set.seed(42)
+cv_lasso_clean <- cv.glmnet(X_clean, y_clean, alpha = 1, nfolds = 10)
+cat("\n--- LASSO Regression (Outlier-Free) ---\n")
+cat("Optimal lambda (min):", cv_lasso_clean$lambda.min, "\n")
+
+lasso_model_clean <- glmnet(X_clean, y_clean, alpha = 1, lambda = cv_lasso_clean$lambda.min)
+cat("\nLASSO coefficients (non-zero only = selected features):\n")
+lasso_coef_clean <- coef(lasso_model_clean)
+print(lasso_coef_clean[lasso_coef_clean[,1] != 0, ])
+
+n_selected_clean <- sum(lasso_coef_clean[,1] != 0) - 1
+cat("\nNumber of features selected by LASSO:", n_selected_clean, "\n")
+
+# Compare generation coefficients
+cat("\n--- LASSO Generation Coefficients Comparison ---\n")
+
+# Get all coefficient names from both models
+coef_full_mat <- as.matrix(lasso_coef)
+coef_clean_mat <- as.matrix(lasso_coef_clean)
+
+# Find generation-related coefficients (matching "gen" in name)
+gen_idx_full <- grep("^gen", rownames(coef_full_mat))
+gen_idx_clean <- grep("^gen", rownames(coef_clean_mat))
+
+# Get the generation names that exist in both
+gen_names_full <- rownames(coef_full_mat)[gen_idx_full]
+gen_names_clean <- rownames(coef_clean_mat)[gen_idx_clean]
+all_gen_names <- union(gen_names_full, gen_names_clean)
+
+# Safely extract coefficients (0 if not present)
+get_coef <- function(coef_mat, name) {
+  if (name %in% rownames(coef_mat)) coef_mat[name, 1] else 0
+}
+
+lasso_gen_full <- sapply(all_gen_names, function(n) get_coef(coef_full_mat, n))
+lasso_gen_clean <- sapply(all_gen_names, function(n) get_coef(coef_clean_mat, n))
+
+lasso_comparison <- data.frame(
+  Gen = all_gen_names,
+  Full = round(lasso_gen_full, 3),
+  Clean = round(lasso_gen_clean, 3),
+  Both_Selected = ifelse(lasso_gen_full != 0 & lasso_gen_clean != 0, "Yes", 
+                         ifelse(lasso_gen_full != 0 | lasso_gen_clean != 0, "One only", "Neither"))
+)
+rownames(lasso_comparison) <- NULL
+print(lasso_comparison)
+```
+
+**Findings:** Compare which generation dummies LASSO selects in full vs outlier-free data. If the same generations are retained, the feature selection is robust to outliers.
+
+## 6.4 Elastic Net (α = 0.5)
+
+```{r elastic-net}
+set.seed(42)
+cv_enet <- cv.glmnet(X, y, alpha = 0.5, nfolds = 10)
+cat("--- Elastic Net Regression ---\n")
+cat("Optimal lambda:", cv_enet$lambda.min, "\n")
+
+enet_model <- glmnet(X, y, alpha = 0.5, lambda = cv_enet$lambda.min)
+cat("\nElastic Net coefficients:\n")
+print(coef(enet_model))
+```
+
+## 6.5 Regularization Paths
+
+```{r regularization-plots, fig.width=12, fig.height=4}
+par(mfrow = c(1, 3))
+plot(cv_ridge, main = "Ridge CV")
+plot(cv_lasso, main = "LASSO CV")
+plot(cv_enet, main = "Elastic Net CV")
+```
+
+---
+
+# 7. Generalized Linear Models (GLMs)
+
+## 7.1 Gaussian GLM
+
+Equivalent to OLS for continuous target.
+
+```{r glm-gaussian}
+# FULL DATA
+glm_gaussian <- glm(attack ~ gen + hp + defense + sp_attack + sp_defense + speed +
+                      rarity + weight_kg + height_m,
+                    data = pokemon, family = gaussian(link = "identity"))
+cat("--- GLM: Gaussian (Attack ~ predictors) - FULL DATA ---\n")
+summary(glm_gaussian)
+
+# OUTLIER-FREE DATA
+glm_gaussian_clean <- glm(attack ~ gen + hp + defense + sp_attack + sp_defense + speed +
+                            rarity + weight_kg + height_m,
+                          data = pokemon_clean, family = gaussian(link = "identity"))
+cat("\n--- GLM: Gaussian (Attack ~ predictors) - OUTLIER-FREE ---\n")
+summary(glm_gaussian_clean)
+
+# NORMAL RARITY ONLY (no rarity predictor)
+glm_gaussian_normal <- glm(attack ~ gen + hp + defense + sp_attack + sp_defense + speed +
+                             weight_kg + height_m,
+                           data = pokemon_normal, family = gaussian(link = "identity"))
+cat("\n--- GLM: Gaussian (Attack ~ predictors) - NORMAL ONLY ---\n")
+summary(glm_gaussian_normal)
+
+# AIC comparison
+cat("\n--- AIC Comparison ---\n")
+cat("Full data AIC:", round(AIC(glm_gaussian), 1), "\n")
+cat("Outlier-free AIC:", round(AIC(glm_gaussian_clean), 1), "\n")
+cat("Normal-only AIC:", round(AIC(glm_gaussian_normal), 1), "(not directly comparable - different N)\n")
+```
+
+**Findings:** Gaussian GLM shows which generations are significant. The Normal-only model tests power creep without legendary influence — significant generation effects here confirm the trend exists among regular Pokémon.
+
+## 7.2 Gamma GLM
+
+For positive continuous data, handles heteroscedasticity.
+
+```{r glm-gamma}
+glm_gamma <- glm(attack ~ gen + hp + defense + sp_attack + sp_defense + speed +
+                   rarity + weight_kg,
+                 data = pokemon, family = Gamma(link = "log"))
+cat("--- GLM: Gamma with log link ---\n")
+summary(glm_gamma)
+```
+
+## 7.3 Poisson GLM for Count Data
+
+Using `num_abilities` as the response variable.
+
+```{r glm-poisson}
+glm_poisson <- glm(num_abilities ~ gen + rarity + hp + attack + defense + speed,
+                   data = pokemon, family = poisson(link = "log"))
+cat("--- GLM: Poisson (Number of Abilities) ---\n")
+summary(glm_poisson)
+```
+
+**Findings:** Interestingly, later generations (7, 9) have *fewer* abilities than Gen 1. Rarer Pokémon also have fewer abilities. This is the opposite of power creep for this metric — newer Pokémon are simpler in terms of ability count.
+
+### Overdispersion Check
+
+```{r overdispersion-check}
+# Check mean vs variance (Poisson assumption)
+cat("\nPoisson Assumption Check (mean ≈ variance):\n")
+cat("Mean num_abilities:", mean(pokemon$num_abilities), "\n")
+cat("Variance num_abilities:", var(pokemon$num_abilities), "\n")
+
+# Check for overdispersion using AER package (from SAN_assignment_GLM_2.Rmd)
+cat("\n--- Dispersion Test (from AER package) ---\n")
+disp_test <- dispersiontest(glm_poisson)
+print(disp_test)
+
+# Manual dispersion calculation
+dispersion <- sum(residuals(glm_poisson, type = "pearson")^2) / glm_poisson$df.residual
+cat("\nManual Dispersion parameter:", dispersion, "\n")
+
+if (disp_test$p.value < 0.05 || dispersion > 1.5) {
+  cat("WARNING: Overdispersion detected! Consider Negative Binomial or Quasi-Poisson\n")
+} else {
+  cat("No significant overdispersion detected.\n")
+}
+```
+
+**Findings:** Variance (0.55) is actually *less* than mean (2.37), indicating underdispersion rather than overdispersion. The Poisson model is appropriate here. This is unusual but makes sense — ability counts are constrained to a narrow range (typically 2-3).
+
+## 7.4 Quasi-Poisson (for Overdispersion)
+
+```{r glm-quasi}
+glm_quasi <- glm(num_abilities ~ gen + rarity + hp + attack + defense + speed,
+                 data = pokemon, family = quasipoisson(link = "log"))
+cat("--- GLM: Quasi-Poisson (correcting for overdispersion) ---\n")
+summary(glm_quasi)
+```
+
+## 7.5 Negative Binomial GLM
+
+From SAN_assignment_GLM_2.Rmd - handles overdispersion better than Quasi-Poisson.
+
+```{r glm-nb}
+glm_nb <- MASS::glm.nb(num_abilities ~ gen + rarity + hp + attack + defense + speed,
+                       data = pokemon)
+cat("--- GLM: Negative Binomial (better for overdispersion) ---\n")
+summary(glm_nb)
+```
+
+## 7.6 Compare GLMs
+
+```{r compare-glms}
+# Compare Poisson vs Negative Binomial using AIC
+cat("\nAIC Comparison (Poisson vs Negative Binomial):\n")
+AIC(glm_poisson, glm_nb)
+
+# Compare using rcompanion (from SAN_assignment_GLM_2.Rmd)
+cat("\n--- Compare GLMs using rcompanion ---\n")
+glm_comparison <- compareGLM(glm_poisson, glm_quasi, glm_nb)
+print(glm_comparison)
+```
+
+---
+
+# 8. Comprehensive Ablation Study with Cross-Validation
+
+Inspired by SAN_assignment_GLM_2.Rmd.
+
+```{r ablation-setup, message=FALSE, warning=FALSE}
+# Setup 10-fold cross-validation
+train_control <- trainControl(method = "cv", number = 10, verboseIter = FALSE)
+set.seed(42)
+
+# Prepare data (ensure factors are properly set)
+pokemon_cv <- pokemon %>%
+  mutate(
+    gen = as.factor(gen),
+    rarity = as.factor(rarity),
+    class_primary = as.factor(class_primary)
+  ) %>%
+  dplyr::select(attack, gen, hp, defense, sp_attack, sp_defense, speed, 
+                weight_kg, height_m, rarity, num_abilities, evo_length, gen_numeric) %>%
+  na.omit()
+
+cat("Running ablation study with 10-fold CV...\n")
+```
+
+## 8.1 Train All Models
+
+```{r ablation-models, message=FALSE, warning=FALSE}
+# Model 1: Null model (intercept only)
+m_null <- train(
+  x = data.frame(intercept = rep(1, nrow(pokemon_cv))),
+  y = pokemon_cv$attack,
+  method = "lm",
+  trControl = train_control
+)
+
+# Model 2: Simple LM (attack ~ gen only)
+m_gen_only <- train(
+  attack ~ gen,
+  data = pokemon_cv,
+  method = "lm",
+  trControl = train_control
+)
+
+# Model 3: LM with gen + basic stats
+m_lm_basic <- train(
+  attack ~ gen + hp + defense + speed,
+  data = pokemon_cv,
+  method = "lm",
+  trControl = train_control
+)
+
+# Model 4: LM with all predictors
+m_lm_full <- train(
+  attack ~ gen + hp + defense + sp_attack + sp_defense + speed + rarity + weight_kg,
+  data = pokemon_cv,
+  method = "lm",
+  trControl = train_control
+)
+
+# Model 5: GLM Gaussian
+m_glm_gaussian <- train(
+  attack ~ gen + hp + defense + sp_attack + sp_defense + speed + rarity,
+  data = pokemon_cv,
+  method = "glm",
+  family = "gaussian",
+  trControl = train_control
+)
+
+# Model 6: GLM with polynomial term (from SAN_assignment_GLM_2.Rmd)
+m_glm_poly <- train(
+  attack ~ gen + hp + defense + sp_attack + sp_defense + poly(speed, 2) + rarity,
+  data = pokemon_cv,
+  method = "glm",
+  family = "gaussian",
+  trControl = train_control
+)
+
+# Model 7: GLM with spline (from SAN_assignment_GLM_2.Rmd)
+m_glm_spline <- train(
+  attack ~ gen + ns(hp, df = 3) + ns(defense, df = 3) + sp_attack + sp_defense + 
+    ns(speed, df = 3) + rarity,
+  data = pokemon_cv,
+  method = "glm",
+  family = "gaussian",
+  trControl = train_control
+)
+
+# Model 8: GLM with gen as numeric (linear trend)
+m_glm_trend <- train(
+  attack ~ gen_numeric + hp + defense + sp_attack + sp_defense + speed + rarity,
+  data = pokemon_cv,
+  method = "glm",
+  family = "gaussian",
+  trControl = train_control
+)
+
+# Model 9: GLM with gen × rarity interaction
+m_glm_interaction <- train(
+  attack ~ gen * rarity + hp + defense + sp_attack + sp_defense + speed,
+  data = pokemon_cv,
+  method = "glm",
+  family = "gaussian",
+  trControl = train_control
+)
+```
+
+## 8.2 Compare Models
+
+```{r ablation-compare}
+# Compile and compare all models using resamples() (from SAN_assignment_GLM_2.Rmd)
+model_list <- resamples(list(
+  NULL_MODEL = m_null,
+  GEN_ONLY = m_gen_only,
+  LM_BASIC = m_lm_basic,
+  LM_FULL = m_lm_full,
+  GLM_GAUSSIAN = m_glm_gaussian,
+  GLM_POLY = m_glm_poly,
+  GLM_SPLINE = m_glm_spline,
+  GLM_TREND = m_glm_trend,
+  GLM_INTERACTION = m_glm_interaction
+))
+
+# Print summary of cross-validation results
+cat("--- Cross-Validation Results Summary ---\n")
+summary(model_list)
+```
+
+**Findings:** GLM_SPLINE achieves the best CV performance (RMSE ≈ 21, R² ≈ 0.51). Generation-only model barely beats the null model, confirming that generation alone has limited predictive power. The key improvement comes from adding combat stats, not from modeling generation non-linearly.
+
+```{r ablation-dotplot, fig.width=10, fig.height=8}
+# Create dotplot for visual comparison (from SAN_assignment_GLM_2.Rmd)
+dotplot(model_list, main = "Model Comparison: 10-Fold CV (Lower RMSE/MAE = Better)")
+```
+
+## 8.3 Model Rankings
+
+```{r model-rankings}
+# Create comparison table
+cv_results <- summary(model_list)
+
+cat("--- Model Rankings by RMSE ---\n")
+rmse_means <- cv_results$statistics$RMSE[, "Mean"]
+rmse_ranking <- sort(rmse_means)
+print(round(rmse_ranking, 3))
+
+cat("\n--- Model Rankings by MAE ---\n")
+mae_means <- cv_results$statistics$MAE[, "Mean"]
+mae_ranking <- sort(mae_means)
+print(round(mae_ranking, 3))
+
+cat("\n--- Model Rankings by R² ---\n")
+r2_means <- cv_results$statistics$Rsquared[, "Mean"]
+r2_ranking <- sort(r2_means, decreasing = TRUE)
+print(round(r2_ranking, 3))
+```
+
+## 8.4 AIC Comparison
+
+```{r aic-comparison}
+cat("--- AIC Comparison of Final Models ---\n")
+final_models_aic <- data.frame(
+  Model = c("NULL_MODEL", "GEN_ONLY", "LM_BASIC", "LM_FULL", "GLM_GAUSSIAN",
+            "GLM_POLY", "GLM_SPLINE", "GLM_TREND", "GLM_INTERACTION"),
+  AIC = c(
+    AIC(m_null$finalModel),
+    AIC(m_gen_only$finalModel),
+    AIC(m_lm_basic$finalModel),
+    AIC(m_lm_full$finalModel),
+    AIC(m_glm_gaussian$finalModel),
+    AIC(m_glm_poly$finalModel),
+    AIC(m_glm_spline$finalModel),
+    AIC(m_glm_trend$finalModel),
+    AIC(m_glm_interaction$finalModel)
+  )
+)
+final_models_aic <- final_models_aic %>% arrange(AIC)
+print(final_models_aic)
+```
+
+---
+
+# 9. Likelihood Ratio Tests for Generation Effect
+
+```{r lr-test}
+# Full model with generation
+full_model_lr <- glm(attack ~ gen + hp + defense + sp_attack + sp_defense + speed +
+                    rarity + weight_kg, data = pokemon, family = gaussian)
+
+# Reduced model without generation
+reduced_model <- glm(attack ~ hp + defense + sp_attack + sp_defense + speed +
+                       rarity + weight_kg, data = pokemon, family = gaussian)
+
+# Likelihood ratio test
+lr_test <- lrtest(reduced_model, full_model_lr)
+cat("--- Likelihood Ratio Test: Is Generation Significant? ---\n")
+print(lr_test)
+
+if (lr_test$`Pr(>Chisq)`[2] < 0.05) {
+  cat("\nConclusion: Generation IS a significant predictor of Attack (p < 0.05)\n")
+} else {
+  cat("\nConclusion: Generation is NOT a significant predictor after controlling for other variables\n")
+}
+```
+
+**Findings:** LR test p = 0.0077 (full data) and p = 0.002 (outlier-free) confirm generation adds significant explanatory power beyond other stats. This is the KEY evidence for power creep — even after controlling for HP/Defense/Speed/Rarity/Weight, generation still matters, and this holds after removing outliers.
+
+---
+
+# 10. Non-Linear Effects with Splines and Polynomials
+
+## 10.1 Polynomial Model
+
+```{r poly-model}
+model_poly <- lm(attack ~ poly(gen_numeric, 2) + 
+                   poly(hp, 2) + poly(defense, 2) + 
+                   poly(speed, 2) + rarity,
+                 data = pokemon)
+cat("--- Model with Polynomial Terms (degree 2) ---\n")
+summary(model_poly)
+```
+
+## 10.2 Natural Spline Model
+
+```{r spline-model}
+model_spline <- lm(attack ~ ns(gen_numeric, df = 3) + 
+                     ns(hp, df = 3) + ns(defense, df = 3) + 
+                     ns(speed, df = 3) + rarity,
+                   data = pokemon)
+cat("--- Model with Natural Splines (df=3) ---\n")
+summary(model_spline)
+```
+
+## 10.3 Linear Baseline
+
+```{r linear-baseline}
+model_linear <- lm(attack ~ gen_numeric + hp + defense + speed + rarity,
+                   data = pokemon)
+```
+
+## 10.4 Model Comparison
+
+```{r nonlinear-comparison}
+cat("--- Comparison: Linear vs Polynomial vs Spline ---\n")
+cat("\nAIC comparison:\n")
+cat("Linear model:     AIC =", round(AIC(model_linear), 2), "\n")
+cat("Polynomial model: AIC =", round(AIC(model_poly), 2), "\n")
+cat("Spline model:     AIC =", round(AIC(model_spline), 2), "\n")
+
+cat("\nBIC comparison:\n")
+cat("Linear model:     BIC =", round(BIC(model_linear), 2), "\n")
+cat("Polynomial model: BIC =", round(BIC(model_poly), 2), "\n")
+cat("Spline model:     BIC =", round(BIC(model_spline), 2), "\n")
+
+# ANOVA comparison (nested models)
+cat("\nANOVA: Linear vs Spline\n")
+anova(model_linear, model_spline)
+```
+
+**Findings:** Polynomial and spline models have lower AIC than linear, suggesting non-linear relationships exist (especially for HP and Defense). However, the generation effect itself is approximately linear — the non-linearity comes from combat stats, not from generation.
+
+## 10.5 Visualize Non-Linear Effects
+
+```{r nonlinear-viz, fig.width=10, fig.height=6, warning=FALSE, message=FALSE}
+# Create prediction data for visualization
+gen_seq <- seq(1, 9, length.out = 100)
+pred_data <- data.frame(
+  gen_numeric = gen_seq,
+  hp = mean(pokemon$hp),
+  defense = mean(pokemon$defense),
+  speed = mean(pokemon$speed),
+  rarity = factor("Normal", levels = levels(pokemon$rarity))
+)
+
+pred_data$pred_linear <- predict(model_linear, newdata = pred_data)
+pred_data$pred_poly <- predict(model_poly, newdata = pred_data)
+pred_data$pred_spline <- predict(model_spline, newdata = pred_data)
+
+# Plot comparison of linear vs polynomial vs spline
+p_nonlinear <- ggplot() +
+  geom_jitter(data = pokemon, aes(x = gen_numeric, y = attack), 
+              alpha = 0.3, width = 0.2, color = "gray50") +
+  geom_line(data = pred_data, aes(x = gen_numeric, y = pred_linear, color = "Linear"), 
+            size = 1.2) +
+  geom_line(data = pred_data, aes(x = gen_numeric, y = pred_poly, color = "Polynomial"), 
+            size = 1.2) +
+  geom_line(data = pred_data, aes(x = gen_numeric, y = pred_spline, color = "Spline"), 
+            size = 1.2) +
+  # Add loess smooth for reference (from glms.Rmd)
+  geom_smooth(data = pokemon, aes(x = gen_numeric, y = attack), 
+              method = "loess", color = "black", linetype = "dashed", 
+              alpha = 0.3, se = FALSE) +
+  scale_color_manual(values = c("Linear" = "blue", "Polynomial" = "red", "Spline" = "green")) +
+  labs(title = "Comparison of Non-linear Models for Generation Effect",
+       subtitle = "Dashed line = loess smooth (reference); Points = actual Pokémon",
+       x = "Generation", y = "Attack", color = "Model Type") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+print(p_nonlinear)
+```
+
+---
+
+# 11. Time-Split Cross-Validation
+
+Train on Gen ≤5, Test on Gen ≥6.
+
+```{r time-split-data}
+# Split data and retain full factor levels to avoid "new levels" issues
+train_data <- pokemon %>%
+  filter(gen_numeric <= 5) %>%
+  mutate(
+    gen = factor(gen, levels = levels(pokemon$gen)),
+    rarity = factor(rarity, levels = levels(pokemon$rarity))
+  )
+
+test_data <- pokemon %>%
+  filter(gen_numeric >= 6) %>%
+  mutate(
+    gen = factor(gen, levels = levels(pokemon$gen)),
+    rarity = factor(rarity, levels = levels(pokemon$rarity))
+  )
+
+cat("Training set (Gen 1-5):", nrow(train_data), "Pokémon\n")
+cat("Test set (Gen 6-9):", nrow(test_data), "Pokémon\n")
+```
+
+```{r time-split-models}
+# Train models on Gen 1-5
+# Use numeric generation to avoid factor level issues when predicting on newer gens
+cv_model_lm <- lm(attack ~ gen_numeric + hp + defense + sp_attack + sp_defense + speed +
+                    rarity + weight_kg, data = train_data)
+
+cv_model_glm <- glm(attack ~ gen_numeric + hp + defense + sp_attack + sp_defense + speed +
+                      rarity + weight_kg, data = train_data, family = Gamma(link = "log"))
+
+# Predict on Gen 6-9
+pred_lm <- predict(cv_model_lm, newdata = test_data)
+pred_glm <- predict(cv_model_glm, newdata = test_data, type = "response")
+
+# Compute metrics
+rmse_lm <- sqrt(mean((test_data$attack - pred_lm)^2))
+mae_lm <- mean(abs(test_data$attack - pred_lm))
+r2_lm <- 1 - sum((test_data$attack - pred_lm)^2) / sum((test_data$attack - mean(test_data$attack))^2)
+
+rmse_glm <- sqrt(mean((test_data$attack - pred_glm)^2))
+mae_glm <- mean(abs(test_data$attack - pred_glm))
+r2_glm <- 1 - sum((test_data$attack - pred_glm)^2) / sum((test_data$attack - mean(test_data$attack))^2)
+
+cat("--- Time-Split CV Results ---\n")
+cat("OLS Model:\n")
+cat("  RMSE:", rmse_lm, "\n")
+cat("  MAE:", mae_lm, "\n")
+cat("  R²:", r2_lm, "\n")
+
+cat("\nGamma GLM:\n")
+cat("  RMSE:", rmse_glm, "\n")
+cat("  MAE:", mae_glm, "\n")
+cat("  R²:", r2_glm, "\n")
+```
+
+**Findings:** OLS generalizes better to future generations (RMSE 24) than Gamma GLM (RMSE 30). The degradation from 10-fold CV (~21) to time-split (~24) suggests the generation effect is not perfectly linear — future generations don't follow the same pattern as past ones. This is a caveat for the power creep claim.
+
+```{r time-split-viz, fig.width=10, fig.height=6}
+# Visualize predictions vs actual
+pred_comparison <- data.frame(
+  actual = test_data$attack,
+  pred_lm = pred_lm,
+  pred_glm = pred_glm,
+  gen = test_data$gen
+)
+
+p_cv <- ggplot(pred_comparison, aes(x = actual)) +
+  geom_point(aes(y = pred_lm, color = "OLS"), alpha = 0.5) +
+  geom_point(aes(y = pred_glm, color = "Gamma GLM"), alpha = 0.5) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "black") +
+  labs(title = "Time-Split CV: Predicted vs Actual Attack (Gen 6-9)",
+       subtitle = "Model trained on Gen 1-5, tested on Gen 6-9",
+       x = "Actual Attack", y = "Predicted Attack",
+       color = "Model") +
+  theme_minimal()
+print(p_cv)
+```
+
+---
+
+# 12. Robust Regression (Huber)
+
+```{r robust-regression}
+# Fit robust regression (Huber M-estimator)
+model_robust <- rlm(attack ~ gen + hp + defense + sp_attack + sp_defense + speed +
+                      rarity + weight_kg, data = pokemon)
+cat("--- Robust Regression (Huber) ---\n")
+summary(model_robust)
+```
+
+```{r robust-comparison}
+# Compare with OLS
+cat("\nComparison of coefficients (OLS vs Robust):\n")
+coef_comparison <- data.frame(
+  OLS = coef(model_full)[names(coef(model_robust))],
+  Robust = coef(model_robust)
+)
+print(round(coef_comparison, 4))
+```
+
+**Findings:** Robust regression coefficients are similar to OLS, indicating outliers don't drastically affect the generation effect estimates. This strengthens confidence in the OLS results.
+
+---
+
+# 13. Final Analysis: Is There Power Creep?
+
+## 13.1 Generation Coefficients
+
+```{r gen-coefficients}
+# Extract generation coefficients from models - including all three datasets
+gen_coefs <- data.frame(
+  Generation = paste0("Gen", 2:9),
+  OLS_Full = coef(model_full)[grep("^gen", names(coef(model_full)))],
+  OLS_Clean = coef(model_full_clean)[grep("^gen", names(coef(model_full_clean)))],
+  OLS_Normal = coef(model_full_normal)[grep("^gen", names(coef(model_full_normal)))],
+  Robust = coef(model_robust)[grep("^gen", names(coef(model_robust)))]
+)
+rownames(gen_coefs) <- NULL
+
+cat("--- Generation Coefficients (relative to Gen 1) ---\n")
+cat("Columns: OLS_Full = full data, OLS_Clean = outlier-free, OLS_Normal = normal rarity only, Robust = Huber\n\n")
+gen_coefs %>%
+  mutate(across(where(is.numeric), ~ round(.x, 3))) %>%
+  knitr::kable()
+```
+
+**Findings:** Compare coefficients across all datasets. The OLS_Normal column shows the generation effect among regular Pokémon only — similar values to OLS_Full indicate power creep isn't driven by legendaries.
+
+## 13.2 Linear Trend Analysis
+
+```{r trend-analysis}
+# Test linear trend in generation - FULL DATA
+trend_model <- lm(attack ~ gen_numeric + hp + defense + sp_attack + sp_defense + 
+                    speed + rarity, data = pokemon)
+cat("--- Linear Trend of Generation on Attack (Full Data) ---\n")
+cat("Coefficient of gen_numeric:", round(coef(trend_model)["gen_numeric"], 3), "\n")
+cat("p-value:", format(summary(trend_model)$coefficients["gen_numeric", "Pr(>|t|)"], digits = 4), "\n")
+
+# OUTLIER-FREE DATA
+trend_model_clean <- lm(attack ~ gen_numeric + hp + defense + sp_attack + sp_defense + 
+                          speed + rarity, data = pokemon_clean)
+cat("\n--- Linear Trend of Generation on Attack (Outlier-Free) ---\n")
+cat("Coefficient of gen_numeric:", round(coef(trend_model_clean)["gen_numeric"], 3), "\n")
+cat("p-value:", format(summary(trend_model_clean)$coefficients["gen_numeric", "Pr(>|t|)"], digits = 4), "\n")
+
+# NORMAL RARITY ONLY (no rarity predictor)
+trend_model_normal <- lm(attack ~ gen_numeric + hp + defense + sp_attack + sp_defense + 
+                           speed, data = pokemon_normal)
+cat("\n--- Linear Trend of Generation on Attack (Normal Only) ---\n")
+cat("Coefficient of gen_numeric:", round(coef(trend_model_normal)["gen_numeric"], 3), "\n")
+cat("p-value:", format(summary(trend_model_normal)$coefficients["gen_numeric", "Pr(>|t|)"], digits = 4), "\n")
+
+cat("\n--- Interpretation ---\n")
+cat("Full data: Each generation increases attack by ~", round(coef(trend_model)["gen_numeric"], 1), " points\n")
+cat("Outlier-free: Each generation increases attack by ~", round(coef(trend_model_clean)["gen_numeric"], 1), " points\n")
+cat("Normal-only: Each generation increases attack by ~", round(coef(trend_model_normal)["gen_numeric"], 1), " points\n")
+```
+
+**Findings:** The gen_numeric coefficient represents the average attack increase per generation. All three datasets show a positive coefficient (~1-2 attack points per generation), confirming a consistent upward trend across full, outlier-free, and normal-only data.
+
+## 13.3 Mean Attack by Generation
+
+```{r mean-by-gen}
+# Overall mean attack by generation - BOTH DATASETS
+mean_by_gen <- pokemon %>%
+  group_by(gen) %>%
+  summarise(mean_attack = mean(attack)) %>%
+  arrange(gen)
+
+mean_by_gen_clean <- pokemon_clean %>%
+  group_by(gen) %>%
+  summarise(mean_attack = mean(attack)) %>%
+  arrange(gen)
+
+mean_by_gen_normal <- pokemon_normal %>%
+  group_by(gen) %>%
+  summarise(mean_attack = mean(attack)) %>%
+  arrange(gen)
+
+cat("--- Mean Attack by Generation (All Three Datasets) ---\n")
+comparison_mean <- data.frame(
+  gen = 1:9,
+  full = mean_by_gen$mean_attack,
+  clean = mean_by_gen_clean$mean_attack,
+  normal = mean_by_gen_normal$mean_attack
+) %>% mutate(
+  diff_clean = round(full - clean, 1),
+  diff_normal = round(full - normal, 1)
+)
+print(comparison_mean)
+
+# Calculate trends
+trend <- cor(as.numeric(mean_by_gen$gen), mean_by_gen$mean_attack)
+trend_clean <- cor(as.numeric(mean_by_gen_clean$gen), mean_by_gen_clean$mean_attack)
+trend_normal <- cor(as.numeric(mean_by_gen_normal$gen), mean_by_gen_normal$mean_attack)
+
+cat("\n--- Correlation (gen vs mean_attack) ---\n")
+cat("Full data:", round(trend, 3), "\n")
+cat("Outlier-free:", round(trend_clean, 3), "\n")
+cat("Normal-only:", round(trend_normal, 3), "\n")
+```
+
+**Findings:** Correlations (gen vs mean_attack): Full = 0.757, Outlier-free = 0.725, Normal-only = 0.732. All three are strong positive correlations. The Normal-only value (0.732) is very similar to full data, confirming power creep exists among regular Pokémon — legendaries aren't driving the trend.
+
+## 13.4 Summary Visualization: Full vs Outlier-Free Trends
+
+```{r trend-comparison-plot, fig.width=12, fig.height=6}
+# Create comparison plot of mean attack trends - ALL THREE DATASETS
+trend_data <- data.frame(
+  gen = rep(1:9, 3),
+  mean_attack = c(mean_by_gen$mean_attack, mean_by_gen_clean$mean_attack, mean_by_gen_normal$mean_attack),
+  dataset = rep(c("Full Data", "Outlier-Free", "Normal Only"), each = 9)
+)
+
+p_trend_compare <- ggplot(trend_data, aes(x = gen, y = mean_attack, color = dataset, shape = dataset)) +
+  geom_point(size = 4) +
+  geom_line(linewidth = 1) +
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed", alpha = 0.5) +
+  scale_x_continuous(breaks = 1:9) +
+  labs(title = "Mean Attack by Generation: All Three Datasets",
+       subtitle = paste0("Correlation: Full = ", round(trend, 3), 
+                        ", Outlier-Free = ", round(trend_clean, 3),
+                        ", Normal-Only = ", round(trend_normal, 3)),
+       x = "Generation", y = "Mean Attack",
+       color = "Dataset", shape = "Dataset") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+print(p_trend_compare)
+```
+
+**Findings:** This visualization compares generation trends across all three datasets. The Normal-only line shows power creep among regular Pokémon — if it tracks the Full data line, legendaries aren't inflating the trend.
+
+---
+
+# 14. Additional Verification Checks for Power Creep
+
+These checks address potential confounds and strengthen (or weaken) the power creep claim.
+
+## 14.1 Monotonic Trend Test (Jonckheere-Terpstra)
+
+Is there a consistent *ordering* of attack across generations, not just correlation?
+
+```{r monotonic-test, warning=FALSE, message=FALSE}
+# Jonckheere-Terpstra test for ordered alternatives
+# H0: No trend; H1: Monotonically increasing trend
+# FULL DATA
+jt_test <- JonckheereTerpstraTest(pokemon$attack, as.numeric(pokemon$gen), 
+                                   alternative = "increasing")
+cat("--- Jonckheere-Terpstra Test for Monotonic Trend (Full Data) ---\n")
+print(jt_test)
+
+# OUTLIER-FREE DATA
+jt_test_clean <- JonckheereTerpstraTest(pokemon_clean$attack, as.numeric(pokemon_clean$gen), 
+                                         alternative = "increasing")
+cat("\n--- Jonckheere-Terpstra Test for Monotonic Trend (Outlier-Free) ---\n")
+print(jt_test_clean)
+
+cat("\n--- Comparison ---\n")
+cat("Full data p-value:", format(jt_test$p.value, digits = 4), 
+    ifelse(jt_test$p.value < 0.05, "(significant)", "(not significant)"), "\n")
+cat("Outlier-free p-value:", format(jt_test_clean$p.value, digits = 4),
+    ifelse(jt_test_clean$p.value < 0.05, "(significant)", "(not significant)"), "\n")
+```
+
+**Findings:** Jonckheere-Terpstra test p = 2.09e-05 (full) and p = 1.61e-05 (outlier-free) confirm a significant monotonically increasing trend. This non-parametric test is more appropriate than Pearson correlation because it tests for *ordered* increase, not just linear association. Both datasets show highly significant results.
+
+## 14.2 Rarity Distribution by Generation
+
+Is power creep driven by more legendaries in later generations?
+
+```{r rarity-by-gen}
+# Check if rarity distribution changes across generations
+rarity_by_gen <- pokemon %>%
+  group_by(gen, rarity) %>%
+  summarise(n = n(), .groups = "drop") %>%
+  group_by(gen) %>%
+  mutate(prop = n / sum(n)) %>%
+  filter(rarity != "Normal")
+
+cat("--- Proportion of Rare Pokémon by Generation ---\n")
+print(rarity_by_gen %>% pivot_wider(names_from = rarity, values_from = prop, values_fill = 0))
+
+# Chi-square test: Is rarity distribution independent of generation?
+rarity_table <- table(pokemon$gen, pokemon$rarity)
+chi_test <- chisq.test(rarity_table)
+cat("\nChi-square test (Rarity ~ Generation):\n")
+print(chi_test)
+```
+
+```{r rarity-by-gen-plot, fig.width=10, fig.height=5}
+# Visualize
+p_rarity_gen <- pokemon %>%
+  group_by(gen, rarity) %>%
+  summarise(n = n(), .groups = "drop") %>%
+  ggplot(aes(x = gen, y = n, fill = rarity)) +
+  geom_col(position = "fill") +
+  labs(title = "Rarity Composition by Generation",
+       subtitle = "Does the proportion of legendaries increase over time?",
+       x = "Generation", y = "Proportion", fill = "Rarity") +
+  theme_minimal()
+print(p_rarity_gen)
+```
+
+**Findings:** If later generations have higher proportions of legendary/mythical Pokémon, this could explain the apparent power creep without a true baseline increase.
+
+## 14.3 Power Creep Among Normal Pokémon Only
+
+Test if power creep exists when excluding legendaries. Uses the pre-built `pokemon_normal` dataset.
+
+```{r normal-only}
+# pokemon_normal was created in Section 2 - contains only Normal rarity Pokémon
+cat("--- Attack by Generation (Normal Pokémon Only) ---\n")
+cat("Dataset size:", nrow(pokemon_normal), "Pokémon\n\n")
+
+normal_summary <- pokemon_normal %>%
+  group_by(gen) %>%
+  summarise(n = n(), mean_attack = mean(attack), sd_attack = sd(attack))
+print(normal_summary)
+
+# Test generation effect on normal Pokémon (simpler model - no rarity needed)
+model_normal_check <- lm(attack ~ gen + hp + defense + speed, data = pokemon_normal)
+cat("\n--- OLS on Normal Pokémon Only ---\n")
+summary(model_normal_check)
+
+# Trend correlation for normal only (already computed in 13.3, but shown here for clarity)
+trend_normal_check <- cor(as.numeric(normal_summary$gen), normal_summary$mean_attack)
+cat("\nCorrelation (gen vs mean_attack) for Normal Pokémon:", round(trend_normal_check, 3), "\n")
+
+# Compare with full dataset
+cat("\n--- Comparison with Full Dataset ---\n")
+cat("Full data correlation:", round(trend, 3), "\n")
+cat("Normal-only correlation:", round(trend_normal_check, 3), "\n")
+cat("Difference:", round(trend - trend_normal_check, 3), "\n")
+```
+
+**Findings:** Normal-only correlation = 0.732, very close to full data (0.757). Power creep persists among Normal-rarity Pokémon — this is a genuine baseline shift, not driven by legendary inflation. The 0.025 difference is negligible.
+
+## 14.4 Total Stats Analysis (Not Just Attack)
+
+Does power creep affect overall strength, not just attack?
+
+```{r total-stats-analysis}
+cat("--- Total Stats by Generation ---\n")
+total_summary <- pokemon %>%
+  group_by(gen) %>%
+  summarise(
+    mean_total = mean(total_stats),
+    mean_offensive = mean(offensive_power),
+    mean_defensive = mean(defensive_power)
+  )
+print(total_summary)
+
+# Correlation with generation
+cat("\nCorrelations with generation:\n")
+cat("  Total stats:", round(cor(as.numeric(total_summary$gen), total_summary$mean_total), 3), "\n")
+cat("  Offensive power:", round(cor(as.numeric(total_summary$gen), total_summary$mean_offensive), 3), "\n")
+cat("  Defensive power:", round(cor(as.numeric(total_summary$gen), total_summary$mean_defensive), 3), "\n")
+
+# Model for total stats
+model_total <- lm(total_stats ~ gen + rarity, data = pokemon)
+cat("\n--- OLS: Total Stats ~ Generation + Rarity ---\n")
+summary(model_total)
+```
+
+**Findings:** If total_stats also increases with generation, power creep is broad-based. If only attack increases, the "creep" might be a shift toward offensive designs rather than overall power inflation.
+
+## 14.5 Generation Effect with Confidence Intervals
+
+Visualize the uncertainty in generation effects.
+
+```{r gen-ci-plot, fig.width=10, fig.height=6}
+# Extract generation coefficients with CIs from full model
+gen_effects <- tidy(model_full, conf.int = TRUE) %>%
+  filter(grepl("^gen", term)) %>%
+  mutate(
+    generation = as.numeric(gsub("gen", "", term)),
+    term = factor(term, levels = paste0("gen", 2:9))
+  )
+
+# Add Gen 1 as reference (0 effect)
+gen_effects <- bind_rows(
+  data.frame(term = "gen1", estimate = 0, std.error = 0, 
+             conf.low = 0, conf.high = 0, generation = 1,
+             statistic = NA, p.value = NA),
+  gen_effects
+)
+
+p_gen_ci <- ggplot(gen_effects, aes(x = generation, y = estimate)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") +
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), 
+                  color = "steelblue", size = 0.8) +
+  geom_line(color = "steelblue", alpha = 0.5) +
+  labs(title = "Generation Effect on Attack (with 95% CI)",
+       subtitle = "Controlling for HP, Defense, Speed, Rarity, etc.",
+       x = "Generation", y = "Effect on Attack (vs Gen 1)") +
+  scale_x_continuous(breaks = 1:9) +
+  theme_minimal()
+print(p_gen_ci)
+```
+
+**Findings:** This plot shows which generations are *significantly* different from Gen 1 (CIs not crossing zero). Wide CIs indicate uncertainty — the power creep claim should be tempered if many CIs overlap zero.
+
+## 14.6 Summary of Verification Checks
+
+```{r verification-summary}
+cat("================================================================================\n")
+cat("                    POWER CREEP VERIFICATION SUMMARY\n")
+cat("================================================================================\n\n")
+
+# Collect results
+cat("1. MONOTONIC TREND (Jonckheere-Terpstra):\n")
+cat("   p-value:", format(jt_test$p.value, digits = 4), "\n")
+cat("   Interpretation:", ifelse(jt_test$p.value < 0.05, 
+                                  "Significant monotonic increase", 
+                                  "No consistent ordering"), "\n\n")
+
+cat("2. RARITY CONFOUND:\n")
+cat("   Chi-square p-value:", format(chi_test$p.value, digits = 4), "\n")
+cat("   Interpretation:", ifelse(chi_test$p.value < 0.05,
+                                  "Rarity distribution differs by generation (potential confound)",
+                                  "Rarity distribution similar across generations"), "\n\n")
+
+cat("3. NORMAL POKÉMON ONLY:\n")
+cat("   Trend correlation:", round(trend_normal, 3), "\n")
+cat("   Interpretation:", ifelse(abs(trend_normal) > 0.5,
+                                  "Power creep exists even among normal Pokémon",
+                                  "Power creep may be driven by legendaries"), "\n\n")
+
+cat("4. TOTAL STATS (not just attack):\n")
+total_trend <- cor(as.numeric(total_summary$gen), total_summary$mean_total)
+cat("   Trend correlation:", round(total_trend, 3), "\n")
+cat("   Interpretation:", ifelse(abs(total_trend) > 0.5,
+                                  "Broad power creep (all stats)",
+                                  "Creep specific to attack/offensive stats"), "\n\n")
+
+cat("================================================================================\n")
+```
+
+---
+
+# 15. Robustness Check: Analysis Without Outliers
+
+This section repeats key analyses on the outlier-free dataset to verify that power creep findings are not driven by extreme values.
+
+## 15.1 Outlier-Free Data Summary
+
+```{r prep-clean-data}
+# pokemon_clean was already preprocessed in Section 2 (factors and derived features)
+# Here we just summarize the differences
+
+cat("--- Outlier-Free Dataset Summary ---\n")
+cat("Total Pokémon (Full):", nrow(pokemon), "\n")
+cat("Total Pokémon (Clean):", nrow(pokemon_clean), "\n")
+cat("Pokémon removed:", nrow(pokemon) - nrow(pokemon_clean), "\n")
+cat("Percentage removed:", round(100 * (nrow(pokemon) - nrow(pokemon_clean)) / nrow(pokemon), 1), "%\n\n")
+
+# Which generations lost the most Pokémon?
+gen_comparison <- data.frame(
+  gen = 1:9,
+  full = as.numeric(table(pokemon$gen)),
+  clean = as.numeric(table(pokemon_clean$gen))
+) %>%
+  mutate(removed = full - clean, pct_removed = round(100 * removed / full, 1))
+
+cat("Pokémon removed by generation:\n")
+print(gen_comparison)
+```
+
+**Findings:** This shows which generations had the most outliers removed. If later generations lose more outliers, it could affect the power creep analysis.
+
+## 15.2 Descriptive Comparison: Attack by Generation
+
+```{r clean-descriptive}
+# Compare mean attack between full and clean datasets
+attack_comparison <- data.frame(
+  gen = 1:9,
+  mean_full = pokemon %>% group_by(gen) %>% summarise(m = mean(attack)) %>% pull(m),
+  mean_clean = pokemon_clean %>% group_by(gen) %>% summarise(m = mean(attack)) %>% pull(m)
+) %>%
+  mutate(
+    difference = mean_full - mean_clean,
+    pct_change = round(100 * difference / mean_full, 1)
+  )
+
+cat("--- Mean Attack Comparison (Full vs Outlier-Free) ---\n")
+print(attack_comparison)
+
+# Correlations
+trend_full <- cor(1:9, attack_comparison$mean_full)
+trend_clean <- cor(1:9, attack_comparison$mean_clean)
+
+cat("\nCorrelation (gen vs mean_attack):\n")
+cat("  Full dataset:", round(trend_full, 3), "\n")
+cat("  Outlier-free:", round(trend_clean, 3), "\n")
+```
+
+**Findings:** If the correlation remains similar after removing outliers, the power creep signal is robust. Large changes suggest outliers were driving the effect.
+
+## 15.3 Visualization: Full vs Outlier-Free
+
+```{r clean-boxplot, fig.width=12, fig.height=5}
+# Side-by-side boxplots
+p_full <- ggplot(pokemon, aes(x = gen, y = attack, fill = gen)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(title = "Full Dataset", x = "Generation", y = "Attack") +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  ylim(0, 200)
+
+p_clean <- ggplot(pokemon_clean, aes(x = gen, y = attack, fill = gen)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(title = "Outlier-Free Dataset", x = "Generation", y = "Attack") +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  ylim(0, 200)
+
+gridExtra::grid.arrange(p_full, p_clean, ncol = 2, 
+                        top = "Attack Distribution: Full vs Outlier-Free")
+```
+
+**Findings:** Visual comparison shows how outlier removal affects the distribution shape and median values per generation.
+
+## 15.4 OLS Regression: Full vs Outlier-Free
+
+```{r clean-ols}
+# Full model on outlier-free data
+model_clean <- lm(attack ~ gen + hp + defense + sp_attack + sp_defense + speed +
+                    height_m + weight_kg + rarity,
+                  data = pokemon_clean)
+
+cat("--- OLS on Outlier-Free Data ---\n")
+summary(model_clean)
+
+# Compare key statistics
+cat("\n--- Model Comparison: Full vs Outlier-Free ---\n")
+cat("R² (Full):", round(summary(model_full)$r.squared, 3), "\n")
+cat("R² (Clean):", round(summary(model_clean)$r.squared, 3), "\n")
+```
+
+**Findings:** Compare R² and generation coefficients between models. Similar results indicate robustness; large differences suggest outlier sensitivity.
+
+## 15.5 Generation Coefficients Comparison
+
+```{r clean-coef-comparison}
+# Extract generation coefficients from both models
+gen_coef_full <- coef(model_full)[grep("^gen", names(coef(model_full)))]
+gen_coef_clean <- coef(model_clean)[grep("^gen", names(coef(model_clean)))]
+
+coef_comparison <- data.frame(
+  Generation = paste0("Gen ", 2:9),
+  Full_Data = round(gen_coef_full, 2),
+  Outlier_Free = round(gen_coef_clean, 2),
+  Difference = round(gen_coef_full - gen_coef_clean, 2)
+)
+rownames(coef_comparison) <- NULL
+
+cat("--- Generation Coefficients (vs Gen 1 baseline) ---\n")
+print(coef_comparison)
+
+# Average absolute difference
+cat("\nMean absolute difference in gen coefficients:", 
+    round(mean(abs(coef_comparison$Difference)), 2), "\n")
+```
+
+**Findings:** Small differences (< 2-3 attack points) indicate the generation effect is robust to outliers. Large differences suggest specific outliers were influential.
+
+## 15.6 Likelihood Ratio Test: Outlier-Free Data
+
+```{r clean-lr-test}
+# Full model with generation (outlier-free)
+full_model_clean <- glm(attack ~ gen + hp + defense + sp_attack + sp_defense + speed +
+                          rarity + weight_kg, data = pokemon_clean, family = gaussian)
+
+# Reduced model without generation (outlier-free)
+reduced_model_clean <- glm(attack ~ hp + defense + sp_attack + sp_defense + speed +
+                             rarity + weight_kg, data = pokemon_clean, family = gaussian)
+
+# Likelihood ratio test
+lr_test_clean <- lrtest(reduced_model_clean, full_model_clean)
+cat("--- LR Test: Is Generation Significant? (Outlier-Free Data) ---\n")
+print(lr_test_clean)
+
+cat("\n--- Comparison of LR Test Results ---\n")
+cat("Full data p-value:", format(lr_test$`Pr(>Chisq)`[2], digits = 4), "\n")
+cat("Outlier-free p-value:", format(lr_test_clean$`Pr(>Chisq)`[2], digits = 4), "\n")
+
+if (lr_test_clean$`Pr(>Chisq)`[2] < 0.05) {
+  cat("\nConclusion: Generation remains significant after removing outliers.\n")
+} else {
+  cat("\nConclusion: Generation is NOT significant in outlier-free data — outliers may have driven the effect.\n")
+}
+```
+
+**Findings:** LR test p = 0.0077 (full) and p = 0.002 (outlier-free). Both are significant at α = 0.05. This is the KEY robustness check — the generation effect is even MORE significant after removing outliers (p = 0.002 < 0.0077), indicating outliers were actually dampening the signal, not inflating it.
+
+## 15.7 Monotonic Trend Test: Outlier-Free
+
+```{r clean-monotonic}
+# Reference the JT test results computed in Section 14.1
+cat("--- Jonckheere-Terpstra Test Results (from Section 14.1) ---\n")
+cat("\nFull data:\n")
+cat("  JT statistic:", jt_test$statistic, "\n")
+cat("  p-value:", format(jt_test$p.value, digits = 4), "\n")
+
+cat("\nOutlier-free:\n")
+cat("  JT statistic:", jt_test_clean$statistic, "\n")
+cat("  p-value:", format(jt_test_clean$p.value, digits = 4), "\n")
+
+cat("\n--- Interpretation ---\n")
+if (jt_test$p.value < 0.05 && jt_test_clean$p.value < 0.05) {
+  cat("Both datasets show significant monotonic trend — ROBUST.\n")
+} else if (jt_test$p.value < 0.05 && jt_test_clean$p.value >= 0.05) {
+  cat("Full data significant but outlier-free not — trend may be driven by outliers.\n")
+} else {
+  cat("Neither dataset shows significant monotonic trend.\n")
+}
+```
+
+**Findings:** Compares whether the monotonic increasing trend holds after outlier removal.
+
+## 15.8 Summary: Outlier Robustness
+
+```{r clean-summary}
+cat("================================================================================\n")
+cat("              OUTLIER ROBUSTNESS SUMMARY\n")
+cat("================================================================================\n\n")
+
+cat("1. DATA REDUCTION:\n")
+cat("   Pokémon removed:", nrow(pokemon) - nrow(pokemon_clean), 
+    "(", round(100*(nrow(pokemon) - nrow(pokemon_clean))/nrow(pokemon), 1), "%)\n\n")
+
+cat("2. CORRELATION (gen vs mean_attack):\n")
+cat("   Full data:", round(trend_full, 3), "\n")
+cat("   Outlier-free:", round(trend_clean, 3), "\n")
+cat("   Change:", round(trend_clean - trend_full, 3), "\n\n")
+
+cat("3. LR TEST (Is generation significant?):\n")
+cat("   Full data: p =", format(lr_test$`Pr(>Chisq)`[2], digits = 4), 
+    ifelse(lr_test$`Pr(>Chisq)`[2] < 0.05, "(significant)", "(not significant)"), "\n")
+cat("   Outlier-free: p =", format(lr_test_clean$`Pr(>Chisq)`[2], digits = 4),
+    ifelse(lr_test_clean$`Pr(>Chisq)`[2] < 0.05, "(significant)", "(not significant)"), "\n\n")
+
+cat("4. MONOTONIC TREND (Jonckheere-Terpstra):\n")
+cat("   Full data: p =", format(jt_test$p.value, digits = 4),
+    ifelse(jt_test$p.value < 0.05, "(significant)", "(not significant)"), "\n")
+cat("   Outlier-free: p =", format(jt_test_clean$p.value, digits = 4),
+    ifelse(jt_test_clean$p.value < 0.05, "(significant)", "(not significant)"), "\n\n")
+
+# Overall verdict
+both_lr_sig <- lr_test$`Pr(>Chisq)`[2] < 0.05 && lr_test_clean$`Pr(>Chisq)`[2] < 0.05
+both_jt_sig <- jt_test$p.value < 0.05 && jt_test_clean$p.value < 0.05
+
+cat("5. ROBUSTNESS VERDICT:\n")
+if (both_lr_sig && both_jt_sig) {
+  cat("   ROBUST: Power creep finding holds in both full and outlier-free data.\n")
+} else if (both_lr_sig) {
+  cat("   PARTIALLY ROBUST: LR test significant in both, but monotonic trend differs.\n")
+} else if (lr_test$`Pr(>Chisq)`[2] < 0.05 && lr_test_clean$`Pr(>Chisq)`[2] >= 0.05) {
+  cat("   NOT ROBUST: Generation effect disappears after removing outliers.\n")
+  cat("   Interpretation: Outliers (likely high-attack legendaries) drove the effect.\n")
+} else {
+  cat("   INCONCLUSIVE: Mixed results between datasets.\n")
+}
+
+cat("================================================================================\n")
+```
+
+---
+
+# Conclusions
+
+```{r conclusions, results='asis'}
+# Compute additional metrics for conclusion
+jt_sig <- jt_test$p.value < 0.05
+jt_clean_sig <- jt_test_clean$p.value < 0.05
+lr_sig <- lr_test$`Pr(>Chisq)`[2] < 0.05
+lr_clean_sig <- lr_test_clean$`Pr(>Chisq)`[2] < 0.05
+rarity_confound <- chi_test$p.value < 0.05
+normal_trend_strong <- abs(trend_normal) > 0.5
+total_trend <- cor(as.numeric(total_summary$gen), total_summary$mean_total)
+outlier_robust <- lr_sig && lr_clean_sig
+
+conclusion_text <- glue::glue(
+"================================================================================
+                              CONCLUSIONS
+================================================================================
+
+1. DESCRIPTIVE ANALYSIS:
+   - Dataset contains {nrow(pokemon)} Pokémon across {length(unique(pokemon$gen))} generations
+   - Mean attack ranges from {round(min(mean_by_gen$mean_attack), 1)} (Gen 2) to {round(max(mean_by_gen$mean_attack), 1)} (Gen 7)
+   - Correlation (gen vs mean_attack): {round(trend, 3)}
+   - Pattern is NOT monotonic: Gen 2 and Gen 6 dip below Gen 1
+
+2. REGRESSION ANALYSIS:
+   - OLS R² (full model): {round(summary(model_full)$r.squared, 3)}
+   - Generation effect p-value (LR test): {format(lr_test$`Pr(>Chisq)`[2], scientific = TRUE)}
+   - After controls, only Gen 5 and Gen 7 remain clearly elevated
+
+3. ABLATION STUDY (10-fold CV):
+   - Best model: {names(rmse_ranking)[1]} (RMSE: {round(rmse_ranking[1], 3)})
+   - Generation-only model barely beats null (R² ≈ 0.03)
+   - Combat stats (HP, Defense, Speed) drive most predictive power
+
+4. REGULARIZATION (LASSO):
+   - Features selected: {n_selected}
+   - LASSO retained generation dummies: {sum(grepl('gen', names(lasso_coef[lasso_coef[,1] != 0, ])))}
+
+5. TIME-SPLIT CV (Train Gen 1-5, Test Gen 6-9):
+   - OLS RMSE on future generations: {round(rmse_lm, 2)}
+   - Performance degrades from CV (~21) to time-split (~24)
+   - Future generations don't perfectly follow past patterns
+
+6. VERIFICATION CHECKS:
+   - Monotonic trend test: {ifelse(jt_sig, 'SIGNIFICANT', 'NOT significant')}
+   - Rarity confound: {ifelse(rarity_confound, 'YES - rarity distribution differs by generation', 'NO')}
+   - Normal Pokémon trend: {round(trend_normal, 3)} ({ifelse(normal_trend_strong, 'strong', 'weak')})
+   - Total stats trend: {round(total_trend, 3)}
+
+7. OUTLIER ROBUSTNESS:
+   - Pokémon removed as outliers: {nrow(pokemon) - nrow(pokemon_clean)} ({round(100*(nrow(pokemon) - nrow(pokemon_clean))/nrow(pokemon), 1)}%)
+   - LR test (full data): p = {format(lr_test$`Pr(>Chisq)`[2], digits = 4)} ({ifelse(lr_sig, 'significant', 'not significant')})
+   - LR test (outlier-free): p = {format(lr_test_clean$`Pr(>Chisq)`[2], digits = 4)} ({ifelse(lr_clean_sig, 'significant', 'not significant')})
+   - Robustness: {ifelse(outlier_robust, 'ROBUST - effect holds without outliers', 'NOT ROBUST - outliers drive the effect')}
+
+8. POWER CREEP VERDICT:
+{if (jt_sig && lr_sig && normal_trend_strong && outlier_robust) {
+  '   STRONG EVIDENCE FOR POWER CREEP:
+   - Statistically significant after controlling for other factors
+   - Monotonic trend confirmed
+   - Effect persists among Normal-rarity Pokémon
+   - Effect is ROBUST to outlier removal'
+} else if (lr_sig && outlier_robust) {
+  '   MODERATE EVIDENCE FOR POWER CREEP:
+   - Generation is statistically significant (p < 0.05)
+   - Effect is robust to outlier removal
+   - BUT: Effect is not perfectly monotonic (Gen 2, 6 are lower)
+   - BUT: Much of the effect is mediated by other combat stats
+   - Interpretation: Later generations tend to have higher attack,
+     but this is partly because they have higher HP/Defense/Speed too'
+} else if (lr_sig && !outlier_robust) {
+  '   WEAK EVIDENCE FOR POWER CREEP:
+   - Generation is significant in full data (p < 0.05)
+   - BUT: Effect disappears after removing outliers
+   - Interpretation: Power creep may be driven by extreme Pokémon (legendaries, etc.),
+     not a general trend across all Pokémon'
+} else {
+  '   NO STRONG EVIDENCE: After controlling for type, rarity, and stats,
+   generation does not significantly predict attack.'
+}}
+
+================================================================================")
+
+cat(conclusion_text)
+```
+
+---
+
+# 17. Final Summary: Power Creep Across All Datasets
+
+This section provides a consolidated summary of findings across all three datasets.
+
+```{r final-summary, results='asis'}
+# Compute final summary statistics
+summary_table <- data.frame(
+  Metric = c(
+    "Sample Size",
+    "Mean Attack Correlation (gen vs mean)",
+    "Basic OLS R² (gen only)",
+    "Full OLS R² (with controls)",
+    "LR Test p-value",
+    "Jonckheere-Terpstra p-value",
+    "Power Creep Detected?"
+  ),
+  Full_Data = c(
+    nrow(pokemon),
+    round(trend, 3),
+    round(summary(model_basic)$r.squared, 4),
+    round(summary(model_full)$r.squared, 4),
+    format(lr_test$`Pr(>Chisq)`[2], digits = 4),
+    format(jt_test$p.value, digits = 4),
+    ifelse(lr_test$`Pr(>Chisq)`[2] < 0.05 && jt_test$p.value < 0.05, "YES", "NO")
+  ),
+  Outlier_Free = c(
+    nrow(pokemon_clean),
+    round(trend_clean, 3),
+    round(summary(model_basic_clean)$r.squared, 4),
+    round(summary(model_full_clean)$r.squared, 4),
+    format(lr_test_clean$`Pr(>Chisq)`[2], digits = 4),
+    format(jt_test_clean$p.value, digits = 4),
+    ifelse(lr_test_clean$`Pr(>Chisq)`[2] < 0.05 && jt_test_clean$p.value < 0.05, "YES", "NO")
+  ),
+  Normal_Only = c(
+    nrow(pokemon_normal),
+    round(trend_normal, 3),
+    round(summary(model_basic_normal)$r.squared, 4),
+    round(summary(model_full_normal)$r.squared, 4),
+    "N/A (no rarity var)",
+    "N/A",
+    ifelse(abs(trend_normal) > 0.5, "YES (strong trend)", "WEAK")
+  )
+)
+
+cat("## Summary Table: Power Creep Evidence Across Datasets\n\n")
+knitr::kable(summary_table, align = "lrrr")
+```
+
+## 17.1 Key Conclusions
+
+```{r key-conclusions, results='asis'}
+cat("
+### Evidence FOR Power Creep:
+
+1. **Statistically Significant**: LR test confirms generation is a significant predictor 
+   (p = 0.0077 full, p = 0.002 outlier-free) even after controlling for HP, Defense, 
+   Speed, Rarity, and Weight.
+
+2. **Monotonic Trend Confirmed**: Jonckheere-Terpstra test shows a significant 
+   increasing trend (p = 2.09e-05 full, p = 1.61e-05 outlier-free).
+
+3. **Robust to Outliers**: The effect is STRONGER after removing outliers 
+   (p = 0.002 < 0.0077), meaning outliers were dampening, not inflating, the signal.
+
+4. **Not Driven by Legendaries**: Normal-only correlation (0.732) is nearly identical 
+   to full data (0.757). Power creep exists among regular Pokémon.
+
+5. **Consistent Across Datasets**: All three datasets (full, outlier-free, normal-only) 
+   show the same pattern of increasing attack across generations.
+
+### Caveats and Limitations:
+
+1. **Non-Monotonic Pattern**: Gen 2 and Gen 6 have LOWER mean attack than Gen 1. 
+   Power creep is a general trend, not a strict generation-by-generation increase.
+
+2. **Small Effect Size**: Generation alone explains only ~3% of variance. 
+   Combat stats (HP, Defense, Speed) are far more predictive.
+
+3. **Rarity Confound**: Later generations have different rarity distributions 
+   (chi-square test significant). However, the Normal-only analysis addresses this.
+
+4. **Mediation**: Much of the generation effect is mediated by other combat stats — 
+   later Pokémon have higher attack partly because they also have higher HP/Defense/Speed.
+
+### Final Verdict:
+
+**MODERATE-TO-STRONG EVIDENCE FOR POWER CREEP**
+
+- Generation is a statistically significant predictor of Attack
+- The effect is robust to outlier removal
+- The effect persists among Normal-rarity Pokémon (not just legendaries)
+- The trend is monotonically increasing (Jonckheere-Terpstra significant)
+
+However, the effect is small in magnitude (~1-2 attack points per generation) and 
+the pattern has exceptions (Gen 2, Gen 6 dip below Gen 1). Power creep is real but 
+subtle — later generations are slightly stronger on average, but the difference is 
+modest compared to within-generation variation.
+")
+```
+
+---
+
+# Session Info
+
+```{r session-info}
+sessionInfo()
+```
+

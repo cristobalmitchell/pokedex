@@ -1,0 +1,635 @@
+================================================================================
+                      ANALYSIS METHODS REPORT
+                 Extracted from SAN Project Reports
+================================================================================
+
+This document outlines all statistical methods used in the analyzed reports,
+with primary focus on Generalized Linear Models (GLMs) and their applications.
+
+================================================================================
+                   I. GENERALIZED LINEAR MODELS (GLMs)
+================================================================================
+
+------------------------------------------------------------------------------
+1. BASIC GLM / ORDINARY LEAST SQUARES (OLS) REGRESSION
+------------------------------------------------------------------------------
+Source: bulanma2_furmaane_klamrdan_krizjona/report.pdf
+
+Description: A linear model that minimizes the sum of squared residuals to 
+estimate relationships between a continuous dependent variable and one or more 
+predictors. It assumes linearity, homoscedasticity, and normally distributed 
+residuals.
+
+Application: Used to predict anatomical distance (jugulum - aortic bifurcation) 
+based on height, weight, and BMI index for Pulse Wave Velocity estimation.
+
+Key Results:
+- R² = 0.521 (explains 52.1% of variance)
+- F-statistic = 23.95 (model is better than mean model)
+- AIC = 329.3
+- Model equation: y = -15.59 + 0.295·height - 0.156·weight + 0.958·BMI
+
+------------------------------------------------------------------------------
+2. EXTENDED GLM WITH MULTIPLE PREDICTORS
+------------------------------------------------------------------------------
+Source: bulanma2_furmaane_klamrdan_krizjona/report.pdf
+
+Description: A generalized linear model incorporating additional predictors 
+(arm circumference, blood pressure, heart rate) beyond basic anthropometric 
+measurements to improve prediction accuracy.
+
+Application: Extended model for predicting anatomical distance with all 
+available physiological predictors.
+
+Key Results:
+- AIC = 155.56
+- Predictors included: height, weight, BMI, arm circumference, systolic BP, 
+  diastolic BP, heart rate
+
+------------------------------------------------------------------------------
+3. GLM WITH POISSON DISTRIBUTION
+------------------------------------------------------------------------------
+Source: hryncsvi_klikaiva_radicmar_zinkokla/report.pdf
+
+Description: A GLM designed for count data where the response variable follows 
+a Poisson distribution. Uses a log link function to model the relationship 
+between predictors and the expected count. Particularly suitable for modeling 
+rates and counts like mortality rates.
+
+Application: Analyzing the influence of socioeconomic factors on infant 
+mortality rate (count per 1000 live births).
+
+Key Results:
+- Best model selected by lowest AIC = 1118.57
+- Optimal predictors: GDP, Life Expectancy (Female/Male), Total Fertility Rate, 
+  Share of Urban Population
+- Model effectively captured trends in the dataset
+
+------------------------------------------------------------------------------
+4. LASSO REGRESSION (L1 REGULARIZATION)
+------------------------------------------------------------------------------
+Source: bulanma2_furmaane_klamrdan_krizjona/report.pdf
+        cechdav5_korlavik_korladia_mlynatom/report.pdf
+
+Description: A linear regression technique that adds an L1 penalty term to the 
+loss function, shrinking some coefficients exactly to zero. This performs 
+automatic feature selection by eliminating irrelevant predictors while 
+preventing overfitting.
+
+Application 1 (bulanma2...): Feature selection for anatomical distance 
+prediction. Identified height, weight, and arm circumference as most important 
+predictors.
+
+Application 2 (cechdav5...): Feature selection in unemployment rate prediction 
+model. Filtered out predictors like monthly_min_wage, inflation rate.
+
+Key Results:
+- Optimal α determined via 10-fold cross-validation (α = 0.0359)
+- Eliminated coefficients: BMI index, systolic BP, diastolic BP, heart rate
+- Final model: y = 0.145·height + 0.451·weight + 0.186·arm_circumference
+
+------------------------------------------------------------------------------
+5. RIDGE REGRESSION (L2 REGULARIZATION)
+------------------------------------------------------------------------------
+Source: cechdav5_korlavik_korladia_mlynatom/report.pdf
+
+Description: A linear regression technique that adds an L2 penalty term to 
+prevent overfitting by shrinking coefficients toward zero (but not exactly to 
+zero). Useful when dealing with multicollinearity among predictors.
+
+Application: Predicting unemployment rate with economic indicators and 
+refugee-related features in Czech Republic time series data.
+
+Key Results:
+- Model B1 (with refugee data): RMSE = 526.49, R² = 0.987
+- Model B2 (economic only): RMSE = 675.19, R² = 0.977
+- Ridge performed comparably to LASSO across all model configurations
+
+------------------------------------------------------------------------------
+6. HUBER REGRESSION (ROBUST REGRESSION)
+------------------------------------------------------------------------------
+Source: cechdav5_korlavik_korladia_mlynatom/report.pdf
+
+Description: A robust regression method that is less sensitive to outliers than 
+OLS. Uses a combination of squared loss (for small residuals) and absolute loss 
+(for large residuals), providing robustness against outliers while maintaining 
+efficiency.
+
+Application: Robust prediction of unemployment rates with time series data 
+containing potential outliers (e.g., COVID-19 pandemic effects, refugee spikes).
+
+Key Results:
+- Model A1: MAE = 860.55, RMSE = 993.64, R² = 0.967
+- Outperformed other models on long-term data with outliers
+
+------------------------------------------------------------------------------
+7. LOGISTIC REGRESSION
+------------------------------------------------------------------------------
+Source: hryncsvi_klikaiva_radicmar_zinkokla/report.pdf
+
+Description: A GLM for binary classification that models the probability of a 
+binary outcome using the logistic function. Uses maximum likelihood estimation 
+and is appropriate when the dependent variable is categorical.
+
+Application: Binary classification of infant mortality rate (high vs. low 
+mortality) based on socioeconomic factors.
+
+Key Results:
+- Highest Precision among classification methods (best at minimizing false 
+  positives)
+- Used for comparison with LDA and QDA methods
+
+------------------------------------------------------------------------------
+8. MULTIPLE LINEAR REGRESSION
+------------------------------------------------------------------------------
+Source: filciadr_hraboada_vilagzuz_vojtema7/report.pdf
+
+Description: An extension of simple linear regression that models the 
+relationship between multiple independent variables and a dependent variable. 
+Assumes linear relationships, independence, homoscedasticity, and normality.
+
+Application: Investigating the impact of secured and unsecured railway 
+crossings on material damage from traffic accidents across Slovak regions.
+
+Key Results:
+- R² values ranged from 0.49 to 0.78 across regions
+- All models statistically significant compared to constant model
+- Finding: More unsecured crossings correlate with higher accident damage
+
+------------------------------------------------------------------------------
+9. LINEAR AND POLYNOMIAL REGRESSION (COMPARISON)
+------------------------------------------------------------------------------
+Source: hryncsvi_klikaiva_radicmar_zinkokla/report.pdf
+
+Description: Polynomial regression extends linear regression by including 
+polynomial terms (x², x³, etc.) to capture nonlinear relationships. Comparison 
+between linear and polynomial helps determine if relationships are truly linear.
+
+Application: Assessing relationships between socioeconomic factors and infant 
+mortality rate.
+
+Key Results:
+- GDP: Linear R² = 0.208 vs Polynomial R² = 0.330 (polynomial better)
+- Life Expectancy: Polynomial models showed stronger nonlinear relationships
+- Total Fertility Rate: Linear R² = 0.736, Polynomial R² = 0.736 (similar)
+- Access to Electricity: Linear R² = 0.649, Polynomial R² = 0.680
+
+------------------------------------------------------------------------------
+10. BACKWARD STEPWISE SELECTION (BSS)
+------------------------------------------------------------------------------
+Source: bulanma2_furmaane_klamrdan_krizjona/report.pdf
+
+Description: A sequential feature selection method that starts with all 
+predictors and iteratively removes the least significant predictor based on 
+p-value threshold. Continues until all remaining predictors meet the 
+significance criterion.
+
+Application: Optimizing predictor selection for anatomical distance prediction.
+
+Key Results:
+- P-value threshold: 0.3
+- Removed features (in order): diastolic BP, heart rate, weight, systolic BP
+- Final model: y = 0.374·height + 0.401·BMI + 0.194·arm_circumference
+- Best AIC = 148.35 (better than full model)
+
+
+================================================================================
+                   II. CLASSIFICATION METHODS
+================================================================================
+
+------------------------------------------------------------------------------
+1. LINEAR DISCRIMINANT ANALYSIS (LDA)
+------------------------------------------------------------------------------
+Source: hryncsvi_klikaiva_radicmar_zinkokla/report.pdf
+
+Description: A dimensionality reduction and classification technique that finds 
+linear combinations of features to separate two or more classes. Assumes 
+features are normally distributed with equal covariance matrices across classes.
+
+Application: Classifying countries into mortality categories (low/medium/high) 
+based on socioeconomic indicators.
+
+Key Results:
+- Highest Recall (best at identifying true positives)
+- Classified 175 countries into three mortality categories
+
+------------------------------------------------------------------------------
+2. QUADRATIC DISCRIMINANT ANALYSIS (QDA)
+------------------------------------------------------------------------------
+Source: hryncsvi_klikaiva_radicmar_zinkokla/report.pdf
+
+Description: Similar to LDA but allows each class to have its own covariance 
+matrix, resulting in quadratic decision boundaries. More flexible than LDA but 
+requires more parameters to estimate.
+
+Application: Binary classification of infant mortality rate with non-linear 
+class boundaries.
+
+Key Results:
+- Highest Accuracy among classification methods
+- Highest ROC-AUC Score (best trade-off between true/false positives)
+- Categories: Low mortality (64 countries), Medium (52), High (59)
+
+
+================================================================================
+              III. NON-PARAMETRIC STATISTICAL TESTS
+================================================================================
+
+------------------------------------------------------------------------------
+1. MANN-WHITNEY U TEST
+------------------------------------------------------------------------------
+Source: filciadr_hraboada_vilagzuz_vojtema7/report.pdf
+
+Description: A non-parametric test for comparing two independent groups when 
+data does not meet normality assumptions. Tests whether one group tends to have 
+larger values than the other.
+
+Application: Comparing traffic incident statistics before and after 2009 
+legislative change in Slovakia.
+
+Key Results:
+- All p-values < 2×10⁻¹⁶ (highly significant)
+- Confirmed profound impact of legislative change on all traffic incident 
+  categories
+
+------------------------------------------------------------------------------
+2. KRUSKAL-WALLIS TEST
+------------------------------------------------------------------------------
+Source: filciadr_hraboada_vilagzuz_vojtema7/report.pdf
+
+Description: A non-parametric alternative to one-way ANOVA for comparing more 
+than two groups. Tests whether samples originate from the same distribution 
+without assuming normality.
+
+Application: Regional analysis of traffic incidents across Slovak regions 
+(8 regions).
+
+Key Results:
+- All categories showed significant differences (p < 0.001)
+- Confirmed regional disparities in traffic incident patterns
+
+------------------------------------------------------------------------------
+3. DUNN'S TEST (POST-HOC)
+------------------------------------------------------------------------------
+Source: filciadr_hraboada_vilagzuz_vojtema7/report.pdf
+
+Description: A post-hoc pairwise comparison test following Kruskal-Wallis. 
+Identifies which specific groups differ from each other. Includes Bonferroni 
+correction for multiple comparisons.
+
+Application: Pairwise regional comparisons of traffic incident categories.
+
+Key Results:
+- Identified specific regional pairs with significant differences
+- Bratislava and Žilina regions showed most distinctive patterns
+
+------------------------------------------------------------------------------
+4. PAIRED T-TEST & WILCOXON SIGNED-RANK TEST
+------------------------------------------------------------------------------
+Source: cechdav5_korlavik_korladia_mlynatom/report.pdf
+
+Description: Paired t-test compares means of related groups (assumes normality). 
+Wilcoxon signed-rank test is its non-parametric alternative for non-normal data.
+
+Application: Comparing model performance (B1 vs B2) on RMSE values from 
+cross-validation.
+
+Key Results:
+- Paired t-test: p = 0.012, statistic = -2.798
+- Wilcoxon: p = 0.009, statistic = 27.000
+- Both reject null hypothesis at α = 0.05 (models significantly different)
+
+------------------------------------------------------------------------------
+5. SHAPIRO-WILK TEST
+------------------------------------------------------------------------------
+Source: filciadr_hraboada_vilagzuz_vojtema7/report.pdf
+
+Description: Tests whether a sample comes from a normally distributed 
+population. Used to check normality assumptions before parametric tests.
+
+Application: Checking normality of traffic accident data before selecting 
+appropriate statistical tests.
+
+Key Results:
+- Normality assumption violated, leading to use of non-parametric methods
+
+------------------------------------------------------------------------------
+6. LEVENE'S TEST
+------------------------------------------------------------------------------
+Source: filciadr_hraboada_vilagzuz_vojtema7/report.pdf
+
+Description: Tests equality of variances across groups (homoscedasticity). 
+Less sensitive to departures from normality than Bartlett's test.
+
+Application: Testing equal variances assumption for traffic incident data.
+
+Key Results:
+- Equal variance assumption violated, supporting use of Mann-Whitney test
+
+
+================================================================================
+                   IV. MODEL EVALUATION METRICS
+================================================================================
+
+------------------------------------------------------------------------------
+1. AKAIKE INFORMATION CRITERION (AIC)
+------------------------------------------------------------------------------
+Source: bulanma2_furmaane_klamrdan_krizjona/report.pdf
+        hryncsvi_klikaiva_radicmar_zinkokla/report.pdf
+
+Description: A metric for model selection that balances model fit against 
+complexity. Lower AIC indicates better model. Penalizes models with more 
+parameters to prevent overfitting.
+
+Application: Selecting best GLM model and optimal predictor combinations.
+
+------------------------------------------------------------------------------
+2. BAYESIAN INFORMATION CRITERION (BIC)
+------------------------------------------------------------------------------
+Source: hryncsvi_klikaiva_radicmar_zinkokla/report.pdf
+
+Description: Similar to AIC but with stronger penalty for model complexity. 
+Tends to select simpler models. Used for comparing probabilistic models.
+
+Application: Comparing clustering methods (K-Means, GMM, Hierarchical).
+
+Key Results:
+- K-Means BIC: 1210.75
+- Hierarchical BIC: 1246.33
+- GMM BIC: 1248.51
+
+------------------------------------------------------------------------------
+3. R-SQUARED (R²) AND ADJUSTED R²
+------------------------------------------------------------------------------
+Source: All reports
+
+Description: Proportion of variance in the dependent variable explained by the 
+model. Adjusted R² penalizes for additional predictors, preventing overfitting.
+
+Application: Evaluating linear model performance across all studies.
+
+------------------------------------------------------------------------------
+4. F-STATISTIC / F-TEST
+------------------------------------------------------------------------------
+Source: bulanma2_furmaane_klamrdan_krizjona/report.pdf
+        filciadr_hraboada_vilagzuz_vojtema7/report.pdf
+
+Description: Tests whether the regression model provides better fit than an 
+intercept-only model. Also used to test significance of predictor subsets.
+
+Application: Testing overall model significance and comparing nested models.
+
+------------------------------------------------------------------------------
+5. RMSE, MAE, MSE (ERROR METRICS)
+------------------------------------------------------------------------------
+Source: All reports with regression models
+
+Description: 
+- MSE: Mean Squared Error - average of squared differences
+- RMSE: Root MSE - in original units, penalizes large errors
+- MAE: Mean Absolute Error - average of absolute differences, robust to outliers
+
+Application: Quantifying prediction accuracy across all regression models.
+
+
+================================================================================
+                   V. CLUSTERING METHODS
+================================================================================
+
+------------------------------------------------------------------------------
+1. K-MEANS CLUSTERING
+------------------------------------------------------------------------------
+Source: hryncsvi_klikaiva_radicmar_zinkokla/report.pdf
+
+Description: Partitions data into K clusters by minimizing within-cluster 
+variance. Requires pre-specifying number of clusters. Uses iterative 
+refinement of cluster centroids.
+
+Application: Categorizing countries by socioeconomic and health indicators.
+
+Key Results:
+- Optimal K = 3 (determined by Elbow Method)
+- Silhouette Coefficient: 0.37
+- Calinski-Harabasz Index: 135.57
+- Davies-Bouldin Index: 0.93
+
+------------------------------------------------------------------------------
+2. GAUSSIAN MIXTURE MODELS (GMM)
+------------------------------------------------------------------------------
+Source: hryncsvi_klikaiva_radicmar_zinkokla/report.pdf
+
+Description: A probabilistic clustering method that models data as a mixture 
+of Gaussian distributions. Provides soft cluster assignments (probabilities) 
+and handles overlapping clusters.
+
+Application: Identifying country groups with overlapping socioeconomic 
+characteristics.
+
+Key Results:
+- BIC = 1248.51
+- 3 clusters identified with probabilistic membership
+
+------------------------------------------------------------------------------
+3. HIERARCHICAL CLUSTERING
+------------------------------------------------------------------------------
+Source: hryncsvi_klikaiva_radicmar_zinkokla/report.pdf
+
+Description: Builds nested cluster hierarchy using agglomerative (bottom-up) or 
+divisive (top-down) approach. Visualized as dendrogram showing cluster 
+relationships.
+
+Application: Visualizing relationships between countries based on multiple 
+indicators.
+
+Key Results:
+- Method: Agglomerative with Ward linkage
+- Silhouette Coefficient: 0.36
+- Calinski-Harabasz Index: 126.60
+- Davies-Bouldin Index: 0.92
+
+------------------------------------------------------------------------------
+4. DBSCAN (Density-Based Spatial Clustering)
+------------------------------------------------------------------------------
+Source: hryncsvi_klikaiva_radicmar_zinkokla/report.pdf
+
+Description: Identifies clusters as high-density regions separated by 
+low-density regions. Does not require pre-specifying number of clusters. 
+Robust to outliers (marks them as noise).
+
+Application: Detecting outlier countries with atypical characteristics.
+
+Key Results:
+- Parameters: eps determined via KNN distances
+- Identified Central African Republic, Lebanon, Marshall Islands, Monaco as 
+  outliers
+- Less effective for uniformly distributed data
+
+
+================================================================================
+                   VI. DIMENSIONALITY REDUCTION
+================================================================================
+
+------------------------------------------------------------------------------
+1. PRINCIPAL COMPONENT ANALYSIS (PCA)
+------------------------------------------------------------------------------
+Source: hryncsvi_klikaiva_radicmar_zinkokla/report.pdf
+
+Description: Linear technique that transforms data to new orthogonal axes 
+(principal components) ordered by explained variance. First components capture 
+most variance.
+
+Application: Reducing feature dimensions while preserving variance for 
+visualization.
+
+Key Results:
+- First 3 components explain majority of variance
+- Loading analysis showed GDP and Life Expectancy as key contributors
+
+------------------------------------------------------------------------------
+2. t-SNE (t-Distributed Stochastic Neighbor Embedding)
+------------------------------------------------------------------------------
+Source: hryncsvi_klikaiva_radicmar_zinkokla/report.pdf
+
+Description: Non-linear technique for visualizing high-dimensional data. 
+Preserves local structure (similar points stay close). Excellent for 
+visualization but not for feature extraction.
+
+Application: 2D visualization of country similarities.
+
+Key Results:
+- Provided best cluster separation among all dimensionality reduction methods
+- Clear visual distinction between country groups
+
+------------------------------------------------------------------------------
+3. ISOMAP, MULTIDIMENSIONAL SCALING, LOCALLY LINEAR EMBEDDING
+------------------------------------------------------------------------------
+Source: hryncsvi_klikaiva_radicmar_zinkokla/report.pdf
+
+Description: Non-linear dimensionality reduction methods preserving different 
+aspects of data structure (geodesic distances, local distances, etc.).
+
+Application: Comparing different approaches to visualize country relationships.
+
+
+================================================================================
+                   VII. CORRELATION ANALYSIS
+================================================================================
+
+------------------------------------------------------------------------------
+1. PEARSON, SPEARMAN, AND KENDALL CORRELATION
+------------------------------------------------------------------------------
+Source: cechdav5_korlavik_korladia_mlynatom/report.pdf
+        filciadr_hraboada_vilagzuz_vojtema7/report.pdf
+
+Description:
+- Pearson: Measures linear correlation (-1 to 1)
+- Spearman: Rank-based, captures monotonic relationships, robust to outliers
+- Kendall: Rank-based, particularly robust for small samples
+
+Application: Identifying relationships between economic indicators, 
+unemployment rates, and refugee statistics.
+
+Key Results (from cechdav5...):
+- Average salary vs minimum wage: τ = 0.87 (strong positive)
+- Inflation vs REER: τ = 0.82 (strong positive)
+- General vs break-in thefts: τ = 0.92 (strong positive)
+
+
+================================================================================
+                   VIII. TIME SERIES METHODS
+================================================================================
+
+------------------------------------------------------------------------------
+1. TEMPORAL CROSS-VALIDATION
+------------------------------------------------------------------------------
+Source: cechdav5_korlavik_korladia_mlynatom/report.pdf
+
+Description: Cross-validation technique for time series where training data 
+always precedes test data temporally. Prevents information leakage from 
+future to past. Training set grows with each fold.
+
+Application: Evaluating unemployment prediction models on Czech Republic data.
+
+Key Results:
+- Used to compare models A1, A2, B1, B2
+- Predicted 14 values per step (one per region)
+
+------------------------------------------------------------------------------
+2. LAG PLOTS AND SEASONAL ANALYSIS
+------------------------------------------------------------------------------
+Source: cechdav5_korlavik_korladia_mlynatom/report.pdf
+
+Description: Lag plots visualize autocorrelation by plotting values against 
+their lagged versions. Helps identify autoregressive tendencies and 
+seasonality patterns.
+
+Application: Detecting seasonal patterns in unemployment and economic data.
+
+Key Results:
+- Identified seasonal predictors: avg_monthly_salary, thefts, unemployment
+- Found 12-month seasonality in newly announced jobseekers
+
+
+================================================================================
+                      IX. DATA PREPROCESSING
+================================================================================
+
+------------------------------------------------------------------------------
+1. STANDARDIZATION (StandardScaler)
+------------------------------------------------------------------------------
+Source: bulanma2_furmaane_klamrdan_krizjona/report.pdf
+        cechdav5_korlavik_korladia_mlynatom/report.pdf
+
+Description: Transforms features to have zero mean and unit variance. Essential 
+for regularized regression (Ridge, LASSO) and distance-based methods.
+
+Application: Preprocessing before GLM fitting and clustering.
+
+------------------------------------------------------------------------------
+2. REWEIGHTING FOR IMBALANCED DATA
+------------------------------------------------------------------------------
+Source: bulanma2_furmaane_klamrdan_krizjona/report.pdf
+
+Description: Assigning different weights to observations to account for 
+underrepresented groups in the dataset.
+
+Application: Correcting for underrepresentation of people with weight > 95kg.
+
+
+================================================================================
+                           SUMMARY
+================================================================================
+
+GLM Methods Used Across Reports:
+--------------------------------
+1. OLS Regression - Basic linear modeling
+2. Extended GLM with multiple predictors
+3. Poisson GLM - For count data (mortality rates)
+4. LASSO Regression - Feature selection
+5. Ridge Regression - Handling multicollinearity
+6. Huber Regression - Robust to outliers
+7. Logistic Regression - Binary classification
+8. Multiple Linear Regression - Multi-predictor modeling
+9. Polynomial Regression - Capturing non-linear relationships
+10. Backward Stepwise Selection - Sequential feature elimination
+
+Key Insights on GLM Usage:
+--------------------------
+- GLMs were primarily used for regression tasks with continuous outcomes
+- LASSO was the most commonly used method for feature selection
+- Poisson GLM was specifically chosen for count data (infant mortality)
+- Robust regression (Huber) was used when outliers were present
+- Model selection relied heavily on AIC/BIC criteria
+- Diagnostic plots (Q-Q, residuals) were used to verify assumptions
+- Cross-validation was essential for time series applications
+
+Statistical Test Preferences:
+-----------------------------
+- Non-parametric tests preferred when normality/homoscedasticity violated
+- Post-hoc tests (Dunn's) used following significant ANOVA alternatives
+- Multiple comparison corrections (Bonferroni) applied appropriately
+
+================================================================================
+                      END OF REPORT
+================================================================================
+
