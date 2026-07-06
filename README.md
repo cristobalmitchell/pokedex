@@ -1,6 +1,6 @@
 
 <center>
-  <img src="https://www.dylanlf.com/quiz/banner2.png" />
+  <img src="dataset-cover-image.png" />
 </center>
 
 # The Complete Pokédex Dataset
