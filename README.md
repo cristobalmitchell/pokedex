@@ -10,11 +10,9 @@ The dataset covers **every released Pokémon** — all **1,025 species** from Ge
 
 ## Imagesets
 The output imagesets can be found in the images folder and includes the following .png files
-* **small_images:** Primary-form artwork with 215 x 215 pixel dimensions
-* **large_images:** Primary-form artwork ranging from 300 x 300 to 1280 x 1280 pixel dimensions
-* **alt_images:** Variant-form artwork (regional forms, Mega Evolutions, Gigantamax, etc.) ranging from 215 x 215 to 1280 x 1280 pixel dimensions
-
-The image folders currently contain artwork for #001–#898; re-running the image cells in `pokedex.ipynb` downloads the full #001–#1025 range.
+* **small_images:** Official artwork for all 1,025 primary forms with 215 x 215 pixel dimensions
+* **large_images:** High-resolution artwork for all 1,025 primary forms ranging from 300 x 300 to 1280 x 1280 pixel dimensions
+* **alt_images:** Variant-form artwork (regional forms, Mega Evolutions incl. Legends: Z-A / Mega Dimension, Gigantamax, etc.) ranging from 215 x 215 to 1280 x 1280 pixel dimensions
 
 ## Dataset
 The output dataset file pokemon.csv (UTF-16, tab-separated) contains all 1,025 pokémon from Gen I - Gen IX and contains the following fields
@@ -60,3 +58,4 @@ The output dataset file pokemon.csv (UTF-16, tab-separated) contains all 1,025 p
 * Added the Mega Evolutions introduced in Pokémon Legends: Z-A (2025) and its Mega Dimension DLC to `mega_evolution`/`mega_evolution_alt` — 87 species now have Mega forms
 * Updated `evochain_*` for species that gained new evolutions in Legends: Arceus / Scarlet/Violet (Stantler, Ursaring, Basculin, Qwilfish, Sneasel, Scyther, Dunsparce, Girafarig, Mankey/Primeape, Pawniard/Bisharp, Applin, Wooper and Duraludon families)
 * Rewrote `pokedex.ipynb` for pandas 2.x, added the Scarlet/Violet Pokédex as the primary scrape source with a Sword/Shield → Legends: Arceus → Sun/Moon fallback chain, and switched the `against_*` columns to exact type-chart computation
+* Completed all imagesets through #1025: small_images (official artwork, 215×215), large_images (high-resolution artwork, up to 1280×1280) and new alt_images for the Legends: Z-A / Mega Dimension Mega forms plus the Gen IX alternate forms (Ogerpon masks, Terapagos forms, Palafin Hero, Bloodmoon Ursaluna, Squawkabilly plumages, Koraidon/Miraidon modes, etc.)
