@@ -14,8 +14,12 @@ The output imagesets can be found in the images folder and includes the followin
 * **large_images:** High-resolution artwork for all 1,025 primary forms ranging from 300 x 300 to 1280 x 1280 pixel dimensions
 * **alt_images:** Variant-form artwork (regional forms, Mega Evolutions incl. Legends: Z-A / Mega Dimension, Gigantamax, etc.) ranging from 215 x 215 to 1280 x 1280 pixel dimensions
 
+## Notebooks
+* **`pokedex.ipynb`** — the reproducible scraper that builds the dataset and imagesets.
+* **`notebooks/pokedex_eda.ipynb`** — a starter exploratory analysis (type distribution, base-stat distributions, legendary comparison, generation trends, stat correlations, type-defence profile) ready to fork on Kaggle.
+
 ## Dataset
-The output dataset file pokemon.csv (UTF-16, tab-separated) contains all 1,025 pokémon from Gen I - Gen IX and contains the following fields
+The dataset ships in two identical files: **`data/pokemon_utf8.csv`** (UTF-8, comma-separated — loads with a plain `pandas.read_csv()`, recommended) and **`data/pokemon.csv`** (the original UTF-16, tab-separated format, `encoding='utf-16', sep='\t'`). A tidy long-format of the base stats is in **`data/pokemon_stats.csv`**. Each contains all 1,025 pokémon from Gen I - Gen IX with the following fields
 
 * **national_number:** The entry number of the Pokémon in the National Pokédex
 * **gen:** The numbered generation which the Pokémon was first introduced (I–IX; #899–#905 from Legends: Arceus count as Gen VIII)
