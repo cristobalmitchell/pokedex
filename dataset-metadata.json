@@ -1,0 +1,310 @@
+{
+  "title": "The Complete Pokédex Dataset (Gen I–IX)",
+  "subtitle": "All 1,025 Pokémon: stats, types, abilities, evolutions & artwork",
+  "description": "# The Complete Pokédex Dataset\n\nEvery **released Pokémon — all 1,025 species** from Generation I (Red/Green) through Generation IX (Scarlet/Violet and its DLC), #0001 Bulbasaur to #1025 Pecharunt.\n\n`data/pokemon.csv` (UTF-16, tab-separated) has **55 columns** per Pokémon: National number, generation, English & Japanese names, primary/secondary type, classification, exact gender ratios, height, weight, capture rate, egg steps, the six base stats, up to four abilities (incl. hidden), the 18 `against_*` type-matchup multipliers, sub-legendary/legendary/mythical flags, the evolution chain with triggers, Gigantamax and Mega Evolution forms (including the Legends: Z-A / Mega Dimension Megas), and the official Pokédex description.\n\nBundled imagesets: **small_images** (official artwork, 215×215), **large_images** (high-resolution artwork up to 1280×1280), and **alt_images** (regional forms, Mega Evolutions, Gigantamax, and other variant forms).\n\nSee the column metadata below for a full data dictionary. Built with a documented, reproducible scraper (`pokedex.ipynb`).\n",
+  "id": "cristobalmitchell/pokedex",
+  "licenses": [
+    {
+      "name": "CC-BY-NC-SA-4.0"
+    }
+  ],
+  "keywords": [
+    "pokemon",
+    "games",
+    "video games",
+    "beginner",
+    "data cleaning",
+    "data visualization",
+    "classification",
+    "clustering",
+    "tabular",
+    "image data"
+  ],
+  "expectedUpdateFrequency": "annually",
+  "userSpecifiedSources": "Serebii.net (stats/breeding/legendary status), the official Pokémon website pokemon.com (Pokédex descriptions), and Bulbapedia (artwork). Compiled with the reproducible scraper in pokedex.ipynb.",
+  "resources": [
+    {
+      "path": "data/pokemon.csv",
+      "description": "All 1,025 Pokémon (Gen I–IX) with 55 fields: identity, types, base stats, abilities, gender ratios, breeding, type matchups, legendary flags, evolution chains, Mega/Gigantamax forms, and official Pokédex descriptions. UTF-16, tab-separated.",
+      "schema": {
+        "fields": [
+          {
+            "name": "national_number",
+            "description": "National Pokédex number (1–1025), unique per species.",
+            "type": "integer"
+          },
+          {
+            "name": "gen",
+            "description": "Generation the Pokémon was introduced (I–IX; #899–905 are Legends: Arceus additions, still Gen VIII).",
+            "type": "string"
+          },
+          {
+            "name": "english_name",
+            "description": "English species name.",
+            "type": "string"
+          },
+          {
+            "name": "japanese_name",
+            "description": "Romanized Japanese (rōmaji) name.",
+            "type": "string"
+          },
+          {
+            "name": "primary_type",
+            "description": "Primary type of the primary form.",
+            "type": "string"
+          },
+          {
+            "name": "secondary_type",
+            "description": "Secondary type of the primary form (blank for mono-typed Pokémon).",
+            "type": "string"
+          },
+          {
+            "name": "classification",
+            "description": "Species category from the most recent Pokédex (e.g. \"Seed Pokémon\").",
+            "type": "string"
+          },
+          {
+            "name": "percent_male",
+            "description": "Percentage of the species that is male (blank if genderless); exact species ratio, a multiple of 12.5.",
+            "type": "number"
+          },
+          {
+            "name": "percent_female",
+            "description": "Percentage of the species that is female (blank if genderless).",
+            "type": "number"
+          },
+          {
+            "name": "height_m",
+            "description": "Height in metres.",
+            "type": "number"
+          },
+          {
+            "name": "weight_kg",
+            "description": "Weight in kilograms.",
+            "type": "number"
+          },
+          {
+            "name": "capture_rate",
+            "description": "Base capture rate (string; a few species list two values, e.g. Minior).",
+            "type": "string"
+          },
+          {
+            "name": "base_egg_steps",
+            "description": "Steps required to hatch an egg (hatch cycles × 256).",
+            "type": "integer"
+          },
+          {
+            "name": "hp",
+            "description": "Base HP stat.",
+            "type": "integer"
+          },
+          {
+            "name": "attack",
+            "description": "Base Attack stat.",
+            "type": "integer"
+          },
+          {
+            "name": "defense",
+            "description": "Base Defense stat.",
+            "type": "integer"
+          },
+          {
+            "name": "sp_attack",
+            "description": "Base Special Attack stat.",
+            "type": "integer"
+          },
+          {
+            "name": "sp_defense",
+            "description": "Base Special Defense stat.",
+            "type": "integer"
+          },
+          {
+            "name": "speed",
+            "description": "Base Speed stat.",
+            "type": "integer"
+          },
+          {
+            "name": "abilities_0",
+            "description": "First regular ability.",
+            "type": "string"
+          },
+          {
+            "name": "abilities_1",
+            "description": "Second regular ability (blank if none).",
+            "type": "string"
+          },
+          {
+            "name": "abilities_2",
+            "description": "Third regular ability (blank if none).",
+            "type": "string"
+          },
+          {
+            "name": "abilities_hidden",
+            "description": "Hidden ability (blank if none).",
+            "type": "string"
+          },
+          {
+            "name": "against_normal",
+            "description": "Type-chart damage multiplier taken from a Normal-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_fire",
+            "description": "Type-chart damage multiplier taken from a Fire-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_water",
+            "description": "Type-chart damage multiplier taken from a Water-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_electric",
+            "description": "Type-chart damage multiplier taken from a Electric-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_grass",
+            "description": "Type-chart damage multiplier taken from a Grass-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_ice",
+            "description": "Type-chart damage multiplier taken from a Ice-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_fighting",
+            "description": "Type-chart damage multiplier taken from a Fighting-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_poison",
+            "description": "Type-chart damage multiplier taken from a Poison-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_ground",
+            "description": "Type-chart damage multiplier taken from a Ground-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_flying",
+            "description": "Type-chart damage multiplier taken from a Flying-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_psychic",
+            "description": "Type-chart damage multiplier taken from a Psychic-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_bug",
+            "description": "Type-chart damage multiplier taken from a Bug-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_rock",
+            "description": "Type-chart damage multiplier taken from a Rock-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_ghost",
+            "description": "Type-chart damage multiplier taken from a Ghost-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_dragon",
+            "description": "Type-chart damage multiplier taken from a Dragon-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_dark",
+            "description": "Type-chart damage multiplier taken from a Dark-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_steel",
+            "description": "Type-chart damage multiplier taken from a Steel-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_fairy",
+            "description": "Type-chart damage multiplier taken from a Fairy-type move (pure type-chart value; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "is_sublegendary",
+            "description": "1 if the Pokémon is sub-legendary, else 0.",
+            "type": "integer"
+          },
+          {
+            "name": "is_legendary",
+            "description": "1 if the Pokémon is legendary, else 0.",
+            "type": "integer"
+          },
+          {
+            "name": "is_mythical",
+            "description": "1 if the Pokémon is mythical, else 0.",
+            "type": "integer"
+          },
+          {
+            "name": "evochain_0",
+            "description": "Evolution chain: first stage name.",
+            "type": "string"
+          },
+          {
+            "name": "evochain_1",
+            "description": "Evolution chain: trigger from stage 0 to stage 2.",
+            "type": "string"
+          },
+          {
+            "name": "evochain_2",
+            "description": "Evolution chain: second stage name.",
+            "type": "string"
+          },
+          {
+            "name": "evochain_3",
+            "description": "Evolution chain: trigger from stage 2 to stage 4.",
+            "type": "string"
+          },
+          {
+            "name": "evochain_4",
+            "description": "Evolution chain: third stage name.",
+            "type": "string"
+          },
+          {
+            "name": "evochain_5",
+            "description": "Evolution chain: additional trigger (branched/regional chains).",
+            "type": "string"
+          },
+          {
+            "name": "evochain_6",
+            "description": "Evolution chain: additional stage name (branched/regional chains).",
+            "type": "string"
+          },
+          {
+            "name": "gigantamax",
+            "description": "Gigantamax form name if the Pokémon is Gigantamax-capable, else blank.",
+            "type": "string"
+          },
+          {
+            "name": "mega_evolution",
+            "description": "Mega Evolution form name if Mega-capable (incl. Legends: Z-A / Mega Dimension), else blank.",
+            "type": "string"
+          },
+          {
+            "name": "mega_evolution_alt",
+            "description": "Second Mega form for Pokémon with two Mega Evolutions (e.g. Mega Charizard Y).",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "description": "Pokédex description from the official Pokémon website.",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ]
+}
