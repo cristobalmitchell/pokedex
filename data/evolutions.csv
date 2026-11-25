@@ -1,0 +1,703 @@
+evolution_id,evolution_chain_id,from_national_number,from_name,from_form,to_national_number,to_name,to_form,trigger,min_level,item,held_item,known_move,known_move_type,min_happiness,min_affection,min_beauty,time_of_day,gender,location,region,party_species,party_type,trade_species,relative_physical_stats,needs_overworld_rain,turn_upside_down,used_move,min_move_count,min_steps,min_damage_taken,chance_percent,condition,games,is_primary_method
+1,1,1,Bulbasaur,,2,Ivysaur,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Red / Blue,1
+2,1,2,Ivysaur,,3,Venusaur,,Level up,32,,,,,,,,,,,,,,,,0,0,,,,,,Level 32,Red / Blue,1
+3,2,4,Charmander,,5,Charmeleon,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Red / Blue,1
+4,2,5,Charmeleon,,6,Charizard,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Red / Blue,1
+5,3,7,Squirtle,,8,Wartortle,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Red / Blue,1
+6,3,8,Wartortle,,9,Blastoise,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Red / Blue,1
+7,4,10,Caterpie,,11,Metapod,,Level up,7,,,,,,,,,,,,,,,,0,0,,,,,,Level 7,Red / Blue,1
+8,4,11,Metapod,,12,Butterfree,,Level up,10,,,,,,,,,,,,,,,,0,0,,,,,,Level 10,Red / Blue,1
+9,5,13,Weedle,,14,Kakuna,,Level up,7,,,,,,,,,,,,,,,,0,0,,,,,,Level 7,Red / Blue,1
+10,5,14,Kakuna,,15,Beedrill,,Level up,10,,,,,,,,,,,,,,,,0,0,,,,,,Level 10,Red / Blue,1
+11,6,16,Pidgey,,17,Pidgeotto,,Level up,18,,,,,,,,,,,,,,,,0,0,,,,,,Level 18,Red / Blue,1
+12,6,17,Pidgeotto,,18,Pidgeot,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Red / Blue,1
+13,7,19,Rattata,,20,Raticate,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Red / Blue,1
+461,7,19,Rattata,Alolan Rattata,20,Raticate,Alolan Raticate,Level up,20,,,,,,,,night,,,,,,,,0,0,,,,,,Level 20 at night,Sun / Moon,1
+14,8,21,Spearow,,22,Fearow,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Red / Blue,1
+15,9,23,Ekans,,24,Arbok,,Level up,22,,,,,,,,,,,,,,,,0,0,,,,,,Level 22,Red / Blue,1
+16,10,172,Pichu,,25,Pikachu,,Level up,,,,,,220,,,,,,,,,,,0,0,,,,,,Level up with high friendship (220+),Gold / Silver,1
+17,10,25,Pikachu,,26,Raichu,,Use item,,Thunder Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Thunder Stone,Red / Blue,1
+517,10,25,Pikachu,,26,Raichu,Alolan Raichu,Use item,,Thunder Stone,,,,,,,,,,Alola,,,,,0,0,,,,,,Use Thunder Stone in Alola,Sun / Moon,1
+18,11,27,Sandshrew,,28,Sandslash,,Level up,22,,,,,,,,,,,,,,,,0,0,,,,,,Level 22,Red / Blue,1
+448,11,27,Sandshrew,Alolan Sandshrew,28,Sandslash,Alolan Sandslash,Use item,,Ice Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Ice Stone,Sun / Moon,1
+19,12,29,Nidoran♀,,30,Nidorina,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Red / Blue,1
+20,12,30,Nidorina,,31,Nidoqueen,,Use item,,Moon Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Moon Stone,Red / Blue,1
+21,13,32,Nidoran♂,,33,Nidorino,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Red / Blue,1
+22,13,33,Nidorino,,34,Nidoking,,Use item,,Moon Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Moon Stone,Red / Blue,1
+23,14,173,Cleffa,,35,Clefairy,,Level up,,,,,,160,,,,,,,,,,,0,0,,,,,,Level up with high friendship (160+),Gold / Silver,1
+24,14,35,Clefairy,,36,Clefable,,Use item,,Moon Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Moon Stone,Red / Blue,1
+25,15,37,Vulpix,,38,Ninetales,,Use item,,Fire Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Fire Stone,Red / Blue,1
+449,15,37,Vulpix,Alolan Vulpix,38,Ninetales,Alolan Ninetales,Use item,,Ice Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Ice Stone,Sun / Moon,1
+26,16,174,Igglybuff,,39,Jigglypuff,,Level up,,,,,,160,,,,,,,,,,,0,0,,,,,,Level up with high friendship (160+),Gold / Silver,1
+27,16,39,Jigglypuff,,40,Wigglytuff,,Use item,,Moon Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Moon Stone,Red / Blue,1
+28,17,41,Zubat,,42,Golbat,,Level up,22,,,,,,,,,,,,,,,,0,0,,,,,,Level 22,Red / Blue,1
+94,17,42,Golbat,,169,Crobat,,Level up,,,,,,160,,,,,,,,,,,0,0,,,,,,Level up with high friendship (160+),Gold / Silver,1
+29,18,43,Oddish,,44,Gloom,,Level up,21,,,,,,,,,,,,,,,,0,0,,,,,,Level 21,Red / Blue,1
+30,18,44,Gloom,,45,Vileplume,,Use item,,Leaf Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Leaf Stone,Red / Blue,1
+100,18,44,Gloom,,182,Bellossom,,Use item,,Sun Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Sun Stone,Gold / Silver,1
+31,19,46,Paras,,47,Parasect,,Level up,24,,,,,,,,,,,,,,,,0,0,,,,,,Level 24,Red / Blue,1
+32,20,48,Venonat,,49,Venomoth,,Level up,31,,,,,,,,,,,,,,,,0,0,,,,,,Level 31,Red / Blue,1
+33,21,50,Diglett,,51,Dugtrio,,Level up,26,,,,,,,,,,,,,,,,0,0,,,,,,Level 26,Red / Blue,1
+518,21,50,Diglett,Alolan Diglett,51,Dugtrio,Alolan Dugtrio,Level up,26,,,,,,,,,,,,,,,,0,0,,,,,,Level 26,Sun / Moon,1
+34,22,52,Meowth,,53,Persian,,Level up,28,,,,,,,,,,,,,,,,0,0,,,,,,Level 28,Red / Blue,1
+450,22,52,Meowth,Alolan Meowth,53,Persian,Alolan Persian,Level up,,,,,,160,,,,,,,,,,,0,0,,,,,,Level up with high friendship (160+),Sun / Moon,1
+451,22,52,Meowth,Galarian Meowth,863,Perrserker,,Level up,28,,,,,,,,,,,,,,,,0,0,,,,,,Level 28,Sword / Shield,1
+35,23,54,Psyduck,,55,Golduck,,Level up,33,,,,,,,,,,,,,,,,0,0,,,,,,Level 33,Red / Blue,1
+36,24,56,Mankey,,57,Primeape,,Level up,28,,,,,,,,,,,,,,,,0,0,,,,,,Level 28,Red / Blue,1
+504,24,57,Primeape,,979,Annihilape,,Use move,,,,,,,,,,,,,,,,,0,0,Rage Fist,20,,,,Level up after using Rage Fist 20 times,Scarlet / Violet,1
+37,25,58,Growlithe,,59,Arcanine,,Use item,,Fire Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Fire Stone,Red / Blue,1
+523,25,58,Growlithe,Hisuian Growlithe,59,Arcanine,Hisuian Arcanine,Use item,,Fire Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Fire Stone,Legends: Arceus,1
+38,26,60,Poliwag,,61,Poliwhirl,,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Red / Blue,1
+39,26,61,Poliwhirl,,62,Poliwrath,,Use item,,Water Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Water Stone,Red / Blue,1
+104,26,61,Poliwhirl,,186,Politoed,,Trade or Linking Cord,,,King's Rock,,,,,,,,,,,,,,0,0,,,,,,Trade while holding King's Rock,Gold / Silver,1
+40,27,63,Abra,,64,Kadabra,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Red / Blue,1
+41,27,64,Kadabra,,65,Alakazam,,Trade or Linking Cord,,,,,,,,,,,,,,,,,0,0,,,,,,Trade,Red / Blue,1
+682,27,64,Kadabra,,65,Alakazam,,Use item,,Linking Cord,,,,,,,,,,,,,,,0,0,,,,,,Use Linking Cord,Legends: Arceus,0
+42,28,66,Machop,,67,Machoke,,Level up,28,,,,,,,,,,,,,,,,0,0,,,,,,Level 28,Red / Blue,1
+43,28,67,Machoke,,68,Machamp,,Trade or Linking Cord,,,,,,,,,,,,,,,,,0,0,,,,,,Trade,Red / Blue,1
+683,28,67,Machoke,,68,Machamp,,Use item,,Linking Cord,,,,,,,,,,,,,,,0,0,,,,,,Use Linking Cord,Legends: Arceus,0
+44,29,69,Bellsprout,,70,Weepinbell,,Level up,21,,,,,,,,,,,,,,,,0,0,,,,,,Level 21,Red / Blue,1
+45,29,70,Weepinbell,,71,Victreebel,,Use item,,Leaf Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Leaf Stone,Red / Blue,1
+46,30,72,Tentacool,,73,Tentacruel,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Red / Blue,1
+47,31,74,Geodude,,75,Graveler,,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Red / Blue,1
+519,31,74,Geodude,Alolan Geodude,75,Graveler,Alolan Graveler,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Sun / Moon,1
+48,31,75,Graveler,,76,Golem,,Trade or Linking Cord,,,,,,,,,,,,,,,,,0,0,,,,,,Trade,Red / Blue,1
+520,31,75,Graveler,Alolan Graveler,76,Golem,Alolan Golem,Trade or Linking Cord,,,,,,,,,,,,,,,,,0,0,,,,,,Trade,Sun / Moon,1
+684,31,75,Graveler,,76,Golem,,Use item,,Linking Cord,,,,,,,,,,,,,,,0,0,,,,,,Use Linking Cord,Legends: Arceus,0
+49,32,77,Ponyta,,78,Rapidash,,Level up,40,,,,,,,,,,,,,,,,0,0,,,,,,Level 40,Red / Blue,1
+535,32,77,Ponyta,Galarian Ponyta,78,Rapidash,Galarian Rapidash,Level up,40,,,,,,,,,,,,,,,,0,0,,,,,,Level 40,Sword / Shield,1
+50,33,79,Slowpoke,,80,Slowbro,,Level up,37,,,,,,,,,,,,,,,,0,0,,,,,,Level 37,Red / Blue,1
+452,33,79,Slowpoke,Galarian Slowpoke,80,Slowbro,Galarian Slowbro,Use item,,Galarica Cuff,,,,,,,,,,,,,,,0,0,,,,,,Use Galarica Cuff,Sword: The Isle of Armor / Shield: The Isle of Armor,1
+111,33,79,Slowpoke,,199,Slowking,,Trade or Linking Cord,,,King's Rock,,,,,,,,,,,,,,0,0,,,,,,Trade while holding King's Rock,Gold / Silver,1
+453,33,79,Slowpoke,Galarian Slowpoke,199,Slowking,Galarian Slowking,Use item,,Galarica Wreath,,,,,,,,,,,,,,,0,0,,,,,,Use Galarica Wreath,Sword: The Isle of Armor / Shield: The Isle of Armor,1
+51,34,81,Magnemite,,82,Magneton,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Red / Blue,1
+406,34,82,Magneton,,462,Magnezone,,Use item,,Thunder Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Thunder Stone,Sword / Shield,1
+230,34,82,Magneton,,462,Magnezone,,Level up,,,,,,,,,,,Mt. Coronet,,,,,,0,0,,,,,,Level up at Mt. Coronet,Diamond / Pearl,0
+322,34,82,Magneton,,462,Magnezone,,Level up,,,,,,,,,,,Chargestone Cave,,,,,,0,0,,,,,,Level up at Chargestone Cave,Black / White,0
+362,34,82,Magneton,,462,Magnezone,,Level up,,,,,,,,,,,Route 13,,,,,,0,0,,,,,,Level up at Route 13,X / Y,0
+366,34,82,Magneton,,462,Magnezone,,Level up,,,,,,,,,,,Blush Mountain,,,,,,0,0,,,,,,Level up at Blush Mountain,Sun / Moon,0
+368,34,82,Magneton,,462,Magnezone,,Level up,,,,,,,,,,,Vast Poni Canyon,,,,,,0,0,,,,,,Level up at Vast Poni Canyon,Sun / Moon,0
+546,34,82,Magneton,,462,Magnezone,,Level up,,,,,,,,,,,New Mauville,,,,,,0,0,,,,,,Level up at New Mauville,Omega Ruby / Alpha Sapphire,0
+701,34,82,Magneton,,462,Magnezone,,Use item,,Thunder Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Thunder Stone,Brilliant Diamond / Shining Pearl,0
+702,34,82,Magneton,,462,Magnezone,,Level up,,,,,,,,,,,Mt. Coronet,,,,,,0,0,,,,,,Level up at Mt. Coronet,Brilliant Diamond / Shining Pearl,0
+454,35,83,Farfetch'd,Galarian Farfetch'd,865,Sirfetch'd,,Land three critical hits in a battle,,,,,,,,,,,,,,,,,0,0,,,,,,Land three critical hits in one battle,Sword / Shield,1
+52,36,84,Doduo,,85,Dodrio,,Level up,31,,,,,,,,,,,,,,,,0,0,,,,,,Level 31,Red / Blue,1
+53,37,86,Seel,,87,Dewgong,,Level up,34,,,,,,,,,,,,,,,,0,0,,,,,,Level 34,Red / Blue,1
+54,38,88,Grimer,,89,Muk,,Level up,38,,,,,,,,,,,,,,,,0,0,,,,,,Level 38,Red / Blue,1
+521,38,88,Grimer,Alolan Grimer,89,Muk,Alolan Muk,Level up,38,,,,,,,,,,,,,,,,0,0,,,,,,Level 38,Sun / Moon,1
+55,39,90,Shellder,,91,Cloyster,,Use item,,Water Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Water Stone,Red / Blue,1
+56,40,92,Gastly,,93,Haunter,,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Red / Blue,1
+57,40,93,Haunter,,94,Gengar,,Trade or Linking Cord,,,,,,,,,,,,,,,,,0,0,,,,,,Trade,Red / Blue,1
+685,40,93,Haunter,,94,Gengar,,Use item,,Linking Cord,,,,,,,,,,,,,,,0,0,,,,,,Use Linking Cord,Legends: Arceus,0
+114,41,95,Onix,,208,Steelix,,Trade or Linking Cord,,,Metal Coat,,,,,,,,,,,,,,0,0,,,,,,Trade while holding Metal Coat,Gold / Silver,1
+686,41,95,Onix,,208,Steelix,,Use item,,Metal Coat,,,,,,,,,,,,,,,0,0,,,,,,Use Metal Coat,Legends: Arceus,0
+58,42,96,Drowzee,,97,Hypno,,Level up,26,,,,,,,,,,,,,,,,0,0,,,,,,Level 26,Red / Blue,1
+59,43,98,Krabby,,99,Kingler,,Level up,28,,,,,,,,,,,,,,,,0,0,,,,,,Level 28,Red / Blue,1
+60,44,100,Voltorb,,101,Electrode,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Red / Blue,1
+524,44,100,Voltorb,Hisuian Voltorb,101,Electrode,Hisuian Electrode,Use item,,Leaf Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Leaf Stone,Legends: Arceus,1
+61,45,102,Exeggcute,,103,Exeggutor,,Use item,,Leaf Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Leaf Stone,Red / Blue,1
+522,45,102,Exeggcute,,103,Exeggutor,Alolan Exeggutor,Use item,,Leaf Stone,,,,,,,,,,Alola,,,,,0,0,,,,,,Use Leaf Stone in Alola,Sun / Moon,1
+62,46,104,Cubone,,105,Marowak,,Level up,28,,,,,,,,,,,,,,,,0,0,,,,,,Level 28,Red / Blue,1
+367,46,104,Cubone,,105,Marowak,Alolan Marowak,Level up,28,,,,,,,,night,,,Alola,,,,,0,0,,,,,,Level 28 at night in Alola,Sun / Moon,1
+63,47,236,Tyrogue,,106,Hitmonlee,,Level up,20,,,,,,,,,,,,,,,1,0,0,,,,,,Level 20 with Attack > Defense,Gold / Silver,1
+64,47,236,Tyrogue,,107,Hitmonchan,,Level up,20,,,,,,,,,,,,,,,-1,0,0,,,,,,Level 20 with Attack < Defense,Gold / Silver,1
+126,47,236,Tyrogue,,237,Hitmontop,,Level up,20,,,,,,,,,,,,,,,0,0,0,,,,,,Level 20 with Attack = Defense,Gold / Silver,1
+231,48,108,Lickitung,,463,Lickilicky,,Level up,,,,Rollout,,,,,,,,,,,,,0,0,,,,,,Level up while knowing Rollout,Diamond / Pearl,1
+65,49,109,Koffing,,110,Weezing,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,Red / Blue,1
+536,49,109,Koffing,,110,Weezing,Galarian Weezing,Level up,35,,,,,,,,,,,Galar,,,,,0,0,,,,,,Level 35 in Galar,Sword / Shield,1
+66,50,111,Rhyhorn,,112,Rhydon,,Level up,42,,,,,,,,,,,,,,,,0,0,,,,,,Level 42,Red / Blue,1
+232,50,112,Rhydon,,464,Rhyperior,,Trade or Linking Cord,,,Protector,,,,,,,,,,,,,,0,0,,,,,,Trade while holding Protector,Diamond / Pearl,1
+688,50,112,Rhydon,,464,Rhyperior,,Use item,,Protector,,,,,,,,,,,,,,,0,0,,,,,,Use Protector,Legends: Arceus,0
+67,51,440,Happiny,,113,Chansey,,Level up,,,Oval Stone,,,,,,day,,,,,,,,0,0,,,,,,Level up while holding Oval Stone during the day,Diamond / Pearl,1
+694,51,440,Happiny,,113,Chansey,,Use item,,Oval Stone,,,,,,,day,,,,,,,,0,0,,,,,,Use Oval Stone during the day,Legends: Arceus,0
+127,51,113,Chansey,,242,Blissey,,Level up,,,,,,160,,,,,,,,,,,0,0,,,,,,Level up with high friendship (160+),Gold / Silver,1
+233,52,114,Tangela,,465,Tangrowth,,Level up,,,,Ancient Power,,,,,,,,,,,,,0,0,,,,,,Level up while knowing Ancient Power,Diamond / Pearl,1
+68,54,116,Horsea,,117,Seadra,,Level up,32,,,,,,,,,,,,,,,,0,0,,,,,,Level 32,Red / Blue,1
+123,54,117,Seadra,,230,Kingdra,,Trade or Linking Cord,,,Dragon Scale,,,,,,,,,,,,,,0,0,,,,,,Trade while holding Dragon Scale,Gold / Silver,1
+69,55,118,Goldeen,,119,Seaking,,Level up,33,,,,,,,,,,,,,,,,0,0,,,,,,Level 33,Red / Blue,1
+70,56,120,Staryu,,121,Starmie,,Use item,,Water Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Water Stone,Red / Blue,1
+71,57,439,Mime Jr.,,122,Mr. Mime,,Level up,,,,Mimic,,,,,,,,,,,,,0,0,,,,,,Level up while knowing Mimic,Diamond / Pearl,1
+537,57,439,Mime Jr.,,122,Mr. Mime,Galarian Mr. Mime,Level up,,,,Mimic,,,,,,,,Galar,,,,,0,0,,,,,,Level up while knowing Mimic in Galar,Sword / Shield,1
+455,57,122,Mr. Mime,Galarian Mr. Mime,866,Mr. Rime,,Level up,42,,,,,,,,,,,,,,,,0,0,,,,,,Level 42,Sword / Shield,1
+116,58,123,Scyther,,212,Scizor,,Trade or Linking Cord,,,Metal Coat,,,,,,,,,,,,,,0,0,,,,,,Trade while holding Metal Coat,Gold / Silver,1
+687,58,123,Scyther,,212,Scizor,,Use item,,Metal Coat,,,,,,,,,,,,,,,0,0,,,,,,Use Metal Coat,Legends: Arceus,0
+463,58,123,Scyther,,900,Kleavor,,Use item,,Black Augurite,,,,,,,,,,,,,,,0,0,,,,,,Use Black Augurite,Legends: Arceus,1
+72,59,238,Smoochum,,124,Jynx,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Gold / Silver,1
+73,60,239,Elekid,,125,Electabuzz,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Gold / Silver,1
+234,60,125,Electabuzz,,466,Electivire,,Trade or Linking Cord,,,Electirizer,,,,,,,,,,,,,,0,0,,,,,,Trade while holding Electirizer,Diamond / Pearl,1
+689,60,125,Electabuzz,,466,Electivire,,Use item,,Electirizer,,,,,,,,,,,,,,,0,0,,,,,,Use Electirizer,Legends: Arceus,0
+74,61,240,Magby,,126,Magmar,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Gold / Silver,1
+235,61,126,Magmar,,467,Magmortar,,Trade or Linking Cord,,,Magmarizer,,,,,,,,,,,,,,0,0,,,,,,Trade while holding Magmarizer,Diamond / Pearl,1
+690,61,126,Magmar,,467,Magmortar,,Use item,,Magmarizer,,,,,,,,,,,,,,,0,0,,,,,,Use Magmarizer,Legends: Arceus,0
+75,64,129,Magikarp,,130,Gyarados,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Red / Blue,1
+76,67,133,Eevee,,134,Vaporeon,,Use item,,Water Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Water Stone,Red / Blue,1
+77,67,133,Eevee,,135,Jolteon,,Use item,,Thunder Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Thunder Stone,Red / Blue,1
+78,67,133,Eevee,,136,Flareon,,Use item,,Fire Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Fire Stone,Red / Blue,1
+109,67,133,Eevee,,196,Espeon,,Level up,,,,,,160,,,day,,,,,,,,0,0,,,,,,Level up with high friendship (160+) during the day,Gold / Silver,1
+110,67,133,Eevee,,197,Umbreon,,Level up,,,,,,160,,,night,,,,,,,,0,0,,,,,,Level up with high friendship (160+) at night,Gold / Silver,1
+407,67,133,Eevee,,470,Leafeon,,Use item,,Leaf Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Leaf Stone,Sword / Shield,1
+238,67,133,Eevee,,470,Leafeon,,Level up,,,,,,,,,,,Eterna Forest,,,,,,0,0,,,,,,Level up near a Moss Rock at Eterna Forest,Diamond / Pearl,0
+324,67,133,Eevee,,470,Leafeon,,Level up,,,,,,,,,,,Pinwheel Forest,,,,,,0,0,,,,,,Level up near a Moss Rock at Pinwheel Forest,Black / White,0
+363,67,133,Eevee,,470,Leafeon,,Level up,,,,,,,,,,,Route 20,,,,,,0,0,,,,,,Level up near a Moss Rock at Route 20,X / Y,0
+548,67,133,Eevee,,470,Leafeon,,Level up,,,,,,,,,,,Petalburg Woods,,,,,,0,0,,,,,,Level up near a Moss Rock at Petalburg Woods,Omega Ruby / Alpha Sapphire,0
+550,67,133,Eevee,,470,Leafeon,,Level up,,,,,,,,,,,Lush Jungle,,,,,,0,0,,,,,,Level up near a Moss Rock at Lush Jungle,Sun / Moon,0
+697,67,133,Eevee,,470,Leafeon,,Use item,,Leaf Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Leaf Stone,Brilliant Diamond / Shining Pearl,0
+698,67,133,Eevee,,470,Leafeon,,Level up,,,,,,,,,,,Eterna Forest,,,,,,0,0,,,,,,Level up near a Moss Rock at Eterna Forest,Brilliant Diamond / Shining Pearl,0
+408,67,133,Eevee,,471,Glaceon,,Use item,,Ice Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Ice Stone,Sword / Shield,1
+239,67,133,Eevee,,471,Glaceon,,Level up,,,,,,,,,,,Route 217,,,,,,0,0,,,,,,Level up near an Ice Rock at Route 217,Diamond / Pearl,0
+325,67,133,Eevee,,471,Glaceon,,Level up,,,,,,,,,,,Twist Mountain,,,,,,0,0,,,,,,Level up near an Ice Rock at Twist Mountain,Black / White,0
+364,67,133,Eevee,,471,Glaceon,,Level up,,,,,,,,,,,Frost Cavern,,,,,,0,0,,,,,,Level up near an Ice Rock at Frost Cavern,X / Y,0
+549,67,133,Eevee,,471,Glaceon,,Level up,,,,,,,,,,,Shoal Cave,,,,,,0,0,,,,,,Level up near an Ice Rock at Shoal Cave,Omega Ruby / Alpha Sapphire,0
+551,67,133,Eevee,,471,Glaceon,,Level up,,,,,,,,,,,Mount Lanakila,,,,,,0,0,,,,,,Level up near an Ice Rock at Mount Lanakila,Sun / Moon,0
+699,67,133,Eevee,,471,Glaceon,,Use item,,Ice Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Ice Stone,Brilliant Diamond / Shining Pearl,0
+700,67,133,Eevee,,471,Glaceon,,Level up,,,,,,,,,,,Route 217,,,,,,0,0,,,,,,Level up near an Ice Rock at Route 217,Brilliant Diamond / Shining Pearl,0
+409,67,133,Eevee,,700,Sylveon,,Level up,,,,,fairy,160,,,,,,,,,,,0,0,,,,,,Level up with high friendship (160+) while knowing a Fairy-type move,Sword / Shield,1
+361,67,133,Eevee,,700,Sylveon,,Level up,,,,,fairy,,2,,,,,,,,,,0,0,,,,,,Level up with 2+ affection hearts while knowing a Fairy-type move,X / Y,0
+125,68,137,Porygon,,233,Porygon2,,Trade or Linking Cord,,,Upgrade,,,,,,,,,,,,,,0,0,,,,,,Trade while holding Upgrade,Gold / Silver,1
+691,68,137,Porygon,,233,Porygon2,,Use item,,Upgrade,,,,,,,,,,,,,,,0,0,,,,,,Use Upgrade,Legends: Arceus,0
+242,68,233,Porygon2,,474,Porygon-Z,,Trade or Linking Cord,,,Dubious Disc,,,,,,,,,,,,,,0,0,,,,,,Trade while holding Dubious Disc,Diamond / Pearl,1
+692,68,233,Porygon2,,474,Porygon-Z,,Use item,,Dubious Disc,,,,,,,,,,,,,,,0,0,,,,,,Use Dubious Disc,Legends: Arceus,0
+79,69,138,Omanyte,,139,Omastar,,Level up,40,,,,,,,,,,,,,,,,0,0,,,,,,Level 40,Red / Blue,1
+80,70,140,Kabuto,,141,Kabutops,,Level up,40,,,,,,,,,,,,,,,,0,0,,,,,,Level 40,Red / Blue,1
+81,72,446,Munchlax,,143,Snorlax,,Level up,,,,,,160,,,,,,,,,,,0,0,,,,,,Level up with high friendship (160+),Diamond / Pearl,1
+82,76,147,Dratini,,148,Dragonair,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Red / Blue,1
+83,76,148,Dragonair,,149,Dragonite,,Level up,55,,,,,,,,,,,,,,,,0,0,,,,,,Level 55,Red / Blue,1
+84,79,152,Chikorita,,153,Bayleef,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Gold / Silver,1
+85,79,153,Bayleef,,154,Meganium,,Level up,32,,,,,,,,,,,,,,,,0,0,,,,,,Level 32,Gold / Silver,1
+86,80,155,Cyndaquil,,156,Quilava,,Level up,14,,,,,,,,,,,,,,,,0,0,,,,,,Level 14,Gold / Silver,1
+525,80,155,Cyndaquil,,156,Quilava,,Level up,17,,,,,,,,,,,Hisui,,,,,0,0,,,,,,Level 17 in Hisui,Legends: Arceus,0
+87,80,156,Quilava,,157,Typhlosion,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Gold / Silver,1
+526,80,156,Quilava,,157,Typhlosion,Hisuian Typhlosion,Level up,36,,,,,,,,,,,Hisui,,,,,0,0,,,,,,Level 36 in Hisui,Legends: Arceus,1
+88,81,158,Totodile,,159,Croconaw,,Level up,18,,,,,,,,,,,,,,,,0,0,,,,,,Level 18,Gold / Silver,1
+89,81,159,Croconaw,,160,Feraligatr,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Gold / Silver,1
+90,82,161,Sentret,,162,Furret,,Level up,15,,,,,,,,,,,,,,,,0,0,,,,,,Level 15,Gold / Silver,1
+91,83,163,Hoothoot,,164,Noctowl,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Gold / Silver,1
+92,84,165,Ledyba,,166,Ledian,,Level up,18,,,,,,,,,,,,,,,,0,0,,,,,,Level 18,Gold / Silver,1
+93,85,167,Spinarak,,168,Ariados,,Level up,22,,,,,,,,,,,,,,,,0,0,,,,,,Level 22,Gold / Silver,1
+95,86,170,Chinchou,,171,Lanturn,,Level up,27,,,,,,,,,,,,,,,,0,0,,,,,,Level 27,Gold / Silver,1
+96,87,175,Togepi,,176,Togetic,,Level up,,,,,,160,,,,,,,,,,,0,0,,,,,,Level up with high friendship (160+),Gold / Silver,1
+236,87,176,Togetic,,468,Togekiss,,Use item,,Shiny Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Shiny Stone,Diamond / Pearl,1
+97,88,177,Natu,,178,Xatu,,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Gold / Silver,1
+98,89,179,Mareep,,180,Flaaffy,,Level up,15,,,,,,,,,,,,,,,,0,0,,,,,,Level 15,Gold / Silver,1
+99,89,180,Flaaffy,,181,Ampharos,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Gold / Silver,1
+101,90,298,Azurill,,183,Marill,,Level up,,,,,,160,,,,,,,,,,,0,0,,,,,,Level up with high friendship (160+),Ruby / Sapphire,1
+102,90,183,Marill,,184,Azumarill,,Level up,18,,,,,,,,,,,,,,,,0,0,,,,,,Level 18,Gold / Silver,1
+103,91,438,Bonsly,,185,Sudowoodo,,Level up,,,,Mimic,,,,,,,,,,,,,0,0,,,,,,Level up while knowing Mimic,Diamond / Pearl,1
+105,92,187,Hoppip,,188,Skiploom,,Level up,18,,,,,,,,,,,,,,,,0,0,,,,,,Level 18,Gold / Silver,1
+106,92,188,Skiploom,,189,Jumpluff,,Level up,27,,,,,,,,,,,,,,,,0,0,,,,,,Level 27,Gold / Silver,1
+213,93,190,Aipom,,424,Ambipom,,Level up,,,,Double Hit,,,,,,,,,,,,,0,0,,,,,,Level up while knowing Double Hit,Diamond / Pearl,1
+107,94,191,Sunkern,,192,Sunflora,,Use item,,Sun Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Sun Stone,Gold / Silver,1
+237,95,193,Yanma,,469,Yanmega,,Level up,,,,Ancient Power,,,,,,,,,,,,,0,0,,,,,,Level up while knowing Ancient Power,Diamond / Pearl,1
+108,96,194,Wooper,,195,Quagsire,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Gold / Silver,1
+505,96,194,Wooper,Paldean Wooper,980,Clodsire,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Scarlet / Violet,1
+217,97,198,Murkrow,,430,Honchkrow,,Use item,,Dusk Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Dusk Stone,Diamond / Pearl,1
+216,98,200,Misdreavus,,429,Mismagius,,Use item,,Dusk Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Dusk Stone,Diamond / Pearl,1
+112,100,360,Wynaut,,202,Wobbuffet,,Level up,15,,,,,,,,,,,,,,,,0,0,,,,,,Level 15,Ruby / Sapphire,1
+506,101,203,Girafarig,,981,Farigiraf,,Level up,,,,Twin Beam,,,,,,,,,,,,,0,0,,,,,,Level up while knowing Twin Beam,Scarlet / Violet,1
+113,102,204,Pineco,,205,Forretress,,Level up,31,,,,,,,,,,,,,,,,0,0,,,,,,Level 31,Gold / Silver,1
+507,103,206,Dunsparce,,982,Dudunsparce,,Level up,,,,Hyper Drill,,,,,,,,,,,,,0,0,,,,,99,"Level up while knowing Hyper Drill (99% chance, set by its personality value)",Scarlet / Violet,1
+561,103,206,Dunsparce,,982,Dudunsparce,Three-Segment Form Dudunsparce,Level up,,,,Hyper Drill,,,,,,,,,,,,,0,0,,,,,1,"Level up while knowing Hyper Drill (1% chance, set by its personality value)",Scarlet / Violet,1
+240,104,207,Gligar,,472,Gliscor,,Level up,,,Razor Fang,,,,,,night,,,,,,,,0,0,,,,,,Level up while holding Razor Fang at night,Diamond / Pearl,1
+695,104,207,Gligar,,472,Gliscor,,Use item,,Razor Fang,,,,,,,night,,,,,,,,0,0,,,,,,Use Razor Fang at night,Legends: Arceus,0
+115,105,209,Snubbull,,210,Granbull,,Level up,23,,,,,,,,,,,,,,,,0,0,,,,,,Level 23,Gold / Silver,1
+515,106,211,Qwilfish,Hisuian Qwilfish,904,Overqwil,,Level up,,,,Barb Barrage,,,,,,,,,,,,,0,0,,,,,,Level up while knowing Barb Barrage,Scarlet / Violet,1
+467,106,211,Qwilfish,Hisuian Qwilfish,904,Overqwil,,Use move in strong style,,,,,,,,,,,,,,,,,0,0,Barb Barrage,20,,,,Use Barb Barrage in Strong Style 20 times,Legends: Arceus,0
+516,106,211,Qwilfish,Hisuian Qwilfish,904,Overqwil,,Use move,,,,,,,,,,,,,,,,,0,0,Barb Barrage,20,,,,Level up after using Barb Barrage 20 times,Legends: Z-A,0
+229,109,215,Sneasel,,461,Weavile,,Level up,,,Razor Claw,,,,,,night,,,,,,,,0,0,,,,,,Level up while holding Razor Claw at night,Diamond / Pearl,1
+696,109,215,Sneasel,,461,Weavile,,Use item,,Razor Claw,,,,,,,night,,,,,,,,0,0,,,,,,Use Razor Claw at night,Legends: Arceus,0
+707,109,215,Sneasel,Hisuian Sneasel,903,Sneasler,,Level up,,,Razor Claw,,,,,,day,,,,,,,,0,0,,,,,,Level up while holding Razor Claw during the day,Scarlet / Violet,1
+466,109,215,Sneasel,Hisuian Sneasel,903,Sneasler,,Use item,,Razor Claw,,,,,,,day,,,,,,,,0,0,,,,,,Use Razor Claw during the day,Legends: Arceus,0
+117,110,216,Teddiursa,,217,Ursaring,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Gold / Silver,1
+464,110,217,Ursaring,,901,Ursaluna,,Use item,,Peat Block,,,,,,,full-moon,,,,,,,,0,0,,,,,,Use Peat Block under a full moon,Legends: Arceus,1
+118,111,218,Slugma,,219,Magcargo,,Level up,38,,,,,,,,,,,,,,,,0,0,,,,,,Level 38,Gold / Silver,1
+119,112,220,Swinub,,221,Piloswine,,Level up,33,,,,,,,,,,,,,,,,0,0,,,,,,Level 33,Gold / Silver,1
+241,112,221,Piloswine,,473,Mamoswine,,Level up,,,,Ancient Power,,,,,,,,,,,,,0,0,,,,,,Level up while knowing Ancient Power,Diamond / Pearl,1
+456,113,222,Corsola,Galarian Corsola,864,Cursola,,Level up,38,,,,,,,,,,,,,,,,0,0,,,,,,Level 38,Sword / Shield,1
+120,114,223,Remoraid,,224,Octillery,,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Gold / Silver,1
+121,116,458,Mantyke,,226,Mantine,,Level up,,,,,,,,,,,,,Remoraid,,,,0,0,,,,,,Level up with Remoraid in the party,Diamond / Pearl,1
+122,118,228,Houndour,,229,Houndoom,,Level up,24,,,,,,,,,,,,,,,,0,0,,,,,,Level 24,Gold / Silver,1
+124,119,231,Phanpy,,232,Donphan,,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Gold / Silver,1
+462,120,234,Stantler,,899,Wyrdeer,,Use move in agile style,,,,,,,,,,,,,,,,,0,0,Psyshield Bash,20,,,,Use Psyshield Bash in Agile Style 20 times,Legends: Arceus,1
+128,126,246,Larvitar,,247,Pupitar,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Gold / Silver,1
+129,126,247,Pupitar,,248,Tyranitar,,Level up,55,,,,,,,,,,,,,,,,0,0,,,,,,Level 55,Gold / Silver,1
+130,130,252,Treecko,,253,Grovyle,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Ruby / Sapphire,1
+131,130,253,Grovyle,,254,Sceptile,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Ruby / Sapphire,1
+132,131,255,Torchic,,256,Combusken,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Ruby / Sapphire,1
+133,131,256,Combusken,,257,Blaziken,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Ruby / Sapphire,1
+134,132,258,Mudkip,,259,Marshtomp,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Ruby / Sapphire,1
+135,132,259,Marshtomp,,260,Swampert,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Ruby / Sapphire,1
+136,133,261,Poochyena,,262,Mightyena,,Level up,18,,,,,,,,,,,,,,,,0,0,,,,,,Level 18,Ruby / Sapphire,1
+137,134,263,Zigzagoon,,264,Linoone,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Ruby / Sapphire,1
+538,134,263,Zigzagoon,Galarian Zigzagoon,264,Linoone,Galarian Linoone,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Sword / Shield,1
+457,134,264,Linoone,Galarian Linoone,862,Obstagoon,,Level up,35,,,,,,,,night,,,,,,,,0,0,,,,,,Level 35 at night,Sword / Shield,1
+563,135,265,Wurmple,,266,Silcoon,,Level up,7,,,,,,,,,,,,,,,,0,0,,,,,50,"Level 7 (50% chance, set by its personality value)",X / Y,1
+138,135,265,Wurmple,,266,Silcoon,,Level up,7,,,,,,,,,,,,,,,,0,0,,,,,50,"Level 7 (50% chance, set by its personality value)",Ruby / Sapphire,0
+139,135,266,Silcoon,,267,Beautifly,,Level up,10,,,,,,,,,,,,,,,,0,0,,,,,,Level 10,Ruby / Sapphire,1
+564,135,265,Wurmple,,268,Cascoon,,Level up,7,,,,,,,,,,,,,,,,0,0,,,,,50,"Level 7 (50% chance, set by its personality value)",X / Y,1
+140,135,265,Wurmple,,268,Cascoon,,Level up,7,,,,,,,,,,,,,,,,0,0,,,,,50,"Level 7 (50% chance, set by its personality value)",Ruby / Sapphire,0
+141,135,268,Cascoon,,269,Dustox,,Level up,10,,,,,,,,,,,,,,,,0,0,,,,,,Level 10,Ruby / Sapphire,1
+142,136,270,Lotad,,271,Lombre,,Level up,14,,,,,,,,,,,,,,,,0,0,,,,,,Level 14,Ruby / Sapphire,1
+143,136,271,Lombre,,272,Ludicolo,,Use item,,Water Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Water Stone,Ruby / Sapphire,1
+144,137,273,Seedot,,274,Nuzleaf,,Level up,14,,,,,,,,,,,,,,,,0,0,,,,,,Level 14,Ruby / Sapphire,1
+145,137,274,Nuzleaf,,275,Shiftry,,Use item,,Leaf Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Leaf Stone,Ruby / Sapphire,1
+146,138,276,Taillow,,277,Swellow,,Level up,22,,,,,,,,,,,,,,,,0,0,,,,,,Level 22,Ruby / Sapphire,1
+147,139,278,Wingull,,279,Pelipper,,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Ruby / Sapphire,1
+148,140,280,Ralts,,281,Kirlia,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Ruby / Sapphire,1
+149,140,281,Kirlia,,282,Gardevoir,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Ruby / Sapphire,1
+243,140,281,Kirlia,,475,Gallade,,Use item,,Dawn Stone,,,,,,,,male,,,,,,,0,0,,,,,,Use Dawn Stone (male only),Diamond / Pearl,1
+150,141,283,Surskit,,284,Masquerain,,Level up,22,,,,,,,,,,,,,,,,0,0,,,,,,Level 22,Ruby / Sapphire,1
+151,142,285,Shroomish,,286,Breloom,,Level up,23,,,,,,,,,,,,,,,,0,0,,,,,,Level 23,Ruby / Sapphire,1
+152,143,287,Slakoth,,288,Vigoroth,,Level up,18,,,,,,,,,,,,,,,,0,0,,,,,,Level 18,Ruby / Sapphire,1
+153,143,288,Vigoroth,,289,Slaking,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Ruby / Sapphire,1
+154,144,290,Nincada,,291,Ninjask,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Ruby / Sapphire,1
+155,144,290,Nincada,,292,Shedinja,,Shed,,,,,,,,,,,,,,,,,0,0,,,,,,Level 20 with an empty party slot and a Poké Ball in the bag (from Nincada),Ruby / Sapphire,1
+156,145,293,Whismur,,294,Loudred,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Ruby / Sapphire,1
+157,145,294,Loudred,,295,Exploud,,Level up,40,,,,,,,,,,,,,,,,0,0,,,,,,Level 40,Ruby / Sapphire,1
+158,146,296,Makuhita,,297,Hariyama,,Level up,24,,,,,,,,,,,,,,,,0,0,,,,,,Level 24,Ruby / Sapphire,1
+514,147,299,Nosepass,,476,Probopass,,Use item,,Thunder Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Thunder Stone,Scarlet / Violet,1
+244,147,299,Nosepass,,476,Probopass,,Level up,,,,,,,,,,,Mt. Coronet,,,,,,0,0,,,,,,Level up at Mt. Coronet,Diamond / Pearl,0
+323,147,299,Nosepass,,476,Probopass,,Level up,,,,,,,,,,,Chargestone Cave,,,,,,0,0,,,,,,Level up at Chargestone Cave,Black / White,0
+365,147,299,Nosepass,,476,Probopass,,Level up,,,,,,,,,,,Route 13,,,,,,0,0,,,,,,Level up at Route 13,X / Y,0
+369,147,299,Nosepass,,476,Probopass,,Level up,,,,,,,,,,,Blush Mountain,,,,,,0,0,,,,,,Level up at Blush Mountain,Sun / Moon,0
+370,147,299,Nosepass,,476,Probopass,,Level up,,,,,,,,,,,Vast Poni Canyon,,,,,,0,0,,,,,,Level up at Vast Poni Canyon,Sun / Moon,0
+547,147,299,Nosepass,,476,Probopass,,Level up,,,,,,,,,,,New Mauville,,,,,,0,0,,,,,,Level up at New Mauville,Omega Ruby / Alpha Sapphire,0
+703,147,299,Nosepass,,476,Probopass,,Level up,,,,,,,,,,,Mt. Coronet,,,,,,0,0,,,,,,Level up at Mt. Coronet,Brilliant Diamond / Shining Pearl,0
+159,148,300,Skitty,,301,Delcatty,,Use item,,Moon Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Moon Stone,Ruby / Sapphire,1
+160,151,304,Aron,,305,Lairon,,Level up,32,,,,,,,,,,,,,,,,0,0,,,,,,Level 32,Ruby / Sapphire,1
+161,151,305,Lairon,,306,Aggron,,Level up,42,,,,,,,,,,,,,,,,0,0,,,,,,Level 42,Ruby / Sapphire,1
+162,152,307,Meditite,,308,Medicham,,Level up,37,,,,,,,,,,,,,,,,0,0,,,,,,Level 37,Ruby / Sapphire,1
+163,153,309,Electrike,,310,Manectric,,Level up,26,,,,,,,,,,,,,,,,0,0,,,,,,Level 26,Ruby / Sapphire,1
+164,158,406,Budew,,315,Roselia,,Level up,,,,,,160,,,day,,,,,,,,0,0,,,,,,Level up with high friendship (160+) during the day,Diamond / Pearl,1
+204,158,315,Roselia,,407,Roserade,,Use item,,Shiny Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Shiny Stone,Diamond / Pearl,1
+165,159,316,Gulpin,,317,Swalot,,Level up,26,,,,,,,,,,,,,,,,0,0,,,,,,Level 26,Ruby / Sapphire,1
+166,160,318,Carvanha,,319,Sharpedo,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Ruby / Sapphire,1
+167,161,320,Wailmer,,321,Wailord,,Level up,40,,,,,,,,,,,,,,,,0,0,,,,,,Level 40,Ruby / Sapphire,1
+168,162,322,Numel,,323,Camerupt,,Level up,33,,,,,,,,,,,,,,,,0,0,,,,,,Level 33,Ruby / Sapphire,1
+169,164,325,Spoink,,326,Grumpig,,Level up,32,,,,,,,,,,,,,,,,0,0,,,,,,Level 32,Ruby / Sapphire,1
+170,166,328,Trapinch,,329,Vibrava,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,Ruby / Sapphire,1
+171,166,329,Vibrava,,330,Flygon,,Level up,45,,,,,,,,,,,,,,,,0,0,,,,,,Level 45,Ruby / Sapphire,1
+172,167,331,Cacnea,,332,Cacturne,,Level up,32,,,,,,,,,,,,,,,,0,0,,,,,,Level 32,Ruby / Sapphire,1
+173,168,333,Swablu,,334,Altaria,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,Ruby / Sapphire,1
+174,173,339,Barboach,,340,Whiscash,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Ruby / Sapphire,1
+175,174,341,Corphish,,342,Crawdaunt,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Ruby / Sapphire,1
+176,175,343,Baltoy,,344,Claydol,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Ruby / Sapphire,1
+177,176,345,Lileep,,346,Cradily,,Level up,40,,,,,,,,,,,,,,,,0,0,,,,,,Level 40,Ruby / Sapphire,1
+178,177,347,Anorith,,348,Armaldo,,Level up,40,,,,,,,,,,,,,,,,0,0,,,,,,Level 40,Ruby / Sapphire,1
+321,178,349,Feebas,,350,Milotic,,Trade or Linking Cord,,,Prism Scale,,,,,,,,,,,,,,0,0,,,,,,Trade while holding Prism Scale,Black / White,1
+179,178,349,Feebas,,350,Milotic,,Level up,,,,,,,,170,,,,,,,,,0,0,,,,,,Level up with 170+ Beauty,Ruby / Sapphire,0
+553,178,349,Feebas,,350,Milotic,,Level up,,,,,,,,170,,,,,,,,,0,0,,,,,,Level up with 170+ Beauty,Omega Ruby / Alpha Sapphire,0
+704,178,349,Feebas,,350,Milotic,,Level up,,,,,,,,170,,,,,,,,,0,0,,,,,,Level up with 170+ Beauty,Brilliant Diamond / Shining Pearl,0
+705,178,349,Feebas,,350,Milotic,,Trade or Linking Cord,,,Meteorite,,,,,,,,,,,,,,0,0,,,,,,Trade while holding Meteorite,Brilliant Diamond / Shining Pearl,0
+180,181,353,Shuppet,,354,Banette,,Level up,37,,,,,,,,,,,,,,,,0,0,,,,,,Level 37,Ruby / Sapphire,1
+181,182,355,Duskull,,356,Dusclops,,Level up,37,,,,,,,,,,,,,,,,0,0,,,,,,Level 37,Ruby / Sapphire,1
+245,182,356,Dusclops,,477,Dusknoir,,Trade or Linking Cord,,,Reaper Cloth,,,,,,,,,,,,,,0,0,,,,,,Trade while holding Reaper Cloth,Diamond / Pearl,1
+693,182,356,Dusclops,,477,Dusknoir,,Use item,,Reaper Cloth,,,,,,,,,,,,,,,0,0,,,,,,Use Reaper Cloth,Legends: Arceus,0
+182,184,433,Chingling,,358,Chimecho,,Level up,,,,,,220,,,night,,,,,,,,0,0,,,,,,Level up with high friendship (220+) at night,Diamond / Pearl,1
+183,186,361,Snorunt,,362,Glalie,,Level up,42,,,,,,,,,,,,,,,,0,0,,,,,,Level 42,Ruby / Sapphire,1
+246,186,361,Snorunt,,478,Froslass,,Use item,,Dawn Stone,,,,,,,,female,,,,,,,0,0,,,,,,Use Dawn Stone (female only),Diamond / Pearl,1
+184,187,363,Spheal,,364,Sealeo,,Level up,32,,,,,,,,,,,,,,,,0,0,,,,,,Level 32,Ruby / Sapphire,1
+185,187,364,Sealeo,,365,Walrein,,Level up,44,,,,,,,,,,,,,,,,0,0,,,,,,Level 44,Ruby / Sapphire,1
+186,188,366,Clamperl,,367,Huntail,,Trade or Linking Cord,,,Deep Sea Tooth,,,,,,,,,,,,,,0,0,,,,,,Trade while holding Deep Sea Tooth,Ruby / Sapphire,1
+187,188,366,Clamperl,,368,Gorebyss,,Trade or Linking Cord,,,Deep Sea Scale,,,,,,,,,,,,,,0,0,,,,,,Trade while holding Deep Sea Scale,Ruby / Sapphire,1
+188,191,371,Bagon,,372,Shelgon,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Ruby / Sapphire,1
+189,191,372,Shelgon,,373,Salamence,,Level up,50,,,,,,,,,,,,,,,,0,0,,,,,,Level 50,Ruby / Sapphire,1
+190,192,374,Beldum,,375,Metang,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Ruby / Sapphire,1
+191,192,375,Metang,,376,Metagross,,Level up,45,,,,,,,,,,,,,,,,0,0,,,,,,Level 45,Ruby / Sapphire,1
+192,203,387,Turtwig,,388,Grotle,,Level up,18,,,,,,,,,,,,,,,,0,0,,,,,,Level 18,Diamond / Pearl,1
+193,203,388,Grotle,,389,Torterra,,Level up,32,,,,,,,,,,,,,,,,0,0,,,,,,Level 32,Diamond / Pearl,1
+194,204,390,Chimchar,,391,Monferno,,Level up,14,,,,,,,,,,,,,,,,0,0,,,,,,Level 14,Diamond / Pearl,1
+195,204,391,Monferno,,392,Infernape,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Diamond / Pearl,1
+196,205,393,Piplup,,394,Prinplup,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Diamond / Pearl,1
+197,205,394,Prinplup,,395,Empoleon,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Diamond / Pearl,1
+198,206,396,Starly,,397,Staravia,,Level up,14,,,,,,,,,,,,,,,,0,0,,,,,,Level 14,Diamond / Pearl,1
+199,206,397,Staravia,,398,Staraptor,,Level up,34,,,,,,,,,,,,,,,,0,0,,,,,,Level 34,Diamond / Pearl,1
+200,207,399,Bidoof,,400,Bibarel,,Level up,15,,,,,,,,,,,,,,,,0,0,,,,,,Level 15,Diamond / Pearl,1
+201,208,401,Kricketot,,402,Kricketune,,Level up,10,,,,,,,,,,,,,,,,0,0,,,,,,Level 10,Diamond / Pearl,1
+202,209,403,Shinx,,404,Luxio,,Level up,15,,,,,,,,,,,,,,,,0,0,,,,,,Level 15,Diamond / Pearl,1
+203,209,404,Luxio,,405,Luxray,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Diamond / Pearl,1
+205,211,408,Cranidos,,409,Rampardos,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Diamond / Pearl,1
+206,212,410,Shieldon,,411,Bastiodon,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Diamond / Pearl,1
+207,213,412,Burmy,,413,Wormadam,,Level up,20,,,,,,,,,female,,,,,,,0,0,,,,,,Level 20 (female only),Diamond / Pearl,1
+565,213,412,Burmy,Sandy Burmy,413,Wormadam,Sandy Wormadam,Level up,20,,,,,,,,,female,,,,,,,0,0,,,,,,Level 20 (female only),Diamond / Pearl,1
+566,213,412,Burmy,Trash Burmy,413,Wormadam,Trash Wormadam,Level up,20,,,,,,,,,female,,,,,,,0,0,,,,,,Level 20 (female only),Diamond / Pearl,1
+208,213,412,Burmy,,414,Mothim,,Level up,20,,,,,,,,,male,,,,,,,0,0,,,,,,Level 20 (male only),Diamond / Pearl,1
+209,214,415,Combee,,416,Vespiquen,,Level up,21,,,,,,,,,female,,,,,,,0,0,,,,,,Level 21 (female only),Diamond / Pearl,1
+210,216,418,Buizel,,419,Floatzel,,Level up,26,,,,,,,,,,,,,,,,0,0,,,,,,Level 26,Diamond / Pearl,1
+211,217,420,Cherubi,,421,Cherrim,,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Diamond / Pearl,1
+212,218,422,Shellos,,423,Gastrodon,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Diamond / Pearl,1
+578,218,422,Shellos,East Shellos,423,Gastrodon,East Gastrodon,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Diamond / Pearl,1
+214,219,425,Drifloon,,426,Drifblim,,Level up,28,,,,,,,,,,,,,,,,0,0,,,,,,Level 28,Diamond / Pearl,1
+215,220,427,Buneary,,428,Lopunny,,Level up,,,,,,160,,,,,,,,,,,0,0,,,,,,Level up with high friendship (160+),Diamond / Pearl,1
+218,221,431,Glameow,,432,Purugly,,Level up,38,,,,,,,,,,,,,,,,0,0,,,,,,Level 38,Diamond / Pearl,1
+219,223,434,Stunky,,435,Skuntank,,Level up,34,,,,,,,,,,,,,,,,0,0,,,,,,Level 34,Diamond / Pearl,1
+220,224,436,Bronzor,,437,Bronzong,,Level up,33,,,,,,,,,,,,,,,,0,0,,,,,,Level 33,Diamond / Pearl,1
+221,230,443,Gible,,444,Gabite,,Level up,24,,,,,,,,,,,,,,,,0,0,,,,,,Level 24,Diamond / Pearl,1
+222,230,444,Gabite,,445,Garchomp,,Level up,48,,,,,,,,,,,,,,,,0,0,,,,,,Level 48,Diamond / Pearl,1
+223,232,447,Riolu,,448,Lucario,,Level up,,,,,,160,,,day,,,,,,,,0,0,,,,,,Level up with high friendship (160+) during the day,Diamond / Pearl,1
+224,233,449,Hippopotas,,450,Hippowdon,,Level up,34,,,,,,,,,,,,,,,,0,0,,,,,,Level 34,Diamond / Pearl,1
+225,234,451,Skorupi,,452,Drapion,,Level up,40,,,,,,,,,,,,,,,,0,0,,,,,,Level 40,Diamond / Pearl,1
+226,235,453,Croagunk,,454,Toxicroak,,Level up,37,,,,,,,,,,,,,,,,0,0,,,,,,Level 37,Diamond / Pearl,1
+227,237,456,Finneon,,457,Lumineon,,Level up,31,,,,,,,,,,,,,,,,0,0,,,,,,Level 31,Diamond / Pearl,1
+228,239,459,Snover,,460,Abomasnow,,Level up,40,,,,,,,,,,,,,,,,0,0,,,,,,Level 40,Diamond / Pearl,1
+247,256,495,Snivy,,496,Servine,,Level up,17,,,,,,,,,,,,,,,,0,0,,,,,,Level 17,Black / White,1
+248,256,496,Servine,,497,Serperior,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Black / White,1
+249,257,498,Tepig,,499,Pignite,,Level up,17,,,,,,,,,,,,,,,,0,0,,,,,,Level 17,Black / White,1
+250,257,499,Pignite,,500,Emboar,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Black / White,1
+251,258,501,Oshawott,,502,Dewott,,Level up,17,,,,,,,,,,,,,,,,0,0,,,,,,Level 17,Black / White,1
+252,258,502,Dewott,,503,Samurott,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Black / White,1
+527,258,502,Dewott,,503,Samurott,Hisuian Samurott,Level up,36,,,,,,,,,,,Hisui,,,,,0,0,,,,,,Level 36 in Hisui,Legends: Arceus,1
+253,259,504,Patrat,,505,Watchog,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Black / White,1
+254,260,506,Lillipup,,507,Herdier,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Black / White,1
+255,260,507,Herdier,,508,Stoutland,,Level up,32,,,,,,,,,,,,,,,,0,0,,,,,,Level 32,Black / White,1
+256,261,509,Purrloin,,510,Liepard,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Black / White,1
+257,262,511,Pansage,,512,Simisage,,Use item,,Leaf Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Leaf Stone,Black / White,1
+258,263,513,Pansear,,514,Simisear,,Use item,,Fire Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Fire Stone,Black / White,1
+259,264,515,Panpour,,516,Simipour,,Use item,,Water Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Water Stone,Black / White,1
+260,265,517,Munna,,518,Musharna,,Use item,,Moon Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Moon Stone,Black / White,1
+261,266,519,Pidove,,520,Tranquill,,Level up,21,,,,,,,,,,,,,,,,0,0,,,,,,Level 21,Black / White,1
+262,266,520,Tranquill,,521,Unfezant,,Level up,32,,,,,,,,,,,,,,,,0,0,,,,,,Level 32,Black / White,1
+263,267,522,Blitzle,,523,Zebstrika,,Level up,27,,,,,,,,,,,,,,,,0,0,,,,,,Level 27,Black / White,1
+264,268,524,Roggenrola,,525,Boldore,,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Black / White,1
+265,268,525,Boldore,,526,Gigalith,,Trade or Linking Cord,,,,,,,,,,,,,,,,,0,0,,,,,,Trade,Black / White,1
+266,269,527,Woobat,,528,Swoobat,,Level up,,,,,,160,,,,,,,,,,,0,0,,,,,,Level up with high friendship (160+),Black / White,1
+267,270,529,Drilbur,,530,Excadrill,,Level up,31,,,,,,,,,,,,,,,,0,0,,,,,,Level 31,Black / White,1
+268,272,532,Timburr,,533,Gurdurr,,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Black / White,1
+269,272,533,Gurdurr,,534,Conkeldurr,,Trade or Linking Cord,,,,,,,,,,,,,,,,,0,0,,,,,,Trade,Black / White,1
+270,273,535,Tympole,,536,Palpitoad,,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Black / White,1
+271,273,536,Palpitoad,,537,Seismitoad,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Black / White,1
+272,276,540,Sewaddle,,541,Swadloon,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Black / White,1
+273,276,541,Swadloon,,542,Leavanny,,Level up,,,,,,220,,,,,,,,,,,0,0,,,,,,Level up with high friendship (220+),Black / White,1
+274,277,543,Venipede,,544,Whirlipede,,Level up,22,,,,,,,,,,,,,,,,0,0,,,,,,Level 22,Black / White,1
+275,277,544,Whirlipede,,545,Scolipede,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Black / White,1
+276,278,546,Cottonee,,547,Whimsicott,,Use item,,Sun Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Sun Stone,Black / White,1
+277,279,548,Petilil,,549,Lilligant,,Use item,,Sun Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Sun Stone,Black / White,1
+528,279,548,Petilil,,549,Lilligant,Hisuian Lilligant,Use item,,Sun Stone,,,,,,,,,,Hisui,,,,,0,0,,,,,,Use Sun Stone in Hisui,Legends: Arceus,1
+465,280,550,Basculin,White-Striped Basculin,902,Basculegion,,Take recoil damage,,,,,,,,,,male,,,,,,,0,0,,,,294,,Lose at least 294 HP from recoil damage without fainting (male only),Legends: Arceus,1
+562,280,550,Basculin,White-Striped Basculin,902,Basculegion,Female Basculegion,Take recoil damage,,,,,,,,,,female,,,,,,,0,0,,,,294,,Lose at least 294 HP from recoil damage without fainting (female only),Legends: Arceus,1
+278,281,551,Sandile,,552,Krokorok,,Level up,29,,,,,,,,,,,,,,,,0,0,,,,,,Level 29,Black / White,1
+279,281,552,Krokorok,,553,Krookodile,,Level up,40,,,,,,,,,,,,,,,,0,0,,,,,,Level 40,Black / White,1
+280,282,554,Darumaka,,555,Darmanitan,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,Black / White,1
+458,282,554,Darumaka,Galarian Darumaka,555,Darmanitan,Standard Galarian Darmanitan,Use item,,Ice Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Ice Stone,Sword / Shield,1
+281,284,557,Dwebble,,558,Crustle,,Level up,34,,,,,,,,,,,,,,,,0,0,,,,,,Level 34,Black / White,1
+282,285,559,Scraggy,,560,Scrafty,,Level up,39,,,,,,,,,,,,,,,,0,0,,,,,,Level 39,Black / White,1
+283,287,562,Yamask,,563,Cofagrigus,,Level up,34,,,,,,,,,,,,,,,,0,0,,,,,,Level 34,Black / White,1
+459,287,562,Yamask,Galarian Yamask,867,Runerigus,,Go somewhere after taking damage,,,,,,,,,,,Dusty Bowl,,,,,,0,0,,,,49,,"Lose at least 49 HP in battle, then pass under the stone arch at Dusty Bowl",Sword / Shield,1
+706,287,562,Yamask,Galarian Yamask,867,Runerigus,,Go somewhere after taking damage,,,,,,,,,,,Lumiose City,,,,,,0,0,,,,49,,"Lose at least 49 HP in battle, then pass under the stone arch at Lumiose City",Legends: Z-A,0
+284,288,564,Tirtouga,,565,Carracosta,,Level up,37,,,,,,,,,,,,,,,,0,0,,,,,,Level 37,Black / White,1
+285,289,566,Archen,,567,Archeops,,Level up,37,,,,,,,,,,,,,,,,0,0,,,,,,Level 37,Black / White,1
+286,290,568,Trubbish,,569,Garbodor,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Black / White,1
+287,291,570,Zorua,,571,Zoroark,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Black / White,1
+529,291,570,Zorua,Hisuian Zorua,571,Zoroark,Hisuian Zoroark,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Legends: Arceus,1
+288,292,572,Minccino,,573,Cinccino,,Use item,,Shiny Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Shiny Stone,Black / White,1
+289,293,574,Gothita,,575,Gothorita,,Level up,32,,,,,,,,,,,,,,,,0,0,,,,,,Level 32,Black / White,1
+290,293,575,Gothorita,,576,Gothitelle,,Level up,41,,,,,,,,,,,,,,,,0,0,,,,,,Level 41,Black / White,1
+291,294,577,Solosis,,578,Duosion,,Level up,32,,,,,,,,,,,,,,,,0,0,,,,,,Level 32,Black / White,1
+292,294,578,Duosion,,579,Reuniclus,,Level up,41,,,,,,,,,,,,,,,,0,0,,,,,,Level 41,Black / White,1
+293,295,580,Ducklett,,581,Swanna,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,Black / White,1
+294,296,582,Vanillite,,583,Vanillish,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,Black / White,1
+295,296,583,Vanillish,,584,Vanilluxe,,Level up,47,,,,,,,,,,,,,,,,0,0,,,,,,Level 47,Black / White,1
+296,297,585,Deerling,,586,Sawsbuck,,Level up,34,,,,,,,,,,,,,,,,0,0,,,,,,Level 34,Black / White,1
+579,297,585,Deerling,Summer Deerling,586,Sawsbuck,Summer Sawsbuck,Level up,34,,,,,,,,,,,,,,,,0,0,,,,,,Level 34,Black / White,1
+580,297,585,Deerling,Autumn Deerling,586,Sawsbuck,Autumn Sawsbuck,Level up,34,,,,,,,,,,,,,,,,0,0,,,,,,Level 34,Black / White,1
+581,297,585,Deerling,Winter Deerling,586,Sawsbuck,Winter Sawsbuck,Level up,34,,,,,,,,,,,,,,,,0,0,,,,,,Level 34,Black / White,1
+297,299,588,Karrablast,,589,Escavalier,,Trade or Linking Cord,,,,,,,,,,,,,,,Shelmet,,0,0,,,,,,Trade for Shelmet,Black / White,1
+298,300,590,Foongus,,591,Amoonguss,,Level up,39,,,,,,,,,,,,,,,,0,0,,,,,,Level 39,Black / White,1
+299,301,592,Frillish,,593,Jellicent,,Level up,40,,,,,,,,,,,,,,,,0,0,,,,,,Level 40,Black / White,1
+300,303,595,Joltik,,596,Galvantula,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Black / White,1
+301,304,597,Ferroseed,,598,Ferrothorn,,Level up,40,,,,,,,,,,,,,,,,0,0,,,,,,Level 40,Black / White,1
+302,305,599,Klink,,600,Klang,,Level up,38,,,,,,,,,,,,,,,,0,0,,,,,,Level 38,Black / White,1
+303,305,600,Klang,,601,Klinklang,,Level up,49,,,,,,,,,,,,,,,,0,0,,,,,,Level 49,Black / White,1
+304,306,602,Tynamo,,603,Eelektrik,,Level up,39,,,,,,,,,,,,,,,,0,0,,,,,,Level 39,Black / White,1
+305,306,603,Eelektrik,,604,Eelektross,,Use item,,Thunder Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Thunder Stone,Black / White,1
+306,307,605,Elgyem,,606,Beheeyem,,Level up,42,,,,,,,,,,,,,,,,0,0,,,,,,Level 42,Black / White,1
+307,308,607,Litwick,,608,Lampent,,Level up,41,,,,,,,,,,,,,,,,0,0,,,,,,Level 41,Black / White,1
+308,308,608,Lampent,,609,Chandelure,,Use item,,Dusk Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Dusk Stone,Black / White,1
+309,309,610,Axew,,611,Fraxure,,Level up,38,,,,,,,,,,,,,,,,0,0,,,,,,Level 38,Black / White,1
+310,309,611,Fraxure,,612,Haxorus,,Level up,48,,,,,,,,,,,,,,,,0,0,,,,,,Level 48,Black / White,1
+311,310,613,Cubchoo,,614,Beartic,,Level up,37,,,,,,,,,,,,,,,,0,0,,,,,,Level 37,Black / White,1
+312,312,616,Shelmet,,617,Accelgor,,Trade or Linking Cord,,,,,,,,,,,,,,,Karrablast,,0,0,,,,,,Trade for Karrablast,Black / White,1
+313,314,619,Mienfoo,,620,Mienshao,,Level up,50,,,,,,,,,,,,,,,,0,0,,,,,,Level 50,Black / White,1
+314,316,622,Golett,,623,Golurk,,Level up,43,,,,,,,,,,,,,,,,0,0,,,,,,Level 43,Black / White,1
+315,317,624,Pawniard,,625,Bisharp,,Level up,52,,,,,,,,,,,,,,,,0,0,,,,,,Level 52,Black / White,1
+508,317,625,Bisharp,,983,Kingambit,,Defeat three Bisharp that hold a Leader's Crest,,,,,,,,,,,,,,,,,0,0,,,,,,Defeat three Bisharp that hold a Leader's Crest,Scarlet / Violet,1
+316,319,627,Rufflet,,628,Braviary,,Level up,54,,,,,,,,,,,,,,,,0,0,,,,,,Level 54,Black / White,1
+530,319,627,Rufflet,,628,Braviary,Hisuian Braviary,Level up,54,,,,,,,,,,,Hisui,,,,,0,0,,,,,,Level 54 in Hisui,Legends: Arceus,1
+317,320,629,Vullaby,,630,Mandibuzz,,Level up,54,,,,,,,,,,,,,,,,0,0,,,,,,Level 54,Black / White,1
+318,323,633,Deino,,634,Zweilous,,Level up,50,,,,,,,,,,,,,,,,0,0,,,,,,Level 50,Black / White,1
+319,323,634,Zweilous,,635,Hydreigon,,Level up,64,,,,,,,,,,,,,,,,0,0,,,,,,Level 64,Black / White,1
+320,324,636,Larvesta,,637,Volcarona,,Level up,59,,,,,,,,,,,,,,,,0,0,,,,,,Level 59,Black / White,1
+334,337,650,Chespin,,651,Quilladin,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,X / Y,1
+336,337,651,Quilladin,,652,Chesnaught,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,X / Y,1
+331,338,653,Fennekin,,654,Braixen,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,X / Y,1
+333,338,654,Braixen,,655,Delphox,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,X / Y,1
+337,339,656,Froakie,,657,Frogadier,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,X / Y,1
+338,339,657,Frogadier,,658,Greninja,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,X / Y,1
+345,340,659,Bunnelby,,660,Diggersby,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,X / Y,1
+328,341,661,Fletchling,,662,Fletchinder,,Level up,17,,,,,,,,,,,,,,,,0,0,,,,,,Level 17,X / Y,1
+330,341,662,Fletchinder,,663,Talonflame,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,X / Y,1
+342,342,664,Scatterbug,,665,Spewpa,,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+582,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+583,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+584,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+585,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+586,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+587,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+588,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+589,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+590,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+591,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+592,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+593,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+594,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+595,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+596,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+597,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+598,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+599,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+600,342,664,Scatterbug,Scatterbug,665,Spewpa,Spewpa,Level up,9,,,,,,,,,,,,,,,,0,0,,,,,,Level 9,X / Y,1
+341,342,665,Spewpa,,666,Vivillon,Icy Snow Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+601,342,665,Spewpa,Spewpa,666,Vivillon,Polar Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+602,342,665,Spewpa,Spewpa,666,Vivillon,Tundra Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+603,342,665,Spewpa,Spewpa,666,Vivillon,Continental Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+604,342,665,Spewpa,Spewpa,666,Vivillon,Garden Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+605,342,665,Spewpa,Spewpa,666,Vivillon,Elegant Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+606,342,665,Spewpa,Spewpa,666,Vivillon,,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+607,342,665,Spewpa,Spewpa,666,Vivillon,Modern Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+608,342,665,Spewpa,Spewpa,666,Vivillon,Marine Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+609,342,665,Spewpa,Spewpa,666,Vivillon,Archipelago Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+610,342,665,Spewpa,Spewpa,666,Vivillon,High Plains Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+611,342,665,Spewpa,Spewpa,666,Vivillon,Sandstorm Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+612,342,665,Spewpa,Spewpa,666,Vivillon,River Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+613,342,665,Spewpa,Spewpa,666,Vivillon,Monsoon Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+614,342,665,Spewpa,Spewpa,666,Vivillon,Savanna Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+615,342,665,Spewpa,Spewpa,666,Vivillon,Sun Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+616,342,665,Spewpa,Spewpa,666,Vivillon,Ocean Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+617,342,665,Spewpa,Spewpa,666,Vivillon,Jungle Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+618,342,665,Spewpa,Spewpa,666,Vivillon,Fancy Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+619,342,665,Spewpa,Spewpa,666,Vivillon,Poké Ball Vivillon,Level up,12,,,,,,,,,,,,,,,,0,0,,,,,,Level 12,X / Y,1
+356,343,667,Litleo,,668,Pyroar,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,X / Y,1
+346,344,669,Flabébé,,670,Floette,,Level up,19,,,,,,,,,,,,,,,,0,0,,,,,,Level 19,X / Y,1
+570,344,669,Flabébé,Yellow Flabébé,670,Floette,Yellow Floette,Level up,19,,,,,,,,,,,,,,,,0,0,,,,,,Level 19,X / Y,1
+571,344,669,Flabébé,Orange Flabébé,670,Floette,Orange Floette,Level up,19,,,,,,,,,,,,,,,,0,0,,,,,,Level 19,X / Y,1
+572,344,669,Flabébé,Blue Flabébé,670,Floette,Blue Floette,Level up,19,,,,,,,,,,,,,,,,0,0,,,,,,Level 19,X / Y,1
+573,344,669,Flabébé,White Flabébé,670,Floette,White Floette,Level up,19,,,,,,,,,,,,,,,,0,0,,,,,,Level 19,X / Y,1
+347,344,670,Floette,,671,Florges,,Use item,,Shiny Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Shiny Stone,X / Y,1
+574,344,670,Floette,Yellow Floette,671,Florges,Yellow Florges,Use item,,Shiny Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Shiny Stone,X / Y,1
+575,344,670,Floette,Orange Floette,671,Florges,Orange Florges,Use item,,Shiny Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Shiny Stone,X / Y,1
+576,344,670,Floette,Blue Floette,671,Florges,Blue Florges,Use item,,Shiny Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Shiny Stone,X / Y,1
+577,344,670,Floette,White Floette,671,Florges,White Florges,Use item,,Shiny Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Shiny Stone,X / Y,1
+357,345,672,Skiddo,,673,Gogoat,,Level up,32,,,,,,,,,,,,,,,,0,0,,,,,,Level 32,X / Y,1
+349,346,674,Pancham,,675,Pangoro,,Level up,32,,,,,,,,,,,,,dark,,,0,0,,,,,,Level 32 with a Dark-type Pokémon in the party,X / Y,1
+360,348,677,Espurr,,678,Meowstic,,Level up,25,,,,,,,,,male,,,,,,,0,0,,,,,,Level 25 (male only),X / Y,1
+557,348,677,Espurr,,678,Meowstic,Female Meowstic,Level up,25,,,,,,,,,female,,,,,,,0,0,,,,,,Level 25 (female only),X / Y,1
+339,349,679,Honedge,,680,Doublade,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,X / Y,1
+348,349,680,Doublade,,681,Aegislash,,Use item,,Dusk Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Dusk Stone,X / Y,1
+327,350,682,Spritzee,,683,Aromatisse,,Trade or Linking Cord,,,Sachet,,,,,,,,,,,,,,0,0,,,,,,Trade while holding Sachet,Black / White,1
+350,351,684,Swirlix,,685,Slurpuff,,Trade or Linking Cord,,,Whipped Dream,,,,,,,,,,,,,,0,0,,,,,,Trade while holding Whipped Dream,X / Y,1
+332,352,686,Inkay,,687,Malamar,,Level up,30,,,,,,,,,,,,,,,,0,1,,,,,,Level 30 while holding the console upside down,X / Y,1
+343,353,688,Binacle,,689,Barbaracle,,Level up,39,,,,,,,,,,,,,,,,0,0,,,,,,Level 39,X / Y,1
+351,354,690,Skrelp,,691,Dragalge,,Level up,48,,,,,,,,,,,,,,,,0,0,,,,,,Level 48,X / Y,1
+335,355,692,Clauncher,,693,Clawitzer,,Level up,37,,,,,,,,,,,,,,,,0,0,,,,,,Level 37,X / Y,1
+355,356,694,Helioptile,,695,Heliolisk,,Use item,,Sun Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Sun Stone,X / Y,1
+352,357,696,Tyrunt,,697,Tyrantrum,,Level up,39,,,,,,,,day,,,,,,,,0,0,,,,,,Level 39 during the day,X / Y,1
+353,358,698,Amaura,,699,Aurorus,,Level up,39,,,,,,,,night,,,,,,,,0,0,,,,,,Level 39 at night,X / Y,1
+340,362,704,Goomy,,705,Sliggoo,,Level up,40,,,,,,,,,,,,,,,,0,0,,,,,,Level 40,X / Y,1
+531,362,704,Goomy,,705,Sliggoo,Hisuian Sliggoo,Level up,40,,,,,,,,,,,Hisui,,,,,0,0,,,,,,Level 40 in Hisui,Legends: Arceus,1
+358,362,705,Sliggoo,,706,Goodra,,Level up,50,,,,,,,,,,,,,,,,1,0,,,,,,Level 50 while it is raining,X / Y,1
+532,362,705,Sliggoo,Hisuian Sliggoo,706,Goodra,Hisuian Goodra,Level up,50,,,,,,,,,,,,,,,,1,0,,,,,,Level 50 while it is raining,Legends: Arceus,1
+329,364,708,Phantump,,709,Trevenant,,Trade or Linking Cord,,,,,,,,,,,,,,,,,0,0,,,,,,Trade,X / Y,1
+344,365,710,Pumpkaboo,,711,Gourgeist,,Trade or Linking Cord,,,,,,,,,,,,,,,,,0,0,,,,,,Trade,X / Y,1
+554,365,710,Pumpkaboo,Small Pumpkaboo,711,Gourgeist,Small Gourgeist,Trade or Linking Cord,,,,,,,,,,,,,,,,,0,0,,,,,,Trade,X / Y,1
+555,365,710,Pumpkaboo,Large Pumpkaboo,711,Gourgeist,Large Gourgeist,Trade or Linking Cord,,,,,,,,,,,,,,,,,0,0,,,,,,Trade,X / Y,1
+556,365,710,Pumpkaboo,Super Pumpkaboo,711,Gourgeist,Super Gourgeist,Trade or Linking Cord,,,,,,,,,,,,,,,,,0,0,,,,,,Trade,X / Y,1
+354,366,712,Bergmite,,713,Avalugg,,Level up,37,,,,,,,,,,,,,,,,0,0,,,,,,Level 37,X / Y,1
+533,366,712,Bergmite,,713,Avalugg,Hisuian Avalugg,Level up,37,,,,,,,,,,,Hisui,,,,,0,0,,,,,,Level 37 in Hisui,Legends: Arceus,1
+359,367,714,Noibat,,715,Noivern,,Level up,48,,,,,,,,,,,,,,,,0,0,,,,,,Level 48,X / Y,1
+373,374,722,Rowlet,,723,Dartrix,,Level up,17,,,,,,,,,,,,,,,,0,0,,,,,,Level 17,Sun / Moon,1
+374,374,723,Dartrix,,724,Decidueye,,Level up,34,,,,,,,,,,,,,,,,0,0,,,,,,Level 34,Sun / Moon,1
+534,374,723,Dartrix,,724,Decidueye,Hisuian Decidueye,Level up,36,,,,,,,,,,,Hisui,,,,,0,0,,,,,,Level 36 in Hisui,Legends: Arceus,1
+375,375,725,Litten,,726,Torracat,,Level up,17,,,,,,,,,,,,,,,,0,0,,,,,,Level 17,Sun / Moon,1
+376,375,726,Torracat,,727,Incineroar,,Level up,34,,,,,,,,,,,,,,,,0,0,,,,,,Level 34,Sun / Moon,1
+377,376,728,Popplio,,729,Brionne,,Level up,17,,,,,,,,,,,,,,,,0,0,,,,,,Level 17,Sun / Moon,1
+378,376,729,Brionne,,730,Primarina,,Level up,34,,,,,,,,,,,,,,,,0,0,,,,,,Level 34,Sun / Moon,1
+379,377,731,Pikipek,,732,Trumbeak,,Level up,14,,,,,,,,,,,,,,,,0,0,,,,,,Level 14,Sun / Moon,1
+380,377,732,Trumbeak,,733,Toucannon,,Level up,28,,,,,,,,,,,,,,,,0,0,,,,,,Level 28,Sun / Moon,1
+381,378,734,Yungoos,,735,Gumshoos,,Level up,20,,,,,,,,day,,,,,,,,0,0,,,,,,Level 20 during the day,Sun / Moon,1
+382,379,736,Grubbin,,737,Charjabug,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Sun / Moon,1
+410,379,737,Charjabug,,738,Vikavolt,,Use item,,Thunder Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Thunder Stone,Sword / Shield,1
+371,379,737,Charjabug,,738,Vikavolt,,Level up,,,,,,,,,,,Vast Poni Canyon,,,,,,0,0,,,,,,Level up at Vast Poni Canyon,Sun / Moon,0
+383,379,737,Charjabug,,738,Vikavolt,,Level up,,,,,,,,,,,Blush Mountain,,,,,,0,0,,,,,,Level up at Blush Mountain,Sun / Moon,0
+512,380,739,Crabrawler,,740,Crabominable,,Use item,,Ice Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Ice Stone,Scarlet / Violet,1
+384,380,739,Crabrawler,,740,Crabominable,,Level up,,,,,,,,,,,Mount Lanakila,,,,,,0,0,,,,,,Level up at Mount Lanakila,Sun / Moon,0
+385,382,742,Cutiefly,,743,Ribombee,,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Sun / Moon,1
+386,383,744,Rockruff,,745,Lycanroc,,Level up,25,,,,,,,,day,,,,,,,,0,0,,,,,,Level 25 during the day,Sun / Moon,1
+387,383,744,Rockruff,,745,Lycanroc,Midnight Lycanroc,Level up,25,,,,,,,,night,,,,,,,,0,0,,,,,,Level 25 at night,Sun / Moon,1
+460,383,744,Rockruff,Own Tempo Rockruff,745,Lycanroc,Dusk Lycanroc,Level up,25,,,,,,,,dusk,,,,,,,,0,0,,,,,,Level 25 at dusk,Sun / Moon,1
+388,385,747,Mareanie,,748,Toxapex,,Level up,38,,,,,,,,,,,,,,,,0,0,,,,,,Level 38,Sun / Moon,1
+389,386,749,Mudbray,,750,Mudsdale,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Sun / Moon,1
+390,387,751,Dewpider,,752,Araquanid,,Level up,22,,,,,,,,,,,,,,,,0,0,,,,,,Level 22,Sun / Moon,1
+391,388,753,Fomantis,,754,Lurantis,,Level up,34,,,,,,,,day,,,,,,,,0,0,,,,,,Level 34 during the day,Sun / Moon,1
+392,389,755,Morelull,,756,Shiinotic,,Level up,24,,,,,,,,,,,,,,,,0,0,,,,,,Level 24,Sun / Moon,1
+393,390,757,Salandit,,758,Salazzle,,Level up,33,,,,,,,,,female,,,,,,,0,0,,,,,,Level 33 (female only),Sun / Moon,1
+394,391,759,Stufful,,760,Bewear,,Level up,27,,,,,,,,,,,,,,,,0,0,,,,,,Level 27,Sun / Moon,1
+395,392,761,Bounsweet,,762,Steenee,,Level up,18,,,,,,,,,,,,,,,,0,0,,,,,,Level 18,Sun / Moon,1
+396,392,762,Steenee,,763,Tsareena,,Level up,,,,Stomp,,,,,,,,,,,,,0,0,,,,,,Level up while knowing Stomp,Sun / Moon,1
+397,396,767,Wimpod,,768,Golisopod,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Sun / Moon,1
+398,397,769,Sandygast,,770,Palossand,,Level up,42,,,,,,,,,,,,,,,,0,0,,,,,,Level 42,Sun / Moon,1
+399,399,772,Type: Null,,773,Silvally,,Level up,,,,,,160,,,,,,,,,,,0,0,,,,,,Level up with high friendship (160+),Sun / Moon,1
+400,408,782,Jangmo-o,,783,Hakamo-o,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,Sun / Moon,1
+401,408,783,Hakamo-o,,784,Kommo-o,,Level up,45,,,,,,,,,,,,,,,,0,0,,,,,,Level 45,Sun / Moon,1
+402,413,789,Cosmog,,790,Cosmoem,,Level up,43,,,,,,,,,,,,,,,,0,0,,,,,,Level 43,Sun / Moon,1
+403,413,790,Cosmoem,,791,Solgaleo,,Level up,53,,,,,,,,,,,,,,,,0,0,,,,,,Level 53,Sun / Moon,1
+404,413,790,Cosmoem,,792,Lunala,,Level up,53,,,,,,,,,,,,,,,,0,0,,,,,,Level 53,Sun / Moon,1
+405,424,803,Poipole,,804,Naganadel,,Level up,,,,Dragon Pulse,,,,,,,,,,,,,0,0,,,,,,Level up while knowing Dragon Pulse,Ultra Sun / Ultra Moon,1
+567,428,808,Meltan,,809,Melmetal,,Feed 400 Meltan Candies in Pokémon GO,,,,,,,,,,,,,,,,,0,0,,,,,,Feed 400 Meltan Candies (Pokémon GO),"Let's Go, Pikachu! / Let's Go, Eevee!",1
+411,430,810,Grookey,,811,Thwackey,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Sword / Shield,1
+412,430,811,Thwackey,,812,Rillaboom,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,Sword / Shield,1
+413,431,813,Scorbunny,,814,Raboot,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Sword / Shield,1
+414,431,814,Raboot,,815,Cinderace,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,Sword / Shield,1
+415,432,816,Sobble,,817,Drizzile,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Sword / Shield,1
+416,432,817,Drizzile,,818,Inteleon,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,Sword / Shield,1
+417,433,819,Skwovet,,820,Greedent,,Level up,24,,,,,,,,,,,,,,,,0,0,,,,,,Level 24,Sword / Shield,1
+418,434,821,Rookidee,,822,Corvisquire,,Level up,18,,,,,,,,,,,,,,,,0,0,,,,,,Level 18,Sword / Shield,1
+419,434,822,Corvisquire,,823,Corviknight,,Level up,38,,,,,,,,,,,,,,,,0,0,,,,,,Level 38,Sword / Shield,1
+420,435,824,Blipbug,,825,Dottler,,Level up,10,,,,,,,,,,,,,,,,0,0,,,,,,Level 10,Sword / Shield,1
+421,435,825,Dottler,,826,Orbeetle,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Sword / Shield,1
+422,436,827,Nickit,,828,Thievul,,Level up,18,,,,,,,,,,,,,,,,0,0,,,,,,Level 18,Sword / Shield,1
+423,437,829,Gossifleur,,830,Eldegoss,,Level up,20,,,,,,,,,,,,,,,,0,0,,,,,,Level 20,Sword / Shield,1
+424,438,831,Wooloo,,832,Dubwool,,Level up,24,,,,,,,,,,,,,,,,0,0,,,,,,Level 24,Sword / Shield,1
+425,439,833,Chewtle,,834,Drednaw,,Level up,22,,,,,,,,,,,,,,,,0,0,,,,,,Level 22,Sword / Shield,1
+426,440,835,Yamper,,836,Boltund,,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Sword / Shield,1
+427,441,837,Rolycoly,,838,Carkol,,Level up,18,,,,,,,,,,,,,,,,0,0,,,,,,Level 18,Sword / Shield,1
+428,441,838,Carkol,,839,Coalossal,,Level up,34,,,,,,,,,,,,,,,,0,0,,,,,,Level 34,Sword / Shield,1
+429,442,840,Applin,,841,Flapple,,Use item,,Tart Apple,,,,,,,,,,,,,,,0,0,,,,,,Use Tart Apple,Sword / Shield,1
+430,442,840,Applin,,842,Appletun,,Use item,,Sweet Apple,,,,,,,,,,,,,,,0,0,,,,,,Use Sweet Apple,Sword / Shield,1
+541,442,840,Applin,,1011,Dipplin,,Use item,,Syrupy Apple,,,,,,,,,,,,,,,0,0,,,,,,Use Syrupy Apple,Scarlet: The Teal Mask / Violet: The Teal Mask,1
+543,442,1011,Dipplin,,1019,Hydrapple,,Level up,,,,Dragon Cheer,,,,,,,,,,,,,0,0,,,,,,Level up while knowing Dragon Cheer,Scarlet: The Indigo Disk / Violet: The Indigo Disk,1
+431,443,843,Silicobra,,844,Sandaconda,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Sword / Shield,1
+432,445,846,Arrokuda,,847,Barraskewda,,Level up,26,,,,,,,,,,,,,,,,0,0,,,,,,Level 26,Sword / Shield,1
+433,446,848,Toxel,,849,Toxtricity,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30 with an Amped nature,Sword / Shield,1
+559,446,848,Toxel,,849,Toxtricity,Low Key Toxtricity,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30 with a Low Key nature,Sword / Shield,1
+434,447,850,Sizzlipede,,851,Centiskorch,,Level up,28,,,,,,,,,,,,,,,,0,0,,,,,,Level 28,Sword / Shield,1
+435,448,852,Clobbopus,,853,Grapploct,,Level up,,,,Taunt,,,,,,,,,,,,,0,0,,,,,,Level up while knowing Taunt,Sword / Shield,1
+436,449,854,Sinistea,,855,Polteageist,,Use item,,Cracked Pot,,,,,,,,,,,,,,,0,0,,,,,,Use Cracked Pot,Sword / Shield,1
+552,449,854,Sinistea,Antique Sinistea,855,Polteageist,Antique Polteageist,Use item,,Chipped Pot,,,,,,,,,,,,,,,0,0,,,,,,Use Chipped Pot,Sword / Shield,1
+437,450,856,Hatenna,,857,Hattrem,,Level up,32,,,,,,,,,,,,,,,,0,0,,,,,,Level 32,Sword / Shield,1
+438,450,857,Hattrem,,858,Hatterene,,Level up,42,,,,,,,,,,,,,,,,0,0,,,,,,Level 42,Sword / Shield,1
+439,451,859,Impidimp,,860,Morgrem,,Level up,32,,,,,,,,,,,,,,,,0,0,,,,,,Level 32,Sword / Shield,1
+440,451,860,Morgrem,,861,Grimmsnarl,,Level up,42,,,,,,,,,,,,,,,,0,0,,,,,,Level 42,Sword / Shield,1
+441,452,868,Milcery,,869,Alcremie,,Spin,,,Strawberry Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Strawberry Sweet during the day,Sword / Shield,1
+620,452,868,Milcery,,869,Alcremie,Ruby Cream Strawberry Sweet Alcremie,Spin,,,Strawberry Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Strawberry Sweet during the day,Sword / Shield,1
+621,452,868,Milcery,,869,Alcremie,Matcha Cream Strawberry Sweet Alcremie,Spin,,,Strawberry Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Strawberry Sweet at night,Sword / Shield,1
+622,452,868,Milcery,,869,Alcremie,Mint Cream Strawberry Sweet Alcremie,Spin,,,Strawberry Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Strawberry Sweet at night,Sword / Shield,1
+623,452,868,Milcery,,869,Alcremie,Lemon Cream Strawberry Sweet Alcremie,Spin,,,Strawberry Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Strawberry Sweet at night,Sword / Shield,1
+624,452,868,Milcery,,869,Alcremie,Salted Cream Strawberry Sweet Alcremie,Spin,,,Strawberry Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Strawberry Sweet at night,Sword / Shield,1
+625,452,868,Milcery,,869,Alcremie,Ruby Swirl Strawberry Sweet Alcremie,Spin,,,Strawberry Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Strawberry Sweet during the day,Sword / Shield,1
+626,452,868,Milcery,,869,Alcremie,Caramel Swirl Strawberry Sweet Alcremie,Spin,,,Strawberry Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Strawberry Sweet during the day,Sword / Shield,1
+627,452,868,Milcery,,869,Alcremie,Rainbow Swirl Strawberry Sweet Alcremie,Spin,,,Strawberry Sweet,,,,,,dusk,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Strawberry Sweet at dusk,Sword / Shield,1
+628,452,868,Milcery,,869,Alcremie,Vanilla Cream Berry Sweet Alcremie,Spin,,,Berry Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Berry Sweet during the day,Sword / Shield,1
+629,452,868,Milcery,,869,Alcremie,Ruby Cream Berry Sweet Alcremie,Spin,,,Berry Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Berry Sweet during the day,Sword / Shield,1
+630,452,868,Milcery,,869,Alcremie,Matcha Cream Berry Sweet Alcremie,Spin,,,Berry Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Berry Sweet at night,Sword / Shield,1
+631,452,868,Milcery,,869,Alcremie,Mint Cream Berry Sweet Alcremie,Spin,,,Berry Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Berry Sweet at night,Sword / Shield,1
+632,452,868,Milcery,,869,Alcremie,Lemon Cream Berry Sweet Alcremie,Spin,,,Berry Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Berry Sweet at night,Sword / Shield,1
+633,452,868,Milcery,,869,Alcremie,Salted Cream Berry Sweet Alcremie,Spin,,,Berry Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Berry Sweet at night,Sword / Shield,1
+634,452,868,Milcery,,869,Alcremie,Ruby Swirl Berry Sweet Alcremie,Spin,,,Berry Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Berry Sweet during the day,Sword / Shield,1
+635,452,868,Milcery,,869,Alcremie,Caramel Swirl Berry Sweet Alcremie,Spin,,,Berry Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Berry Sweet during the day,Sword / Shield,1
+636,452,868,Milcery,,869,Alcremie,Rainbow Swirl Berry Sweet Alcremie,Spin,,,Berry Sweet,,,,,,dusk,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Berry Sweet at dusk,Sword / Shield,1
+637,452,868,Milcery,,869,Alcremie,Vanilla Cream Love Sweet Alcremie,Spin,,,Love Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Love Sweet during the day,Sword / Shield,1
+638,452,868,Milcery,,869,Alcremie,Ruby Cream Love Sweet Alcremie,Spin,,,Love Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Love Sweet during the day,Sword / Shield,1
+639,452,868,Milcery,,869,Alcremie,Matcha Cream Love Sweet Alcremie,Spin,,,Love Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Love Sweet at night,Sword / Shield,1
+640,452,868,Milcery,,869,Alcremie,Mint Cream Love Sweet Alcremie,Spin,,,Love Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Love Sweet at night,Sword / Shield,1
+641,452,868,Milcery,,869,Alcremie,Lemon Cream Love Sweet Alcremie,Spin,,,Love Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Love Sweet at night,Sword / Shield,1
+642,452,868,Milcery,,869,Alcremie,Salted Cream Love Sweet Alcremie,Spin,,,Love Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Love Sweet at night,Sword / Shield,1
+643,452,868,Milcery,,869,Alcremie,Ruby Swirl Love Sweet Alcremie,Spin,,,Love Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Love Sweet during the day,Sword / Shield,1
+644,452,868,Milcery,,869,Alcremie,Caramel Swirl Love Sweet Alcremie,Spin,,,Love Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Love Sweet during the day,Sword / Shield,1
+645,452,868,Milcery,,869,Alcremie,Rainbow Swirl Love Sweet Alcremie,Spin,,,Love Sweet,,,,,,dusk,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Love Sweet at dusk,Sword / Shield,1
+646,452,868,Milcery,,869,Alcremie,Vanilla Cream Star Sweet Alcremie,Spin,,,Star Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Star Sweet during the day,Sword / Shield,1
+647,452,868,Milcery,,869,Alcremie,Ruby Cream Star Sweet Alcremie,Spin,,,Star Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Star Sweet during the day,Sword / Shield,1
+648,452,868,Milcery,,869,Alcremie,Matcha Cream Star Sweet Alcremie,Spin,,,Star Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Star Sweet at night,Sword / Shield,1
+649,452,868,Milcery,,869,Alcremie,Mint Cream Star Sweet Alcremie,Spin,,,Star Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Star Sweet at night,Sword / Shield,1
+650,452,868,Milcery,,869,Alcremie,Lemon Cream Star Sweet Alcremie,Spin,,,Star Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Star Sweet at night,Sword / Shield,1
+651,452,868,Milcery,,869,Alcremie,Salted Cream Star Sweet Alcremie,Spin,,,Star Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Star Sweet at night,Sword / Shield,1
+652,452,868,Milcery,,869,Alcremie,Ruby Swirl Star Sweet Alcremie,Spin,,,Star Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Star Sweet during the day,Sword / Shield,1
+653,452,868,Milcery,,869,Alcremie,Caramel Swirl Star Sweet Alcremie,Spin,,,Star Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Star Sweet during the day,Sword / Shield,1
+654,452,868,Milcery,,869,Alcremie,Rainbow Swirl Star Sweet Alcremie,Spin,,,Star Sweet,,,,,,dusk,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Star Sweet at dusk,Sword / Shield,1
+655,452,868,Milcery,,869,Alcremie,Vanilla Cream Clover Sweet Alcremie,Spin,,,Clover Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Clover Sweet during the day,Sword / Shield,1
+656,452,868,Milcery,,869,Alcremie,Ruby Cream Clover Sweet Alcremie,Spin,,,Clover Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Clover Sweet during the day,Sword / Shield,1
+657,452,868,Milcery,,869,Alcremie,Matcha Cream Clover Sweet Alcremie,Spin,,,Clover Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Clover Sweet at night,Sword / Shield,1
+658,452,868,Milcery,,869,Alcremie,Mint Cream Clover Sweet Alcremie,Spin,,,Clover Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Clover Sweet at night,Sword / Shield,1
+659,452,868,Milcery,,869,Alcremie,Lemon Cream Clover Sweet Alcremie,Spin,,,Clover Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Clover Sweet at night,Sword / Shield,1
+660,452,868,Milcery,,869,Alcremie,Salted Cream Clover Sweet Alcremie,Spin,,,Clover Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Clover Sweet at night,Sword / Shield,1
+661,452,868,Milcery,,869,Alcremie,Ruby Swirl Clover Sweet Alcremie,Spin,,,Clover Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Clover Sweet during the day,Sword / Shield,1
+662,452,868,Milcery,,869,Alcremie,Caramel Swirl Clover Sweet Alcremie,Spin,,,Clover Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Clover Sweet during the day,Sword / Shield,1
+663,452,868,Milcery,,869,Alcremie,Rainbow Swirl Clover Sweet Alcremie,Spin,,,Clover Sweet,,,,,,dusk,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Clover Sweet at dusk,Sword / Shield,1
+664,452,868,Milcery,,869,Alcremie,Vanilla Cream Flower Sweet Alcremie,Spin,,,Flower Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Flower Sweet during the day,Sword / Shield,1
+665,452,868,Milcery,,869,Alcremie,Ruby Cream Flower Sweet Alcremie,Spin,,,Flower Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Flower Sweet during the day,Sword / Shield,1
+666,452,868,Milcery,,869,Alcremie,Matcha Cream Flower Sweet Alcremie,Spin,,,Flower Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Flower Sweet at night,Sword / Shield,1
+667,452,868,Milcery,,869,Alcremie,Mint Cream Flower Sweet Alcremie,Spin,,,Flower Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Flower Sweet at night,Sword / Shield,1
+668,452,868,Milcery,,869,Alcremie,Lemon Cream Flower Sweet Alcremie,Spin,,,Flower Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Flower Sweet at night,Sword / Shield,1
+669,452,868,Milcery,,869,Alcremie,Salted Cream Flower Sweet Alcremie,Spin,,,Flower Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Flower Sweet at night,Sword / Shield,1
+670,452,868,Milcery,,869,Alcremie,Ruby Swirl Flower Sweet Alcremie,Spin,,,Flower Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Flower Sweet during the day,Sword / Shield,1
+671,452,868,Milcery,,869,Alcremie,Caramel Swirl Flower Sweet Alcremie,Spin,,,Flower Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Flower Sweet during the day,Sword / Shield,1
+672,452,868,Milcery,,869,Alcremie,Rainbow Swirl Flower Sweet Alcremie,Spin,,,Flower Sweet,,,,,,dusk,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Flower Sweet at dusk,Sword / Shield,1
+673,452,868,Milcery,,869,Alcremie,Vanilla Cream Ribbon Sweet Alcremie,Spin,,,Ribbon Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Ribbon Sweet during the day,Sword / Shield,1
+674,452,868,Milcery,,869,Alcremie,Ruby Cream Ribbon Sweet Alcremie,Spin,,,Ribbon Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Ribbon Sweet during the day,Sword / Shield,1
+675,452,868,Milcery,,869,Alcremie,Matcha Cream Ribbon Sweet Alcremie,Spin,,,Ribbon Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Ribbon Sweet at night,Sword / Shield,1
+676,452,868,Milcery,,869,Alcremie,Mint Cream Ribbon Sweet Alcremie,Spin,,,Ribbon Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Ribbon Sweet at night,Sword / Shield,1
+677,452,868,Milcery,,869,Alcremie,Lemon Cream Ribbon Sweet Alcremie,Spin,,,Ribbon Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Ribbon Sweet at night,Sword / Shield,1
+678,452,868,Milcery,,869,Alcremie,Salted Cream Ribbon Sweet Alcremie,Spin,,,Ribbon Sweet,,,,,,night,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Ribbon Sweet at night,Sword / Shield,1
+679,452,868,Milcery,,869,Alcremie,Ruby Swirl Ribbon Sweet Alcremie,Spin,,,Ribbon Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around counter-clockwise for under 5 seconds while holding Ribbon Sweet during the day,Sword / Shield,1
+680,452,868,Milcery,,869,Alcremie,Caramel Swirl Ribbon Sweet Alcremie,Spin,,,Ribbon Sweet,,,,,,day,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Ribbon Sweet during the day,Sword / Shield,1
+681,452,868,Milcery,,869,Alcremie,Rainbow Swirl Ribbon Sweet Alcremie,Spin,,,Ribbon Sweet,,,,,,dusk,,,,,,,,0,0,,,,,,Spin around clockwise for under 5 seconds while holding Ribbon Sweet at dusk,Sword / Shield,1
+442,455,872,Snom,,873,Frosmoth,,Level up,,,,,,160,,,night,,,,,,,,0,0,,,,,,Level up with high friendship (160+) at night,Sword / Shield,1
+443,460,878,Cufant,,879,Copperajah,,Level up,34,,,,,,,,,,,,,,,,0,0,,,,,,Level 34,Sword / Shield,1
+542,465,884,Duraludon,,1018,Archaludon,,Use item,,Metal Alloy,,,,,,,,,,,,,,,0,0,,,,,,Use Metal Alloy,Scarlet: The Indigo Disk / Violet: The Indigo Disk,1
+444,466,885,Dreepy,,886,Drakloak,,Level up,50,,,,,,,,,,,,,,,,0,0,,,,,,Level 50,Sword / Shield,1
+445,466,886,Drakloak,,887,Dragapult,,Level up,60,,,,,,,,,,,,,,,,0,0,,,,,,Level 60,Sword / Shield,1
+539,470,891,Kubfu,,892,Urshifu,,Use item,,Scroll of Darkness,,,,,,,,,,,,,,,0,0,,,,,,Use Scroll of Darkness,Scarlet / Violet,1
+540,470,891,Kubfu,,892,Urshifu,Rapid Strike Urshifu,Use item,,Scroll of Waters,,,,,,,,,,,,,,,0,0,,,,,,Use Scroll of Waters,Scarlet / Violet,1
+446,470,891,Kubfu,,892,Urshifu,,Train in the Tower of Darkness,,,,,,,,,,,,,,,,,0,0,,,,,,Train in the Tower of Darkness,Sword: The Isle of Armor / Shield: The Isle of Armor,0
+447,470,891,Kubfu,,892,Urshifu,Rapid Strike Urshifu,Train in the Tower of Waters,,,,,,,,,,,,,,,,,0,0,,,,,,Train in the Tower of Waters,Sword: The Isle of Armor / Shield: The Isle of Armor,0
+468,478,906,Sprigatito,,907,Floragato,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Scarlet / Violet,1
+469,478,907,Floragato,,908,Meowscarada,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Scarlet / Violet,1
+470,479,909,Fuecoco,,910,Crocalor,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Scarlet / Violet,1
+471,479,910,Crocalor,,911,Skeledirge,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Scarlet / Violet,1
+472,480,912,Quaxly,,913,Quaxwell,,Level up,16,,,,,,,,,,,,,,,,0,0,,,,,,Level 16,Scarlet / Violet,1
+473,480,913,Quaxwell,,914,Quaquaval,,Level up,36,,,,,,,,,,,,,,,,0,0,,,,,,Level 36,Scarlet / Violet,1
+474,481,915,Lechonk,,916,Oinkologne,,Level up,18,,,,,,,,,male,,,,,,,0,0,,,,,,Level 18 (male only),Scarlet / Violet,1
+558,481,915,Lechonk,,916,Oinkologne,Female Oinkologne,Level up,18,,,,,,,,,female,,,,,,,0,0,,,,,,Level 18 (female only),Scarlet / Violet,1
+475,482,917,Tarountula,,918,Spidops,,Level up,15,,,,,,,,,,,,,,,,0,0,,,,,,Level 15,Scarlet / Violet,1
+476,483,919,Nymble,,920,Lokix,,Level up,24,,,,,,,,,,,,,,,,0,0,,,,,,Level 24,Scarlet / Violet,1
+477,484,921,Pawmi,,922,Pawmo,,Level up,18,,,,,,,,,,,,,,,,0,0,,,,,,Level 18,Scarlet / Violet,1
+478,484,922,Pawmo,,923,Pawmot,,Level up,,,,,,,,,,,,,,,,,0,0,,,1000,,,"Level up after walking 1,000 steps in Let's Go mode",Scarlet / Violet,1
+479,485,924,Tandemaus,,925,Maushold,,Level up in battle,25,,,,,,,,,,,,,,,,0,0,,,,,99,"Level 25 in battle (99% chance, set by its personality value)",Scarlet / Violet,1
+560,485,924,Tandemaus,,925,Maushold,Maushold (Family of Three),Level up in battle,25,,,,,,,,,,,,,,,,0,0,,,,,1,"Level 25 in battle (1% chance, set by its personality value)",Scarlet / Violet,1
+480,486,926,Fidough,,927,Dachsbun,,Level up,26,,,,,,,,,,,,,,,,0,0,,,,,,Level 26,Scarlet / Violet,1
+481,487,928,Smoliv,,929,Dolliv,,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Scarlet / Violet,1
+482,487,929,Dolliv,,930,Arboliva,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,Scarlet / Violet,1
+483,489,932,Nacli,,933,Naclstack,,Level up,24,,,,,,,,,,,,,,,,0,0,,,,,,Level 24,Scarlet / Violet,1
+484,489,933,Naclstack,,934,Garganacl,,Level up,38,,,,,,,,,,,,,,,,0,0,,,,,,Level 38,Scarlet / Violet,1
+485,490,935,Charcadet,,936,Armarouge,,Use item,,Auspicious Armor,,,,,,,,,,,,,,,0,0,,,,,,Use Auspicious Armor,Scarlet / Violet,1
+486,490,935,Charcadet,,937,Ceruledge,,Use item,,Malicious Armor,,,,,,,,,,,,,,,0,0,,,,,,Use Malicious Armor,Scarlet / Violet,1
+487,491,938,Tadbulb,,939,Bellibolt,,Use item,,Thunder Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Thunder Stone,Scarlet / Violet,1
+488,492,940,Wattrel,,941,Kilowattrel,,Level up,25,,,,,,,,,,,,,,,,0,0,,,,,,Level 25,Scarlet / Violet,1
+489,493,942,Maschiff,,943,Mabosstiff,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Scarlet / Violet,1
+490,494,944,Shroodle,,945,Grafaiai,,Level up,28,,,,,,,,,,,,,,,,0,0,,,,,,Level 28,Scarlet / Violet,1
+491,495,946,Bramblin,,947,Brambleghast,,Level up,,,,,,,,,,,,,,,,,0,0,,,1000,,,"Level up after walking 1,000 steps in Let's Go mode",Scarlet / Violet,1
+492,496,948,Toedscool,,949,Toedscruel,,Level up,30,,,,,,,,,,,,,,,,0,0,,,,,,Level 30,Scarlet / Violet,1
+493,498,951,Capsakid,,952,Scovillain,,Use item,,Fire Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Fire Stone,Scarlet / Violet,1
+494,499,953,Rellor,,954,Rabsca,,Level up,,,,,,,,,,,,,,,,,0,0,,,1000,,,"Level up after walking 1,000 steps in Let's Go mode",Scarlet / Violet,1
+495,500,955,Flittle,,956,Espathra,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,Scarlet / Violet,1
+496,501,957,Tinkatink,,958,Tinkatuff,,Level up,24,,,,,,,,,,,,,,,,0,0,,,,,,Level 24,Scarlet / Violet,1
+497,501,958,Tinkatuff,,959,Tinkaton,,Level up,38,,,,,,,,,,,,,,,,0,0,,,,,,Level 38,Scarlet / Violet,1
+498,502,960,Wiglett,,961,Wugtrio,,Level up,26,,,,,,,,,,,,,,,,0,0,,,,,,Level 26,Scarlet / Violet,1
+499,504,963,Finizen,,964,Palafin,,Level up,38,,,,,,,,,,,,,,,,0,0,,,,,,Level 38 in Union Circle,Scarlet / Violet,1
+500,505,965,Varoom,,966,Revavroom,,Level up,40,,,,,,,,,,,,,,,,0,0,,,,,,Level 40,Scarlet / Violet,1
+501,508,969,Glimmet,,970,Glimmora,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,Scarlet / Violet,1
+502,509,971,Greavard,,972,Houndstone,,Level up,30,,,,,,,,night,,,,,,,,0,0,,,,,,Level 30 at night,Scarlet / Violet,1
+503,511,974,Cetoddle,,975,Cetitan,,Use item,,Ice Stone,,,,,,,,,,,,,,,0,0,,,,,,Use Ice Stone,Scarlet / Violet,1
+509,527,996,Frigibax,,997,Arctibax,,Level up,35,,,,,,,,,,,,,,,,0,0,,,,,,Level 35,Scarlet / Violet,1
+510,527,997,Arctibax,,998,Baxcalibur,,Level up,54,,,,,,,,,,,,,,,,0,0,,,,,,Level 54,Scarlet / Violet,1
+511,528,999,Gimmighoul,,1000,Gholdengo,,Collect 999 Gimmighoul Coins,,,,,,,,,,,,,,,,,0,0,,,,,,Level up with 999 Gimmighoul Coins in the bag,Scarlet / Violet,1
+544,539,1012,Poltchageist,,1013,Sinistcha,,Use item,,Unremarkable Teacup,,,,,,,,,,,,,,,0,0,,,,,,Use Unremarkable Teacup,Scarlet: The Teal Mask / Violet: The Teal Mask,1
+545,539,1012,Poltchageist,Artisan Form Poltchageist,1013,Sinistcha,Masterpiece Form Sinistcha,Use item,,Masterpiece Teacup,,,,,,,,,,,,,,,0,0,,,,,,Use Masterpiece Teacup,Scarlet: The Teal Mask / Violet: The Teal Mask,1
