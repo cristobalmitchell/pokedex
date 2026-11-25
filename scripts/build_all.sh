@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Rebuild every table, image set, cry, the SQLite database and the Kaggle metadata, then validate.
-# Sources are cloned into .cache/ (ignored by git). Needs git, Python 3.10+ with pandas and mutagen.
+# Sources are cloned into .cache/ (ignored by git). Needs git, Python 3.10+ with pandas, mutagen and Pillow.
 #
 #   bash scripts/build_all.sh                    # everything from the sources
 #   SKIP_COMPETITIVE=1 bash scripts/build_all.sh # reuse the committed Smogon tables (the first full
@@ -45,3 +45,5 @@ fi
 "$PY" scripts/build_sqlite.py
 "$PY" scripts/build_metadata.py
 "$PY" scripts/validate.py
+"$PY" scripts/build_cover.py
+"$PY" scripts/stage_kaggle.py
