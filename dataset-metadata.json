@@ -1,7 +1,7 @@
 {
   "title": "The Complete Pokédex Dataset (Gen I–IX)",
-  "subtitle": "All 1,025 Pokémon: stats, types, abilities, evolutions & artwork",
-  "description": "# The Complete Pokédex Dataset\n\nEvery **released Pokémon — all 1,025 species** from Generation I (Red/Green) through Generation IX (Scarlet/Violet and its DLC), #0001 Bulbasaur to #1025 Pecharunt.\n\n`data/pokemon_utf8.csv` (UTF-8, comma-separated — recommended) has **55 columns** per Pokémon: National number, generation, English & Japanese names, primary/secondary type, classification, exact gender ratios, height, weight, capture rate, egg steps, the six base stats, up to four abilities (incl. hidden), the 18 `against_*` type-matchup multipliers, sub-legendary/legendary/mythical flags, the evolution chain with triggers, Gigantamax and Mega Evolution forms (including the Legends: Z-A / Mega Dimension Megas), and the official Pokédex description.\n\nBundled imagesets: **small_images** (official artwork, 215×215), **large_images** (high-resolution artwork up to 1280×1280), and **alt_images** (regional forms, Mega Evolutions, Gigantamax, and other variant forms).\n\nSee the column metadata below for a full data dictionary. Built with a documented, reproducible scraper (`pokedex.ipynb`).\n\n\n*Files:* `pokemon_utf8.csv` (UTF-8, recommended) and `pokemon.csv` (original UTF-16/TSV) hold identical data; `pokemon_stats.csv` is a tidy long-format of the base stats.\n",
+  "subtitle": "All 1,025 Pokémon + 1,578 forms: stats, moves, evolutions, SQL & artwork",
+  "description": "# The Complete Pokédex Dataset\n\nEvery **released Pokémon — all 1,025 species** from Generation I (Red/Green) to Generation IX (Scarlet/Violet and its DLC), #0001 Bulbasaur to #1025 Pecharunt, plus every **form**, **evolution method**, **move** and **learnset**, with **2,410 artworks** that link to the data, and everything also packaged as one **SQLite database**.\n\n## What's inside\n\n| File | Rows | One row per |\n|---|---|---|\n| `pokemon_utf8.csv` | 1,025 | species: types, stats, abilities, type matchups, breeding, EV yield, evolution chain, Megas, description (70 columns) |\n| `pokemon_forms.csv` | 1,578 | form: 97 Megas, 34 Gigantamax, 58 regional forms, alternate formes and cosmetic variants, each with its own types, stats and abilities |\n| `evolutions.csv` | 702 | evolution method, branching and form-specific evolutions included, with a readable condition for each |\n| `moves.csv` | 920 | move: type, category, power, accuracy, PP, priority, effects |\n| `pokemon_moves.csv` | 665,810 | learnset entry: who learns what, how and at what level, in every game from Red/Green to Legends: Z-A |\n| `images.csv` | 2,410 | artwork: the species and exact form it shows, its types, size and a fixed train/val/test split |\n| `pokemon_stats.csv` | 6,150 | (species, base stat), long format for plotting |\n| `pokedex.sqlite` | — | all of the above with primary and foreign keys |\n\nArtwork: `small_images/` (1,025 × 215 px official artwork), `large_images/` (1,025 high-resolution, up to 1280 px) and `alt_images/` (360 alternate forms: Megas incl. Legends: Z-A, Gigantamax, regional forms and more).\n\n`pokemon.csv` holds the same species data as `pokemon_utf8.csv` in the original UTF-16, tab-separated format, kept for older notebooks.\n\n## Quick start\n\n```python\nimport pandas as pd\npokemon = pd.read_csv('/kaggle/input/pokedex/pokemon_utf8.csv')\nforms = pd.read_csv('/kaggle/input/pokedex/pokemon_forms.csv')\nmegas = forms[forms.is_mega == 1]\n```\n\n```python\nimport sqlite3\ncon = sqlite3.connect('/kaggle/input/pokedex/pokedex.sqlite')\npd.read_sql('''\n    SELECT p.english_name, COUNT(DISTINCT pm.move_id) AS moves_learnable\n    FROM pokemon p JOIN pokemon_moves pm ON pm.national_number = p.national_number\n    JOIN version_groups vg ON vg.version_group_id = pm.version_group_id\n    WHERE vg.version_group = 'scarlet-violet'\n    GROUP BY p.english_name ORDER BY moves_learnable DESC LIMIT 10''', con)\n```\n\n## Ideas\n\n- **Classification:** predict legendary status, type or generation from stats; predict type from artwork with `images.csv` (the split is assigned by species, so forms of one Pokémon never leak across splits)\n- **Clustering and visualization:** stat archetypes, how stats change across generations, type coverage\n- **Graphs:** evolution trees from `evolutions.csv`\n- **SQL practice:** joins across species, forms, moves and learnsets\n- **Team building:** type coverage plus learnsets plus stats\n- **NLP:** Pokédex descriptions and move texts\n\n## Quality\n\n- Every row is checked by `scripts/validate.py`. It checks keys, stat ranges, base stat totals, EV yields, gender ratios and Kaggle-safe file names. It recomputes every `against_*` value from the type chart and confirms each table agrees with the others.\n- The 1,025 species were cross-checked field by field against the PokéAPI database. Where values differed, current Scarlet/Violet game data was used. For example, Cresselia's and Zacian's Gen IX stat changes are applied, and the Hisuian Pokémon keep their Scarlet/Violet capture rates rather than the Legends: Arceus ones.\n\n## Sources and credits\n\n- **Species data:** Serebii.net\n- **Pokédex descriptions:** pokemon.com\n- **Artwork:** Bulbapedia\n- **Forms, evolutions, moves, learnsets and the added species fields:** derived from the [PokéAPI](https://github.com/PokeAPI/pokeapi) CSV database. Copyright © 2013–2023 Paul Hallett and PokéAPI contributors, BSD-3-Clause.\n- **Trademarks:** Pokémon and Pokémon character names are trademarks of Nintendo. The artwork is © Nintendo, Creatures Inc. and GAME FREAK and is included for non-commercial research and education.\n\nThe pipeline is reproducible: `pokedex.ipynb` is the scraper and `scripts/build_tables.py` builds the relational tables. Both are on [GitHub](https://github.com/cristobalmitchell/pokedex).\n",
   "id": "cristobalmitchell/pokedex",
   "licenses": [
     {
@@ -18,14 +18,15 @@
     "classification",
     "clustering",
     "tabular",
-    "image data"
+    "image data",
+    "computer vision"
   ],
   "expectedUpdateFrequency": "annually",
-  "userSpecifiedSources": "Serebii.net (stats/breeding/legendary status), the official Pokémon website pokemon.com (Pokédex descriptions), and Bulbapedia (artwork). Compiled with the reproducible scraper in pokedex.ipynb.",
+  "userSpecifiedSources": "Serebii.net (species stats, breeding and legendary status), the official Pokémon website pokemon.com (Pokédex descriptions), Bulbapedia (artwork) and the PokéAPI CSV database (https://github.com/PokeAPI/pokeapi, BSD-3-Clause; forms, evolutions, moves, learnsets and the added species fields). Built with the reproducible pipeline in pokedex.ipynb and scripts/build_tables.py; checked by scripts/validate.py.",
   "resources": [
     {
       "path": "data/pokemon_utf8.csv",
-      "description": "All 1,025 Pokémon (Gen I–IX), UTF-8 comma-separated — the recommended file: loads with a plain pandas.read_csv() and powers Kaggle's column preview and metrics. 55 columns per Pokémon (see the data dictionary below).",
+      "description": "One row per species: all 1,025 Pokémon (Gen I–IX), UTF-8 comma-separated. The recommended starting file: loads with a plain pandas.read_csv(). 70 columns (see the data dictionary).",
       "schema": {
         "fields": [
           {
@@ -64,6 +65,21 @@
             "type": "string"
           },
           {
+            "name": "color",
+            "description": "Pokédex color, used by the in-game Pokédex search (e.g. Green, Red).",
+            "type": "string"
+          },
+          {
+            "name": "shape",
+            "description": "Pokédex body shape (e.g. Quadruped, Upright, Humanoid, Wings).",
+            "type": "string"
+          },
+          {
+            "name": "habitat",
+            "description": "Habitat from the FireRed/LeafGreen Pokédex (e.g. Grassland, Forest). Defined only for Gen I–III species; blank otherwise.",
+            "type": "string"
+          },
+          {
             "name": "percent_male",
             "description": "Percentage of the species that is male (blank if genderless); exact species ratio, a multiple of 12.5.",
             "type": "number"
@@ -85,13 +101,38 @@
           },
           {
             "name": "capture_rate",
-            "description": "Base capture rate (string; a few species list two values, e.g. Minior).",
-            "type": "string"
+            "description": "Base capture rate, 3–255 (higher is easier). Minior uses its Meteor Form value.",
+            "type": "integer"
           },
           {
             "name": "base_egg_steps",
             "description": "Steps required to hatch an egg (hatch cycles × 256).",
             "type": "integer"
+          },
+          {
+            "name": "base_experience",
+            "description": "Base experience yield when defeated (blank where the games have no value yet, e.g. some Legends: Z-A Megas).",
+            "type": "integer"
+          },
+          {
+            "name": "base_friendship",
+            "description": "Friendship a newly caught Pokémon starts with, as in Gen VIII+ games (most species 50).",
+            "type": "integer"
+          },
+          {
+            "name": "growth_rate",
+            "description": "Experience growth group: Erratic, Fast, Medium Fast, Medium Slow, Slow or Fluctuating.",
+            "type": "string"
+          },
+          {
+            "name": "egg_group_1",
+            "description": "First egg group (Undiscovered for species that cannot breed).",
+            "type": "string"
+          },
+          {
+            "name": "egg_group_2",
+            "description": "Second egg group (blank if only one).",
+            "type": "string"
           },
           {
             "name": "hp",
@@ -124,6 +165,41 @@
             "type": "integer"
           },
           {
+            "name": "base_total",
+            "description": "Base stat total (sum of the six base stats).",
+            "type": "integer"
+          },
+          {
+            "name": "ev_yield_hp",
+            "description": "HP effort values (EVs) gained for defeating this Pokémon.",
+            "type": "integer"
+          },
+          {
+            "name": "ev_yield_attack",
+            "description": "Attack effort values (EVs) gained for defeating this Pokémon.",
+            "type": "integer"
+          },
+          {
+            "name": "ev_yield_defense",
+            "description": "Defense effort values (EVs) gained for defeating this Pokémon.",
+            "type": "integer"
+          },
+          {
+            "name": "ev_yield_sp_attack",
+            "description": "Special Attack effort values (EVs) gained for defeating this Pokémon.",
+            "type": "integer"
+          },
+          {
+            "name": "ev_yield_sp_defense",
+            "description": "Special Defense effort values (EVs) gained for defeating this Pokémon.",
+            "type": "integer"
+          },
+          {
+            "name": "ev_yield_speed",
+            "description": "Speed effort values (EVs) gained for defeating this Pokémon.",
+            "type": "integer"
+          },
+          {
             "name": "abilities_0",
             "description": "First regular ability.",
             "type": "string"
@@ -145,92 +221,92 @@
           },
           {
             "name": "against_normal",
-            "description": "Type-chart damage multiplier taken from a Normal-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Normal-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_fire",
-            "description": "Type-chart damage multiplier taken from a Fire-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Fire-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_water",
-            "description": "Type-chart damage multiplier taken from a Water-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Water-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_electric",
-            "description": "Type-chart damage multiplier taken from a Electric-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from an Electric-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_grass",
-            "description": "Type-chart damage multiplier taken from a Grass-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Grass-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_ice",
-            "description": "Type-chart damage multiplier taken from a Ice-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from an Ice-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_fighting",
-            "description": "Type-chart damage multiplier taken from a Fighting-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Fighting-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_poison",
-            "description": "Type-chart damage multiplier taken from a Poison-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Poison-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_ground",
-            "description": "Type-chart damage multiplier taken from a Ground-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Ground-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_flying",
-            "description": "Type-chart damage multiplier taken from a Flying-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Flying-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_psychic",
-            "description": "Type-chart damage multiplier taken from a Psychic-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Psychic-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_bug",
-            "description": "Type-chart damage multiplier taken from a Bug-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Bug-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_rock",
-            "description": "Type-chart damage multiplier taken from a Rock-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Rock-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_ghost",
-            "description": "Type-chart damage multiplier taken from a Ghost-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Ghost-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_dragon",
-            "description": "Type-chart damage multiplier taken from a Dragon-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Dragon-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_dark",
-            "description": "Type-chart damage multiplier taken from a Dark-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Dark-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_steel",
-            "description": "Type-chart damage multiplier taken from a Steel-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Steel-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
             "name": "against_fairy",
-            "description": "Type-chart damage multiplier taken from a Fairy-type move (pure type-chart value; abilities not applied).",
+            "description": "Type-chart damage multiplier taken from a Fairy-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
             "type": "number"
           },
           {
@@ -250,37 +326,37 @@
           },
           {
             "name": "evochain_0",
-            "description": "Evolution chain: first stage name.",
+            "description": "Evolution chain: first species listed.",
             "type": "string"
           },
           {
             "name": "evochain_1",
-            "description": "Evolution chain: trigger from stage 0 to stage 2.",
+            "description": "How the species in evochain_2 is obtained (e.g. \"Level 16\", \"Use Thunder Stone\"). For the full branching tree use evolutions.csv.",
             "type": "string"
           },
           {
             "name": "evochain_2",
-            "description": "Evolution chain: second stage name.",
+            "description": "Evolution chain: second species listed.",
             "type": "string"
           },
           {
             "name": "evochain_3",
-            "description": "Evolution chain: trigger from stage 2 to stage 4.",
+            "description": "How the species in evochain_4 is obtained.",
             "type": "string"
           },
           {
             "name": "evochain_4",
-            "description": "Evolution chain: third stage name.",
+            "description": "Evolution chain: third species listed.",
             "type": "string"
           },
           {
             "name": "evochain_5",
-            "description": "Evolution chain: additional trigger (branched/regional chains).",
+            "description": "How the species in evochain_6 is obtained (branched chains).",
             "type": "string"
           },
           {
             "name": "evochain_6",
-            "description": "Evolution chain: additional stage name (branched/regional chains).",
+            "description": "Evolution chain: additional species (branched chains).",
             "type": "string"
           },
           {
@@ -312,7 +388,780 @@
     },
     {
       "path": "data/pokemon_stats.csv",
-      "description": "Long/tidy format of the six base stats for radar and small-multiple plots: one row per (Pokémon, stat_name, stat_value). Generated by pokedex.ipynb."
+      "description": "Long/tidy format of the six base stats for radar and small-multiple plots: one row per (Pokémon, stat).",
+      "schema": {
+        "fields": [
+          {
+            "name": "national_number",
+            "description": "National Pokédex number (1–1025) of the species. Joins to pokemon_utf8.csv.",
+            "type": "integer"
+          },
+          {
+            "name": "english_name",
+            "description": "English species name.",
+            "type": "string"
+          },
+          {
+            "name": "stat_name",
+            "description": "hp, attack, defense, sp_attack, sp_defense or speed.",
+            "type": "string"
+          },
+          {
+            "name": "stat_value",
+            "description": "Base stat value.",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    {
+      "path": "data/pokemon_forms.csv",
+      "description": "One row per form (1,578): Megas, Gigantamax, regional forms, alternate formes and cosmetic variants, each with its own types, base stats, abilities, size, EV yield, type matchups and artwork. Joins to pokemon_utf8.csv on national_number.",
+      "schema": {
+        "fields": [
+          {
+            "name": "form_id",
+            "description": "Unique form id (PokeAPI pokemon_forms id). Primary key.",
+            "type": "integer"
+          },
+          {
+            "name": "pokemon_id",
+            "description": "Variety id (PokeAPI pokemon id): forms that share battle data share this id. Joins to pokemon_moves.csv.",
+            "type": "integer"
+          },
+          {
+            "name": "national_number",
+            "description": "National Pokédex number (1–1025) of the species. Joins to pokemon_utf8.csv.",
+            "type": "integer"
+          },
+          {
+            "name": "species_name",
+            "description": "English species name.",
+            "type": "string"
+          },
+          {
+            "name": "form_name",
+            "description": "Form label (e.g. \"Mega X\", \"Alolan Form\", \"Origin Forme\"); blank for unnamed default forms.",
+            "type": "string"
+          },
+          {
+            "name": "display_name",
+            "description": "Full display name of the form (e.g. \"Mega Charizard X\", \"Alolan Raichu\").",
+            "type": "string"
+          },
+          {
+            "name": "identifier",
+            "description": "Lower-case slug (e.g. charizard-mega-x).",
+            "type": "string"
+          },
+          {
+            "name": "form_category",
+            "description": "default, mega, primal, gigantamax, regional, totem, battle-only (e.g. Zen Mode, Ultra Necrozma), alternate (separate variety, e.g. Rotom-Heat, Deoxys-Attack) or cosmetic (same battle data as the default, e.g. Unown letters, Vivillon patterns).",
+            "type": "string"
+          },
+          {
+            "name": "is_default_variety",
+            "description": "1 if this form belongs to the default variety of the species.",
+            "type": "integer"
+          },
+          {
+            "name": "is_default_form",
+            "description": "1 if this is the default form of its variety. Filter is_default_form == 1 for one row per variety (unique battle data); add is_default_variety == 1 for one row per species.",
+            "type": "integer"
+          },
+          {
+            "name": "is_battle_only",
+            "description": "1 if the form only exists during battle (Megas, Zen Mode, etc.).",
+            "type": "integer"
+          },
+          {
+            "name": "is_mega",
+            "description": "1 for Mega Evolutions (including Legends: Z-A and Mega Dimension).",
+            "type": "integer"
+          },
+          {
+            "name": "is_gigantamax",
+            "description": "1 for Gigantamax forms.",
+            "type": "integer"
+          },
+          {
+            "name": "is_regional_variant",
+            "description": "1 for regional forms (Alolan, Galarian, Hisuian, Paldean).",
+            "type": "integer"
+          },
+          {
+            "name": "region",
+            "description": "Region of a regional or totem form (Alola, Galar, Hisui, Paldea).",
+            "type": "string"
+          },
+          {
+            "name": "introduced_in",
+            "description": "Games the form was introduced in (e.g. \"X / Y\").",
+            "type": "string"
+          },
+          {
+            "name": "introduced_gen",
+            "description": "Generation the form was introduced in (I–IX).",
+            "type": "string"
+          },
+          {
+            "name": "primary_type",
+            "description": "Primary type.",
+            "type": "string"
+          },
+          {
+            "name": "secondary_type",
+            "description": "Secondary type (blank for single-type forms).",
+            "type": "string"
+          },
+          {
+            "name": "hp",
+            "description": "Base HP stat.",
+            "type": "integer"
+          },
+          {
+            "name": "attack",
+            "description": "Base Attack stat.",
+            "type": "integer"
+          },
+          {
+            "name": "defense",
+            "description": "Base Defense stat.",
+            "type": "integer"
+          },
+          {
+            "name": "sp_attack",
+            "description": "Base Special Attack stat.",
+            "type": "integer"
+          },
+          {
+            "name": "sp_defense",
+            "description": "Base Special Defense stat.",
+            "type": "integer"
+          },
+          {
+            "name": "speed",
+            "description": "Base Speed stat.",
+            "type": "integer"
+          },
+          {
+            "name": "base_total",
+            "description": "Base stat total (sum of the six base stats).",
+            "type": "integer"
+          },
+          {
+            "name": "ev_yield_hp",
+            "description": "HP effort values (EVs) gained for defeating this Pokémon.",
+            "type": "integer"
+          },
+          {
+            "name": "ev_yield_attack",
+            "description": "Attack effort values (EVs) gained for defeating this Pokémon.",
+            "type": "integer"
+          },
+          {
+            "name": "ev_yield_defense",
+            "description": "Defense effort values (EVs) gained for defeating this Pokémon.",
+            "type": "integer"
+          },
+          {
+            "name": "ev_yield_sp_attack",
+            "description": "Special Attack effort values (EVs) gained for defeating this Pokémon.",
+            "type": "integer"
+          },
+          {
+            "name": "ev_yield_sp_defense",
+            "description": "Special Defense effort values (EVs) gained for defeating this Pokémon.",
+            "type": "integer"
+          },
+          {
+            "name": "ev_yield_speed",
+            "description": "Speed effort values (EVs) gained for defeating this Pokémon.",
+            "type": "integer"
+          },
+          {
+            "name": "abilities_0",
+            "description": "First regular ability.",
+            "type": "string"
+          },
+          {
+            "name": "abilities_1",
+            "description": "Second regular ability (blank if none).",
+            "type": "string"
+          },
+          {
+            "name": "abilities_hidden",
+            "description": "Hidden ability (blank if none).",
+            "type": "string"
+          },
+          {
+            "name": "height_m",
+            "description": "Height in metres.",
+            "type": "number"
+          },
+          {
+            "name": "weight_kg",
+            "description": "Weight in kilograms.",
+            "type": "number"
+          },
+          {
+            "name": "base_experience",
+            "description": "Base experience yield when defeated (blank where the games have no value yet, e.g. some Legends: Z-A Megas).",
+            "type": "integer"
+          },
+          {
+            "name": "against_normal",
+            "description": "Type-chart damage multiplier taken from a Normal-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_fire",
+            "description": "Type-chart damage multiplier taken from a Fire-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_water",
+            "description": "Type-chart damage multiplier taken from a Water-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_electric",
+            "description": "Type-chart damage multiplier taken from an Electric-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_grass",
+            "description": "Type-chart damage multiplier taken from a Grass-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_ice",
+            "description": "Type-chart damage multiplier taken from an Ice-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_fighting",
+            "description": "Type-chart damage multiplier taken from a Fighting-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_poison",
+            "description": "Type-chart damage multiplier taken from a Poison-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_ground",
+            "description": "Type-chart damage multiplier taken from a Ground-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_flying",
+            "description": "Type-chart damage multiplier taken from a Flying-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_psychic",
+            "description": "Type-chart damage multiplier taken from a Psychic-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_bug",
+            "description": "Type-chart damage multiplier taken from a Bug-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_rock",
+            "description": "Type-chart damage multiplier taken from a Rock-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_ghost",
+            "description": "Type-chart damage multiplier taken from a Ghost-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_dragon",
+            "description": "Type-chart damage multiplier taken from a Dragon-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_dark",
+            "description": "Type-chart damage multiplier taken from a Dark-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_steel",
+            "description": "Type-chart damage multiplier taken from a Steel-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "against_fairy",
+            "description": "Type-chart damage multiplier taken from a Fairy-type move (0, 0.25, 0.5, 1, 2 or 4; abilities not applied).",
+            "type": "number"
+          },
+          {
+            "name": "image_file",
+            "description": "Artwork for this form, relative to the image folders (e.g. \"alt_images/006Charizard-Mega_X.png\"); blank if no artwork is bundled.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "path": "data/evolutions.csv",
+      "description": "One row per evolution method (702), including branching evolutions, regional and form-specific evolutions and legacy methods from older games, with a readable condition sentence for each.",
+      "schema": {
+        "fields": [
+          {
+            "name": "evolution_id",
+            "description": "Unique id of this evolution method (PokeAPI id).",
+            "type": "integer"
+          },
+          {
+            "name": "evolution_chain_id",
+            "description": "Evolution family id; every species in a family shares it.",
+            "type": "integer"
+          },
+          {
+            "name": "from_national_number",
+            "description": "National number of the species that evolves.",
+            "type": "integer"
+          },
+          {
+            "name": "from_name",
+            "description": "Name of the species that evolves.",
+            "type": "string"
+          },
+          {
+            "name": "from_form",
+            "description": "Form required to evolve, when it is not the default (e.g. \"Galarian Farfetch'd\").",
+            "type": "string"
+          },
+          {
+            "name": "to_national_number",
+            "description": "National number of the species it evolves into.",
+            "type": "integer"
+          },
+          {
+            "name": "to_name",
+            "description": "Name of the species it evolves into.",
+            "type": "string"
+          },
+          {
+            "name": "to_form",
+            "description": "Form produced, when it is not the default (e.g. \"Alolan Raichu\").",
+            "type": "string"
+          },
+          {
+            "name": "trigger",
+            "description": "Evolution trigger (Level up, Use item, Trade or Linking Cord, Spin, ...).",
+            "type": "string"
+          },
+          {
+            "name": "min_level",
+            "description": "Minimum level, if the method has one.",
+            "type": "integer"
+          },
+          {
+            "name": "item",
+            "description": "Item used on the Pokémon (e.g. Thunder Stone).",
+            "type": "string"
+          },
+          {
+            "name": "held_item",
+            "description": "Item the Pokémon must hold.",
+            "type": "string"
+          },
+          {
+            "name": "known_move",
+            "description": "Move the Pokémon must know.",
+            "type": "string"
+          },
+          {
+            "name": "known_move_type",
+            "description": "Type of a move the Pokémon must know.",
+            "type": "string"
+          },
+          {
+            "name": "min_happiness",
+            "description": "Minimum friendship.",
+            "type": "integer"
+          },
+          {
+            "name": "min_affection",
+            "description": "Minimum affection hearts (Gen VI–VII).",
+            "type": "integer"
+          },
+          {
+            "name": "min_beauty",
+            "description": "Minimum Beauty condition (Feebas).",
+            "type": "integer"
+          },
+          {
+            "name": "time_of_day",
+            "description": "day, night, dusk or full-moon.",
+            "type": "string"
+          },
+          {
+            "name": "gender",
+            "description": "Required gender (female or male).",
+            "type": "string"
+          },
+          {
+            "name": "location",
+            "description": "Location where the Pokémon must level up.",
+            "type": "string"
+          },
+          {
+            "name": "region",
+            "description": "Region where the method applies (e.g. Alola for Alolan Raichu).",
+            "type": "string"
+          },
+          {
+            "name": "party_species",
+            "description": "Species that must be in the party.",
+            "type": "string"
+          },
+          {
+            "name": "party_type",
+            "description": "Type of a Pokémon that must be in the party.",
+            "type": "string"
+          },
+          {
+            "name": "trade_species",
+            "description": "Species it must be traded for (Shelmet/Karrablast).",
+            "type": "string"
+          },
+          {
+            "name": "relative_physical_stats",
+            "description": "Tyrogue: 1 = Attack > Defense, 0 = equal, -1 = Attack < Defense.",
+            "type": "integer"
+          },
+          {
+            "name": "needs_overworld_rain",
+            "description": "1 if it must be raining in the overworld.",
+            "type": "integer"
+          },
+          {
+            "name": "turn_upside_down",
+            "description": "1 if the console must be held upside down (Inkay).",
+            "type": "integer"
+          },
+          {
+            "name": "used_move",
+            "description": "Move that must be used a number of times.",
+            "type": "string"
+          },
+          {
+            "name": "min_move_count",
+            "description": "Times used_move must be used.",
+            "type": "integer"
+          },
+          {
+            "name": "min_steps",
+            "description": "Steps to walk in Let's Go mode.",
+            "type": "integer"
+          },
+          {
+            "name": "min_damage_taken",
+            "description": "HP that must be lost first.",
+            "type": "integer"
+          },
+          {
+            "name": "chance_percent",
+            "description": "Chance of this outcome when it is random (e.g. Maushold Family of Three, 1%).",
+            "type": "integer"
+          },
+          {
+            "name": "condition",
+            "description": "The full method as one readable sentence (e.g. \"Level up with high friendship (160+) during the day\").",
+            "type": "string"
+          },
+          {
+            "name": "games",
+            "description": "Games in which this method was recorded.",
+            "type": "string"
+          },
+          {
+            "name": "is_primary_method",
+            "description": "1 = the method used in current games; 0 = a legacy or game-specific alternative (e.g. Moss Rock locations).",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    {
+      "path": "data/moves.csv",
+      "description": "Every move (920): type, physical/special/status, power, accuracy, PP, priority, target, effect text and battle mechanics (ailments, drain, crit rate, multi-hit).",
+      "schema": {
+        "fields": [
+          {
+            "name": "move_id",
+            "description": "Unique move id. Primary key; joins to pokemon_moves.csv.",
+            "type": "integer"
+          },
+          {
+            "name": "name",
+            "description": "English move name.",
+            "type": "string"
+          },
+          {
+            "name": "identifier",
+            "description": "Lower-case slug (e.g. thunder-punch).",
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "Move type.",
+            "type": "string"
+          },
+          {
+            "name": "damage_class",
+            "description": "physical, special or status.",
+            "type": "string"
+          },
+          {
+            "name": "power",
+            "description": "Base power (blank for status moves and variable-power moves).",
+            "type": "integer"
+          },
+          {
+            "name": "accuracy",
+            "description": "Accuracy in percent (blank if the move never misses).",
+            "type": "integer"
+          },
+          {
+            "name": "pp",
+            "description": "Power points.",
+            "type": "integer"
+          },
+          {
+            "name": "priority",
+            "description": "Priority bracket (-7 to +5).",
+            "type": "integer"
+          },
+          {
+            "name": "target",
+            "description": "What the move targets (e.g. selected-pokemon, all-opponents).",
+            "type": "string"
+          },
+          {
+            "name": "generation",
+            "description": "Generation the move was introduced (I–IX).",
+            "type": "string"
+          },
+          {
+            "name": "effect_chance",
+            "description": "Chance (%) of the secondary effect.",
+            "type": "integer"
+          },
+          {
+            "name": "short_effect",
+            "description": "Short description of the effect (blank for some recent moves).",
+            "type": "string"
+          },
+          {
+            "name": "flavor_text",
+            "description": "In-game description from the most recent game that has one.",
+            "type": "string"
+          },
+          {
+            "name": "meta_category",
+            "description": "Effect category (damage, ailment, damage+lower, heal, ...).",
+            "type": "string"
+          },
+          {
+            "name": "ailment",
+            "description": "Status condition the move can cause (e.g. Paralysis).",
+            "type": "string"
+          },
+          {
+            "name": "ailment_chance",
+            "description": "Chance (%) of causing the ailment (0 = always for status moves).",
+            "type": "integer"
+          },
+          {
+            "name": "crit_rate",
+            "description": "Critical-hit stage bonus.",
+            "type": "integer"
+          },
+          {
+            "name": "drain",
+            "description": "HP drained (+) or recoil (-) as a % of damage dealt.",
+            "type": "integer"
+          },
+          {
+            "name": "healing",
+            "description": "HP healed as a % of the user's max HP.",
+            "type": "integer"
+          },
+          {
+            "name": "flinch_chance",
+            "description": "Chance (%) to make the target flinch.",
+            "type": "integer"
+          },
+          {
+            "name": "stat_chance",
+            "description": "Chance (%) of the stat change.",
+            "type": "integer"
+          },
+          {
+            "name": "min_hits",
+            "description": "Minimum number of hits for multi-hit moves.",
+            "type": "integer"
+          },
+          {
+            "name": "max_hits",
+            "description": "Maximum number of hits for multi-hit moves.",
+            "type": "integer"
+          },
+          {
+            "name": "min_turns",
+            "description": "Minimum number of turns for multi-turn moves.",
+            "type": "integer"
+          },
+          {
+            "name": "max_turns",
+            "description": "Maximum number of turns for multi-turn moves.",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    {
+      "path": "data/pokemon_moves.csv",
+      "description": "Learnsets: which Pokémon (variety) learns which move, how (level up, TM, egg, tutor) and at what level, for every game from Red/Green to Legends: Z-A (665,810 rows).",
+      "schema": {
+        "fields": [
+          {
+            "name": "pokemon_id",
+            "description": "Variety id; joins to pokemon_forms.csv (pokemon_id).",
+            "type": "integer"
+          },
+          {
+            "name": "national_number",
+            "description": "National Pokédex number (1–1025) of the species. Joins to pokemon_utf8.csv.",
+            "type": "integer"
+          },
+          {
+            "name": "pokemon",
+            "description": "Variety name (e.g. \"Alolan Raichu\").",
+            "type": "string"
+          },
+          {
+            "name": "move_id",
+            "description": "Move id; joins to moves.csv.",
+            "type": "integer"
+          },
+          {
+            "name": "move",
+            "description": "English move name.",
+            "type": "string"
+          },
+          {
+            "name": "method",
+            "description": "How it is learned: Level up, Machine (TM/TR/HM), Egg, Tutor, Train, Move reminder, ...",
+            "type": "string"
+          },
+          {
+            "name": "level",
+            "description": "Level it is learned at (Level up only; 0 or 1 = on evolution / at start).",
+            "type": "integer"
+          },
+          {
+            "name": "version_group",
+            "description": "Game(s) the learnset applies to (e.g. scarlet-violet, legends-za).",
+            "type": "string"
+          },
+          {
+            "name": "generation",
+            "description": "Generation of that game (I–IX).",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "path": "data/images.csv",
+      "description": "Image manifest for the 2,410 bundled artworks: species, the exact form shown, its types, pixel size and a fixed species-level train/val/test split for image models.",
+      "schema": {
+        "fields": [
+          {
+            "name": "image_file",
+            "description": "Path relative to the image folders, e.g. \"small_images/001.png\". Primary key.",
+            "type": "string"
+          },
+          {
+            "name": "image_set",
+            "description": "small_images (215×215), large_images (300–1280 px) or alt_images (alternate forms).",
+            "type": "string"
+          },
+          {
+            "name": "file_name",
+            "description": "File name.",
+            "type": "string"
+          },
+          {
+            "name": "national_number",
+            "description": "National Pokédex number (1–1025) of the species. Joins to pokemon_utf8.csv.",
+            "type": "integer"
+          },
+          {
+            "name": "english_name",
+            "description": "English species name.",
+            "type": "string"
+          },
+          {
+            "name": "form_label",
+            "description": "Form label parsed from an alt_images file name (e.g. \"Mega X\"); blank for the primary artwork.",
+            "type": "string"
+          },
+          {
+            "name": "form_id",
+            "description": "The form the artwork shows; joins to pokemon_forms.csv. Blank for 4 non-battle variants (Rotom Phone, Rotom Pokédex, Zygarde Cell and Core).",
+            "type": "integer"
+          },
+          {
+            "name": "pokemon_id",
+            "description": "Variety id of that form.",
+            "type": "integer"
+          },
+          {
+            "name": "display_name",
+            "description": "Display name of that form.",
+            "type": "string"
+          },
+          {
+            "name": "primary_type",
+            "description": "Primary type of the form shown (the label for type-classification models).",
+            "type": "string"
+          },
+          {
+            "name": "secondary_type",
+            "description": "Secondary type of the form shown.",
+            "type": "string"
+          },
+          {
+            "name": "width",
+            "description": "Image width in pixels.",
+            "type": "integer"
+          },
+          {
+            "name": "height",
+            "description": "Image height in pixels.",
+            "type": "integer"
+          },
+          {
+            "name": "split",
+            "description": "Fixed train / val / test split (70/15/15), assigned by species and stratified by primary type, so every image of a species is in the same split.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "path": "data/pokedex.sqlite",
+      "description": "All tables in one SQLite database with primary and foreign keys: pokemon, pokemon_forms, pokemon_stats, evolutions, moves, pokemon_moves (integer keys, with move_methods and version_groups lookup tables) and images. Query it with sqlite3 or pandas.read_sql."
     }
   ]
 }
