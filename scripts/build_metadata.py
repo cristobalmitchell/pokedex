@@ -373,18 +373,18 @@ def main():
         '(https://www.smogon.com/stats/). Built with the reproducible pipeline in scripts/ and checked by scripts/validate.py.')
     resources = []
     for name, desc in RESOURCES.items():
-        r = {'path': f'data/{name}', 'description': desc}
+        r = {'path': name, 'description': desc}  # Kaggle layout: data files sit at the dataset root
         if name != 'pokemon.csv':
             r['schema'] = {'fields': fields(name)}
         resources.append(r)
-    resources.append({'path': 'data/pokedex.sqlite',
+    resources.append({'path': 'pokedex.sqlite',
                       'description': 'Every table in one SQLite database with primary and foreign keys (pokemon_utf8.csv '
                                      'is the table `pokemon`; learnsets and Smogon usage use integer keys with lookup tables).'})
     on_disk = {p.name for p in DATA.glob('*.csv')}
     missing = on_disk - set(RESOURCES)
     if missing:
         raise SystemExit(f'CSV files without a resource description: {sorted(missing)}')
-    meta['resources'] = [r for r in resources if r['path'] == 'data/pokedex.sqlite' or r['path'][5:] in on_disk]
+    meta['resources'] = [r for r in resources if r['path'] == 'pokedex.sqlite' or r['path'] in on_disk]
     path.write_text(json.dumps(meta, indent=2, ensure_ascii=False) + '\n')
     n = sum(len(r.get('schema', {}).get('fields', [])) for r in meta['resources'])
     print(f'dataset-metadata.json: {len(meta["resources"])} resources, {n} documented columns; '

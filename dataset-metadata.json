@@ -1,7 +1,7 @@
 {
   "title": "The Complete Pokédex Dataset (Gen I–IX)",
   "subtitle": "1,025 Pokémon: forms, moves, Smogon usage, artwork, cries & SQL",
-  "description": "# The Complete Pokédex Dataset\n\nEvery **released Pokémon** (all 1,025 species from Red/Green to Scarlet/Violet and its DLC) with every **form**, **evolution**, **move**, **learnset**, **ability**, **item**, **Pokédex entry** and **wild encounter**. It also includes **520,661 monthly Smogon usage records since 2014**, current competitive tiers, **7,696 images** across seven art styles and **2,024 cries**, all linked by key and packaged as one SQLite database.\n\n## What's inside\n\n**Pokémon**\n\n| File | Rows | One row per |\n|---|---|---|\n| `pokemon_utf8.csv` | 1,025 | species: types, stats, abilities, type matchups, breeding, EV yield, evolution chain, Megas, names, description (72 columns) |\n| `pokemon_forms.csv` | 1,578 | form: 97 Megas, 34 Gigantamax, 58 regional forms, alternate formes and cosmetic variants, each with its own stats, types and abilities |\n| `evolutions.csv` | 702 | evolution method |\n| `pokemon_stats.csv` | 6,150 | (species, base stat), long format |\n\n**Battle**\n\n| File | Rows | One row per |\n|---|---|---|\n| `moves.csv` | 920 | move: type, category, power, accuracy, PP, effects |\n| `pokemon_moves.csv` | 665,810 | learnset entry, every game from Red/Green to Legends: Z-A |\n| `abilities.csv` / `pokemon_abilities.csv` | 314 / 2,943 | ability with its effect / who can have it |\n| `natures.csv` / `type_chart.csv` | 25 / 324 | nature / (attacking type, defending type) |\n| `competitive_tiers.csv` | 1,380 | Pokémon Showdown entry with its current Smogon tiers |\n| `smogon_usage.csv` | 520,661 | (month, format, Pokémon) usage share for every Pokémon on at least 1% of teams, across 170 formats and 152 monthly periods (Nov 2014 – Oct 2026) |\n\n**World**\n\n| File | Rows | One row per |\n|---|---|---|\n| `pokedex_entries.csv` | 98,396 | Pokédex entry, every game, 11 languages |\n| `pokemon_names.csv` | 12,300 | (species, language) name and category |\n| `encounters.csv` | 117,585 | wild encounter: game, location, method, levels, rate, conditions |\n| `items.csv` / `machines.csv` | 2,221 / 2,508 | item / TM, HM or TR per game |\n| `pokedex_numbers.csv` / `version_groups.csv` | 8,010 / 32 | regional dex number / game lookup |\n\n**Images and audio**\n\n| File | Rows | One row per |\n|---|---|---|\n| `images.csv` | 7,696 | image: species, exact form shown, types, size, fixed train/val/test split |\n| `cries.csv` | 2,024 | cry: species, form, format, duration, split |\n| `pokedex.sqlite` | | all of the above, with primary and foreign keys |\n\n**Image folders:**\n- `small_images` (215 px official artwork)\n- `large_images` (up to 1280 px)\n- `alt_images` (360 alternate forms)\n- `shiny_images` (shiny artwork)\n- `home_images` and `home_shiny_images` (Pokémon HOME 3D renders)\n- `animated_sprites` (animated GIFs)\n\n**Audio folders:** `cries` (current) and `cries_legacy` (the original Gen I–V cries).\n\n## Quick start\n\n```python\nimport pandas as pd\npokemon = pd.read_csv('/kaggle/input/pokedex/pokemon_utf8.csv')\nusage = pd.read_csv('/kaggle/input/pokedex/smogon_usage.csv')\nou = usage[(usage.format == 'gen9ou') & (usage.period == '2026-10')].nsmallest(10, 'rank')\nou.merge(pokemon[['national_number', 'primary_type', 'base_total']], on='national_number')\n```\n\n```python\nimport sqlite3\ncon = sqlite3.connect('/kaggle/input/pokedex/pokedex.sqlite')\npd.read_sql('''\n    SELECT e.game, e.location, e.method, e.min_level, e.max_level, e.rarity\n    FROM encounters e JOIN pokemon p ON p.national_number = e.national_number\n    WHERE p.english_name = 'Dratini' AND e.game IN ('FireRed', 'HeartGold')''', con)\n```\n\n## Ideas\n- **Image classification:** predict type from artwork. The split is by species, so forms of one Pokémon never leak across splits. Seven art styles make it a domain-shift benchmark (official art → 3D renders → pixel sprites), and the shiny/normal pairs support colour-transfer work.\n- **Audio:** classify cries by species, type or generation, or compare the original and current cries.\n- **Competitive play:** forecast monthly usage, find when the metagame shifted, link usage to stats, typings and abilities, and build teams from learnsets.\n- **NLP and translation:** Pokédex entries across 38 games and 11 languages.\n- **Tabular modelling:** legendary classification, stat archetypes, clustering.\n- **Graphs:** evolution trees.\n- **SQL practice:** 22 tables joined by keys.\n\n## Quality\n- **Validation:** `scripts/validate.py` checks every table. It checks keys, foreign keys and value ranges. It recomputes the type matchups from the type chart and confirms that species, forms, abilities, names, images and cries agree across tables. It also checks that file names are Kaggle-safe and that every column is documented.\n- **Corrections:** the species table was cross-checked against PokéAPI and current game data. Version 3 corrected abilities on 34 species and categories on 19.\n\n## Sources and credits\n- **Species data:** Serebii.net\n- **Pokédex descriptions:** pokemon.com\n- **Bundled artwork:** Bulbapedia\n- **Forms, evolutions, moves, learnsets, abilities, items, Pokédex entries, encounters and the added species fields:** [PokéAPI](https://github.com/PokeAPI/pokeapi). Copyright © 2013–2023 Paul Hallett and PokéAPI contributors, BSD-3-Clause.\n- **Shiny, HOME and animated sprites, and cries:** [PokéAPI sprites](https://github.com/PokeAPI/sprites) and [cries](https://github.com/PokeAPI/cries)\n- **Tiers:** [Pokémon Showdown](https://github.com/smogon/pokemon-showdown) (MIT)\n- **Usage statistics:** [Smogon](https://www.smogon.com/stats/)\n- **Trademarks:** Pokémon and Pokémon character names are trademarks of Nintendo. Artwork and cries are © Nintendo, Creatures Inc. and GAME FREAK and are included for non-commercial research and education.\n\n**Companion dataset:** every English trading card, linked by Pokédex number.\n\nThe pipeline is reproducible: `bash scripts/build_all.sh` rebuilds everything from the sources. It's on [GitHub](https://github.com/cristobalmitchell/pokedex).\n",
+  "description": "# The Complete Pokédex Dataset\n\nEvery **released Pokémon** (all 1,025 species from Red/Green to Scarlet/Violet and its DLC) with every **form**, **evolution**, **move**, **learnset**, **ability**, **item**, **Pokédex entry** and **wild encounter**. It also includes **520,661 monthly Smogon usage records since 2014**, current competitive tiers, **7,696 images** across seven art styles and **2,024 cries**, all linked by key and packaged as one SQLite database.\n\n## What's inside\n\n**Pokémon**\n\n| File | Rows | One row per |\n|---|---|---|\n| `pokemon_utf8.csv` | 1,025 | species: types, stats, abilities, type matchups, breeding, EV yield, evolution chain, Megas, names, description (72 columns) |\n| `pokemon_forms.csv` | 1,578 | form: 97 Megas, 34 Gigantamax, 58 regional forms, alternate formes and cosmetic variants, each with its own stats, types and abilities |\n| `evolutions.csv` | 702 | evolution method |\n| `pokemon_stats.csv` | 6,150 | (species, base stat), long format |\n\n**Battle**\n\n| File | Rows | One row per |\n|---|---|---|\n| `moves.csv` | 920 | move: type, category, power, accuracy, PP, effects |\n| `pokemon_moves.csv` | 665,810 | learnset entry, every game from Red/Green to Legends: Z-A |\n| `abilities.csv` / `pokemon_abilities.csv` | 314 / 2,943 | ability with its effect / who can have it |\n| `natures.csv` / `type_chart.csv` | 25 / 324 | nature / (attacking type, defending type) |\n| `competitive_tiers.csv` | 1,380 | Pokémon Showdown entry with its current Smogon tiers |\n| `smogon_usage.csv` | 520,661 | (month, format, Pokémon) usage share for every Pokémon on at least 1% of teams, across 170 formats and 152 monthly periods (Nov 2014 – Oct 2026) |\n\n**World**\n\n| File | Rows | One row per |\n|---|---|---|\n| `pokedex_entries.csv` | 98,396 | Pokédex entry, every game, 11 languages |\n| `pokemon_names.csv` | 12,300 | (species, language) name and category |\n| `encounters.csv` | 117,585 | wild encounter: game, location, method, levels, rate, conditions |\n| `items.csv` / `machines.csv` | 2,221 / 2,508 | item / TM, HM or TR per game |\n| `pokedex_numbers.csv` / `version_groups.csv` | 8,010 / 32 | regional dex number / game lookup |\n\n**Images and audio**\n\n| File | Rows | One row per |\n|---|---|---|\n| `images.csv` | 7,696 | image: species, exact form shown, types, size, fixed train/val/test split |\n| `cries.csv` | 2,024 | cry: species, form, format, duration, split |\n| `pokedex.sqlite` | | all of the above, with primary and foreign keys |\n\n**Image folders:**\n- `small_images` (215 px official artwork)\n- `large_images` (up to 1280 px)\n- `alt_images` (360 alternate forms)\n- `shiny_images` (shiny artwork)\n- `home_images` and `home_shiny_images` (Pokémon HOME 3D renders)\n- `animated_sprites` (animated GIFs)\n\n**Audio folders:** `cries` (current) and `cries_legacy` (the original Gen I–V cries).\n\n## Quick start\n\n```python\nimport pandas as pd\npokemon = pd.read_csv('/kaggle/input/pokedex/pokemon_utf8.csv')\nusage = pd.read_csv('/kaggle/input/pokedex/smogon_usage.csv')\nou = usage[(usage.format == 'gen9ou') & (usage.period == '2026-10')].nsmallest(10, 'rank')\nou.merge(pokemon[['national_number', 'primary_type', 'base_total']], on='national_number')\n```\n\n```python\nimport sqlite3\ncon = sqlite3.connect('/kaggle/input/pokedex/pokedex.sqlite')\npd.read_sql('''\n    SELECT e.game, e.location, e.method, e.min_level, e.max_level, e.rarity\n    FROM encounters e JOIN pokemon p ON p.national_number = e.national_number\n    WHERE p.english_name = 'Dratini' AND e.game IN ('FireRed', 'HeartGold')''', con)\n```\n\n## Ideas\n- **Image classification:** predict type from artwork. The split is by species, so forms of one Pokémon never leak across splits. Seven art styles make it a domain-shift benchmark (official art → 3D renders → pixel sprites), and the shiny/normal pairs support colour-transfer work.\n- **Audio:** classify cries by species, type or generation, or compare the original and current cries.\n- **Competitive play:** forecast monthly usage, find when the metagame shifted, link usage to stats, typings and abilities, and build teams from learnsets.\n- **NLP and translation:** Pokédex entries across 38 games and 11 languages.\n- **Tabular modelling:** legendary classification, stat archetypes, clustering.\n- **Graphs:** evolution trees.\n- **SQL practice:** the 23 tables of `pokedex.sqlite`, joined by keys.\n\n## Quality\n- **Validation:** `scripts/validate.py` checks every table. It checks keys, foreign keys and value ranges. It recomputes the type matchups from the type chart and confirms that species, forms, abilities, names, images and cries agree across tables. It also checks that file names are Kaggle-safe and that every column is documented.\n- **Corrections:** the species table was cross-checked against PokéAPI and current game data. Version 3 corrected abilities on 34 species and categories on 19.\n\n## License\n- **Dataset:** [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Credit *\"The Complete Pokédex Dataset by Cristobal Mitchell\"*, use it non-commercially, and share derived datasets under the same license.\n- **Third-party material** keeps its own terms, listed below and in the repository's `DATA_LICENSE.md`.\n- **Code:** the build scripts and notebooks on GitHub are MIT-licensed.\n- **No affiliation:** not affiliated with or endorsed by Nintendo, The Pokémon Company, Creatures Inc., GAME FREAK inc., PokéAPI or Smogon.\n\n## Sources and credits\n- **Species data:** Serebii.net\n- **Pokédex descriptions:** pokemon.com\n- **Bundled artwork:** Bulbapedia\n- **Forms, evolutions, moves, learnsets, abilities, items, Pokédex entries, encounters and the added species fields:** [PokéAPI](https://github.com/PokeAPI/pokeapi). Copyright © 2013–2023 Paul Hallett and PokéAPI contributors, BSD-3-Clause.\n- **Shiny, HOME and animated sprites, and cries:** [PokéAPI sprites](https://github.com/PokeAPI/sprites) and [cries](https://github.com/PokeAPI/cries)\n- **Tiers:** [Pokémon Showdown](https://github.com/smogon/pokemon-showdown) (MIT)\n- **Usage statistics:** [Smogon](https://www.smogon.com/stats/)\n- **Trademarks:** Pokémon and Pokémon character names are trademarks of Nintendo. Artwork and cries are © Nintendo, Creatures Inc. and GAME FREAK and are included for non-commercial research and education.\n\n**Companion dataset:** [The Complete Pokémon TCG Dataset](https://www.kaggle.com/datasets/cristobalmitchell/pokemon-tcg) has every English trading card, linked to these species by Pokédex number.\n\nThe pipeline is reproducible: `bash scripts/build_all.sh` rebuilds everything from the sources. It's on [GitHub](https://github.com/cristobalmitchell/pokedex).\n",
   "id": "cristobalmitchell/pokedex",
   "licenses": [
     {
@@ -25,7 +25,7 @@
   "userSpecifiedSources": "Serebii.net (species stats, breeding, legendary status), pokemon.com (Pokédex descriptions), Bulbapedia (bundled artwork), the PokéAPI CSV database (https://github.com/PokeAPI/pokeapi, BSD-3-Clause; forms, evolutions, moves, learnsets, abilities, items, Pokédex entries, encounters and the added species fields), PokéAPI sprites and cries (https://github.com/PokeAPI/sprites, https://github.com/PokeAPI/cries), Pokémon Showdown (https://github.com/smogon/pokemon-showdown, MIT; tiers) and Smogon usage statistics (https://www.smogon.com/stats/). Built with the reproducible pipeline in scripts/ and checked by scripts/validate.py.",
   "resources": [
     {
-      "path": "data/pokemon_utf8.csv",
+      "path": "pokemon_utf8.csv",
       "description": "One row per species: all 1,025 Pokémon (Gen I–IX), UTF-8. The recommended starting file (72 columns).",
       "schema": {
         "fields": [
@@ -393,11 +393,11 @@
       }
     },
     {
-      "path": "data/pokemon.csv",
+      "path": "pokemon.csv",
       "description": "Identical data in the original UTF-16, tab-separated format (encoding='utf-16', sep='\\t'), kept for older notebooks."
     },
     {
-      "path": "data/pokemon_stats.csv",
+      "path": "pokemon_stats.csv",
       "description": "The six base stats in long format: one row per (species, stat).",
       "schema": {
         "fields": [
@@ -425,7 +425,7 @@
       }
     },
     {
-      "path": "data/pokemon_forms.csv",
+      "path": "pokemon_forms.csv",
       "description": "One row per form (1,578): Megas, Gigantamax, regional forms, alternate formes and cosmetic variants, each with its own types, stats, abilities, matchups and artwork.",
       "schema": {
         "fields": [
@@ -718,7 +718,7 @@
       }
     },
     {
-      "path": "data/evolutions.csv",
+      "path": "evolutions.csv",
       "description": "One row per evolution method (702), with structured conditions and a readable sentence.",
       "schema": {
         "fields": [
@@ -901,7 +901,7 @@
       }
     },
     {
-      "path": "data/moves.csv",
+      "path": "moves.csv",
       "description": "Every move (920): type, category, power, accuracy, PP, priority, effects and battle mechanics.",
       "schema": {
         "fields": [
@@ -1039,7 +1039,7 @@
       }
     },
     {
-      "path": "data/pokemon_moves.csv",
+      "path": "pokemon_moves.csv",
       "description": "Learnsets: who learns which move, how and at what level, in every game from Red/Green to Legends: Z-A.",
       "schema": {
         "fields": [
@@ -1092,7 +1092,7 @@
       }
     },
     {
-      "path": "data/abilities.csv",
+      "path": "abilities.csv",
       "description": "Every ability (314) with its effect and in-game text.",
       "schema": {
         "fields": [
@@ -1140,7 +1140,7 @@
       }
     },
     {
-      "path": "data/pokemon_abilities.csv",
+      "path": "pokemon_abilities.csv",
       "description": "Which ability each variety can have, in which slot (regular or hidden).",
       "schema": {
         "fields": [
@@ -1183,7 +1183,7 @@
       }
     },
     {
-      "path": "data/items.csv",
+      "path": "items.csv",
       "description": "Every item (2,221): category, bag pocket, price, Fling data and effect text.",
       "schema": {
         "fields": [
@@ -1246,7 +1246,7 @@
       }
     },
     {
-      "path": "data/natures.csv",
+      "path": "natures.csv",
       "description": "The 25 natures: stat raised, stat lowered and berry flavors.",
       "schema": {
         "fields": [
@@ -1289,7 +1289,7 @@
       }
     },
     {
-      "path": "data/type_chart.csv",
+      "path": "type_chart.csv",
       "description": "The 18 × 18 type chart, one row per (attacking type, defending type).",
       "schema": {
         "fields": [
@@ -1312,7 +1312,7 @@
       }
     },
     {
-      "path": "data/pokedex_entries.csv",
+      "path": "pokedex_entries.csv",
       "description": "Every Pokédex entry from every game, in 11 languages (98,396 entries).",
       "schema": {
         "fields": [
@@ -1350,7 +1350,7 @@
       }
     },
     {
-      "path": "data/pokemon_names.csv",
+      "path": "pokemon_names.csv",
       "description": "Species names and categories in 12 languages.",
       "schema": {
         "fields": [
@@ -1378,7 +1378,7 @@
       }
     },
     {
-      "path": "data/encounters.csv",
+      "path": "encounters.csv",
       "description": "Where and how each Pokémon can be caught in each game, with levels, rates and conditions (117,585 rows).",
       "schema": {
         "fields": [
@@ -1456,7 +1456,7 @@
       }
     },
     {
-      "path": "data/pokedex_numbers.csv",
+      "path": "pokedex_numbers.csv",
       "description": "Each species' number in every regional Pokédex.",
       "schema": {
         "fields": [
@@ -1489,7 +1489,7 @@
       }
     },
     {
-      "path": "data/machines.csv",
+      "path": "machines.csv",
       "description": "Which move each TM, HM and TR teaches in each game.",
       "schema": {
         "fields": [
@@ -1527,7 +1527,7 @@
       }
     },
     {
-      "path": "data/version_groups.csv",
+      "path": "version_groups.csv",
       "description": "Lookup of game groups used by the learnset and machine tables.",
       "schema": {
         "fields": [
@@ -1560,7 +1560,7 @@
       }
     },
     {
-      "path": "data/images.csv",
+      "path": "images.csv",
       "description": "Manifest of every image: species, the exact form shown, its types, size and a fixed species-level train/val/test split.",
       "schema": {
         "fields": [
@@ -1638,7 +1638,7 @@
       }
     },
     {
-      "path": "data/cries.csv",
+      "path": "cries.csv",
       "description": "Manifest of every cry (current and original Gen I–V): species, form, format, duration and split.",
       "schema": {
         "fields": [
@@ -1711,7 +1711,7 @@
       }
     },
     {
-      "path": "data/competitive_tiers.csv",
+      "path": "competitive_tiers.csv",
       "description": "Current Smogon tiers (singles, doubles, National Dex) for every species and form, from Pokémon Showdown.",
       "schema": {
         "fields": [
@@ -1764,7 +1764,7 @@
       }
     },
     {
-      "path": "data/smogon_usage.csv",
+      "path": "smogon_usage.csv",
       "description": "Monthly Smogon usage statistics, November 2014 to October 2026: 170 standard formats of every generation (OU to ZU, Ubers, LC, Monotype, Doubles, National Dex, VGC, Battle Stadium), every Pokémon on at least 1% of teams, at the standard and top-ladder rating cutoffs.",
       "schema": {
         "fields": [
@@ -1842,7 +1842,7 @@
       }
     },
     {
-      "path": "data/pokedex.sqlite",
+      "path": "pokedex.sqlite",
       "description": "Every table in one SQLite database with primary and foreign keys (pokemon_utf8.csv is the table `pokemon`; learnsets and Smogon usage use integer keys with lookup tables)."
     }
   ]

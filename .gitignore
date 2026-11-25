@@ -13,3 +13,6 @@ __pycache__/
 
 # SQLite build of data/*.csv (~100 MB): built by scripts/build_sqlite.py and published on Kaggle
 data/pokedex.sqlite
+
+# Kaggle upload staging folder: built by scripts/stage_kaggle.py
+kaggle_upload/
