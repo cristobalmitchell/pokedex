@@ -90,8 +90,10 @@ In `images.csv` and `cries.csv`, every file is linked to the exact form it shows
 | `build_sqlite.py` | `data/pokedex.sqlite` |
 | `build_metadata.py` | `dataset-metadata.json` from the column docs and `docs/kaggle_description.md` |
 | `validate.py` | the integrity checks; run before every upload |
+| `stage_kaggle.py` | `kaggle_upload/`: everything to drag into Kaggle's web uploader (data files at the root, one zip per image and audio folder), plus `UPLOAD.md` (step-by-step), `COLUMNS.md` (every column description, ready to paste), the description and the cover |
+| `build_cover.py` | `dataset-cover-image.png`, the 1280 × 640 Kaggle cover, with its summary line computed from the data |
 
-To prepare a Kaggle upload from a fresh clone, run `SKIP_COMPETITIVE=1 bash scripts/build_all.sh`. It reuses the committed Smogon tables instead of downloading Smogon's 10,600 monthly files, which takes about 45 minutes. `SKIP_MEDIA=1` skips the 1 GB sprite download. `pokedex.ipynb` is the original scraper for the species table and the bundled artwork. `notebooks/pokedex_eda.ipynb` is a starter analysis ready to fork on Kaggle.
+To prepare a Kaggle upload from a fresh clone, run `SKIP_COMPETITIVE=1 bash scripts/build_all.sh`, then follow `kaggle_upload/UPLOAD.md`. It reuses the committed Smogon tables instead of downloading Smogon's 10,600 monthly files, which takes about 45 minutes. `SKIP_MEDIA=1` skips the 1 GB sprite download. `pokedex.ipynb` is the original scraper for the species table and the bundled artwork. `notebooks/pokedex_eda.ipynb` is a starter analysis ready to fork on Kaggle.
 
 ### What `validate.py` checks
 - **Keys:** keys and foreign keys in every table.
@@ -142,7 +144,13 @@ All 1,025 Pokémon from Gen I to Gen IX, one row each.
 - **`pokedex_entries.csv`:** every Pokédex entry from every game in English, Japanese (kana and kanji), Korean, Chinese (traditional and simplified), French, German, Spanish (Spain and Latin America) and Italian.
 - **`encounters.csv`:** where each Pokémon appears in the wild in each game, with method, levels, encounter rate and conditions (time of day, season, swarms, Max Raids, ...).
 
-## Credits and licenses
+## Licenses
+* **Code** (`scripts/`, `notebooks/`, `pokedex.ipynb`): MIT; see [`LICENSE`](LICENSE).
+* **Dataset** (`data/`, `images/`, `audio/`): [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Credit *"The Complete Pokédex Dataset by Cristobal Mitchell"*, use it non-commercially, and share derived datasets under the same license. See [`DATA_LICENSE.md`](DATA_LICENSE.md).
+* **Third-party material** keeps its own terms: PokéAPI (BSD-3-Clause, [`LICENSE-PokeAPI.md`](LICENSE-PokeAPI.md)), Pokémon Showdown (MIT, [`LICENSE-PokemonShowdown.md`](LICENSE-PokemonShowdown.md)), Smogon's usage statistics, and The Pokémon Company's names, artwork, sprites, cries and game text. `DATA_LICENSE.md` lists each source and its terms.
+* This project is not affiliated with or endorsed by Nintendo, The Pokémon Company, Creatures Inc., GAME FREAK inc., PokéAPI or Smogon. To request removal of material you hold rights in, [open an issue](https://github.com/cristobalmitchell/pokedex/issues).
+
+## Credits
 * **Species data:** [Serebii.net](https://www.serebii.net)
 * **Pokédex descriptions:** [pokemon.com](https://www.pokemon.com)
 * **Bundled artwork:** [Bulbapedia](https://bulbapedia.bulbagarden.net)
@@ -169,7 +177,9 @@ All 1,025 Pokémon from Gen I to Gen IX, one row each.
   * 2,024 cries; 116 upstream files named `.ogg` are really MP3 and now have the right extension
   * `cries.csv`; `images.csv` now covers all seven image sets
 * **Database:** `pokedex.sqlite` now holds all 23 tables. Because it is about 117 MB, it is rebuilt by `scripts/build_sqlite.py` and published on Kaggle rather than kept in git.
-* **Pipeline:** added `scripts/build_all.sh`, `build_competitive.py`, `build_media.py`, `build_sqlite.py` and `build_metadata.py`. `validate.py` now covers every table.
+* **Pipeline:** added `scripts/build_all.sh`, `build_competitive.py`, `build_media.py`, `build_sqlite.py`, `build_metadata.py`, `stage_kaggle.py` (a ready-to-upload folder for Kaggle's web uploader) and `build_cover.py`. `validate.py` now covers every table. `dataset-metadata.json` uses the Kaggle file layout (data files at the dataset root).
+* **Licenses:** the code stays MIT. The dataset is now explicitly CC BY-NC-SA 4.0 (`DATA_LICENSE.md`), with each third-party source's terms listed (PokéAPI BSD-3-Clause, Pokémon Showdown MIT, Smogon, The Pokémon Company). Previously the repository's single MIT license nominally covered the data as well.
+* **Cover:** regenerated with current figures (it still said "55 features").
 * **Cleanup:** removed stray macOS `.DS_Store` files from the image folders.
 * **Not filled in:** nine Mega Dimension Megas (Mega Heatran, Darkrai, Zygarde, Magearna, Zeraora and the three Tatsugiri) still have no abilities. Their official abilities could not be confirmed.
 

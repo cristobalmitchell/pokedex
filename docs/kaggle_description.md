@@ -78,11 +78,17 @@ pd.read_sql('''
 - **NLP and translation:** Pokédex entries across 38 games and 11 languages.
 - **Tabular modelling:** legendary classification, stat archetypes, clustering.
 - **Graphs:** evolution trees.
-- **SQL practice:** 22 tables joined by keys.
+- **SQL practice:** the 23 tables of `pokedex.sqlite`, joined by keys.
 
 ## Quality
 - **Validation:** `scripts/validate.py` checks every table. It checks keys, foreign keys and value ranges. It recomputes the type matchups from the type chart and confirms that species, forms, abilities, names, images and cries agree across tables. It also checks that file names are Kaggle-safe and that every column is documented.
 - **Corrections:** the species table was cross-checked against PokéAPI and current game data. Version 3 corrected abilities on 34 species and categories on 19.
+
+## License
+- **Dataset:** [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Credit *"The Complete Pokédex Dataset by Cristobal Mitchell"*, use it non-commercially, and share derived datasets under the same license.
+- **Third-party material** keeps its own terms, listed below and in the repository's `DATA_LICENSE.md`.
+- **Code:** the build scripts and notebooks on GitHub are MIT-licensed.
+- **No affiliation:** not affiliated with or endorsed by Nintendo, The Pokémon Company, Creatures Inc., GAME FREAK inc., PokéAPI or Smogon.
 
 ## Sources and credits
 - **Species data:** Serebii.net
@@ -94,6 +100,6 @@ pd.read_sql('''
 - **Usage statistics:** [Smogon](https://www.smogon.com/stats/)
 - **Trademarks:** Pokémon and Pokémon character names are trademarks of Nintendo. Artwork and cries are © Nintendo, Creatures Inc. and GAME FREAK and are included for non-commercial research and education.
 
-**Companion dataset:** every English trading card, linked by Pokédex number.
+**Companion dataset:** [The Complete Pokémon TCG Dataset](https://www.kaggle.com/datasets/cristobalmitchell/pokemon-tcg) has every English trading card, linked to these species by Pokédex number.
 
 The pipeline is reproducible: `bash scripts/build_all.sh` rebuilds everything from the sources. It's on [GitHub](https://github.com/cristobalmitchell/pokedex).
