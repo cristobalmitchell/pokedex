@@ -1,18 +1,24 @@
-"""Build the v2 relational tables of The Complete Pokédex Dataset.
+"""Build the relational tables of The Complete Pokédex Dataset.
 
 The species table (data/pokemon_utf8.csv) is the scraped, cross-verified master
-built by pokedex.ipynb. This script enriches it and derives the companion tables
-from the PokeAPI CSV database (https://github.com/PokeAPI/pokeapi, data/v2/csv,
+built by pokedex.ipynb. This script corrects and enriches it and derives the companion
+tables from the PokeAPI CSV database (https://github.com/PokeAPI/pokeapi, data/v2/csv,
 BSD-3-Clause):
 
-    data/pokemon_utf8.csv / data/pokemon.csv   species master (+ new species fields)
+    data/pokemon_utf8.csv / data/pokemon.csv   species master (+ species fields from PokeAPI)
     data/pokemon_stats.csv                     base stats, long format
     data/pokemon_forms.csv                     every form/variety with its own stats and types
     data/evolutions.csv                        one row per evolution method
-    data/moves.csv                             every move
-    data/pokemon_moves.csv                     learnsets for every game
-    data/images.csv                            image manifest with a fixed train/val/test split
-    data/pokedex.sqlite                        all of the above as one SQLite database
+    data/moves.csv, data/pokemon_moves.csv     moves and learnsets for every game
+    data/abilities.csv, pokemon_abilities.csv  abilities with effects, and who has them
+    data/items.csv, natures.csv, type_chart.csv, machines.csv
+    data/pokedex_entries.csv                   every Pokédex entry, every game, every language
+    data/pokemon_names.csv                     species names and categories in 11 languages
+    data/encounters.csv                        where to catch each Pokémon, per game
+    data/pokedex_numbers.csv                   regional Pokédex numbers
+
+The full pipeline: build_tables.py -> build_competitive.py -> build_media.py -> build_sqlite.py
+-> build_metadata.py -> validate.py (see the README).
 
 Usage:
     git clone --depth 1 --filter=blob:none --sparse https://github.com/PokeAPI/pokeapi.git
@@ -22,7 +28,6 @@ Usage:
 
 import hashlib
 import re
-import sqlite3
 import struct
 import sys
 from pathlib import Path
@@ -66,6 +71,7 @@ def en(r, table, key, col='name'):
     t = r(table)
     lang = 'local_language_id' if 'local_language_id' in t.columns else 'language_id'
     out = t[t[lang] == EN].set_index(key)[col]
+    out = out[~out.index.duplicated(keep='first')]  # a few prose tables repeat a key
     return out.str.replace('\u2019', "'") if out.dtype != float else out  # straight apostrophes, as in the master
 
 
@@ -157,9 +163,11 @@ def build_master(api):
     df = pd.read_csv(DATA / 'pokemon_utf8.csv')
     # Re-runnable: drop the columns this script derives, so a rebuild starts from the scraped fields.
     derived = ['color', 'shape', 'habitat', 'base_experience', 'base_friendship', 'growth_rate',
-               'egg_group_1', 'egg_group_2', 'base_total'] + [f'ev_yield_{s}' for s in STATS]
+               'egg_group_1', 'egg_group_2', 'base_total', 'japanese_name_kana',
+               'japanese_name_official'] + [f'ev_yield_{s}' for s in STATS]
     df = df.drop(columns=[c for c in derived if c in df.columns])
     df['english_name'] = df.english_name.str.replace('’', "'")
+    df['japanese_name'] = df.japanese_name.str.strip()
     df['capture_rate'] = df.capture_rate.astype(str)
     for n, fixes in STAT_FIXES.items():
         for col, v in fixes.items():
@@ -173,6 +181,30 @@ def build_master(api):
     default_pid = r('pokemon').query('is_default == 1').set_index('species_id').id
     pids = df.national_number.map(default_pid)
 
+    # Abilities come from the default form in PokeAPI. The scraped cells mixed in other forms'
+    # abilities ("Surge Surfer (Alola Form)", "Intimidate (Therian Forme)"), held garbled text
+    # ("Snow Cloak- Slush Rush") and missed Gen IX changes (Empoleon's Competitive, Shiftry's Wind Rider).
+    abil = r('pokemon_abilities')
+    abil = abil[abil.pokemon_id.isin(set(pids))].assign(name=lambda d: d.ability_id.map(api.ability_name))
+    slot = abil.pivot(index='pokemon_id', columns='slot', values='name')
+    cols = ['abilities_0', 'abilities_1', 'abilities_2', 'abilities_hidden']
+    before = df[cols].copy()
+    df['abilities_0'] = pids.map(slot[1]).values
+    df['abilities_1'] = pids.map(slot.get(2, pd.Series(dtype=object))).values
+    df['abilities_2'] = None  # no species has a third regular ability; kept for older notebooks
+    df['abilities_hidden'] = pids.map(slot.get(3, pd.Series(dtype=object))).values
+    changed = (before.fillna('') != df[cols].fillna('')).any(axis=1).sum()
+    # Classification is the current English genus; the scrape had old and misspelled categories
+    # ("Tiny Racoon Pokémon", "Wickid Pokémon", Weedle as "Hairy Pokémon").
+    genus = en(r, 'pokemon_species_names', 'pokemon_species_id', 'genus')
+    new_cls = df.national_number.map(genus)
+    changed_cls = (df.classification.str.strip() != new_cls).sum()
+    df['classification'] = new_cls
+    names = r('pokemon_species_names')
+    kana = names[names.local_language_id == 1].set_index('pokemon_species_id').name
+    official = names[names.local_language_id == 2].set_index('pokemon_species_id').name
+    print(f'species fixes: abilities changed on {changed} rows, classification on {changed_cls} rows')
+
     color = en(r, 'pokemon_color_names', 'pokemon_color_id')
     shape = en(r, 'pokemon_shape_prose', 'pokemon_shape_id')
     habitat = en(r, 'pokemon_habitat_names', 'pokemon_habitat_id')
@@ -184,6 +216,8 @@ def build_master(api):
     effort.columns = [f'ev_yield_{s}' for s in STATS]
 
     new = pd.DataFrame(index=df.index)
+    new['japanese_name_kana'] = df.national_number.map(kana).values
+    new['japanese_name_official'] = df.national_number.map(official).values
     new['color'] = sp.color_id.map(color).values
     new['shape'] = sp.shape_id.map(shape).values
     new['habitat'] = sp.habitat_id.map(habitat).map(
@@ -205,6 +239,7 @@ def build_master(api):
     def after(col, cols):
         i = order.index(col) + 1
         order[i:i] = cols
+    after('japanese_name', ['japanese_name_kana', 'japanese_name_official'])
     after('classification', ['color', 'shape', 'habitat'])
     after('base_egg_steps', ['base_experience', 'base_friendship', 'growth_rate', 'egg_group_1', 'egg_group_2'])
     after('speed', ['base_total'] + list(ev.columns))
@@ -601,17 +636,22 @@ def match_alt_images(api, forms):
     return matches
 
 
-def build_images(api, master, forms, alt_matches):
-    fr = forms.set_index('form_id')
-    default_form = forms[(forms.is_default_variety == 1) & (forms.is_default_form == 1)].set_index('national_number').form_id
-    # Split by species so that every image of a species lands in the same split (no leakage),
-    # stratified by primary type, deterministic (hash of the national number).
+def species_split(master):
+    """Fixed 70/15/15 train/val/test split by species, stratified by primary type and deterministic
+    (hash of the national number), so every image and cry of a species lands in the same split."""
     split = {}
     for _, g in master.groupby('primary_type'):
         ns = sorted(g.national_number, key=lambda n: hashlib.md5(str(n).encode()).hexdigest())
         k = len(ns)
         for i, n in enumerate(ns):
             split[n] = 'train' if i < round(k * 0.70) else ('val' if i < round(k * 0.85) else 'test')
+    return split
+
+
+def build_images(api, master, forms, alt_matches):
+    fr = forms.set_index('form_id')
+    default_form = forms[(forms.is_default_variety == 1) & (forms.is_default_form == 1)].set_index('national_number').form_id
+    split = species_split(master)
     rows = []
     names = master.set_index('national_number').english_name
     rx = re.compile(r'^(\d+)([^\d].*?)-(.+)\.png$')
@@ -731,6 +771,228 @@ def build_pokemon_moves(api, forms):
     return out.drop(columns='_o').reset_index(drop=True)
 
 
+# --------------------------------------------------------------------------- reference tables
+
+CJK = {'ja-hrkt', 'ja', 'zh-hant', 'zh-hans'}  # line breaks inside these texts are not word breaks
+
+
+def latest_flavor(api, table, key):
+    """Most recent English flavor text per key, skipping retired-move style placeholders."""
+    ft = api.r(table)
+    ft = ft[ft.language_id == EN].assign(text=lambda d: d.flavor_text.map(clean_text),
+                                         order=lambda d: d.version_group_id.map(api.vg_order))
+    ft = ft[~ft.text.str.startswith("This move can't be used") & (ft.text != 'Dummy Data')]
+    return ft.sort_values('order').groupby(key).text.last()
+
+
+def build_abilities(api, forms):
+    r = api.r
+    ab = r('abilities')
+    ab = ab[ab.is_main_series == 1]
+    prose = r('ability_prose')
+    prose = prose[prose.local_language_id == EN].set_index('ability_id')
+    flavor = latest_flavor(api, 'ability_flavor_text', 'ability_id')
+    pa = r('pokemon_abilities')
+    default_pids = set(forms[(forms.is_default_form == 1) & (forms.is_default_variety == 1)].pokemon_id)
+    species_count = pa[pa.pokemon_id.isin(default_pids)].groupby('ability_id').pokemon_id.nunique()
+    out = pd.DataFrame({
+        'ability_id': ab.id,
+        'name': ab.id.map(api.ability_name),
+        'identifier': ab.identifier,
+        'generation': ab.generation_id.map(ROMAN),
+        'short_effect': ab.id.map(prose.short_effect).map(strip_markup),
+        'effect': ab.id.map(prose.effect).map(strip_markup),
+        'flavor_text': ab.id.map(flavor),
+        'species_count': ab.id.map(species_count).fillna(0).astype(int),
+    })
+    return out.reset_index(drop=True)
+
+
+def build_pokemon_abilities(api, forms):
+    pa = api.r('pokemon_abilities')
+    varieties = forms[forms.is_default_form == 1].set_index('pokemon_id')
+    main = set(api.r('abilities').query('is_main_series == 1').id)
+    pa = pa[pa.pokemon_id.isin(varieties.index) & pa.ability_id.isin(main)]
+    out = pd.DataFrame({
+        'pokemon_id': pa.pokemon_id,
+        'national_number': pa.pokemon_id.map(varieties.national_number),
+        'pokemon': pa.pokemon_id.map(varieties.display_name),
+        'ability_id': pa.ability_id,
+        'ability': pa.ability_id.map(api.ability_name),
+        'slot': pa.slot,
+        'is_hidden': pa.is_hidden,
+    })
+    return out.sort_values(['national_number', 'pokemon_id', 'slot']).reset_index(drop=True)
+
+
+def build_items(api):
+    r = api.r
+    it = r('items')
+    cat = r('item_categories').set_index('id')
+    cat_name = en(r, 'item_category_prose', 'item_category_id')
+    pocket_name = en(r, 'item_pocket_names', 'item_pocket_id')
+    fling = en(r, 'item_fling_effect_prose', 'item_fling_effect_id', 'effect')
+    prose = r('item_prose')
+    prose = prose[prose.local_language_id == EN].set_index('item_id')
+    flavor = latest_flavor(api, 'item_flavor_text', 'item_id')
+    out = pd.DataFrame({
+        'item_id': it.id,
+        'name': it.id.map(api.item_name),
+        'identifier': it.identifier,
+        'category': it.category_id.map(cat_name),
+        'pocket': it.category_id.map(cat.pocket_id).map(pocket_name),
+        'cost': it.cost.astype('Int64'),
+        'fling_power': it.fling_power.astype('Int64'),
+        'fling_effect': it.fling_effect_id.map(fling).map(strip_markup),
+        'short_effect': it.id.map(prose.short_effect).map(strip_markup),
+        'effect': it.id.map(prose.effect).map(strip_markup),
+        'flavor_text': it.id.map(flavor),
+    })
+    return out[out.name.notna()].reset_index(drop=True)
+
+
+def build_natures(api):
+    r = api.r
+    na = r('natures')
+    nature_name = en(r, 'nature_names', 'nature_id')
+    flavor = en(r, 'contest_type_names', 'contest_type_id', 'flavor')
+    stat = dict(zip(range(1, 7), STATS))
+    neutral = na.increased_stat_id == na.decreased_stat_id
+    out = pd.DataFrame({
+        'nature_id': na.id,
+        'name': na.id.map(nature_name),
+        'increased_stat': na.increased_stat_id.map(stat).where(~neutral),
+        'decreased_stat': na.decreased_stat_id.map(stat).where(~neutral),
+        'likes_flavor': na.likes_flavor_id.map(flavor).where(~neutral),
+        'hates_flavor': na.hates_flavor_id.map(flavor).where(~neutral),
+        'is_neutral': neutral.astype(int),
+    })
+    return out.sort_values('nature_id').reset_index(drop=True)
+
+
+def build_type_chart(api):
+    rows = [(a, d, api.chart[a][d]) for a in TYPES for d in TYPES]
+    return pd.DataFrame(rows, columns=['attacking_type', 'defending_type', 'multiplier'])
+
+
+def language_codes(api):
+    return api.r('languages').set_index('id').identifier
+
+
+def build_pokedex_entries(api):
+    r = api.r
+    ft = r('pokemon_species_flavor_text')
+    lang = ft.language_id.map(language_codes(api))
+    vnames = en(r, 'version_names', 'version_id')
+    vgroup = r('versions').set_index('id').version_group_id
+    text = [clean_text(t.replace('\n', '').replace('\f', '')) if l in CJK else clean_text(t)
+            for t, l in zip(ft.flavor_text, lang)]
+    out = pd.DataFrame({
+        'national_number': ft.species_id,
+        'species': ft.species_id.map(api.species_name),
+        'game': ft.version_id.map(vnames),
+        'generation': ft.version_id.map(vgroup).map(api.vg_gen).map(ROMAN),
+        'language': lang,
+        'text': text,
+        '_order': ft.version_id.map(vgroup).map(api.vg_order),
+        '_v': ft.version_id,
+    })
+    out = out.drop_duplicates(['national_number', 'game', 'language', 'text'])
+    return (out.sort_values(['national_number', '_order', '_v', 'language'])
+            .drop(columns=['_order', '_v']).reset_index(drop=True))
+
+
+def build_names(api):
+    nm = api.r('pokemon_species_names')
+    out = pd.DataFrame({
+        'national_number': nm.pokemon_species_id,
+        'language': nm.local_language_id.map(language_codes(api)),
+        'name': nm.name.str.replace('’', "'"),
+        'genus': nm.genus.str.replace('’', "'"),
+    })
+    return out.sort_values(['national_number', 'language']).reset_index(drop=True)
+
+
+def build_encounters(api, forms):
+    r = api.r
+    enc = r('encounters')
+    slots = r('encounter_slots').set_index('id')
+    method = en(r, 'encounter_method_prose', 'encounter_method_id')
+    areas = r('location_areas').set_index('id')
+    area_name = en(r, 'location_area_prose', 'location_area_id')
+    locations = r('locations').set_index('id')
+    vnames = en(r, 'version_names', 'version_id')
+    vgroup = r('versions').set_index('id').version_group_id
+    cond_name = en(r, 'encounter_condition_value_prose', 'encounter_condition_value_id')
+    cmap = r('encounter_condition_value_map')
+    conds = (cmap.assign(n=cmap.encounter_condition_value_id.map(cond_name)).dropna(subset=['n'])
+             .groupby('encounter_id').n.apply(lambda s: '; '.join(sorted(s))))
+    varieties = forms[forms.is_default_form == 1].set_index('pokemon_id')
+    loc_id = enc.location_area_id.map(areas.location_id)
+    location = loc_id.map(api.location_name)
+    area = enc.location_area_id.map(area_name)
+    out = pd.DataFrame({
+        'encounter_id': enc.id,
+        'national_number': enc.pokemon_id.map(api.pokemon.species_id),
+        'pokemon_id': enc.pokemon_id,
+        'pokemon': enc.pokemon_id.map(varieties.display_name),
+        'game': enc.version_id.map(vnames),
+        'generation': enc.version_id.map(vgroup).map(api.vg_gen).map(ROMAN),
+        'region': loc_id.map(locations.region_id).map(api.region_name),
+        'location': location,
+        'area': area.where(area != location),
+        'method': enc.encounter_slot_id.map(slots.encounter_method_id).map(method),
+        'min_level': enc.min_level,
+        'max_level': enc.max_level,
+        'rarity': enc.encounter_slot_id.map(slots.rarity).astype('Int64'),
+        'conditions': enc.id.map(conds),
+    })
+    return out.sort_values(['national_number', 'pokemon_id', 'encounter_id']).reset_index(drop=True)
+
+
+def build_pokedex_numbers(api):
+    r = api.r
+    dn = r('pokemon_dex_numbers')
+    dex = r('pokedexes').set_index('id')
+    dex_name = en(r, 'pokedex_prose', 'pokedex_id')
+    out = pd.DataFrame({
+        'national_number': dn.species_id,
+        'pokedex': dn.pokedex_id.map(dex_name),
+        'pokedex_identifier': dn.pokedex_id.map(dex.identifier),
+        'region': dn.pokedex_id.map(dex.region_id).map(api.region_name),
+        'number': dn.pokedex_number,
+    })
+    return out.sort_values(['national_number', 'pokedex_identifier']).reset_index(drop=True)
+
+
+def build_machines(api):
+    r = api.r
+    ma = r('machines')
+    ma = ma[ma.move_id < 10000]
+    out = pd.DataFrame({
+        'machine': ma.item_id.map(api.item_name),
+        'item_id': ma.item_id,
+        'version_group': ma.version_group_id.map(r('version_groups').set_index('id').identifier),
+        'generation': ma.version_group_id.map(api.vg_gen).map(ROMAN),
+        'move_id': ma.move_id,
+        'move': ma.move_id.map(api.move_name),
+        '_order': ma.version_group_id.map(api.vg_order),
+    })
+    return out.sort_values(['_order', 'machine']).drop(columns='_order').reset_index(drop=True)
+
+
+def build_version_groups(api):
+    vg = api.r('version_groups')
+    out = pd.DataFrame({
+        'version_group_id': vg.id,
+        'version_group': vg.identifier,
+        'games': vg.id.map(api.vg_name),
+        'generation': vg.generation_id.map(ROMAN),
+        'order': vg.order,
+    })
+    return out.sort_values('order').reset_index(drop=True)
+
+
 # --------------------------------------------------------------------------- output
 
 def stats_long(master):
@@ -739,106 +1001,43 @@ def stats_long(master):
     return long.reset_index(drop=True)
 
 
-def write_sqlite(path, tables):
-    path.unlink(missing_ok=True)
-    con = sqlite3.connect(path)
-    schema = {
-        'pokemon': 'national_number INTEGER PRIMARY KEY',
-        'pokemon_forms': 'form_id INTEGER PRIMARY KEY',
-        'moves': 'move_id INTEGER PRIMARY KEY',
-        'move_methods': 'method_id INTEGER PRIMARY KEY',
-        'version_groups': 'version_group_id INTEGER PRIMARY KEY',
-    }
-    fks = {
-        'pokemon_forms': [('national_number', 'pokemon', 'national_number')],
-        'pokemon_stats': [('national_number', 'pokemon', 'national_number')],
-        'evolutions': [('from_national_number', 'pokemon', 'national_number'),
-                       ('to_national_number', 'pokemon', 'national_number')],
-        'pokemon_moves': [('national_number', 'pokemon', 'national_number'),
-                          ('move_id', 'moves', 'move_id'),
-                          ('method_id', 'move_methods', 'method_id'),
-                          ('version_group_id', 'version_groups', 'version_group_id')],
-        'images': [('national_number', 'pokemon', 'national_number'),
-                   ('form_id', 'pokemon_forms', 'form_id')],
-    }
-
-    def sqltype(s):
-        if pd.api.types.is_integer_dtype(s):
-            return 'INTEGER'
-        if pd.api.types.is_float_dtype(s):
-            return 'REAL'
-        return 'TEXT'
-    for name, df in tables.items():
-        cols = []
-        for c in df.columns:
-            decl = f'"{c}" {sqltype(df[c])}'
-            if name in schema and schema[name].split()[0] == c:
-                decl += ' PRIMARY KEY'
-            cols.append(decl)
-        for col, ref, refcol in fks.get(name, []):
-            cols.append(f'FOREIGN KEY ("{col}") REFERENCES {ref}("{refcol}")')
-        con.execute(f'CREATE TABLE {name} ({", ".join(cols)})')
-        df2 = df.astype(object).where(df.notna(), None)
-        con.executemany(f'INSERT INTO {name} VALUES ({", ".join("?" * len(df.columns))})',
-                        df2.itertuples(index=False, name=None))
-    for sql in ['CREATE INDEX ix_forms_species ON pokemon_forms(national_number)',
-                'CREATE INDEX ix_forms_pokemon ON pokemon_forms(pokemon_id)',
-                'CREATE INDEX ix_evo_from ON evolutions(from_national_number)',
-                'CREATE INDEX ix_evo_to ON evolutions(to_national_number)',
-                'CREATE INDEX ix_pm_pokemon ON pokemon_moves(pokemon_id)',
-                'CREATE INDEX ix_pm_move ON pokemon_moves(move_id)',
-                'CREATE INDEX ix_images_species ON images(national_number)']:
-        con.execute(sql)
-    con.commit()
-    con.execute('VACUUM')
-    con.close()
-
-
 def main(csv_dir):
     api = PokeAPI(csv_dir)
     master = build_master(api)
     forms = build_forms(api, master)
+    # Best bundled artwork per form (large image for default forms, alt image otherwise).
+    # The image manifest itself (data/images.csv) is written by build_media.py.
     alt = match_alt_images(api, forms)
     images = build_images(api, master, forms, alt)
     pref = images.image_set.map({'large_images': 0, 'alt_images': 1, 'small_images': 2})
     best = (images.assign(_p=pref).dropna(subset=['form_id']).sort_values(['_p', 'file_name'])
             .drop_duplicates('form_id').set_index('form_id').image_file)
     forms['image_file'] = forms.form_id.map(best)
-    evolutions = build_evolutions(api)
-    moves = build_moves(api)
-    pokemon_moves = build_pokemon_moves(api, forms)
-    stats = stats_long(master)
 
+    tables = {
+        'pokemon_stats': stats_long(master),
+        'pokemon_forms': forms,
+        'evolutions': build_evolutions(api),
+        'moves': build_moves(api),
+        'pokemon_moves': build_pokemon_moves(api, forms),
+        'abilities': build_abilities(api, forms),
+        'pokemon_abilities': build_pokemon_abilities(api, forms),
+        'items': build_items(api),
+        'natures': build_natures(api),
+        'type_chart': build_type_chart(api),
+        'pokedex_entries': build_pokedex_entries(api),
+        'pokemon_names': build_names(api),
+        'encounters': build_encounters(api, forms),
+        'pokedex_numbers': build_pokedex_numbers(api),
+        'machines': build_machines(api),
+        'version_groups': build_version_groups(api),
+    }
     master.to_csv(DATA / 'pokemon_utf8.csv', index=False, float_format='%g')
-    master.to_csv(DATA / 'pokemon.csv', index=False, float_format='%g', encoding='utf-16', sep='\t', lineterminator='\r\n')
-    stats.to_csv(DATA / 'pokemon_stats.csv', index=False, float_format='%g')
-    forms.to_csv(DATA / 'pokemon_forms.csv', index=False, float_format='%g')
-    evolutions.to_csv(DATA / 'evolutions.csv', index=False, float_format='%g')
-    moves.to_csv(DATA / 'moves.csv', index=False, float_format='%g')
-    pokemon_moves.to_csv(DATA / 'pokemon_moves.csv', index=False, float_format='%g')
-    images.to_csv(DATA / 'images.csv', index=False, float_format='%g')
-    methods = pd.DataFrame({'method': sorted(pokemon_moves.method.dropna().unique())})
-    methods.insert(0, 'method_id', range(1, len(methods) + 1))
-    vgs = (api.r('version_groups').rename(columns={'id': 'version_group_id', 'identifier': 'version_group'})
-           .assign(games=lambda d: d.version_group_id.map(api.vg_name),
-                   generation=lambda d: d.generation_id.map(ROMAN))
-           [['version_group_id', 'version_group', 'games', 'generation', 'order']]
-           .sort_values('order').drop(columns='order'))
-    learnsets = (pokemon_moves
-                 .merge(methods, on='method')
-                 .merge(vgs[['version_group_id', 'version_group']], on='version_group')
-                 [['pokemon_id', 'national_number', 'move_id', 'method_id', 'level', 'version_group_id']])
-    write_sqlite(DATA / 'pokedex.sqlite', {
-        'pokemon': master, 'pokemon_stats': stats, 'pokemon_forms': forms, 'evolutions': evolutions,
-        'moves': moves, 'move_methods': methods, 'version_groups': vgs, 'pokemon_moves': learnsets,
-        'images': images,
-    })
-    unmatched = sorted(k for k, v in alt.items() if v is None)
-    print(f'pokemon {master.shape}, forms {forms.shape}, evolutions {evolutions.shape}, moves {moves.shape}, '
-          f'pokemon_moves {pokemon_moves.shape}, images {images.shape}')
-    print(f'alt images matched to a form: {len(alt) - len(unmatched)}/{len(alt)}')
-    for u in unmatched:
-        print('  unmatched:', u)
+    master.to_csv(DATA / 'pokemon.csv', index=False, float_format='%g', encoding='utf-16', sep='\t',
+                  lineterminator='\r\n')
+    for name, df in tables.items():
+        df.to_csv(DATA / f'{name}.csv', index=False, float_format='%g')
+    print(f'pokemon {master.shape}; ' + ', '.join(f'{k} {v.shape}' for k, v in tables.items()))
 
 
 if __name__ == '__main__':
