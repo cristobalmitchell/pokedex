@@ -260,9 +260,7 @@ def main():
                 continue
             table = 'pokemon' if p.name == 'pokemon_utf8.csv' else p.stem
             n = con.execute(f'SELECT COUNT(*) FROM {table}').fetchone()[0]
-            rows = sum(1 for _ in open(p, encoding='utf-8')) - 1 if table not in ('pokedex_entries', 'moves',
-                                                                                  'abilities', 'items') \
-                else len(pd.read_csv(p))
+            rows = len(pd.read_csv(p, usecols=[0]))  # parses quoted multi-line text correctly
             check(n == rows, f'pokedex.sqlite: {table} has {n} rows, CSV has {rows}')
         fk = con.execute('PRAGMA foreign_key_check').fetchall()
         check(not fk, f'pokedex.sqlite: {len(fk)} foreign key violations')
@@ -276,11 +274,11 @@ def main():
     for p in sorted(DATA.glob('*.csv')):
         cols = list(pd.read_csv(p, nrows=0, encoding='utf-16' if p.name == 'pokemon.csv' else 'utf-8',
                                 sep='\t' if p.name == 'pokemon.csv' else ',').columns)
-        key = f'data/{p.name}'
+        key = p.name  # resource paths follow the Kaggle layout (files at the dataset root)
         check(key in documented, f'dataset-metadata.json: {key} not listed in resources')
         if documented.get(key):
             check(documented[key] == cols, f'dataset-metadata.json: {key} fields do not match its columns')
-    check('data/pokedex.sqlite' in documented, 'dataset-metadata.json: data/pokedex.sqlite not listed in resources')
+    check('pokedex.sqlite' in documented, 'dataset-metadata.json: pokedex.sqlite not listed in resources')
 
     if failures:
         print(f'FAILED {len(failures)} check(s):')

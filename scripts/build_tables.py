@@ -193,7 +193,9 @@ def build_master(api):
     df['abilities_1'] = pids.map(slot.get(2, pd.Series(dtype=object))).values
     df['abilities_2'] = None  # no species has a third regular ability; kept for older notebooks
     df['abilities_hidden'] = pids.map(slot.get(3, pd.Series(dtype=object))).values
-    changed = (before.fillna('') != df[cols].fillna('')).any(axis=1).sum()
+    # abilities_2 is all blank, so pandas reads it as float: compare as objects (fillna('') on a float
+    # column is deprecated and becomes an error in pandas 4).
+    changed = (before.astype(object).fillna('') != df[cols].astype(object).fillna('')).any(axis=1).sum()
     # Classification is the current English genus; the scrape had old and misspelled categories
     # ("Tiny Racoon Pokémon", "Wickid Pokémon", Weedle as "Hairy Pokémon").
     genus = en(r, 'pokemon_species_names', 'pokemon_species_id', 'genus')
