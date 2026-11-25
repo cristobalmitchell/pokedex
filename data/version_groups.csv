@@ -1,0 +1,33 @@
+version_group_id,version_group,games,generation,order
+28,red-green-japan,Red / Green,I,1
+29,blue-japan,Blue,I,2
+1,red-blue,Red / Blue,I,3
+2,yellow,Yellow,I,4
+3,gold-silver,Gold / Silver,II,5
+4,crystal,Crystal,II,6
+5,ruby-sapphire,Ruby / Sapphire,III,7
+6,emerald,Emerald,III,8
+12,colosseum,Colosseum,III,9
+13,xd,XD,III,10
+7,firered-leafgreen,FireRed / LeafGreen,III,11
+8,diamond-pearl,Diamond / Pearl,IV,12
+9,platinum,Platinum,IV,13
+10,heartgold-soulsilver,HeartGold / SoulSilver,IV,14
+11,black-white,Black / White,V,15
+14,black-2-white-2,Black 2 / White 2,V,16
+15,x-y,X / Y,VI,17
+16,omega-ruby-alpha-sapphire,Omega Ruby / Alpha Sapphire,VI,18
+17,sun-moon,Sun / Moon,VII,19
+18,ultra-sun-ultra-moon,Ultra Sun / Ultra Moon,VII,20
+19,lets-go-pikachu-lets-go-eevee,"Let's Go, Pikachu! / Let's Go, Eevee!",VII,21
+20,sword-shield,Sword / Shield,VIII,22
+21,the-isle-of-armor,Sword: The Isle of Armor / Shield: The Isle of Armor,VIII,23
+22,the-crown-tundra,Sword: The Crown Tundra / Shield: The Crown Tundra,VIII,24
+23,brilliant-diamond-shining-pearl,Brilliant Diamond / Shining Pearl,VIII,25
+24,legends-arceus,Legends: Arceus,VIII,26
+25,scarlet-violet,Scarlet / Violet,IX,27
+26,the-teal-mask,Scarlet: The Teal Mask / Violet: The Teal Mask,IX,28
+27,the-indigo-disk,Scarlet: The Indigo Disk / Violet: The Indigo Disk,IX,29
+30,legends-za,Legends: Z-A,IX,30
+31,mega-dimension,Mega Dimension,IX,31
+32,champions,Champions,IX,32

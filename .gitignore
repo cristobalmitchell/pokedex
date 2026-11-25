@@ -1,0 +1,18 @@
+# v3 image sets (~630 MB): built by scripts/build_media.py and published on Kaggle, not stored in git
+images/shiny_images/
+images/home_images/
+images/home_shiny_images/
+images/animated_sprites/
+
+# download caches used by the build scripts
+.cache/
+__pycache__/
+
+# macOS folder metadata
+.DS_Store
+
+# SQLite build of data/*.csv (~100 MB): built by scripts/build_sqlite.py and published on Kaggle
+data/pokedex.sqlite
+
+# Kaggle upload staging folder: built by scripts/stage_kaggle.py
+kaggle_upload/

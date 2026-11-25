@@ -1,0 +1,2509 @@
+machine,item_id,version_group,generation,move_id,move
+HM01,397,red-green-japan,I,15,Cut
+HM02,398,red-green-japan,I,19,Fly
+HM03,399,red-green-japan,I,57,Surf
+HM04,400,red-green-japan,I,70,Strength
+HM05,401,red-green-japan,I,148,Flash
+TM01,305,red-green-japan,I,5,Mega Punch
+TM02,306,red-green-japan,I,13,Razor Wind
+TM03,307,red-green-japan,I,14,Swords Dance
+TM04,308,red-green-japan,I,18,Whirlwind
+TM05,309,red-green-japan,I,25,Mega Kick
+TM06,310,red-green-japan,I,92,Toxic
+TM07,311,red-green-japan,I,32,Horn Drill
+TM08,312,red-green-japan,I,34,Body Slam
+TM09,313,red-green-japan,I,36,Take Down
+TM10,314,red-green-japan,I,38,Double-Edge
+TM11,315,red-green-japan,I,61,Bubble Beam
+TM12,316,red-green-japan,I,55,Water Gun
+TM13,317,red-green-japan,I,58,Ice Beam
+TM14,318,red-green-japan,I,59,Blizzard
+TM15,319,red-green-japan,I,63,Hyper Beam
+TM16,320,red-green-japan,I,6,Pay Day
+TM17,321,red-green-japan,I,66,Submission
+TM18,322,red-green-japan,I,68,Counter
+TM19,323,red-green-japan,I,69,Seismic Toss
+TM20,324,red-green-japan,I,99,Rage
+TM21,325,red-green-japan,I,72,Mega Drain
+TM22,326,red-green-japan,I,76,Solar Beam
+TM23,327,red-green-japan,I,82,Dragon Rage
+TM24,328,red-green-japan,I,85,Thunderbolt
+TM25,329,red-green-japan,I,87,Thunder
+TM26,330,red-green-japan,I,89,Earthquake
+TM27,331,red-green-japan,I,90,Fissure
+TM28,332,red-green-japan,I,91,Dig
+TM29,333,red-green-japan,I,94,Psychic
+TM30,334,red-green-japan,I,100,Teleport
+TM31,335,red-green-japan,I,102,Mimic
+TM32,336,red-green-japan,I,104,Double Team
+TM33,337,red-green-japan,I,115,Reflect
+TM34,338,red-green-japan,I,117,Bide
+TM35,339,red-green-japan,I,118,Metronome
+TM36,340,red-green-japan,I,120,Self-Destruct
+TM37,341,red-green-japan,I,121,Egg Bomb
+TM38,342,red-green-japan,I,126,Fire Blast
+TM39,343,red-green-japan,I,129,Swift
+TM40,344,red-green-japan,I,130,Skull Bash
+TM41,345,red-green-japan,I,135,Soft-Boiled
+TM42,346,red-green-japan,I,138,Dream Eater
+TM43,347,red-green-japan,I,143,Sky Attack
+TM44,348,red-green-japan,I,156,Rest
+TM45,349,red-green-japan,I,86,Thunder Wave
+TM46,350,red-green-japan,I,149,Psywave
+TM47,351,red-green-japan,I,153,Explosion
+TM48,352,red-green-japan,I,157,Rock Slide
+TM49,353,red-green-japan,I,161,Tri Attack
+TM50,354,red-green-japan,I,164,Substitute
+HM01,397,blue-japan,I,15,Cut
+HM02,398,blue-japan,I,19,Fly
+HM03,399,blue-japan,I,57,Surf
+HM04,400,blue-japan,I,70,Strength
+HM05,401,blue-japan,I,148,Flash
+TM01,305,blue-japan,I,5,Mega Punch
+TM02,306,blue-japan,I,13,Razor Wind
+TM03,307,blue-japan,I,14,Swords Dance
+TM04,308,blue-japan,I,18,Whirlwind
+TM05,309,blue-japan,I,25,Mega Kick
+TM06,310,blue-japan,I,92,Toxic
+TM07,311,blue-japan,I,32,Horn Drill
+TM08,312,blue-japan,I,34,Body Slam
+TM09,313,blue-japan,I,36,Take Down
+TM10,314,blue-japan,I,38,Double-Edge
+TM11,315,blue-japan,I,61,Bubble Beam
+TM12,316,blue-japan,I,55,Water Gun
+TM13,317,blue-japan,I,58,Ice Beam
+TM14,318,blue-japan,I,59,Blizzard
+TM15,319,blue-japan,I,63,Hyper Beam
+TM16,320,blue-japan,I,6,Pay Day
+TM17,321,blue-japan,I,66,Submission
+TM18,322,blue-japan,I,68,Counter
+TM19,323,blue-japan,I,69,Seismic Toss
+TM20,324,blue-japan,I,99,Rage
+TM21,325,blue-japan,I,72,Mega Drain
+TM22,326,blue-japan,I,76,Solar Beam
+TM23,327,blue-japan,I,82,Dragon Rage
+TM24,328,blue-japan,I,85,Thunderbolt
+TM25,329,blue-japan,I,87,Thunder
+TM26,330,blue-japan,I,89,Earthquake
+TM27,331,blue-japan,I,90,Fissure
+TM28,332,blue-japan,I,91,Dig
+TM29,333,blue-japan,I,94,Psychic
+TM30,334,blue-japan,I,100,Teleport
+TM31,335,blue-japan,I,102,Mimic
+TM32,336,blue-japan,I,104,Double Team
+TM33,337,blue-japan,I,115,Reflect
+TM34,338,blue-japan,I,117,Bide
+TM35,339,blue-japan,I,118,Metronome
+TM36,340,blue-japan,I,120,Self-Destruct
+TM37,341,blue-japan,I,121,Egg Bomb
+TM38,342,blue-japan,I,126,Fire Blast
+TM39,343,blue-japan,I,129,Swift
+TM40,344,blue-japan,I,130,Skull Bash
+TM41,345,blue-japan,I,135,Soft-Boiled
+TM42,346,blue-japan,I,138,Dream Eater
+TM43,347,blue-japan,I,143,Sky Attack
+TM44,348,blue-japan,I,156,Rest
+TM45,349,blue-japan,I,86,Thunder Wave
+TM46,350,blue-japan,I,149,Psywave
+TM47,351,blue-japan,I,153,Explosion
+TM48,352,blue-japan,I,157,Rock Slide
+TM49,353,blue-japan,I,161,Tri Attack
+TM50,354,blue-japan,I,164,Substitute
+HM01,397,red-blue,I,15,Cut
+HM02,398,red-blue,I,19,Fly
+HM03,399,red-blue,I,57,Surf
+HM04,400,red-blue,I,70,Strength
+HM05,401,red-blue,I,148,Flash
+TM01,305,red-blue,I,5,Mega Punch
+TM02,306,red-blue,I,13,Razor Wind
+TM03,307,red-blue,I,14,Swords Dance
+TM04,308,red-blue,I,18,Whirlwind
+TM05,309,red-blue,I,25,Mega Kick
+TM06,310,red-blue,I,92,Toxic
+TM07,311,red-blue,I,32,Horn Drill
+TM08,312,red-blue,I,34,Body Slam
+TM09,313,red-blue,I,36,Take Down
+TM10,314,red-blue,I,38,Double-Edge
+TM11,315,red-blue,I,61,Bubble Beam
+TM12,316,red-blue,I,55,Water Gun
+TM13,317,red-blue,I,58,Ice Beam
+TM14,318,red-blue,I,59,Blizzard
+TM15,319,red-blue,I,63,Hyper Beam
+TM16,320,red-blue,I,6,Pay Day
+TM17,321,red-blue,I,66,Submission
+TM18,322,red-blue,I,68,Counter
+TM19,323,red-blue,I,69,Seismic Toss
+TM20,324,red-blue,I,99,Rage
+TM21,325,red-blue,I,72,Mega Drain
+TM22,326,red-blue,I,76,Solar Beam
+TM23,327,red-blue,I,82,Dragon Rage
+TM24,328,red-blue,I,85,Thunderbolt
+TM25,329,red-blue,I,87,Thunder
+TM26,330,red-blue,I,89,Earthquake
+TM27,331,red-blue,I,90,Fissure
+TM28,332,red-blue,I,91,Dig
+TM29,333,red-blue,I,94,Psychic
+TM30,334,red-blue,I,100,Teleport
+TM31,335,red-blue,I,102,Mimic
+TM32,336,red-blue,I,104,Double Team
+TM33,337,red-blue,I,115,Reflect
+TM34,338,red-blue,I,117,Bide
+TM35,339,red-blue,I,118,Metronome
+TM36,340,red-blue,I,120,Self-Destruct
+TM37,341,red-blue,I,121,Egg Bomb
+TM38,342,red-blue,I,126,Fire Blast
+TM39,343,red-blue,I,129,Swift
+TM40,344,red-blue,I,130,Skull Bash
+TM41,345,red-blue,I,135,Soft-Boiled
+TM42,346,red-blue,I,138,Dream Eater
+TM43,347,red-blue,I,143,Sky Attack
+TM44,348,red-blue,I,156,Rest
+TM45,349,red-blue,I,86,Thunder Wave
+TM46,350,red-blue,I,149,Psywave
+TM47,351,red-blue,I,153,Explosion
+TM48,352,red-blue,I,157,Rock Slide
+TM49,353,red-blue,I,161,Tri Attack
+TM50,354,red-blue,I,164,Substitute
+HM01,397,yellow,I,15,Cut
+HM02,398,yellow,I,19,Fly
+HM03,399,yellow,I,57,Surf
+HM04,400,yellow,I,70,Strength
+HM05,401,yellow,I,148,Flash
+TM01,305,yellow,I,5,Mega Punch
+TM02,306,yellow,I,13,Razor Wind
+TM03,307,yellow,I,14,Swords Dance
+TM04,308,yellow,I,18,Whirlwind
+TM05,309,yellow,I,25,Mega Kick
+TM06,310,yellow,I,92,Toxic
+TM07,311,yellow,I,32,Horn Drill
+TM08,312,yellow,I,34,Body Slam
+TM09,313,yellow,I,36,Take Down
+TM10,314,yellow,I,38,Double-Edge
+TM11,315,yellow,I,61,Bubble Beam
+TM12,316,yellow,I,55,Water Gun
+TM13,317,yellow,I,58,Ice Beam
+TM14,318,yellow,I,59,Blizzard
+TM15,319,yellow,I,63,Hyper Beam
+TM16,320,yellow,I,6,Pay Day
+TM17,321,yellow,I,66,Submission
+TM18,322,yellow,I,68,Counter
+TM19,323,yellow,I,69,Seismic Toss
+TM20,324,yellow,I,99,Rage
+TM21,325,yellow,I,72,Mega Drain
+TM22,326,yellow,I,76,Solar Beam
+TM23,327,yellow,I,82,Dragon Rage
+TM24,328,yellow,I,85,Thunderbolt
+TM25,329,yellow,I,87,Thunder
+TM26,330,yellow,I,89,Earthquake
+TM27,331,yellow,I,90,Fissure
+TM28,332,yellow,I,91,Dig
+TM29,333,yellow,I,94,Psychic
+TM30,334,yellow,I,100,Teleport
+TM31,335,yellow,I,102,Mimic
+TM32,336,yellow,I,104,Double Team
+TM33,337,yellow,I,115,Reflect
+TM34,338,yellow,I,117,Bide
+TM35,339,yellow,I,118,Metronome
+TM36,340,yellow,I,120,Self-Destruct
+TM37,341,yellow,I,121,Egg Bomb
+TM38,342,yellow,I,126,Fire Blast
+TM39,343,yellow,I,129,Swift
+TM40,344,yellow,I,130,Skull Bash
+TM41,345,yellow,I,135,Soft-Boiled
+TM42,346,yellow,I,138,Dream Eater
+TM43,347,yellow,I,143,Sky Attack
+TM44,348,yellow,I,156,Rest
+TM45,349,yellow,I,86,Thunder Wave
+TM46,350,yellow,I,149,Psywave
+TM47,351,yellow,I,153,Explosion
+TM48,352,yellow,I,157,Rock Slide
+TM49,353,yellow,I,161,Tri Attack
+TM50,354,yellow,I,164,Substitute
+HM01,397,gold-silver,II,15,Cut
+HM02,398,gold-silver,II,19,Fly
+HM03,399,gold-silver,II,57,Surf
+HM04,400,gold-silver,II,70,Strength
+HM05,401,gold-silver,II,148,Flash
+HM06,402,gold-silver,II,250,Whirlpool
+HM07,403,gold-silver,II,127,Waterfall
+TM01,305,gold-silver,II,223,Dynamic Punch
+TM02,306,gold-silver,II,29,Headbutt
+TM03,307,gold-silver,II,174,Curse
+TM04,308,gold-silver,II,205,Rollout
+TM05,309,gold-silver,II,46,Roar
+TM06,310,gold-silver,II,92,Toxic
+TM07,311,gold-silver,II,192,Zap Cannon
+TM08,312,gold-silver,II,249,Rock Smash
+TM09,313,gold-silver,II,244,Psych Up
+TM10,314,gold-silver,II,237,Hidden Power
+TM11,315,gold-silver,II,241,Sunny Day
+TM12,316,gold-silver,II,230,Sweet Scent
+TM13,317,gold-silver,II,173,Snore
+TM14,318,gold-silver,II,59,Blizzard
+TM15,319,gold-silver,II,63,Hyper Beam
+TM16,320,gold-silver,II,196,Icy Wind
+TM17,321,gold-silver,II,182,Protect
+TM18,322,gold-silver,II,240,Rain Dance
+TM19,323,gold-silver,II,202,Giga Drain
+TM20,324,gold-silver,II,203,Endure
+TM21,325,gold-silver,II,218,Frustration
+TM22,326,gold-silver,II,76,Solar Beam
+TM23,327,gold-silver,II,231,Iron Tail
+TM24,328,gold-silver,II,225,Dragon Breath
+TM25,329,gold-silver,II,87,Thunder
+TM26,330,gold-silver,II,89,Earthquake
+TM27,331,gold-silver,II,216,Return
+TM28,332,gold-silver,II,91,Dig
+TM29,333,gold-silver,II,94,Psychic
+TM30,334,gold-silver,II,247,Shadow Ball
+TM31,335,gold-silver,II,189,Mud-Slap
+TM32,336,gold-silver,II,104,Double Team
+TM33,337,gold-silver,II,8,Ice Punch
+TM34,338,gold-silver,II,207,Swagger
+TM35,339,gold-silver,II,214,Sleep Talk
+TM36,340,gold-silver,II,188,Sludge Bomb
+TM37,341,gold-silver,II,201,Sandstorm
+TM38,342,gold-silver,II,126,Fire Blast
+TM39,343,gold-silver,II,129,Swift
+TM40,344,gold-silver,II,111,Defense Curl
+TM41,345,gold-silver,II,9,Thunder Punch
+TM42,346,gold-silver,II,138,Dream Eater
+TM43,347,gold-silver,II,197,Detect
+TM44,348,gold-silver,II,156,Rest
+TM45,349,gold-silver,II,213,Attract
+TM46,350,gold-silver,II,168,Thief
+TM47,351,gold-silver,II,211,Steel Wing
+TM48,352,gold-silver,II,7,Fire Punch
+TM49,353,gold-silver,II,210,Fury Cutter
+TM50,354,gold-silver,II,171,Nightmare
+HM01,397,crystal,II,15,Cut
+HM02,398,crystal,II,19,Fly
+HM03,399,crystal,II,57,Surf
+HM04,400,crystal,II,70,Strength
+HM05,401,crystal,II,148,Flash
+HM06,402,crystal,II,250,Whirlpool
+HM07,403,crystal,II,127,Waterfall
+TM01,305,crystal,II,223,Dynamic Punch
+TM02,306,crystal,II,29,Headbutt
+TM03,307,crystal,II,174,Curse
+TM04,308,crystal,II,205,Rollout
+TM05,309,crystal,II,46,Roar
+TM06,310,crystal,II,92,Toxic
+TM07,311,crystal,II,192,Zap Cannon
+TM08,312,crystal,II,249,Rock Smash
+TM09,313,crystal,II,244,Psych Up
+TM10,314,crystal,II,237,Hidden Power
+TM11,315,crystal,II,241,Sunny Day
+TM12,316,crystal,II,230,Sweet Scent
+TM13,317,crystal,II,173,Snore
+TM14,318,crystal,II,59,Blizzard
+TM15,319,crystal,II,63,Hyper Beam
+TM16,320,crystal,II,196,Icy Wind
+TM17,321,crystal,II,182,Protect
+TM18,322,crystal,II,240,Rain Dance
+TM19,323,crystal,II,202,Giga Drain
+TM20,324,crystal,II,203,Endure
+TM21,325,crystal,II,218,Frustration
+TM22,326,crystal,II,76,Solar Beam
+TM23,327,crystal,II,231,Iron Tail
+TM24,328,crystal,II,225,Dragon Breath
+TM25,329,crystal,II,87,Thunder
+TM26,330,crystal,II,89,Earthquake
+TM27,331,crystal,II,216,Return
+TM28,332,crystal,II,91,Dig
+TM29,333,crystal,II,94,Psychic
+TM30,334,crystal,II,247,Shadow Ball
+TM31,335,crystal,II,189,Mud-Slap
+TM32,336,crystal,II,104,Double Team
+TM33,337,crystal,II,8,Ice Punch
+TM34,338,crystal,II,207,Swagger
+TM35,339,crystal,II,214,Sleep Talk
+TM36,340,crystal,II,188,Sludge Bomb
+TM37,341,crystal,II,201,Sandstorm
+TM38,342,crystal,II,126,Fire Blast
+TM39,343,crystal,II,129,Swift
+TM40,344,crystal,II,111,Defense Curl
+TM41,345,crystal,II,9,Thunder Punch
+TM42,346,crystal,II,138,Dream Eater
+TM43,347,crystal,II,197,Detect
+TM44,348,crystal,II,156,Rest
+TM45,349,crystal,II,213,Attract
+TM46,350,crystal,II,168,Thief
+TM47,351,crystal,II,211,Steel Wing
+TM48,352,crystal,II,7,Fire Punch
+TM49,353,crystal,II,210,Fury Cutter
+TM50,354,crystal,II,171,Nightmare
+HM01,397,ruby-sapphire,III,15,Cut
+HM02,398,ruby-sapphire,III,19,Fly
+HM03,399,ruby-sapphire,III,57,Surf
+HM04,400,ruby-sapphire,III,70,Strength
+HM05,401,ruby-sapphire,III,148,Flash
+HM06,402,ruby-sapphire,III,249,Rock Smash
+HM07,403,ruby-sapphire,III,127,Waterfall
+HM08,404,ruby-sapphire,III,291,Dive
+TM01,305,ruby-sapphire,III,264,Focus Punch
+TM02,306,ruby-sapphire,III,337,Dragon Claw
+TM03,307,ruby-sapphire,III,352,Water Pulse
+TM04,308,ruby-sapphire,III,347,Calm Mind
+TM05,309,ruby-sapphire,III,46,Roar
+TM06,310,ruby-sapphire,III,92,Toxic
+TM07,311,ruby-sapphire,III,258,Hail
+TM08,312,ruby-sapphire,III,339,Bulk Up
+TM09,313,ruby-sapphire,III,331,Bullet Seed
+TM10,314,ruby-sapphire,III,237,Hidden Power
+TM11,315,ruby-sapphire,III,241,Sunny Day
+TM12,316,ruby-sapphire,III,269,Taunt
+TM13,317,ruby-sapphire,III,58,Ice Beam
+TM14,318,ruby-sapphire,III,59,Blizzard
+TM15,319,ruby-sapphire,III,63,Hyper Beam
+TM16,320,ruby-sapphire,III,113,Light Screen
+TM17,321,ruby-sapphire,III,182,Protect
+TM18,322,ruby-sapphire,III,240,Rain Dance
+TM19,323,ruby-sapphire,III,202,Giga Drain
+TM20,324,ruby-sapphire,III,219,Safeguard
+TM21,325,ruby-sapphire,III,218,Frustration
+TM22,326,ruby-sapphire,III,76,Solar Beam
+TM23,327,ruby-sapphire,III,231,Iron Tail
+TM24,328,ruby-sapphire,III,85,Thunderbolt
+TM25,329,ruby-sapphire,III,87,Thunder
+TM26,330,ruby-sapphire,III,89,Earthquake
+TM27,331,ruby-sapphire,III,216,Return
+TM28,332,ruby-sapphire,III,91,Dig
+TM29,333,ruby-sapphire,III,94,Psychic
+TM30,334,ruby-sapphire,III,247,Shadow Ball
+TM31,335,ruby-sapphire,III,280,Brick Break
+TM32,336,ruby-sapphire,III,104,Double Team
+TM33,337,ruby-sapphire,III,115,Reflect
+TM34,338,ruby-sapphire,III,351,Shock Wave
+TM35,339,ruby-sapphire,III,53,Flamethrower
+TM36,340,ruby-sapphire,III,188,Sludge Bomb
+TM37,341,ruby-sapphire,III,201,Sandstorm
+TM38,342,ruby-sapphire,III,126,Fire Blast
+TM39,343,ruby-sapphire,III,317,Rock Tomb
+TM40,344,ruby-sapphire,III,332,Aerial Ace
+TM41,345,ruby-sapphire,III,259,Torment
+TM42,346,ruby-sapphire,III,263,Facade
+TM43,347,ruby-sapphire,III,290,Secret Power
+TM44,348,ruby-sapphire,III,156,Rest
+TM45,349,ruby-sapphire,III,213,Attract
+TM46,350,ruby-sapphire,III,168,Thief
+TM47,351,ruby-sapphire,III,211,Steel Wing
+TM48,352,ruby-sapphire,III,285,Skill Swap
+TM49,353,ruby-sapphire,III,289,Snatch
+TM50,354,ruby-sapphire,III,315,Overheat
+HM01,397,emerald,III,15,Cut
+HM02,398,emerald,III,19,Fly
+HM03,399,emerald,III,57,Surf
+HM04,400,emerald,III,70,Strength
+HM05,401,emerald,III,148,Flash
+HM06,402,emerald,III,249,Rock Smash
+HM07,403,emerald,III,127,Waterfall
+HM08,404,emerald,III,291,Dive
+TM01,305,emerald,III,264,Focus Punch
+TM02,306,emerald,III,337,Dragon Claw
+TM03,307,emerald,III,352,Water Pulse
+TM04,308,emerald,III,347,Calm Mind
+TM05,309,emerald,III,46,Roar
+TM06,310,emerald,III,92,Toxic
+TM07,311,emerald,III,258,Hail
+TM08,312,emerald,III,339,Bulk Up
+TM09,313,emerald,III,331,Bullet Seed
+TM10,314,emerald,III,237,Hidden Power
+TM11,315,emerald,III,241,Sunny Day
+TM12,316,emerald,III,269,Taunt
+TM13,317,emerald,III,58,Ice Beam
+TM14,318,emerald,III,59,Blizzard
+TM15,319,emerald,III,63,Hyper Beam
+TM16,320,emerald,III,113,Light Screen
+TM17,321,emerald,III,182,Protect
+TM18,322,emerald,III,240,Rain Dance
+TM19,323,emerald,III,202,Giga Drain
+TM20,324,emerald,III,219,Safeguard
+TM21,325,emerald,III,218,Frustration
+TM22,326,emerald,III,76,Solar Beam
+TM23,327,emerald,III,231,Iron Tail
+TM24,328,emerald,III,85,Thunderbolt
+TM25,329,emerald,III,87,Thunder
+TM26,330,emerald,III,89,Earthquake
+TM27,331,emerald,III,216,Return
+TM28,332,emerald,III,91,Dig
+TM29,333,emerald,III,94,Psychic
+TM30,334,emerald,III,247,Shadow Ball
+TM31,335,emerald,III,280,Brick Break
+TM32,336,emerald,III,104,Double Team
+TM33,337,emerald,III,115,Reflect
+TM34,338,emerald,III,351,Shock Wave
+TM35,339,emerald,III,53,Flamethrower
+TM36,340,emerald,III,188,Sludge Bomb
+TM37,341,emerald,III,201,Sandstorm
+TM38,342,emerald,III,126,Fire Blast
+TM39,343,emerald,III,317,Rock Tomb
+TM40,344,emerald,III,332,Aerial Ace
+TM41,345,emerald,III,259,Torment
+TM42,346,emerald,III,263,Facade
+TM43,347,emerald,III,290,Secret Power
+TM44,348,emerald,III,156,Rest
+TM45,349,emerald,III,213,Attract
+TM46,350,emerald,III,168,Thief
+TM47,351,emerald,III,211,Steel Wing
+TM48,352,emerald,III,285,Skill Swap
+TM49,353,emerald,III,289,Snatch
+TM50,354,emerald,III,315,Overheat
+HM01,397,colosseum,III,15,Cut
+HM02,398,colosseum,III,19,Fly
+HM03,399,colosseum,III,57,Surf
+HM04,400,colosseum,III,70,Strength
+HM05,401,colosseum,III,148,Flash
+HM06,402,colosseum,III,249,Rock Smash
+HM07,403,colosseum,III,127,Waterfall
+HM08,404,colosseum,III,291,Dive
+TM01,305,colosseum,III,264,Focus Punch
+TM02,306,colosseum,III,337,Dragon Claw
+TM03,307,colosseum,III,352,Water Pulse
+TM04,308,colosseum,III,347,Calm Mind
+TM05,309,colosseum,III,46,Roar
+TM06,310,colosseum,III,92,Toxic
+TM07,311,colosseum,III,258,Hail
+TM08,312,colosseum,III,339,Bulk Up
+TM09,313,colosseum,III,331,Bullet Seed
+TM10,314,colosseum,III,237,Hidden Power
+TM11,315,colosseum,III,241,Sunny Day
+TM12,316,colosseum,III,269,Taunt
+TM13,317,colosseum,III,58,Ice Beam
+TM14,318,colosseum,III,59,Blizzard
+TM15,319,colosseum,III,63,Hyper Beam
+TM16,320,colosseum,III,113,Light Screen
+TM17,321,colosseum,III,182,Protect
+TM18,322,colosseum,III,240,Rain Dance
+TM19,323,colosseum,III,202,Giga Drain
+TM20,324,colosseum,III,219,Safeguard
+TM21,325,colosseum,III,218,Frustration
+TM22,326,colosseum,III,76,Solar Beam
+TM23,327,colosseum,III,231,Iron Tail
+TM24,328,colosseum,III,85,Thunderbolt
+TM25,329,colosseum,III,87,Thunder
+TM26,330,colosseum,III,89,Earthquake
+TM27,331,colosseum,III,216,Return
+TM28,332,colosseum,III,91,Dig
+TM29,333,colosseum,III,94,Psychic
+TM30,334,colosseum,III,247,Shadow Ball
+TM31,335,colosseum,III,280,Brick Break
+TM32,336,colosseum,III,104,Double Team
+TM33,337,colosseum,III,115,Reflect
+TM34,338,colosseum,III,351,Shock Wave
+TM35,339,colosseum,III,53,Flamethrower
+TM36,340,colosseum,III,188,Sludge Bomb
+TM37,341,colosseum,III,201,Sandstorm
+TM38,342,colosseum,III,126,Fire Blast
+TM39,343,colosseum,III,317,Rock Tomb
+TM40,344,colosseum,III,332,Aerial Ace
+TM41,345,colosseum,III,259,Torment
+TM42,346,colosseum,III,263,Facade
+TM43,347,colosseum,III,290,Secret Power
+TM44,348,colosseum,III,156,Rest
+TM45,349,colosseum,III,213,Attract
+TM46,350,colosseum,III,168,Thief
+TM47,351,colosseum,III,211,Steel Wing
+TM48,352,colosseum,III,285,Skill Swap
+TM49,353,colosseum,III,289,Snatch
+TM50,354,colosseum,III,315,Overheat
+HM01,397,xd,III,15,Cut
+HM02,398,xd,III,19,Fly
+HM03,399,xd,III,57,Surf
+HM04,400,xd,III,70,Strength
+HM05,401,xd,III,148,Flash
+HM06,402,xd,III,249,Rock Smash
+HM07,403,xd,III,127,Waterfall
+HM08,404,xd,III,291,Dive
+TM01,305,xd,III,264,Focus Punch
+TM02,306,xd,III,337,Dragon Claw
+TM03,307,xd,III,352,Water Pulse
+TM04,308,xd,III,347,Calm Mind
+TM05,309,xd,III,46,Roar
+TM06,310,xd,III,92,Toxic
+TM07,311,xd,III,258,Hail
+TM08,312,xd,III,339,Bulk Up
+TM09,313,xd,III,331,Bullet Seed
+TM10,314,xd,III,237,Hidden Power
+TM11,315,xd,III,241,Sunny Day
+TM12,316,xd,III,269,Taunt
+TM13,317,xd,III,58,Ice Beam
+TM14,318,xd,III,59,Blizzard
+TM15,319,xd,III,63,Hyper Beam
+TM16,320,xd,III,113,Light Screen
+TM17,321,xd,III,182,Protect
+TM18,322,xd,III,240,Rain Dance
+TM19,323,xd,III,202,Giga Drain
+TM20,324,xd,III,219,Safeguard
+TM21,325,xd,III,218,Frustration
+TM22,326,xd,III,76,Solar Beam
+TM23,327,xd,III,231,Iron Tail
+TM24,328,xd,III,85,Thunderbolt
+TM25,329,xd,III,87,Thunder
+TM26,330,xd,III,89,Earthquake
+TM27,331,xd,III,216,Return
+TM28,332,xd,III,91,Dig
+TM29,333,xd,III,94,Psychic
+TM30,334,xd,III,247,Shadow Ball
+TM31,335,xd,III,280,Brick Break
+TM32,336,xd,III,104,Double Team
+TM33,337,xd,III,115,Reflect
+TM34,338,xd,III,351,Shock Wave
+TM35,339,xd,III,53,Flamethrower
+TM36,340,xd,III,188,Sludge Bomb
+TM37,341,xd,III,201,Sandstorm
+TM38,342,xd,III,126,Fire Blast
+TM39,343,xd,III,317,Rock Tomb
+TM40,344,xd,III,332,Aerial Ace
+TM41,345,xd,III,259,Torment
+TM42,346,xd,III,263,Facade
+TM43,347,xd,III,290,Secret Power
+TM44,348,xd,III,156,Rest
+TM45,349,xd,III,213,Attract
+TM46,350,xd,III,168,Thief
+TM47,351,xd,III,211,Steel Wing
+TM48,352,xd,III,285,Skill Swap
+TM49,353,xd,III,289,Snatch
+TM50,354,xd,III,315,Overheat
+HM01,397,firered-leafgreen,III,15,Cut
+HM02,398,firered-leafgreen,III,19,Fly
+HM03,399,firered-leafgreen,III,57,Surf
+HM04,400,firered-leafgreen,III,70,Strength
+HM05,401,firered-leafgreen,III,148,Flash
+HM06,402,firered-leafgreen,III,249,Rock Smash
+HM07,403,firered-leafgreen,III,127,Waterfall
+HM08,404,firered-leafgreen,III,291,Dive
+TM01,305,firered-leafgreen,III,264,Focus Punch
+TM02,306,firered-leafgreen,III,337,Dragon Claw
+TM03,307,firered-leafgreen,III,352,Water Pulse
+TM04,308,firered-leafgreen,III,347,Calm Mind
+TM05,309,firered-leafgreen,III,46,Roar
+TM06,310,firered-leafgreen,III,92,Toxic
+TM07,311,firered-leafgreen,III,258,Hail
+TM08,312,firered-leafgreen,III,339,Bulk Up
+TM09,313,firered-leafgreen,III,331,Bullet Seed
+TM10,314,firered-leafgreen,III,237,Hidden Power
+TM11,315,firered-leafgreen,III,241,Sunny Day
+TM12,316,firered-leafgreen,III,269,Taunt
+TM13,317,firered-leafgreen,III,58,Ice Beam
+TM14,318,firered-leafgreen,III,59,Blizzard
+TM15,319,firered-leafgreen,III,63,Hyper Beam
+TM16,320,firered-leafgreen,III,113,Light Screen
+TM17,321,firered-leafgreen,III,182,Protect
+TM18,322,firered-leafgreen,III,240,Rain Dance
+TM19,323,firered-leafgreen,III,202,Giga Drain
+TM20,324,firered-leafgreen,III,219,Safeguard
+TM21,325,firered-leafgreen,III,218,Frustration
+TM22,326,firered-leafgreen,III,76,Solar Beam
+TM23,327,firered-leafgreen,III,231,Iron Tail
+TM24,328,firered-leafgreen,III,85,Thunderbolt
+TM25,329,firered-leafgreen,III,87,Thunder
+TM26,330,firered-leafgreen,III,89,Earthquake
+TM27,331,firered-leafgreen,III,216,Return
+TM28,332,firered-leafgreen,III,91,Dig
+TM29,333,firered-leafgreen,III,94,Psychic
+TM30,334,firered-leafgreen,III,247,Shadow Ball
+TM31,335,firered-leafgreen,III,280,Brick Break
+TM32,336,firered-leafgreen,III,104,Double Team
+TM33,337,firered-leafgreen,III,115,Reflect
+TM34,338,firered-leafgreen,III,351,Shock Wave
+TM35,339,firered-leafgreen,III,53,Flamethrower
+TM36,340,firered-leafgreen,III,188,Sludge Bomb
+TM37,341,firered-leafgreen,III,201,Sandstorm
+TM38,342,firered-leafgreen,III,126,Fire Blast
+TM39,343,firered-leafgreen,III,317,Rock Tomb
+TM40,344,firered-leafgreen,III,332,Aerial Ace
+TM41,345,firered-leafgreen,III,259,Torment
+TM42,346,firered-leafgreen,III,263,Facade
+TM43,347,firered-leafgreen,III,290,Secret Power
+TM44,348,firered-leafgreen,III,156,Rest
+TM45,349,firered-leafgreen,III,213,Attract
+TM46,350,firered-leafgreen,III,168,Thief
+TM47,351,firered-leafgreen,III,211,Steel Wing
+TM48,352,firered-leafgreen,III,285,Skill Swap
+TM49,353,firered-leafgreen,III,289,Snatch
+TM50,354,firered-leafgreen,III,315,Overheat
+HM01,397,diamond-pearl,IV,15,Cut
+HM02,398,diamond-pearl,IV,19,Fly
+HM03,399,diamond-pearl,IV,57,Surf
+HM04,400,diamond-pearl,IV,70,Strength
+HM05,401,diamond-pearl,IV,432,Defog
+HM06,402,diamond-pearl,IV,249,Rock Smash
+HM07,403,diamond-pearl,IV,127,Waterfall
+HM08,404,diamond-pearl,IV,431,Rock Climb
+TM01,305,diamond-pearl,IV,264,Focus Punch
+TM02,306,diamond-pearl,IV,337,Dragon Claw
+TM03,307,diamond-pearl,IV,352,Water Pulse
+TM04,308,diamond-pearl,IV,347,Calm Mind
+TM05,309,diamond-pearl,IV,46,Roar
+TM06,310,diamond-pearl,IV,92,Toxic
+TM07,311,diamond-pearl,IV,258,Hail
+TM08,312,diamond-pearl,IV,339,Bulk Up
+TM09,313,diamond-pearl,IV,331,Bullet Seed
+TM10,314,diamond-pearl,IV,237,Hidden Power
+TM11,315,diamond-pearl,IV,241,Sunny Day
+TM12,316,diamond-pearl,IV,269,Taunt
+TM13,317,diamond-pearl,IV,58,Ice Beam
+TM14,318,diamond-pearl,IV,59,Blizzard
+TM15,319,diamond-pearl,IV,63,Hyper Beam
+TM16,320,diamond-pearl,IV,113,Light Screen
+TM17,321,diamond-pearl,IV,182,Protect
+TM18,322,diamond-pearl,IV,240,Rain Dance
+TM19,323,diamond-pearl,IV,202,Giga Drain
+TM20,324,diamond-pearl,IV,219,Safeguard
+TM21,325,diamond-pearl,IV,218,Frustration
+TM22,326,diamond-pearl,IV,76,Solar Beam
+TM23,327,diamond-pearl,IV,231,Iron Tail
+TM24,328,diamond-pearl,IV,85,Thunderbolt
+TM25,329,diamond-pearl,IV,87,Thunder
+TM26,330,diamond-pearl,IV,89,Earthquake
+TM27,331,diamond-pearl,IV,216,Return
+TM28,332,diamond-pearl,IV,91,Dig
+TM29,333,diamond-pearl,IV,94,Psychic
+TM30,334,diamond-pearl,IV,247,Shadow Ball
+TM31,335,diamond-pearl,IV,280,Brick Break
+TM32,336,diamond-pearl,IV,104,Double Team
+TM33,337,diamond-pearl,IV,115,Reflect
+TM34,338,diamond-pearl,IV,351,Shock Wave
+TM35,339,diamond-pearl,IV,53,Flamethrower
+TM36,340,diamond-pearl,IV,188,Sludge Bomb
+TM37,341,diamond-pearl,IV,201,Sandstorm
+TM38,342,diamond-pearl,IV,126,Fire Blast
+TM39,343,diamond-pearl,IV,317,Rock Tomb
+TM40,344,diamond-pearl,IV,332,Aerial Ace
+TM41,345,diamond-pearl,IV,259,Torment
+TM42,346,diamond-pearl,IV,263,Facade
+TM43,347,diamond-pearl,IV,290,Secret Power
+TM44,348,diamond-pearl,IV,156,Rest
+TM45,349,diamond-pearl,IV,213,Attract
+TM46,350,diamond-pearl,IV,168,Thief
+TM47,351,diamond-pearl,IV,211,Steel Wing
+TM48,352,diamond-pearl,IV,285,Skill Swap
+TM49,353,diamond-pearl,IV,289,Snatch
+TM50,354,diamond-pearl,IV,315,Overheat
+TM51,355,diamond-pearl,IV,355,Roost
+TM52,356,diamond-pearl,IV,411,Focus Blast
+TM53,357,diamond-pearl,IV,412,Energy Ball
+TM54,358,diamond-pearl,IV,206,False Swipe
+TM55,359,diamond-pearl,IV,362,Brine
+TM56,360,diamond-pearl,IV,374,Fling
+TM57,361,diamond-pearl,IV,451,Charge Beam
+TM58,362,diamond-pearl,IV,203,Endure
+TM59,363,diamond-pearl,IV,406,Dragon Pulse
+TM60,364,diamond-pearl,IV,409,Drain Punch
+TM61,365,diamond-pearl,IV,261,Will-O-Wisp
+TM62,366,diamond-pearl,IV,318,Silver Wind
+TM63,367,diamond-pearl,IV,373,Embargo
+TM64,368,diamond-pearl,IV,153,Explosion
+TM65,369,diamond-pearl,IV,421,Shadow Claw
+TM66,370,diamond-pearl,IV,371,Payback
+TM67,371,diamond-pearl,IV,278,Recycle
+TM68,372,diamond-pearl,IV,416,Giga Impact
+TM69,373,diamond-pearl,IV,397,Rock Polish
+TM70,374,diamond-pearl,IV,148,Flash
+TM71,375,diamond-pearl,IV,444,Stone Edge
+TM72,376,diamond-pearl,IV,419,Avalanche
+TM73,377,diamond-pearl,IV,86,Thunder Wave
+TM74,378,diamond-pearl,IV,360,Gyro Ball
+TM75,379,diamond-pearl,IV,14,Swords Dance
+TM76,380,diamond-pearl,IV,446,Stealth Rock
+TM77,381,diamond-pearl,IV,244,Psych Up
+TM78,382,diamond-pearl,IV,445,Captivate
+TM79,383,diamond-pearl,IV,399,Dark Pulse
+TM80,384,diamond-pearl,IV,157,Rock Slide
+TM81,385,diamond-pearl,IV,404,X-Scissor
+TM82,386,diamond-pearl,IV,214,Sleep Talk
+TM83,387,diamond-pearl,IV,363,Natural Gift
+TM84,388,diamond-pearl,IV,398,Poison Jab
+TM85,389,diamond-pearl,IV,138,Dream Eater
+TM86,390,diamond-pearl,IV,447,Grass Knot
+TM87,391,diamond-pearl,IV,207,Swagger
+TM88,392,diamond-pearl,IV,365,Pluck
+TM89,393,diamond-pearl,IV,369,U-turn
+TM90,394,diamond-pearl,IV,164,Substitute
+TM91,395,diamond-pearl,IV,430,Flash Cannon
+TM92,396,diamond-pearl,IV,433,Trick Room
+HM01,397,platinum,IV,15,Cut
+HM02,398,platinum,IV,19,Fly
+HM03,399,platinum,IV,57,Surf
+HM04,400,platinum,IV,70,Strength
+HM05,401,platinum,IV,432,Defog
+HM06,402,platinum,IV,249,Rock Smash
+HM07,403,platinum,IV,127,Waterfall
+HM08,404,platinum,IV,431,Rock Climb
+TM01,305,platinum,IV,264,Focus Punch
+TM02,306,platinum,IV,337,Dragon Claw
+TM03,307,platinum,IV,352,Water Pulse
+TM04,308,platinum,IV,347,Calm Mind
+TM05,309,platinum,IV,46,Roar
+TM06,310,platinum,IV,92,Toxic
+TM07,311,platinum,IV,258,Hail
+TM08,312,platinum,IV,339,Bulk Up
+TM09,313,platinum,IV,331,Bullet Seed
+TM10,314,platinum,IV,237,Hidden Power
+TM11,315,platinum,IV,241,Sunny Day
+TM12,316,platinum,IV,269,Taunt
+TM13,317,platinum,IV,58,Ice Beam
+TM14,318,platinum,IV,59,Blizzard
+TM15,319,platinum,IV,63,Hyper Beam
+TM16,320,platinum,IV,113,Light Screen
+TM17,321,platinum,IV,182,Protect
+TM18,322,platinum,IV,240,Rain Dance
+TM19,323,platinum,IV,202,Giga Drain
+TM20,324,platinum,IV,219,Safeguard
+TM21,325,platinum,IV,218,Frustration
+TM22,326,platinum,IV,76,Solar Beam
+TM23,327,platinum,IV,231,Iron Tail
+TM24,328,platinum,IV,85,Thunderbolt
+TM25,329,platinum,IV,87,Thunder
+TM26,330,platinum,IV,89,Earthquake
+TM27,331,platinum,IV,216,Return
+TM28,332,platinum,IV,91,Dig
+TM29,333,platinum,IV,94,Psychic
+TM30,334,platinum,IV,247,Shadow Ball
+TM31,335,platinum,IV,280,Brick Break
+TM32,336,platinum,IV,104,Double Team
+TM33,337,platinum,IV,115,Reflect
+TM34,338,platinum,IV,351,Shock Wave
+TM35,339,platinum,IV,53,Flamethrower
+TM36,340,platinum,IV,188,Sludge Bomb
+TM37,341,platinum,IV,201,Sandstorm
+TM38,342,platinum,IV,126,Fire Blast
+TM39,343,platinum,IV,317,Rock Tomb
+TM40,344,platinum,IV,332,Aerial Ace
+TM41,345,platinum,IV,259,Torment
+TM42,346,platinum,IV,263,Facade
+TM43,347,platinum,IV,290,Secret Power
+TM44,348,platinum,IV,156,Rest
+TM45,349,platinum,IV,213,Attract
+TM46,350,platinum,IV,168,Thief
+TM47,351,platinum,IV,211,Steel Wing
+TM48,352,platinum,IV,285,Skill Swap
+TM49,353,platinum,IV,289,Snatch
+TM50,354,platinum,IV,315,Overheat
+TM51,355,platinum,IV,355,Roost
+TM52,356,platinum,IV,411,Focus Blast
+TM53,357,platinum,IV,412,Energy Ball
+TM54,358,platinum,IV,206,False Swipe
+TM55,359,platinum,IV,362,Brine
+TM56,360,platinum,IV,374,Fling
+TM57,361,platinum,IV,451,Charge Beam
+TM58,362,platinum,IV,203,Endure
+TM59,363,platinum,IV,406,Dragon Pulse
+TM60,364,platinum,IV,409,Drain Punch
+TM61,365,platinum,IV,261,Will-O-Wisp
+TM62,366,platinum,IV,318,Silver Wind
+TM63,367,platinum,IV,373,Embargo
+TM64,368,platinum,IV,153,Explosion
+TM65,369,platinum,IV,421,Shadow Claw
+TM66,370,platinum,IV,371,Payback
+TM67,371,platinum,IV,278,Recycle
+TM68,372,platinum,IV,416,Giga Impact
+TM69,373,platinum,IV,397,Rock Polish
+TM70,374,platinum,IV,148,Flash
+TM71,375,platinum,IV,444,Stone Edge
+TM72,376,platinum,IV,419,Avalanche
+TM73,377,platinum,IV,86,Thunder Wave
+TM74,378,platinum,IV,360,Gyro Ball
+TM75,379,platinum,IV,14,Swords Dance
+TM76,380,platinum,IV,446,Stealth Rock
+TM77,381,platinum,IV,244,Psych Up
+TM78,382,platinum,IV,445,Captivate
+TM79,383,platinum,IV,399,Dark Pulse
+TM80,384,platinum,IV,157,Rock Slide
+TM81,385,platinum,IV,404,X-Scissor
+TM82,386,platinum,IV,214,Sleep Talk
+TM83,387,platinum,IV,363,Natural Gift
+TM84,388,platinum,IV,398,Poison Jab
+TM85,389,platinum,IV,138,Dream Eater
+TM86,390,platinum,IV,447,Grass Knot
+TM87,391,platinum,IV,207,Swagger
+TM88,392,platinum,IV,365,Pluck
+TM89,393,platinum,IV,369,U-turn
+TM90,394,platinum,IV,164,Substitute
+TM91,395,platinum,IV,430,Flash Cannon
+TM92,396,platinum,IV,433,Trick Room
+HM01,397,heartgold-soulsilver,IV,15,Cut
+HM02,398,heartgold-soulsilver,IV,19,Fly
+HM03,399,heartgold-soulsilver,IV,57,Surf
+HM04,400,heartgold-soulsilver,IV,70,Strength
+HM05,401,heartgold-soulsilver,IV,250,Whirlpool
+HM06,402,heartgold-soulsilver,IV,249,Rock Smash
+HM07,403,heartgold-soulsilver,IV,127,Waterfall
+HM08,404,heartgold-soulsilver,IV,431,Rock Climb
+TM01,305,heartgold-soulsilver,IV,264,Focus Punch
+TM02,306,heartgold-soulsilver,IV,337,Dragon Claw
+TM03,307,heartgold-soulsilver,IV,352,Water Pulse
+TM04,308,heartgold-soulsilver,IV,347,Calm Mind
+TM05,309,heartgold-soulsilver,IV,46,Roar
+TM06,310,heartgold-soulsilver,IV,92,Toxic
+TM07,311,heartgold-soulsilver,IV,258,Hail
+TM08,312,heartgold-soulsilver,IV,339,Bulk Up
+TM09,313,heartgold-soulsilver,IV,331,Bullet Seed
+TM10,314,heartgold-soulsilver,IV,237,Hidden Power
+TM11,315,heartgold-soulsilver,IV,241,Sunny Day
+TM12,316,heartgold-soulsilver,IV,269,Taunt
+TM13,317,heartgold-soulsilver,IV,58,Ice Beam
+TM14,318,heartgold-soulsilver,IV,59,Blizzard
+TM15,319,heartgold-soulsilver,IV,63,Hyper Beam
+TM16,320,heartgold-soulsilver,IV,113,Light Screen
+TM17,321,heartgold-soulsilver,IV,182,Protect
+TM18,322,heartgold-soulsilver,IV,240,Rain Dance
+TM19,323,heartgold-soulsilver,IV,202,Giga Drain
+TM20,324,heartgold-soulsilver,IV,219,Safeguard
+TM21,325,heartgold-soulsilver,IV,218,Frustration
+TM22,326,heartgold-soulsilver,IV,76,Solar Beam
+TM23,327,heartgold-soulsilver,IV,231,Iron Tail
+TM24,328,heartgold-soulsilver,IV,85,Thunderbolt
+TM25,329,heartgold-soulsilver,IV,87,Thunder
+TM26,330,heartgold-soulsilver,IV,89,Earthquake
+TM27,331,heartgold-soulsilver,IV,216,Return
+TM28,332,heartgold-soulsilver,IV,91,Dig
+TM29,333,heartgold-soulsilver,IV,94,Psychic
+TM30,334,heartgold-soulsilver,IV,247,Shadow Ball
+TM31,335,heartgold-soulsilver,IV,280,Brick Break
+TM32,336,heartgold-soulsilver,IV,104,Double Team
+TM33,337,heartgold-soulsilver,IV,115,Reflect
+TM34,338,heartgold-soulsilver,IV,351,Shock Wave
+TM35,339,heartgold-soulsilver,IV,53,Flamethrower
+TM36,340,heartgold-soulsilver,IV,188,Sludge Bomb
+TM37,341,heartgold-soulsilver,IV,201,Sandstorm
+TM38,342,heartgold-soulsilver,IV,126,Fire Blast
+TM39,343,heartgold-soulsilver,IV,317,Rock Tomb
+TM40,344,heartgold-soulsilver,IV,332,Aerial Ace
+TM41,345,heartgold-soulsilver,IV,259,Torment
+TM42,346,heartgold-soulsilver,IV,263,Facade
+TM43,347,heartgold-soulsilver,IV,290,Secret Power
+TM44,348,heartgold-soulsilver,IV,156,Rest
+TM45,349,heartgold-soulsilver,IV,213,Attract
+TM46,350,heartgold-soulsilver,IV,168,Thief
+TM47,351,heartgold-soulsilver,IV,211,Steel Wing
+TM48,352,heartgold-soulsilver,IV,285,Skill Swap
+TM49,353,heartgold-soulsilver,IV,289,Snatch
+TM50,354,heartgold-soulsilver,IV,315,Overheat
+TM51,355,heartgold-soulsilver,IV,355,Roost
+TM52,356,heartgold-soulsilver,IV,411,Focus Blast
+TM53,357,heartgold-soulsilver,IV,412,Energy Ball
+TM54,358,heartgold-soulsilver,IV,206,False Swipe
+TM55,359,heartgold-soulsilver,IV,362,Brine
+TM56,360,heartgold-soulsilver,IV,374,Fling
+TM57,361,heartgold-soulsilver,IV,451,Charge Beam
+TM58,362,heartgold-soulsilver,IV,203,Endure
+TM59,363,heartgold-soulsilver,IV,406,Dragon Pulse
+TM60,364,heartgold-soulsilver,IV,409,Drain Punch
+TM61,365,heartgold-soulsilver,IV,261,Will-O-Wisp
+TM62,366,heartgold-soulsilver,IV,318,Silver Wind
+TM63,367,heartgold-soulsilver,IV,373,Embargo
+TM64,368,heartgold-soulsilver,IV,153,Explosion
+TM65,369,heartgold-soulsilver,IV,421,Shadow Claw
+TM66,370,heartgold-soulsilver,IV,371,Payback
+TM67,371,heartgold-soulsilver,IV,278,Recycle
+TM68,372,heartgold-soulsilver,IV,416,Giga Impact
+TM69,373,heartgold-soulsilver,IV,397,Rock Polish
+TM70,374,heartgold-soulsilver,IV,148,Flash
+TM71,375,heartgold-soulsilver,IV,444,Stone Edge
+TM72,376,heartgold-soulsilver,IV,419,Avalanche
+TM73,377,heartgold-soulsilver,IV,86,Thunder Wave
+TM74,378,heartgold-soulsilver,IV,360,Gyro Ball
+TM75,379,heartgold-soulsilver,IV,14,Swords Dance
+TM76,380,heartgold-soulsilver,IV,446,Stealth Rock
+TM77,381,heartgold-soulsilver,IV,244,Psych Up
+TM78,382,heartgold-soulsilver,IV,445,Captivate
+TM79,383,heartgold-soulsilver,IV,399,Dark Pulse
+TM80,384,heartgold-soulsilver,IV,157,Rock Slide
+TM81,385,heartgold-soulsilver,IV,404,X-Scissor
+TM82,386,heartgold-soulsilver,IV,214,Sleep Talk
+TM83,387,heartgold-soulsilver,IV,363,Natural Gift
+TM84,388,heartgold-soulsilver,IV,398,Poison Jab
+TM85,389,heartgold-soulsilver,IV,138,Dream Eater
+TM86,390,heartgold-soulsilver,IV,447,Grass Knot
+TM87,391,heartgold-soulsilver,IV,207,Swagger
+TM88,392,heartgold-soulsilver,IV,365,Pluck
+TM89,393,heartgold-soulsilver,IV,369,U-turn
+TM90,394,heartgold-soulsilver,IV,164,Substitute
+TM91,395,heartgold-soulsilver,IV,430,Flash Cannon
+TM92,396,heartgold-soulsilver,IV,433,Trick Room
+HM01,397,black-white,V,15,Cut
+HM02,398,black-white,V,19,Fly
+HM03,399,black-white,V,57,Surf
+HM04,400,black-white,V,70,Strength
+HM05,401,black-white,V,127,Waterfall
+HM06,402,black-white,V,291,Dive
+TM01,305,black-white,V,468,Hone Claws
+TM02,306,black-white,V,337,Dragon Claw
+TM03,307,black-white,V,473,Psyshock
+TM04,308,black-white,V,347,Calm Mind
+TM05,309,black-white,V,46,Roar
+TM06,310,black-white,V,92,Toxic
+TM07,311,black-white,V,258,Hail
+TM08,312,black-white,V,339,Bulk Up
+TM09,313,black-white,V,474,Venoshock
+TM10,314,black-white,V,237,Hidden Power
+TM11,315,black-white,V,241,Sunny Day
+TM12,316,black-white,V,269,Taunt
+TM13,317,black-white,V,58,Ice Beam
+TM14,318,black-white,V,59,Blizzard
+TM15,319,black-white,V,63,Hyper Beam
+TM16,320,black-white,V,113,Light Screen
+TM17,321,black-white,V,182,Protect
+TM18,322,black-white,V,240,Rain Dance
+TM19,323,black-white,V,477,Telekinesis
+TM20,324,black-white,V,219,Safeguard
+TM21,325,black-white,V,218,Frustration
+TM22,326,black-white,V,76,Solar Beam
+TM23,327,black-white,V,479,Smack Down
+TM24,328,black-white,V,85,Thunderbolt
+TM25,329,black-white,V,87,Thunder
+TM26,330,black-white,V,89,Earthquake
+TM27,331,black-white,V,216,Return
+TM28,332,black-white,V,91,Dig
+TM29,333,black-white,V,94,Psychic
+TM30,334,black-white,V,247,Shadow Ball
+TM31,335,black-white,V,280,Brick Break
+TM32,336,black-white,V,104,Double Team
+TM33,337,black-white,V,115,Reflect
+TM34,338,black-white,V,482,Sludge Wave
+TM35,339,black-white,V,53,Flamethrower
+TM36,340,black-white,V,188,Sludge Bomb
+TM37,341,black-white,V,201,Sandstorm
+TM38,342,black-white,V,126,Fire Blast
+TM39,343,black-white,V,317,Rock Tomb
+TM40,344,black-white,V,332,Aerial Ace
+TM41,345,black-white,V,259,Torment
+TM42,346,black-white,V,263,Facade
+TM43,347,black-white,V,488,Flame Charge
+TM44,348,black-white,V,156,Rest
+TM45,349,black-white,V,213,Attract
+TM46,350,black-white,V,168,Thief
+TM47,351,black-white,V,490,Low Sweep
+TM48,352,black-white,V,496,Round
+TM49,353,black-white,V,497,Echoed Voice
+TM50,354,black-white,V,315,Overheat
+TM51,355,black-white,V,502,Ally Switch
+TM52,356,black-white,V,411,Focus Blast
+TM53,357,black-white,V,412,Energy Ball
+TM54,358,black-white,V,206,False Swipe
+TM55,359,black-white,V,503,Scald
+TM56,360,black-white,V,374,Fling
+TM57,361,black-white,V,451,Charge Beam
+TM58,362,black-white,V,507,Sky Drop
+TM59,363,black-white,V,510,Incinerate
+TM60,364,black-white,V,511,Quash
+TM61,365,black-white,V,261,Will-O-Wisp
+TM62,366,black-white,V,512,Acrobatics
+TM63,367,black-white,V,373,Embargo
+TM64,368,black-white,V,153,Explosion
+TM65,369,black-white,V,421,Shadow Claw
+TM66,370,black-white,V,371,Payback
+TM67,371,black-white,V,514,Retaliate
+TM68,372,black-white,V,416,Giga Impact
+TM69,373,black-white,V,397,Rock Polish
+TM70,374,black-white,V,148,Flash
+TM71,375,black-white,V,444,Stone Edge
+TM72,376,black-white,V,521,Volt Switch
+TM73,377,black-white,V,86,Thunder Wave
+TM74,378,black-white,V,360,Gyro Ball
+TM75,379,black-white,V,14,Swords Dance
+TM76,380,black-white,V,522,Struggle Bug
+TM77,381,black-white,V,244,Psych Up
+TM78,382,black-white,V,523,Bulldoze
+TM79,383,black-white,V,524,Frost Breath
+TM80,384,black-white,V,157,Rock Slide
+TM81,385,black-white,V,404,X-Scissor
+TM82,386,black-white,V,525,Dragon Tail
+TM83,387,black-white,V,526,Work Up
+TM84,388,black-white,V,398,Poison Jab
+TM85,389,black-white,V,138,Dream Eater
+TM86,390,black-white,V,447,Grass Knot
+TM87,391,black-white,V,207,Swagger
+TM88,392,black-white,V,365,Pluck
+TM89,393,black-white,V,369,U-turn
+TM90,394,black-white,V,164,Substitute
+TM91,395,black-white,V,430,Flash Cannon
+TM92,396,black-white,V,433,Trick Room
+TM93,659,black-white,V,528,Wild Charge
+TM94,660,black-white,V,249,Rock Smash
+TM95,661,black-white,V,555,Snarl
+HM01,397,black-2-white-2,V,15,Cut
+HM02,398,black-2-white-2,V,19,Fly
+HM03,399,black-2-white-2,V,57,Surf
+HM04,400,black-2-white-2,V,70,Strength
+HM05,401,black-2-white-2,V,127,Waterfall
+HM06,402,black-2-white-2,V,291,Dive
+TM01,305,black-2-white-2,V,468,Hone Claws
+TM02,306,black-2-white-2,V,337,Dragon Claw
+TM03,307,black-2-white-2,V,473,Psyshock
+TM04,308,black-2-white-2,V,347,Calm Mind
+TM05,309,black-2-white-2,V,46,Roar
+TM06,310,black-2-white-2,V,92,Toxic
+TM07,311,black-2-white-2,V,258,Hail
+TM08,312,black-2-white-2,V,339,Bulk Up
+TM09,313,black-2-white-2,V,474,Venoshock
+TM10,314,black-2-white-2,V,237,Hidden Power
+TM11,315,black-2-white-2,V,241,Sunny Day
+TM12,316,black-2-white-2,V,269,Taunt
+TM13,317,black-2-white-2,V,58,Ice Beam
+TM14,318,black-2-white-2,V,59,Blizzard
+TM15,319,black-2-white-2,V,63,Hyper Beam
+TM16,320,black-2-white-2,V,113,Light Screen
+TM17,321,black-2-white-2,V,182,Protect
+TM18,322,black-2-white-2,V,240,Rain Dance
+TM19,323,black-2-white-2,V,477,Telekinesis
+TM20,324,black-2-white-2,V,219,Safeguard
+TM21,325,black-2-white-2,V,218,Frustration
+TM22,326,black-2-white-2,V,76,Solar Beam
+TM23,327,black-2-white-2,V,479,Smack Down
+TM24,328,black-2-white-2,V,85,Thunderbolt
+TM25,329,black-2-white-2,V,87,Thunder
+TM26,330,black-2-white-2,V,89,Earthquake
+TM27,331,black-2-white-2,V,216,Return
+TM28,332,black-2-white-2,V,91,Dig
+TM29,333,black-2-white-2,V,94,Psychic
+TM30,334,black-2-white-2,V,247,Shadow Ball
+TM31,335,black-2-white-2,V,280,Brick Break
+TM32,336,black-2-white-2,V,104,Double Team
+TM33,337,black-2-white-2,V,115,Reflect
+TM34,338,black-2-white-2,V,482,Sludge Wave
+TM35,339,black-2-white-2,V,53,Flamethrower
+TM36,340,black-2-white-2,V,188,Sludge Bomb
+TM37,341,black-2-white-2,V,201,Sandstorm
+TM38,342,black-2-white-2,V,126,Fire Blast
+TM39,343,black-2-white-2,V,317,Rock Tomb
+TM40,344,black-2-white-2,V,332,Aerial Ace
+TM41,345,black-2-white-2,V,259,Torment
+TM42,346,black-2-white-2,V,263,Facade
+TM43,347,black-2-white-2,V,488,Flame Charge
+TM44,348,black-2-white-2,V,156,Rest
+TM45,349,black-2-white-2,V,213,Attract
+TM46,350,black-2-white-2,V,168,Thief
+TM47,351,black-2-white-2,V,490,Low Sweep
+TM48,352,black-2-white-2,V,496,Round
+TM49,353,black-2-white-2,V,497,Echoed Voice
+TM50,354,black-2-white-2,V,315,Overheat
+TM51,355,black-2-white-2,V,502,Ally Switch
+TM52,356,black-2-white-2,V,411,Focus Blast
+TM53,357,black-2-white-2,V,412,Energy Ball
+TM54,358,black-2-white-2,V,206,False Swipe
+TM55,359,black-2-white-2,V,503,Scald
+TM56,360,black-2-white-2,V,374,Fling
+TM57,361,black-2-white-2,V,451,Charge Beam
+TM58,362,black-2-white-2,V,507,Sky Drop
+TM59,363,black-2-white-2,V,510,Incinerate
+TM60,364,black-2-white-2,V,511,Quash
+TM61,365,black-2-white-2,V,261,Will-O-Wisp
+TM62,366,black-2-white-2,V,512,Acrobatics
+TM63,367,black-2-white-2,V,373,Embargo
+TM64,368,black-2-white-2,V,153,Explosion
+TM65,369,black-2-white-2,V,421,Shadow Claw
+TM66,370,black-2-white-2,V,371,Payback
+TM67,371,black-2-white-2,V,514,Retaliate
+TM68,372,black-2-white-2,V,416,Giga Impact
+TM69,373,black-2-white-2,V,397,Rock Polish
+TM70,374,black-2-white-2,V,148,Flash
+TM71,375,black-2-white-2,V,444,Stone Edge
+TM72,376,black-2-white-2,V,521,Volt Switch
+TM73,377,black-2-white-2,V,86,Thunder Wave
+TM74,378,black-2-white-2,V,360,Gyro Ball
+TM75,379,black-2-white-2,V,14,Swords Dance
+TM76,380,black-2-white-2,V,522,Struggle Bug
+TM77,381,black-2-white-2,V,244,Psych Up
+TM78,382,black-2-white-2,V,523,Bulldoze
+TM79,383,black-2-white-2,V,524,Frost Breath
+TM80,384,black-2-white-2,V,157,Rock Slide
+TM81,385,black-2-white-2,V,404,X-Scissor
+TM82,386,black-2-white-2,V,525,Dragon Tail
+TM83,387,black-2-white-2,V,526,Work Up
+TM84,388,black-2-white-2,V,398,Poison Jab
+TM85,389,black-2-white-2,V,138,Dream Eater
+TM86,390,black-2-white-2,V,447,Grass Knot
+TM87,391,black-2-white-2,V,207,Swagger
+TM88,392,black-2-white-2,V,365,Pluck
+TM89,393,black-2-white-2,V,369,U-turn
+TM90,394,black-2-white-2,V,164,Substitute
+TM91,395,black-2-white-2,V,430,Flash Cannon
+TM92,396,black-2-white-2,V,433,Trick Room
+TM93,659,black-2-white-2,V,528,Wild Charge
+TM94,660,black-2-white-2,V,249,Rock Smash
+TM95,661,black-2-white-2,V,555,Snarl
+HM01,397,x-y,VI,15,Cut
+HM02,398,x-y,VI,19,Fly
+HM03,399,x-y,VI,57,Surf
+HM04,400,x-y,VI,70,Strength
+HM05,401,x-y,VI,127,Waterfall
+TM01,305,x-y,VI,468,Hone Claws
+TM02,306,x-y,VI,337,Dragon Claw
+TM03,307,x-y,VI,473,Psyshock
+TM04,308,x-y,VI,347,Calm Mind
+TM05,309,x-y,VI,46,Roar
+TM06,310,x-y,VI,92,Toxic
+TM07,311,x-y,VI,258,Hail
+TM08,312,x-y,VI,339,Bulk Up
+TM09,313,x-y,VI,474,Venoshock
+TM10,314,x-y,VI,237,Hidden Power
+TM100,749,x-y,VI,590,Confide
+TM11,315,x-y,VI,241,Sunny Day
+TM12,316,x-y,VI,269,Taunt
+TM13,317,x-y,VI,58,Ice Beam
+TM14,318,x-y,VI,59,Blizzard
+TM15,319,x-y,VI,63,Hyper Beam
+TM16,320,x-y,VI,113,Light Screen
+TM17,321,x-y,VI,182,Protect
+TM18,322,x-y,VI,240,Rain Dance
+TM19,323,x-y,VI,355,Roost
+TM20,324,x-y,VI,219,Safeguard
+TM21,325,x-y,VI,218,Frustration
+TM22,326,x-y,VI,76,Solar Beam
+TM23,327,x-y,VI,479,Smack Down
+TM24,328,x-y,VI,85,Thunderbolt
+TM25,329,x-y,VI,87,Thunder
+TM26,330,x-y,VI,89,Earthquake
+TM27,331,x-y,VI,216,Return
+TM28,332,x-y,VI,91,Dig
+TM29,333,x-y,VI,94,Psychic
+TM30,334,x-y,VI,247,Shadow Ball
+TM31,335,x-y,VI,280,Brick Break
+TM32,336,x-y,VI,104,Double Team
+TM33,337,x-y,VI,115,Reflect
+TM34,338,x-y,VI,482,Sludge Wave
+TM35,339,x-y,VI,53,Flamethrower
+TM36,340,x-y,VI,188,Sludge Bomb
+TM37,341,x-y,VI,201,Sandstorm
+TM38,342,x-y,VI,126,Fire Blast
+TM39,343,x-y,VI,317,Rock Tomb
+TM40,344,x-y,VI,332,Aerial Ace
+TM41,345,x-y,VI,259,Torment
+TM42,346,x-y,VI,263,Facade
+TM43,347,x-y,VI,488,Flame Charge
+TM44,348,x-y,VI,156,Rest
+TM45,349,x-y,VI,213,Attract
+TM46,350,x-y,VI,168,Thief
+TM47,351,x-y,VI,490,Low Sweep
+TM48,352,x-y,VI,496,Round
+TM49,353,x-y,VI,497,Echoed Voice
+TM50,354,x-y,VI,315,Overheat
+TM51,355,x-y,VI,211,Steel Wing
+TM52,356,x-y,VI,411,Focus Blast
+TM53,357,x-y,VI,412,Energy Ball
+TM54,358,x-y,VI,206,False Swipe
+TM55,359,x-y,VI,503,Scald
+TM56,360,x-y,VI,374,Fling
+TM57,361,x-y,VI,451,Charge Beam
+TM58,362,x-y,VI,507,Sky Drop
+TM59,363,x-y,VI,510,Incinerate
+TM60,364,x-y,VI,511,Quash
+TM61,365,x-y,VI,261,Will-O-Wisp
+TM62,366,x-y,VI,512,Acrobatics
+TM63,367,x-y,VI,373,Embargo
+TM64,368,x-y,VI,153,Explosion
+TM65,369,x-y,VI,421,Shadow Claw
+TM66,370,x-y,VI,371,Payback
+TM67,371,x-y,VI,514,Retaliate
+TM68,372,x-y,VI,416,Giga Impact
+TM69,373,x-y,VI,397,Rock Polish
+TM70,374,x-y,VI,148,Flash
+TM71,375,x-y,VI,444,Stone Edge
+TM72,376,x-y,VI,521,Volt Switch
+TM73,377,x-y,VI,86,Thunder Wave
+TM74,378,x-y,VI,360,Gyro Ball
+TM75,379,x-y,VI,14,Swords Dance
+TM76,380,x-y,VI,522,Struggle Bug
+TM77,381,x-y,VI,244,Psych Up
+TM78,382,x-y,VI,523,Bulldoze
+TM79,383,x-y,VI,524,Frost Breath
+TM80,384,x-y,VI,157,Rock Slide
+TM81,385,x-y,VI,404,X-Scissor
+TM82,386,x-y,VI,525,Dragon Tail
+TM83,387,x-y,VI,611,Infestation
+TM84,388,x-y,VI,398,Poison Jab
+TM85,389,x-y,VI,138,Dream Eater
+TM86,390,x-y,VI,447,Grass Knot
+TM87,391,x-y,VI,207,Swagger
+TM88,392,x-y,VI,214,Sleep Talk
+TM89,393,x-y,VI,369,U-turn
+TM90,394,x-y,VI,164,Substitute
+TM91,395,x-y,VI,430,Flash Cannon
+TM92,396,x-y,VI,433,Trick Room
+TM93,659,x-y,VI,528,Wild Charge
+TM94,660,x-y,VI,249,Rock Smash
+TM95,661,x-y,VI,555,Snarl
+TM96,745,x-y,VI,267,Nature Power
+TM97,746,x-y,VI,399,Dark Pulse
+TM98,747,x-y,VI,612,Power-Up Punch
+TM99,748,x-y,VI,605,Dazzling Gleam
+HM01,397,omega-ruby-alpha-sapphire,VI,15,Cut
+HM02,398,omega-ruby-alpha-sapphire,VI,19,Fly
+HM03,399,omega-ruby-alpha-sapphire,VI,57,Surf
+HM04,400,omega-ruby-alpha-sapphire,VI,70,Strength
+HM05,401,omega-ruby-alpha-sapphire,VI,127,Waterfall
+HM06,402,omega-ruby-alpha-sapphire,VI,249,Rock Smash
+HM07,403,omega-ruby-alpha-sapphire,VI,291,Dive
+TM01,305,omega-ruby-alpha-sapphire,VI,468,Hone Claws
+TM02,306,omega-ruby-alpha-sapphire,VI,337,Dragon Claw
+TM03,307,omega-ruby-alpha-sapphire,VI,473,Psyshock
+TM04,308,omega-ruby-alpha-sapphire,VI,347,Calm Mind
+TM05,309,omega-ruby-alpha-sapphire,VI,46,Roar
+TM06,310,omega-ruby-alpha-sapphire,VI,92,Toxic
+TM07,311,omega-ruby-alpha-sapphire,VI,258,Hail
+TM08,312,omega-ruby-alpha-sapphire,VI,339,Bulk Up
+TM09,313,omega-ruby-alpha-sapphire,VI,474,Venoshock
+TM10,314,omega-ruby-alpha-sapphire,VI,237,Hidden Power
+TM100,749,omega-ruby-alpha-sapphire,VI,590,Confide
+TM11,315,omega-ruby-alpha-sapphire,VI,241,Sunny Day
+TM12,316,omega-ruby-alpha-sapphire,VI,269,Taunt
+TM13,317,omega-ruby-alpha-sapphire,VI,58,Ice Beam
+TM14,318,omega-ruby-alpha-sapphire,VI,59,Blizzard
+TM15,319,omega-ruby-alpha-sapphire,VI,63,Hyper Beam
+TM16,320,omega-ruby-alpha-sapphire,VI,113,Light Screen
+TM17,321,omega-ruby-alpha-sapphire,VI,182,Protect
+TM18,322,omega-ruby-alpha-sapphire,VI,240,Rain Dance
+TM19,323,omega-ruby-alpha-sapphire,VI,355,Roost
+TM20,324,omega-ruby-alpha-sapphire,VI,219,Safeguard
+TM21,325,omega-ruby-alpha-sapphire,VI,218,Frustration
+TM22,326,omega-ruby-alpha-sapphire,VI,76,Solar Beam
+TM23,327,omega-ruby-alpha-sapphire,VI,479,Smack Down
+TM24,328,omega-ruby-alpha-sapphire,VI,85,Thunderbolt
+TM25,329,omega-ruby-alpha-sapphire,VI,87,Thunder
+TM26,330,omega-ruby-alpha-sapphire,VI,89,Earthquake
+TM27,331,omega-ruby-alpha-sapphire,VI,216,Return
+TM28,332,omega-ruby-alpha-sapphire,VI,91,Dig
+TM29,333,omega-ruby-alpha-sapphire,VI,94,Psychic
+TM30,334,omega-ruby-alpha-sapphire,VI,247,Shadow Ball
+TM31,335,omega-ruby-alpha-sapphire,VI,280,Brick Break
+TM32,336,omega-ruby-alpha-sapphire,VI,104,Double Team
+TM33,337,omega-ruby-alpha-sapphire,VI,115,Reflect
+TM34,338,omega-ruby-alpha-sapphire,VI,482,Sludge Wave
+TM35,339,omega-ruby-alpha-sapphire,VI,53,Flamethrower
+TM36,340,omega-ruby-alpha-sapphire,VI,188,Sludge Bomb
+TM37,341,omega-ruby-alpha-sapphire,VI,201,Sandstorm
+TM38,342,omega-ruby-alpha-sapphire,VI,126,Fire Blast
+TM39,343,omega-ruby-alpha-sapphire,VI,317,Rock Tomb
+TM40,344,omega-ruby-alpha-sapphire,VI,332,Aerial Ace
+TM41,345,omega-ruby-alpha-sapphire,VI,259,Torment
+TM42,346,omega-ruby-alpha-sapphire,VI,263,Facade
+TM43,347,omega-ruby-alpha-sapphire,VI,488,Flame Charge
+TM44,348,omega-ruby-alpha-sapphire,VI,156,Rest
+TM45,349,omega-ruby-alpha-sapphire,VI,213,Attract
+TM46,350,omega-ruby-alpha-sapphire,VI,168,Thief
+TM47,351,omega-ruby-alpha-sapphire,VI,490,Low Sweep
+TM48,352,omega-ruby-alpha-sapphire,VI,496,Round
+TM49,353,omega-ruby-alpha-sapphire,VI,497,Echoed Voice
+TM50,354,omega-ruby-alpha-sapphire,VI,315,Overheat
+TM51,355,omega-ruby-alpha-sapphire,VI,211,Steel Wing
+TM52,356,omega-ruby-alpha-sapphire,VI,411,Focus Blast
+TM53,357,omega-ruby-alpha-sapphire,VI,412,Energy Ball
+TM54,358,omega-ruby-alpha-sapphire,VI,206,False Swipe
+TM55,359,omega-ruby-alpha-sapphire,VI,503,Scald
+TM56,360,omega-ruby-alpha-sapphire,VI,374,Fling
+TM57,361,omega-ruby-alpha-sapphire,VI,451,Charge Beam
+TM58,362,omega-ruby-alpha-sapphire,VI,507,Sky Drop
+TM59,363,omega-ruby-alpha-sapphire,VI,510,Incinerate
+TM60,364,omega-ruby-alpha-sapphire,VI,511,Quash
+TM61,365,omega-ruby-alpha-sapphire,VI,261,Will-O-Wisp
+TM62,366,omega-ruby-alpha-sapphire,VI,512,Acrobatics
+TM63,367,omega-ruby-alpha-sapphire,VI,373,Embargo
+TM64,368,omega-ruby-alpha-sapphire,VI,153,Explosion
+TM65,369,omega-ruby-alpha-sapphire,VI,421,Shadow Claw
+TM66,370,omega-ruby-alpha-sapphire,VI,371,Payback
+TM67,371,omega-ruby-alpha-sapphire,VI,514,Retaliate
+TM68,372,omega-ruby-alpha-sapphire,VI,416,Giga Impact
+TM69,373,omega-ruby-alpha-sapphire,VI,397,Rock Polish
+TM70,374,omega-ruby-alpha-sapphire,VI,148,Flash
+TM71,375,omega-ruby-alpha-sapphire,VI,444,Stone Edge
+TM72,376,omega-ruby-alpha-sapphire,VI,521,Volt Switch
+TM73,377,omega-ruby-alpha-sapphire,VI,86,Thunder Wave
+TM74,378,omega-ruby-alpha-sapphire,VI,360,Gyro Ball
+TM75,379,omega-ruby-alpha-sapphire,VI,14,Swords Dance
+TM76,380,omega-ruby-alpha-sapphire,VI,522,Struggle Bug
+TM77,381,omega-ruby-alpha-sapphire,VI,244,Psych Up
+TM78,382,omega-ruby-alpha-sapphire,VI,523,Bulldoze
+TM79,383,omega-ruby-alpha-sapphire,VI,524,Frost Breath
+TM80,384,omega-ruby-alpha-sapphire,VI,157,Rock Slide
+TM81,385,omega-ruby-alpha-sapphire,VI,404,X-Scissor
+TM82,386,omega-ruby-alpha-sapphire,VI,525,Dragon Tail
+TM83,387,omega-ruby-alpha-sapphire,VI,611,Infestation
+TM84,388,omega-ruby-alpha-sapphire,VI,398,Poison Jab
+TM85,389,omega-ruby-alpha-sapphire,VI,138,Dream Eater
+TM86,390,omega-ruby-alpha-sapphire,VI,447,Grass Knot
+TM87,391,omega-ruby-alpha-sapphire,VI,207,Swagger
+TM88,392,omega-ruby-alpha-sapphire,VI,214,Sleep Talk
+TM89,393,omega-ruby-alpha-sapphire,VI,369,U-turn
+TM90,394,omega-ruby-alpha-sapphire,VI,164,Substitute
+TM91,395,omega-ruby-alpha-sapphire,VI,430,Flash Cannon
+TM92,396,omega-ruby-alpha-sapphire,VI,433,Trick Room
+TM93,659,omega-ruby-alpha-sapphire,VI,528,Wild Charge
+TM94,660,omega-ruby-alpha-sapphire,VI,290,Secret Power
+TM95,661,omega-ruby-alpha-sapphire,VI,555,Snarl
+TM96,745,omega-ruby-alpha-sapphire,VI,267,Nature Power
+TM97,746,omega-ruby-alpha-sapphire,VI,399,Dark Pulse
+TM98,747,omega-ruby-alpha-sapphire,VI,612,Power-Up Punch
+TM99,748,omega-ruby-alpha-sapphire,VI,605,Dazzling Gleam
+TM01,305,sun-moon,VII,526,Work Up
+TM02,306,sun-moon,VII,337,Dragon Claw
+TM03,307,sun-moon,VII,473,Psyshock
+TM04,308,sun-moon,VII,347,Calm Mind
+TM05,309,sun-moon,VII,46,Roar
+TM06,310,sun-moon,VII,92,Toxic
+TM07,311,sun-moon,VII,258,Hail
+TM08,312,sun-moon,VII,339,Bulk Up
+TM09,313,sun-moon,VII,474,Venoshock
+TM10,314,sun-moon,VII,237,Hidden Power
+TM100,749,sun-moon,VII,590,Confide
+TM11,315,sun-moon,VII,241,Sunny Day
+TM12,316,sun-moon,VII,269,Taunt
+TM13,317,sun-moon,VII,58,Ice Beam
+TM14,318,sun-moon,VII,59,Blizzard
+TM15,319,sun-moon,VII,63,Hyper Beam
+TM16,320,sun-moon,VII,113,Light Screen
+TM17,321,sun-moon,VII,182,Protect
+TM18,322,sun-moon,VII,240,Rain Dance
+TM19,323,sun-moon,VII,355,Roost
+TM20,324,sun-moon,VII,219,Safeguard
+TM21,325,sun-moon,VII,218,Frustration
+TM22,326,sun-moon,VII,76,Solar Beam
+TM23,327,sun-moon,VII,479,Smack Down
+TM24,328,sun-moon,VII,85,Thunderbolt
+TM25,329,sun-moon,VII,87,Thunder
+TM26,330,sun-moon,VII,89,Earthquake
+TM27,331,sun-moon,VII,216,Return
+TM28,332,sun-moon,VII,141,Leech Life
+TM29,333,sun-moon,VII,94,Psychic
+TM30,334,sun-moon,VII,247,Shadow Ball
+TM31,335,sun-moon,VII,280,Brick Break
+TM32,336,sun-moon,VII,104,Double Team
+TM33,337,sun-moon,VII,115,Reflect
+TM34,338,sun-moon,VII,482,Sludge Wave
+TM35,339,sun-moon,VII,53,Flamethrower
+TM36,340,sun-moon,VII,188,Sludge Bomb
+TM37,341,sun-moon,VII,201,Sandstorm
+TM38,342,sun-moon,VII,126,Fire Blast
+TM39,343,sun-moon,VII,317,Rock Tomb
+TM40,344,sun-moon,VII,332,Aerial Ace
+TM41,345,sun-moon,VII,259,Torment
+TM42,346,sun-moon,VII,263,Facade
+TM43,347,sun-moon,VII,488,Flame Charge
+TM44,348,sun-moon,VII,156,Rest
+TM45,349,sun-moon,VII,213,Attract
+TM46,350,sun-moon,VII,168,Thief
+TM47,351,sun-moon,VII,490,Low Sweep
+TM48,352,sun-moon,VII,496,Round
+TM49,353,sun-moon,VII,497,Echoed Voice
+TM50,354,sun-moon,VII,315,Overheat
+TM51,355,sun-moon,VII,211,Steel Wing
+TM52,356,sun-moon,VII,411,Focus Blast
+TM53,357,sun-moon,VII,412,Energy Ball
+TM54,358,sun-moon,VII,206,False Swipe
+TM55,359,sun-moon,VII,503,Scald
+TM56,360,sun-moon,VII,374,Fling
+TM57,361,sun-moon,VII,451,Charge Beam
+TM58,362,sun-moon,VII,507,Sky Drop
+TM59,363,sun-moon,VII,693,Brutal Swing
+TM60,364,sun-moon,VII,511,Quash
+TM61,365,sun-moon,VII,261,Will-O-Wisp
+TM62,366,sun-moon,VII,512,Acrobatics
+TM63,367,sun-moon,VII,373,Embargo
+TM64,368,sun-moon,VII,153,Explosion
+TM65,369,sun-moon,VII,421,Shadow Claw
+TM66,370,sun-moon,VII,371,Payback
+TM67,371,sun-moon,VII,684,Smart Strike
+TM68,372,sun-moon,VII,416,Giga Impact
+TM69,373,sun-moon,VII,397,Rock Polish
+TM70,374,sun-moon,VII,694,Aurora Veil
+TM71,375,sun-moon,VII,444,Stone Edge
+TM72,376,sun-moon,VII,521,Volt Switch
+TM73,377,sun-moon,VII,86,Thunder Wave
+TM74,378,sun-moon,VII,360,Gyro Ball
+TM75,379,sun-moon,VII,14,Swords Dance
+TM76,380,sun-moon,VII,19,Fly
+TM77,381,sun-moon,VII,244,Psych Up
+TM78,382,sun-moon,VII,523,Bulldoze
+TM79,383,sun-moon,VII,524,Frost Breath
+TM80,384,sun-moon,VII,157,Rock Slide
+TM81,385,sun-moon,VII,404,X-Scissor
+TM82,386,sun-moon,VII,525,Dragon Tail
+TM83,387,sun-moon,VII,611,Infestation
+TM84,388,sun-moon,VII,398,Poison Jab
+TM85,389,sun-moon,VII,138,Dream Eater
+TM86,390,sun-moon,VII,447,Grass Knot
+TM87,391,sun-moon,VII,207,Swagger
+TM88,392,sun-moon,VII,214,Sleep Talk
+TM89,393,sun-moon,VII,369,U-turn
+TM90,394,sun-moon,VII,164,Substitute
+TM91,395,sun-moon,VII,430,Flash Cannon
+TM92,396,sun-moon,VII,433,Trick Room
+TM93,659,sun-moon,VII,528,Wild Charge
+TM94,660,sun-moon,VII,57,Surf
+TM95,661,sun-moon,VII,555,Snarl
+TM96,745,sun-moon,VII,267,Nature Power
+TM97,746,sun-moon,VII,399,Dark Pulse
+TM98,747,sun-moon,VII,127,Waterfall
+TM99,748,sun-moon,VII,605,Dazzling Gleam
+TM01,305,ultra-sun-ultra-moon,VII,526,Work Up
+TM02,306,ultra-sun-ultra-moon,VII,337,Dragon Claw
+TM03,307,ultra-sun-ultra-moon,VII,473,Psyshock
+TM04,308,ultra-sun-ultra-moon,VII,347,Calm Mind
+TM05,309,ultra-sun-ultra-moon,VII,46,Roar
+TM06,310,ultra-sun-ultra-moon,VII,92,Toxic
+TM07,311,ultra-sun-ultra-moon,VII,258,Hail
+TM08,312,ultra-sun-ultra-moon,VII,339,Bulk Up
+TM09,313,ultra-sun-ultra-moon,VII,474,Venoshock
+TM10,314,ultra-sun-ultra-moon,VII,237,Hidden Power
+TM100,749,ultra-sun-ultra-moon,VII,590,Confide
+TM11,315,ultra-sun-ultra-moon,VII,241,Sunny Day
+TM12,316,ultra-sun-ultra-moon,VII,269,Taunt
+TM13,317,ultra-sun-ultra-moon,VII,58,Ice Beam
+TM14,318,ultra-sun-ultra-moon,VII,59,Blizzard
+TM15,319,ultra-sun-ultra-moon,VII,63,Hyper Beam
+TM16,320,ultra-sun-ultra-moon,VII,113,Light Screen
+TM17,321,ultra-sun-ultra-moon,VII,182,Protect
+TM18,322,ultra-sun-ultra-moon,VII,240,Rain Dance
+TM19,323,ultra-sun-ultra-moon,VII,355,Roost
+TM20,324,ultra-sun-ultra-moon,VII,219,Safeguard
+TM21,325,ultra-sun-ultra-moon,VII,218,Frustration
+TM22,326,ultra-sun-ultra-moon,VII,76,Solar Beam
+TM23,327,ultra-sun-ultra-moon,VII,479,Smack Down
+TM24,328,ultra-sun-ultra-moon,VII,85,Thunderbolt
+TM25,329,ultra-sun-ultra-moon,VII,87,Thunder
+TM26,330,ultra-sun-ultra-moon,VII,89,Earthquake
+TM27,331,ultra-sun-ultra-moon,VII,216,Return
+TM28,332,ultra-sun-ultra-moon,VII,141,Leech Life
+TM29,333,ultra-sun-ultra-moon,VII,94,Psychic
+TM30,334,ultra-sun-ultra-moon,VII,247,Shadow Ball
+TM31,335,ultra-sun-ultra-moon,VII,280,Brick Break
+TM32,336,ultra-sun-ultra-moon,VII,104,Double Team
+TM33,337,ultra-sun-ultra-moon,VII,115,Reflect
+TM34,338,ultra-sun-ultra-moon,VII,482,Sludge Wave
+TM35,339,ultra-sun-ultra-moon,VII,53,Flamethrower
+TM36,340,ultra-sun-ultra-moon,VII,188,Sludge Bomb
+TM37,341,ultra-sun-ultra-moon,VII,201,Sandstorm
+TM38,342,ultra-sun-ultra-moon,VII,126,Fire Blast
+TM39,343,ultra-sun-ultra-moon,VII,317,Rock Tomb
+TM40,344,ultra-sun-ultra-moon,VII,332,Aerial Ace
+TM41,345,ultra-sun-ultra-moon,VII,259,Torment
+TM42,346,ultra-sun-ultra-moon,VII,263,Facade
+TM43,347,ultra-sun-ultra-moon,VII,488,Flame Charge
+TM44,348,ultra-sun-ultra-moon,VII,156,Rest
+TM45,349,ultra-sun-ultra-moon,VII,213,Attract
+TM46,350,ultra-sun-ultra-moon,VII,168,Thief
+TM47,351,ultra-sun-ultra-moon,VII,490,Low Sweep
+TM48,352,ultra-sun-ultra-moon,VII,496,Round
+TM49,353,ultra-sun-ultra-moon,VII,497,Echoed Voice
+TM50,354,ultra-sun-ultra-moon,VII,315,Overheat
+TM51,355,ultra-sun-ultra-moon,VII,211,Steel Wing
+TM52,356,ultra-sun-ultra-moon,VII,411,Focus Blast
+TM53,357,ultra-sun-ultra-moon,VII,412,Energy Ball
+TM54,358,ultra-sun-ultra-moon,VII,206,False Swipe
+TM55,359,ultra-sun-ultra-moon,VII,503,Scald
+TM56,360,ultra-sun-ultra-moon,VII,374,Fling
+TM57,361,ultra-sun-ultra-moon,VII,451,Charge Beam
+TM58,362,ultra-sun-ultra-moon,VII,507,Sky Drop
+TM59,363,ultra-sun-ultra-moon,VII,693,Brutal Swing
+TM60,364,ultra-sun-ultra-moon,VII,511,Quash
+TM61,365,ultra-sun-ultra-moon,VII,261,Will-O-Wisp
+TM62,366,ultra-sun-ultra-moon,VII,512,Acrobatics
+TM63,367,ultra-sun-ultra-moon,VII,373,Embargo
+TM64,368,ultra-sun-ultra-moon,VII,153,Explosion
+TM65,369,ultra-sun-ultra-moon,VII,421,Shadow Claw
+TM66,370,ultra-sun-ultra-moon,VII,371,Payback
+TM67,371,ultra-sun-ultra-moon,VII,684,Smart Strike
+TM68,372,ultra-sun-ultra-moon,VII,416,Giga Impact
+TM69,373,ultra-sun-ultra-moon,VII,397,Rock Polish
+TM70,374,ultra-sun-ultra-moon,VII,694,Aurora Veil
+TM71,375,ultra-sun-ultra-moon,VII,444,Stone Edge
+TM72,376,ultra-sun-ultra-moon,VII,521,Volt Switch
+TM73,377,ultra-sun-ultra-moon,VII,86,Thunder Wave
+TM74,378,ultra-sun-ultra-moon,VII,360,Gyro Ball
+TM75,379,ultra-sun-ultra-moon,VII,14,Swords Dance
+TM76,380,ultra-sun-ultra-moon,VII,19,Fly
+TM77,381,ultra-sun-ultra-moon,VII,244,Psych Up
+TM78,382,ultra-sun-ultra-moon,VII,523,Bulldoze
+TM79,383,ultra-sun-ultra-moon,VII,524,Frost Breath
+TM80,384,ultra-sun-ultra-moon,VII,157,Rock Slide
+TM81,385,ultra-sun-ultra-moon,VII,404,X-Scissor
+TM82,386,ultra-sun-ultra-moon,VII,525,Dragon Tail
+TM83,387,ultra-sun-ultra-moon,VII,611,Infestation
+TM84,388,ultra-sun-ultra-moon,VII,398,Poison Jab
+TM85,389,ultra-sun-ultra-moon,VII,138,Dream Eater
+TM86,390,ultra-sun-ultra-moon,VII,447,Grass Knot
+TM87,391,ultra-sun-ultra-moon,VII,207,Swagger
+TM88,392,ultra-sun-ultra-moon,VII,214,Sleep Talk
+TM89,393,ultra-sun-ultra-moon,VII,369,U-turn
+TM90,394,ultra-sun-ultra-moon,VII,164,Substitute
+TM91,395,ultra-sun-ultra-moon,VII,430,Flash Cannon
+TM92,396,ultra-sun-ultra-moon,VII,433,Trick Room
+TM93,659,ultra-sun-ultra-moon,VII,528,Wild Charge
+TM94,660,ultra-sun-ultra-moon,VII,57,Surf
+TM95,661,ultra-sun-ultra-moon,VII,555,Snarl
+TM96,745,ultra-sun-ultra-moon,VII,267,Nature Power
+TM97,746,ultra-sun-ultra-moon,VII,399,Dark Pulse
+TM98,747,ultra-sun-ultra-moon,VII,127,Waterfall
+TM99,748,ultra-sun-ultra-moon,VII,605,Dazzling Gleam
+TM01,305,lets-go-pikachu-lets-go-eevee,VII,29,Headbutt
+TM02,306,lets-go-pikachu-lets-go-eevee,VII,269,Taunt
+TM03,307,lets-go-pikachu-lets-go-eevee,VII,270,Helping Hand
+TM04,308,lets-go-pikachu-lets-go-eevee,VII,100,Teleport
+TM05,309,lets-go-pikachu-lets-go-eevee,VII,156,Rest
+TM06,310,lets-go-pikachu-lets-go-eevee,VII,113,Light Screen
+TM07,311,lets-go-pikachu-lets-go-eevee,VII,182,Protect
+TM08,312,lets-go-pikachu-lets-go-eevee,VII,164,Substitute
+TM09,313,lets-go-pikachu-lets-go-eevee,VII,115,Reflect
+TM10,314,lets-go-pikachu-lets-go-eevee,VII,91,Dig
+TM11,315,lets-go-pikachu-lets-go-eevee,VII,261,Will-O-Wisp
+TM12,316,lets-go-pikachu-lets-go-eevee,VII,263,Facade
+TM13,317,lets-go-pikachu-lets-go-eevee,VII,280,Brick Break
+TM14,318,lets-go-pikachu-lets-go-eevee,VII,19,Fly
+TM15,319,lets-go-pikachu-lets-go-eevee,VII,69,Seismic Toss
+TM16,320,lets-go-pikachu-lets-go-eevee,VII,86,Thunder Wave
+TM17,321,lets-go-pikachu-lets-go-eevee,VII,525,Dragon Tail
+TM18,322,lets-go-pikachu-lets-go-eevee,VII,369,U-turn
+TM19,323,lets-go-pikachu-lets-go-eevee,VII,231,Iron Tail
+TM20,324,lets-go-pikachu-lets-go-eevee,VII,399,Dark Pulse
+TM21,325,lets-go-pikachu-lets-go-eevee,VII,492,Foul Play
+TM22,326,lets-go-pikachu-lets-go-eevee,VII,157,Rock Slide
+TM23,327,lets-go-pikachu-lets-go-eevee,VII,9,Thunder Punch
+TM24,328,lets-go-pikachu-lets-go-eevee,VII,404,X-Scissor
+TM25,329,lets-go-pikachu-lets-go-eevee,VII,127,Waterfall
+TM26,330,lets-go-pikachu-lets-go-eevee,VII,398,Poison Jab
+TM27,331,lets-go-pikachu-lets-go-eevee,VII,92,Toxic
+TM28,332,lets-go-pikachu-lets-go-eevee,VII,161,Tri Attack
+TM29,333,lets-go-pikachu-lets-go-eevee,VII,503,Scald
+TM30,334,lets-go-pikachu-lets-go-eevee,VII,339,Bulk Up
+TM31,335,lets-go-pikachu-lets-go-eevee,VII,7,Fire Punch
+TM32,336,lets-go-pikachu-lets-go-eevee,VII,605,Dazzling Gleam
+TM33,337,lets-go-pikachu-lets-go-eevee,VII,347,Calm Mind
+TM34,338,lets-go-pikachu-lets-go-eevee,VII,406,Dragon Pulse
+TM35,339,lets-go-pikachu-lets-go-eevee,VII,8,Ice Punch
+TM36,340,lets-go-pikachu-lets-go-eevee,VII,85,Thunderbolt
+TM37,341,lets-go-pikachu-lets-go-eevee,VII,53,Flamethrower
+TM38,342,lets-go-pikachu-lets-go-eevee,VII,87,Thunder
+TM39,343,lets-go-pikachu-lets-go-eevee,VII,200,Outrage
+TM40,344,lets-go-pikachu-lets-go-eevee,VII,94,Psychic
+TM41,345,lets-go-pikachu-lets-go-eevee,VII,89,Earthquake
+TM42,346,lets-go-pikachu-lets-go-eevee,VII,120,Self-Destruct
+TM43,347,lets-go-pikachu-lets-go-eevee,VII,247,Shadow Ball
+TM44,348,lets-go-pikachu-lets-go-eevee,VII,583,Play Rough
+TM45,349,lets-go-pikachu-lets-go-eevee,VII,76,Solar Beam
+TM46,350,lets-go-pikachu-lets-go-eevee,VII,126,Fire Blast
+TM47,351,lets-go-pikachu-lets-go-eevee,VII,57,Surf
+TM48,352,lets-go-pikachu-lets-go-eevee,VII,63,Hyper Beam
+TM49,353,lets-go-pikachu-lets-go-eevee,VII,276,Superpower
+TM50,354,lets-go-pikachu-lets-go-eevee,VII,355,Roost
+TM51,355,lets-go-pikachu-lets-go-eevee,VII,59,Blizzard
+TM52,356,lets-go-pikachu-lets-go-eevee,VII,188,Sludge Bomb
+TM53,357,lets-go-pikachu-lets-go-eevee,VII,72,Mega Drain
+TM54,358,lets-go-pikachu-lets-go-eevee,VII,430,Flash Cannon
+TM55,359,lets-go-pikachu-lets-go-eevee,VII,58,Ice Beam
+TM56,360,lets-go-pikachu-lets-go-eevee,VII,446,Stealth Rock
+TM57,361,lets-go-pikachu-lets-go-eevee,VII,6,Pay Day
+TM58,362,lets-go-pikachu-lets-go-eevee,VII,529,Drill Run
+TM59,363,lets-go-pikachu-lets-go-eevee,VII,138,Dream Eater
+TM60,364,lets-go-pikachu-lets-go-eevee,VII,224,Megahorn
+TM00,1288,sword-shield,VIII,5,Mega Punch
+TM01,305,sword-shield,VIII,25,Mega Kick
+TM02,306,sword-shield,VIII,6,Pay Day
+TM03,307,sword-shield,VIII,7,Fire Punch
+TM04,308,sword-shield,VIII,8,Ice Punch
+TM05,309,sword-shield,VIII,9,Thunder Punch
+TM06,310,sword-shield,VIII,19,Fly
+TM07,311,sword-shield,VIII,42,Pin Missile
+TM08,312,sword-shield,VIII,63,Hyper Beam
+TM09,313,sword-shield,VIII,416,Giga Impact
+TM10,314,sword-shield,VIII,345,Magical Leaf
+TM11,315,sword-shield,VIII,76,Solar Beam
+TM12,316,sword-shield,VIII,669,Solar Blade
+TM13,317,sword-shield,VIII,83,Fire Spin
+TM14,318,sword-shield,VIII,86,Thunder Wave
+TM15,319,sword-shield,VIII,91,Dig
+TM16,320,sword-shield,VIII,103,Screech
+TM17,321,sword-shield,VIII,113,Light Screen
+TM18,322,sword-shield,VIII,115,Reflect
+TM19,323,sword-shield,VIII,219,Safeguard
+TM20,324,sword-shield,VIII,120,Self-Destruct
+TM21,325,sword-shield,VIII,156,Rest
+TM22,326,sword-shield,VIII,157,Rock Slide
+TM23,327,sword-shield,VIII,168,Thief
+TM24,328,sword-shield,VIII,173,Snore
+TM25,329,sword-shield,VIII,182,Protect
+TM26,330,sword-shield,VIII,184,Scary Face
+TM27,331,sword-shield,VIII,196,Icy Wind
+TM28,332,sword-shield,VIII,202,Giga Drain
+TM29,333,sword-shield,VIII,204,Charm
+TM30,334,sword-shield,VIII,211,Steel Wing
+TM31,335,sword-shield,VIII,213,Attract
+TM32,336,sword-shield,VIII,201,Sandstorm
+TM33,337,sword-shield,VIII,240,Rain Dance
+TM34,338,sword-shield,VIII,241,Sunny Day
+TM35,339,sword-shield,VIII,258,Hail
+TM36,340,sword-shield,VIII,250,Whirlpool
+TM37,341,sword-shield,VIII,251,Beat Up
+TM38,342,sword-shield,VIII,261,Will-O-Wisp
+TM39,343,sword-shield,VIII,263,Facade
+TM40,344,sword-shield,VIII,129,Swift
+TM41,345,sword-shield,VIII,270,Helping Hand
+TM42,346,sword-shield,VIII,279,Revenge
+TM43,347,sword-shield,VIII,280,Brick Break
+TM44,348,sword-shield,VIII,286,Imprison
+TM45,349,sword-shield,VIII,291,Dive
+TM46,350,sword-shield,VIII,311,Weather Ball
+TM47,351,sword-shield,VIII,313,Fake Tears
+TM48,352,sword-shield,VIII,317,Rock Tomb
+TM49,353,sword-shield,VIII,328,Sand Tomb
+TM50,354,sword-shield,VIII,331,Bullet Seed
+TM51,355,sword-shield,VIII,333,Icicle Spear
+TM52,356,sword-shield,VIII,340,Bounce
+TM53,357,sword-shield,VIII,341,Mud Shot
+TM54,358,sword-shield,VIII,350,Rock Blast
+TM55,359,sword-shield,VIII,362,Brine
+TM56,360,sword-shield,VIII,369,U-turn
+TM57,361,sword-shield,VIII,371,Payback
+TM58,362,sword-shield,VIII,372,Assurance
+TM59,363,sword-shield,VIII,374,Fling
+TM60,364,sword-shield,VIII,384,Power Swap
+TM61,365,sword-shield,VIII,385,Guard Swap
+TM62,366,sword-shield,VIII,683,Speed Swap
+TM63,367,sword-shield,VIII,409,Drain Punch
+TM64,368,sword-shield,VIII,419,Avalanche
+TM65,369,sword-shield,VIII,421,Shadow Claw
+TM66,370,sword-shield,VIII,422,Thunder Fang
+TM67,371,sword-shield,VIII,423,Ice Fang
+TM68,372,sword-shield,VIII,424,Fire Fang
+TM69,373,sword-shield,VIII,427,Psycho Cut
+TM70,374,sword-shield,VIII,433,Trick Room
+TM71,375,sword-shield,VIII,472,Wonder Room
+TM72,376,sword-shield,VIII,478,Magic Room
+TM73,377,sword-shield,VIII,440,Cross Poison
+TM74,378,sword-shield,VIII,474,Venoshock
+TM75,379,sword-shield,VIII,490,Low Sweep
+TM76,380,sword-shield,VIII,496,Round
+TM77,381,sword-shield,VIII,506,Hex
+TM78,382,sword-shield,VIII,512,Acrobatics
+TM79,383,sword-shield,VIII,514,Retaliate
+TM80,384,sword-shield,VIII,521,Volt Switch
+TM81,385,sword-shield,VIII,523,Bulldoze
+TM82,386,sword-shield,VIII,527,Electroweb
+TM83,387,sword-shield,VIII,534,Razor Shell
+TM84,388,sword-shield,VIII,541,Tail Slap
+TM85,389,sword-shield,VIII,555,Snarl
+TM86,390,sword-shield,VIII,566,Phantom Force
+TM87,391,sword-shield,VIII,577,Draining Kiss
+TM88,392,sword-shield,VIII,580,Grassy Terrain
+TM89,393,sword-shield,VIII,581,Misty Terrain
+TM90,394,sword-shield,VIII,604,Electric Terrain
+TM91,395,sword-shield,VIII,678,Psychic Terrain
+TM92,396,sword-shield,VIII,595,Mystical Fire
+TM93,659,sword-shield,VIII,598,Eerie Impulse
+TM94,660,sword-shield,VIII,206,False Swipe
+TM95,661,sword-shield,VIII,403,Air Slash
+TM96,745,sword-shield,VIII,684,Smart Strike
+TM97,746,sword-shield,VIII,693,Brutal Swing
+TM98,747,sword-shield,VIII,707,Stomping Tantrum
+TM99,748,sword-shield,VIII,784,Breaking Swipe
+TR00,1188,sword-shield,VIII,14,Swords Dance
+TR01,1189,sword-shield,VIII,34,Body Slam
+TR02,1190,sword-shield,VIII,53,Flamethrower
+TR03,1191,sword-shield,VIII,56,Hydro Pump
+TR04,1192,sword-shield,VIII,57,Surf
+TR05,1193,sword-shield,VIII,58,Ice Beam
+TR06,1194,sword-shield,VIII,59,Blizzard
+TR07,1195,sword-shield,VIII,67,Low Kick
+TR08,1196,sword-shield,VIII,85,Thunderbolt
+TR09,1197,sword-shield,VIII,87,Thunder
+TR10,1198,sword-shield,VIII,89,Earthquake
+TR11,1199,sword-shield,VIII,94,Psychic
+TR12,1200,sword-shield,VIII,97,Agility
+TR13,1201,sword-shield,VIII,116,Focus Energy
+TR14,1202,sword-shield,VIII,118,Metronome
+TR15,1203,sword-shield,VIII,126,Fire Blast
+TR16,1204,sword-shield,VIII,127,Waterfall
+TR17,1205,sword-shield,VIII,133,Amnesia
+TR18,1206,sword-shield,VIII,141,Leech Life
+TR19,1207,sword-shield,VIII,161,Tri Attack
+TR20,1208,sword-shield,VIII,164,Substitute
+TR21,1209,sword-shield,VIII,179,Reversal
+TR22,1210,sword-shield,VIII,188,Sludge Bomb
+TR23,1211,sword-shield,VIII,191,Spikes
+TR24,1212,sword-shield,VIII,200,Outrage
+TR25,1213,sword-shield,VIII,473,Psyshock
+TR26,1214,sword-shield,VIII,203,Endure
+TR27,1215,sword-shield,VIII,214,Sleep Talk
+TR28,1216,sword-shield,VIII,224,Megahorn
+TR29,1217,sword-shield,VIII,226,Baton Pass
+TR30,1218,sword-shield,VIII,227,Encore
+TR31,1219,sword-shield,VIII,231,Iron Tail
+TR32,1220,sword-shield,VIII,242,Crunch
+TR33,1221,sword-shield,VIII,247,Shadow Ball
+TR34,1222,sword-shield,VIII,248,Future Sight
+TR35,1223,sword-shield,VIII,253,Uproar
+TR36,1224,sword-shield,VIII,257,Heat Wave
+TR37,1225,sword-shield,VIII,269,Taunt
+TR38,1226,sword-shield,VIII,271,Trick
+TR39,1227,sword-shield,VIII,276,Superpower
+TR40,1228,sword-shield,VIII,285,Skill Swap
+TR41,1229,sword-shield,VIII,299,Blaze Kick
+TR42,1230,sword-shield,VIII,304,Hyper Voice
+TR43,1231,sword-shield,VIII,315,Overheat
+TR44,1232,sword-shield,VIII,322,Cosmic Power
+TR45,1233,sword-shield,VIII,330,Muddy Water
+TR46,1234,sword-shield,VIII,334,Iron Defense
+TR47,1235,sword-shield,VIII,337,Dragon Claw
+TR48,1236,sword-shield,VIII,339,Bulk Up
+TR49,1237,sword-shield,VIII,347,Calm Mind
+TR50,1238,sword-shield,VIII,348,Leaf Blade
+TR51,1239,sword-shield,VIII,349,Dragon Dance
+TR52,1240,sword-shield,VIII,360,Gyro Ball
+TR53,1241,sword-shield,VIII,370,Close Combat
+TR54,1242,sword-shield,VIII,390,Toxic Spikes
+TR55,1243,sword-shield,VIII,394,Flare Blitz
+TR56,1244,sword-shield,VIII,396,Aura Sphere
+TR57,1245,sword-shield,VIII,398,Poison Jab
+TR58,1246,sword-shield,VIII,399,Dark Pulse
+TR59,1247,sword-shield,VIII,402,Seed Bomb
+TR60,1248,sword-shield,VIII,404,X-Scissor
+TR61,1249,sword-shield,VIII,405,Bug Buzz
+TR62,1250,sword-shield,VIII,406,Dragon Pulse
+TR63,1251,sword-shield,VIII,408,Power Gem
+TR64,1252,sword-shield,VIII,411,Focus Blast
+TR65,1253,sword-shield,VIII,412,Energy Ball
+TR66,1254,sword-shield,VIII,413,Brave Bird
+TR67,1255,sword-shield,VIII,414,Earth Power
+TR68,1256,sword-shield,VIII,417,Nasty Plot
+TR69,1257,sword-shield,VIII,428,Zen Headbutt
+TR70,1258,sword-shield,VIII,430,Flash Cannon
+TR71,1259,sword-shield,VIII,437,Leaf Storm
+TR72,1260,sword-shield,VIII,438,Power Whip
+TR73,1261,sword-shield,VIII,441,Gunk Shot
+TR74,1262,sword-shield,VIII,442,Iron Head
+TR75,1263,sword-shield,VIII,444,Stone Edge
+TR76,1264,sword-shield,VIII,446,Stealth Rock
+TR77,1265,sword-shield,VIII,447,Grass Knot
+TR78,1266,sword-shield,VIII,482,Sludge Wave
+TR79,1267,sword-shield,VIII,484,Heavy Slam
+TR80,1268,sword-shield,VIII,486,Electro Ball
+TR81,1269,sword-shield,VIII,492,Foul Play
+TR82,1270,sword-shield,VIII,500,Stored Power
+TR83,1271,sword-shield,VIII,502,Ally Switch
+TR84,1272,sword-shield,VIII,503,Scald
+TR85,1273,sword-shield,VIII,526,Work Up
+TR86,1274,sword-shield,VIII,528,Wild Charge
+TR87,1275,sword-shield,VIII,529,Drill Run
+TR88,1276,sword-shield,VIII,535,Heat Crash
+TR89,1277,sword-shield,VIII,542,Hurricane
+TR90,1278,sword-shield,VIII,583,Play Rough
+TR91,1279,sword-shield,VIII,599,Venom Drench
+TR92,1280,sword-shield,VIII,605,Dazzling Gleam
+TR93,1281,sword-shield,VIII,663,Darkest Lariat
+TR94,1282,sword-shield,VIII,667,High Horsepower
+TR95,1283,sword-shield,VIII,675,Throat Chop
+TR96,1284,sword-shield,VIII,676,Pollen Puff
+TR97,1285,sword-shield,VIII,706,Psychic Fangs
+TR98,1286,sword-shield,VIII,710,Liquidation
+TR99,1287,sword-shield,VIII,776,Body Press
+TM01,305,brilliant-diamond-shining-pearl,VIII,264,Focus Punch
+TM02,306,brilliant-diamond-shining-pearl,VIII,337,Dragon Claw
+TM03,307,brilliant-diamond-shining-pearl,VIII,352,Water Pulse
+TM04,308,brilliant-diamond-shining-pearl,VIII,347,Calm Mind
+TM05,309,brilliant-diamond-shining-pearl,VIII,46,Roar
+TM06,310,brilliant-diamond-shining-pearl,VIII,92,Toxic
+TM07,311,brilliant-diamond-shining-pearl,VIII,258,Hail
+TM08,312,brilliant-diamond-shining-pearl,VIII,339,Bulk Up
+TM09,313,brilliant-diamond-shining-pearl,VIII,331,Bullet Seed
+TM10,314,brilliant-diamond-shining-pearl,VIII,526,Work Up
+TM100,749,brilliant-diamond-shining-pearl,VIII,431,Rock Climb
+TM11,315,brilliant-diamond-shining-pearl,VIII,241,Sunny Day
+TM12,316,brilliant-diamond-shining-pearl,VIII,269,Taunt
+TM13,317,brilliant-diamond-shining-pearl,VIII,58,Ice Beam
+TM14,318,brilliant-diamond-shining-pearl,VIII,59,Blizzard
+TM15,319,brilliant-diamond-shining-pearl,VIII,63,Hyper Beam
+TM16,320,brilliant-diamond-shining-pearl,VIII,113,Light Screen
+TM17,321,brilliant-diamond-shining-pearl,VIII,182,Protect
+TM18,322,brilliant-diamond-shining-pearl,VIII,240,Rain Dance
+TM19,323,brilliant-diamond-shining-pearl,VIII,202,Giga Drain
+TM20,324,brilliant-diamond-shining-pearl,VIII,219,Safeguard
+TM21,325,brilliant-diamond-shining-pearl,VIII,605,Dazzling Gleam
+TM22,326,brilliant-diamond-shining-pearl,VIII,76,Solar Beam
+TM23,327,brilliant-diamond-shining-pearl,VIII,231,Iron Tail
+TM24,328,brilliant-diamond-shining-pearl,VIII,85,Thunderbolt
+TM25,329,brilliant-diamond-shining-pearl,VIII,87,Thunder
+TM26,330,brilliant-diamond-shining-pearl,VIII,89,Earthquake
+TM27,331,brilliant-diamond-shining-pearl,VIII,490,Low Sweep
+TM28,332,brilliant-diamond-shining-pearl,VIII,91,Dig
+TM29,333,brilliant-diamond-shining-pearl,VIII,94,Psychic
+TM30,334,brilliant-diamond-shining-pearl,VIII,247,Shadow Ball
+TM31,335,brilliant-diamond-shining-pearl,VIII,280,Brick Break
+TM32,336,brilliant-diamond-shining-pearl,VIII,104,Double Team
+TM33,337,brilliant-diamond-shining-pearl,VIII,115,Reflect
+TM34,338,brilliant-diamond-shining-pearl,VIII,351,Shock Wave
+TM35,339,brilliant-diamond-shining-pearl,VIII,53,Flamethrower
+TM36,340,brilliant-diamond-shining-pearl,VIII,188,Sludge Bomb
+TM37,341,brilliant-diamond-shining-pearl,VIII,201,Sandstorm
+TM38,342,brilliant-diamond-shining-pearl,VIII,126,Fire Blast
+TM39,343,brilliant-diamond-shining-pearl,VIII,317,Rock Tomb
+TM40,344,brilliant-diamond-shining-pearl,VIII,332,Aerial Ace
+TM41,345,brilliant-diamond-shining-pearl,VIII,259,Torment
+TM42,346,brilliant-diamond-shining-pearl,VIII,263,Facade
+TM43,347,brilliant-diamond-shining-pearl,VIII,521,Volt Switch
+TM44,348,brilliant-diamond-shining-pearl,VIII,156,Rest
+TM45,349,brilliant-diamond-shining-pearl,VIII,213,Attract
+TM46,350,brilliant-diamond-shining-pearl,VIII,168,Thief
+TM47,351,brilliant-diamond-shining-pearl,VIII,211,Steel Wing
+TM48,352,brilliant-diamond-shining-pearl,VIII,285,Skill Swap
+TM49,353,brilliant-diamond-shining-pearl,VIII,503,Scald
+TM50,354,brilliant-diamond-shining-pearl,VIII,315,Overheat
+TM51,355,brilliant-diamond-shining-pearl,VIII,355,Roost
+TM52,356,brilliant-diamond-shining-pearl,VIII,411,Focus Blast
+TM53,357,brilliant-diamond-shining-pearl,VIII,412,Energy Ball
+TM54,358,brilliant-diamond-shining-pearl,VIII,206,False Swipe
+TM55,359,brilliant-diamond-shining-pearl,VIII,362,Brine
+TM56,360,brilliant-diamond-shining-pearl,VIII,374,Fling
+TM57,361,brilliant-diamond-shining-pearl,VIII,451,Charge Beam
+TM58,362,brilliant-diamond-shining-pearl,VIII,203,Endure
+TM59,363,brilliant-diamond-shining-pearl,VIII,406,Dragon Pulse
+TM60,364,brilliant-diamond-shining-pearl,VIII,409,Drain Punch
+TM61,365,brilliant-diamond-shining-pearl,VIII,261,Will-O-Wisp
+TM62,366,brilliant-diamond-shining-pearl,VIII,405,Bug Buzz
+TM63,367,brilliant-diamond-shining-pearl,VIII,417,Nasty Plot
+TM64,368,brilliant-diamond-shining-pearl,VIII,153,Explosion
+TM65,369,brilliant-diamond-shining-pearl,VIII,421,Shadow Claw
+TM66,370,brilliant-diamond-shining-pearl,VIII,371,Payback
+TM67,371,brilliant-diamond-shining-pearl,VIII,278,Recycle
+TM68,372,brilliant-diamond-shining-pearl,VIII,416,Giga Impact
+TM69,373,brilliant-diamond-shining-pearl,VIII,397,Rock Polish
+TM70,374,brilliant-diamond-shining-pearl,VIII,148,Flash
+TM71,375,brilliant-diamond-shining-pearl,VIII,444,Stone Edge
+TM72,376,brilliant-diamond-shining-pearl,VIII,419,Avalanche
+TM73,377,brilliant-diamond-shining-pearl,VIII,86,Thunder Wave
+TM74,378,brilliant-diamond-shining-pearl,VIII,360,Gyro Ball
+TM75,379,brilliant-diamond-shining-pearl,VIII,14,Swords Dance
+TM76,380,brilliant-diamond-shining-pearl,VIII,446,Stealth Rock
+TM77,381,brilliant-diamond-shining-pearl,VIII,244,Psych Up
+TM78,382,brilliant-diamond-shining-pearl,VIII,555,Snarl
+TM79,383,brilliant-diamond-shining-pearl,VIII,399,Dark Pulse
+TM80,384,brilliant-diamond-shining-pearl,VIII,157,Rock Slide
+TM81,385,brilliant-diamond-shining-pearl,VIII,404,X-Scissor
+TM82,386,brilliant-diamond-shining-pearl,VIII,214,Sleep Talk
+TM83,387,brilliant-diamond-shining-pearl,VIII,523,Bulldoze
+TM84,388,brilliant-diamond-shining-pearl,VIII,398,Poison Jab
+TM85,389,brilliant-diamond-shining-pearl,VIII,138,Dream Eater
+TM86,390,brilliant-diamond-shining-pearl,VIII,447,Grass Knot
+TM87,391,brilliant-diamond-shining-pearl,VIII,207,Swagger
+TM88,392,brilliant-diamond-shining-pearl,VIII,365,Pluck
+TM89,393,brilliant-diamond-shining-pearl,VIII,369,U-turn
+TM90,394,brilliant-diamond-shining-pearl,VIII,164,Substitute
+TM91,395,brilliant-diamond-shining-pearl,VIII,430,Flash Cannon
+TM92,396,brilliant-diamond-shining-pearl,VIII,433,Trick Room
+TM93,659,brilliant-diamond-shining-pearl,VIII,15,Cut
+TM94,660,brilliant-diamond-shining-pearl,VIII,19,Fly
+TM95,661,brilliant-diamond-shining-pearl,VIII,57,Surf
+TM96,745,brilliant-diamond-shining-pearl,VIII,70,Strength
+TM97,746,brilliant-diamond-shining-pearl,VIII,432,Defog
+TM98,747,brilliant-diamond-shining-pearl,VIII,249,Rock Smash
+TM99,748,brilliant-diamond-shining-pearl,VIII,127,Waterfall
+TM01,305,scarlet-violet,IX,36,Take Down
+TM02,306,scarlet-violet,IX,204,Charm
+TM03,307,scarlet-violet,IX,313,Fake Tears
+TM04,308,scarlet-violet,IX,97,Agility
+TM05,309,scarlet-violet,IX,189,Mud-Slap
+TM06,310,scarlet-violet,IX,184,Scary Face
+TM07,311,scarlet-violet,IX,182,Protect
+TM08,312,scarlet-violet,IX,424,Fire Fang
+TM09,313,scarlet-violet,IX,422,Thunder Fang
+TM10,314,scarlet-violet,IX,423,Ice Fang
+TM100,749,scarlet-violet,IX,349,Dragon Dance
+TM101,1944,scarlet-violet,IX,408,Power Gem
+TM102,1945,scarlet-violet,IX,441,Gunk Shot
+TM103,1946,scarlet-violet,IX,164,Substitute
+TM104,1947,scarlet-violet,IX,334,Iron Defense
+TM105,1948,scarlet-violet,IX,404,X-Scissor
+TM106,1949,scarlet-violet,IX,529,Drill Run
+TM107,1950,scarlet-violet,IX,261,Will-O-Wisp
+TM108,1951,scarlet-violet,IX,242,Crunch
+TM109,1952,scarlet-violet,IX,271,Trick
+TM11,315,scarlet-violet,IX,352,Water Pulse
+TM110,1953,scarlet-violet,IX,710,Liquidation
+TM111,1954,scarlet-violet,IX,202,Giga Drain
+TM112,1955,scarlet-violet,IX,396,Aura Sphere
+TM113,1956,scarlet-violet,IX,366,Tailwind
+TM114,1957,scarlet-violet,IX,247,Shadow Ball
+TM115,1958,scarlet-violet,IX,406,Dragon Pulse
+TM116,1959,scarlet-violet,IX,446,Stealth Rock
+TM117,1960,scarlet-violet,IX,304,Hyper Voice
+TM118,1961,scarlet-violet,IX,257,Heat Wave
+TM119,1962,scarlet-violet,IX,412,Energy Ball
+TM12,316,scarlet-violet,IX,67,Low Kick
+TM120,1963,scarlet-violet,IX,94,Psychic
+TM121,1964,scarlet-violet,IX,484,Heavy Slam
+TM122,1965,scarlet-violet,IX,227,Encore
+TM123,1966,scarlet-violet,IX,57,Surf
+TM124,1967,scarlet-violet,IX,861,Ice Spinner
+TM125,1968,scarlet-violet,IX,53,Flamethrower
+TM126,1969,scarlet-violet,IX,85,Thunderbolt
+TM127,1970,scarlet-violet,IX,583,Play Rough
+TM128,1971,scarlet-violet,IX,133,Amnesia
+TM129,1972,scarlet-violet,IX,347,Calm Mind
+TM13,317,scarlet-violet,IX,491,Acid Spray
+TM130,1973,scarlet-violet,IX,270,Helping Hand
+TM131,1974,scarlet-violet,IX,676,Pollen Puff
+TM132,1975,scarlet-violet,IX,226,Baton Pass
+TM133,1976,scarlet-violet,IX,414,Earth Power
+TM134,1977,scarlet-violet,IX,179,Reversal
+TM135,1978,scarlet-violet,IX,58,Ice Beam
+TM136,1979,scarlet-violet,IX,604,Electric Terrain
+TM137,1980,scarlet-violet,IX,580,Grassy Terrain
+TM138,1981,scarlet-violet,IX,678,Psychic Terrain
+TM139,1982,scarlet-violet,IX,581,Misty Terrain
+TM14,318,scarlet-violet,IX,512,Acrobatics
+TM140,1983,scarlet-violet,IX,417,Nasty Plot
+TM141,1984,scarlet-violet,IX,126,Fire Blast
+TM142,1985,scarlet-violet,IX,56,Hydro Pump
+TM143,1986,scarlet-violet,IX,59,Blizzard
+TM144,1987,scarlet-violet,IX,519,Fire Pledge
+TM145,1988,scarlet-violet,IX,518,Water Pledge
+TM146,1989,scarlet-violet,IX,520,Grass Pledge
+TM147,1990,scarlet-violet,IX,528,Wild Charge
+TM148,1991,scarlet-violet,IX,188,Sludge Bomb
+TM149,1992,scarlet-violet,IX,89,Earthquake
+TM15,319,scarlet-violet,IX,522,Struggle Bug
+TM150,1993,scarlet-violet,IX,444,Stone Edge
+TM151,1994,scarlet-violet,IX,566,Phantom Force
+TM152,1995,scarlet-violet,IX,416,Giga Impact
+TM153,1996,scarlet-violet,IX,307,Blast Burn
+TM154,1997,scarlet-violet,IX,308,Hydro Cannon
+TM155,1998,scarlet-violet,IX,338,Frenzy Plant
+TM156,1999,scarlet-violet,IX,200,Outrage
+TM157,2000,scarlet-violet,IX,315,Overheat
+TM158,2001,scarlet-violet,IX,411,Focus Blast
+TM159,2002,scarlet-violet,IX,437,Leaf Storm
+TM16,320,scarlet-violet,IX,60,Psybeam
+TM160,2003,scarlet-violet,IX,542,Hurricane
+TM161,2004,scarlet-violet,IX,433,Trick Room
+TM162,2005,scarlet-violet,IX,405,Bug Buzz
+TM163,2006,scarlet-violet,IX,63,Hyper Beam
+TM164,2007,scarlet-violet,IX,413,Brave Bird
+TM165,2008,scarlet-violet,IX,394,Flare Blitz
+TM166,2009,scarlet-violet,IX,87,Thunder
+TM167,2010,scarlet-violet,IX,370,Close Combat
+TM168,2011,scarlet-violet,IX,76,Solar Beam
+TM169,2012,scarlet-violet,IX,434,Draco Meteor
+TM17,321,scarlet-violet,IX,109,Confuse Ray
+TM170,2013,scarlet-violet,IX,796,Steel Beam
+TM171,2014,scarlet-violet,IX,851,Tera Blast
+TM172,2161,scarlet-violet,IX,46,Roar
+TM173,2162,scarlet-violet,IX,268,Charge
+TM174,2163,scarlet-violet,IX,114,Haze
+TM175,2164,scarlet-violet,IX,92,Toxic
+TM176,2165,scarlet-violet,IX,328,Sand Tomb
+TM177,2166,scarlet-violet,IX,180,Spite
+TM178,2167,scarlet-violet,IX,356,Gravity
+TM179,2168,scarlet-violet,IX,479,Smack Down
+TM18,322,scarlet-violet,IX,168,Thief
+TM180,2169,scarlet-violet,IX,360,Gyro Ball
+TM181,2170,scarlet-violet,IX,282,Knock Off
+TM182,2171,scarlet-violet,IX,450,Bug Bite
+TM183,2172,scarlet-violet,IX,162,Super Fang
+TM184,2173,scarlet-violet,IX,410,Vacuum Wave
+TM185,2174,scarlet-violet,IX,679,Lunge
+TM186,2175,scarlet-violet,IX,667,High Horsepower
+TM187,2176,scarlet-violet,IX,333,Icicle Spear
+TM188,2177,scarlet-violet,IX,503,Scald
+TM189,2178,scarlet-violet,IX,535,Heat Crash
+TM19,323,scarlet-violet,IX,574,Disarming Voice
+TM190,2179,scarlet-violet,IX,669,Solar Blade
+TM191,2180,scarlet-violet,IX,253,Uproar
+TM192,2181,scarlet-violet,IX,264,Focus Punch
+TM193,2182,scarlet-violet,IX,311,Weather Ball
+TM194,2183,scarlet-violet,IX,803,Grassy Glide
+TM195,2184,scarlet-violet,IX,807,Burning Jealousy
+TM196,2185,scarlet-violet,IX,812,Flip Turn
+TM197,2186,scarlet-violet,IX,814,Dual Wingbeat
+TM198,2187,scarlet-violet,IX,809,Poltergeist
+TM199,2188,scarlet-violet,IX,808,Lash Out
+TM20,324,scarlet-violet,IX,885,Trailblaze
+TM200,2189,scarlet-violet,IX,799,Scale Shot
+TM201,2190,scarlet-violet,IX,802,Misty Explosion
+TM202,2191,scarlet-violet,IX,220,Pain Split
+TM203,2192,scarlet-violet,IX,244,Psych Up
+TM204,2193,scarlet-violet,IX,38,Double-Edge
+TM205,2194,scarlet-violet,IX,283,Endeavor
+TM206,2195,scarlet-violet,IX,572,Petal Blizzard
+TM207,2196,scarlet-violet,IX,915,Temper Flare
+TM208,2197,scarlet-violet,IX,250,Whirlpool
+TM209,2198,scarlet-violet,IX,330,Muddy Water
+TM21,325,scarlet-violet,IX,884,Pounce
+TM210,2199,scarlet-violet,IX,916,Supercell Slam
+TM211,2200,scarlet-violet,IX,527,Electroweb
+TM212,2201,scarlet-violet,IX,813,Triple Axel
+TM213,2202,scarlet-violet,IX,811,Coaching
+TM214,2203,scarlet-violet,IX,482,Sludge Wave
+TM215,2204,scarlet-violet,IX,815,Scorching Sands
+TM216,2205,scarlet-violet,IX,297,Feather Dance
+TM217,2206,scarlet-violet,IX,248,Future Sight
+TM218,2207,scarlet-violet,IX,797,Expanding Force
+TM219,2208,scarlet-violet,IX,806,Skitter Smack
+TM22,326,scarlet-violet,IX,886,Chilling Water
+TM220,2209,scarlet-violet,IX,800,Meteor Beam
+TM221,2210,scarlet-violet,IX,675,Throat Chop
+TM222,2211,scarlet-violet,IX,784,Breaking Swipe
+TM223,2212,scarlet-violet,IX,319,Metal Sound
+TM224,2213,scarlet-violet,IX,174,Curse
+TM225,2214,scarlet-violet,IX,912,Hard Press
+TM226,2215,scarlet-violet,IX,913,Dragon Cheer
+TM227,2216,scarlet-violet,IX,914,Alluring Voice
+TM228,2217,scarlet-violet,IX,917,Psychic Noise
+TM229,2218,scarlet-violet,IX,918,Upper Hand
+TM23,327,scarlet-violet,IX,451,Charge Beam
+TM24,328,scarlet-violet,IX,83,Fire Spin
+TM25,329,scarlet-violet,IX,263,Facade
+TM26,330,scarlet-violet,IX,342,Poison Tail
+TM27,331,scarlet-violet,IX,332,Aerial Ace
+TM28,332,scarlet-violet,IX,523,Bulldoze
+TM29,333,scarlet-violet,IX,506,Hex
+TM30,334,scarlet-violet,IX,555,Snarl
+TM31,335,scarlet-violet,IX,232,Metal Claw
+TM32,336,scarlet-violet,IX,129,Swift
+TM33,337,scarlet-violet,IX,345,Magical Leaf
+TM34,338,scarlet-violet,IX,196,Icy Wind
+TM35,339,scarlet-violet,IX,341,Mud Shot
+TM36,340,scarlet-violet,IX,317,Rock Tomb
+TM37,341,scarlet-violet,IX,577,Draining Kiss
+TM38,342,scarlet-violet,IX,488,Flame Charge
+TM39,343,scarlet-violet,IX,490,Low Sweep
+TM40,344,scarlet-violet,IX,314,Air Cutter
+TM41,345,scarlet-violet,IX,500,Stored Power
+TM42,346,scarlet-violet,IX,101,Night Shade
+TM43,347,scarlet-violet,IX,374,Fling
+TM44,348,scarlet-violet,IX,525,Dragon Tail
+TM45,349,scarlet-violet,IX,474,Venoshock
+TM46,350,scarlet-violet,IX,419,Avalanche
+TM47,351,scarlet-violet,IX,203,Endure
+TM48,352,scarlet-violet,IX,521,Volt Switch
+TM49,353,scarlet-violet,IX,241,Sunny Day
+TM50,354,scarlet-violet,IX,240,Rain Dance
+TM51,355,scarlet-violet,IX,201,Sandstorm
+TM52,356,scarlet-violet,IX,883,Snowscape
+TM53,357,scarlet-violet,IX,684,Smart Strike
+TM54,358,scarlet-violet,IX,473,Psyshock
+TM55,359,scarlet-violet,IX,91,Dig
+TM56,360,scarlet-violet,IX,331,Bullet Seed
+TM57,361,scarlet-violet,IX,206,False Swipe
+TM58,362,scarlet-violet,IX,280,Brick Break
+TM59,363,scarlet-violet,IX,428,Zen Headbutt
+TM60,364,scarlet-violet,IX,369,U-turn
+TM61,365,scarlet-violet,IX,421,Shadow Claw
+TM62,366,scarlet-violet,IX,492,Foul Play
+TM63,367,scarlet-violet,IX,706,Psychic Fangs
+TM64,368,scarlet-violet,IX,339,Bulk Up
+TM65,369,scarlet-violet,IX,403,Air Slash
+TM66,370,scarlet-violet,IX,34,Body Slam
+TM67,371,scarlet-violet,IX,7,Fire Punch
+TM68,372,scarlet-violet,IX,9,Thunder Punch
+TM69,373,scarlet-violet,IX,8,Ice Punch
+TM70,374,scarlet-violet,IX,214,Sleep Talk
+TM71,375,scarlet-violet,IX,402,Seed Bomb
+TM72,376,scarlet-violet,IX,486,Electro Ball
+TM73,377,scarlet-violet,IX,409,Drain Punch
+TM74,378,scarlet-violet,IX,115,Reflect
+TM75,379,scarlet-violet,IX,113,Light Screen
+TM76,380,scarlet-violet,IX,350,Rock Blast
+TM77,381,scarlet-violet,IX,127,Waterfall
+TM78,382,scarlet-violet,IX,337,Dragon Claw
+TM79,383,scarlet-violet,IX,605,Dazzling Gleam
+TM80,384,scarlet-violet,IX,118,Metronome
+TM81,385,scarlet-violet,IX,447,Grass Knot
+TM82,386,scarlet-violet,IX,86,Thunder Wave
+TM83,387,scarlet-violet,IX,398,Poison Jab
+TM84,388,scarlet-violet,IX,707,Stomping Tantrum
+TM85,389,scarlet-violet,IX,156,Rest
+TM86,390,scarlet-violet,IX,157,Rock Slide
+TM87,391,scarlet-violet,IX,269,Taunt
+TM88,392,scarlet-violet,IX,14,Swords Dance
+TM89,393,scarlet-violet,IX,776,Body Press
+TM90,394,scarlet-violet,IX,191,Spikes
+TM91,395,scarlet-violet,IX,390,Toxic Spikes
+TM92,396,scarlet-violet,IX,286,Imprison
+TM93,659,scarlet-violet,IX,430,Flash Cannon
+TM94,660,scarlet-violet,IX,399,Dark Pulse
+TM95,661,scarlet-violet,IX,141,Leech Life
+TM96,745,scarlet-violet,IX,598,Eerie Impulse
+TM97,746,scarlet-violet,IX,19,Fly
+TM98,747,scarlet-violet,IX,285,Skill Swap
+TM99,748,scarlet-violet,IX,442,Iron Head
+TM132,1975,the-teal-mask,IX,226,Baton Pass
+TM170,2013,the-teal-mask,IX,796,Steel Beam
+TM172,2161,the-teal-mask,IX,46,Roar
+TM173,2162,the-teal-mask,IX,268,Charge
+TM174,2163,the-teal-mask,IX,114,Haze
+TM175,2164,the-teal-mask,IX,92,Toxic
+TM176,2165,the-teal-mask,IX,328,Sand Tomb
+TM177,2166,the-teal-mask,IX,180,Spite
+TM178,2167,the-teal-mask,IX,356,Gravity
+TM179,2168,the-teal-mask,IX,479,Smack Down
+TM180,2169,the-teal-mask,IX,360,Gyro Ball
+TM181,2170,the-teal-mask,IX,282,Knock Off
+TM182,2171,the-teal-mask,IX,450,Bug Bite
+TM183,2172,the-teal-mask,IX,162,Super Fang
+TM184,2173,the-teal-mask,IX,410,Vacuum Wave
+TM185,2174,the-teal-mask,IX,679,Lunge
+TM186,2175,the-teal-mask,IX,667,High Horsepower
+TM187,2176,the-teal-mask,IX,333,Icicle Spear
+TM188,2177,the-teal-mask,IX,503,Scald
+TM189,2178,the-teal-mask,IX,535,Heat Crash
+TM190,2179,the-teal-mask,IX,669,Solar Blade
+TM191,2180,the-teal-mask,IX,253,Uproar
+TM192,2181,the-teal-mask,IX,264,Focus Punch
+TM193,2182,the-teal-mask,IX,311,Weather Ball
+TM194,2183,the-teal-mask,IX,803,Grassy Glide
+TM195,2184,the-teal-mask,IX,807,Burning Jealousy
+TM196,2185,the-teal-mask,IX,812,Flip Turn
+TM197,2186,the-teal-mask,IX,814,Dual Wingbeat
+TM198,2187,the-teal-mask,IX,809,Poltergeist
+TM199,2188,the-teal-mask,IX,808,Lash Out
+TM200,2189,the-teal-mask,IX,799,Scale Shot
+TM201,2190,the-teal-mask,IX,802,Misty Explosion
+TM67,371,the-teal-mask,IX,7,Fire Punch
+TM68,372,the-teal-mask,IX,9,Thunder Punch
+TM69,373,the-teal-mask,IX,8,Ice Punch
+TM02,306,the-indigo-disk,IX,204,Charm
+TM07,311,the-indigo-disk,IX,182,Protect
+TM100,749,the-indigo-disk,IX,349,Dragon Dance
+TM103,1946,the-indigo-disk,IX,164,Substitute
+TM104,1947,the-indigo-disk,IX,334,Iron Defense
+TM106,1949,the-indigo-disk,IX,529,Drill Run
+TM107,1950,the-indigo-disk,IX,261,Will-O-Wisp
+TM108,1951,the-indigo-disk,IX,242,Crunch
+TM109,1952,the-indigo-disk,IX,271,Trick
+TM110,1953,the-indigo-disk,IX,710,Liquidation
+TM111,1954,the-indigo-disk,IX,202,Giga Drain
+TM112,1955,the-indigo-disk,IX,396,Aura Sphere
+TM113,1956,the-indigo-disk,IX,366,Tailwind
+TM115,1958,the-indigo-disk,IX,406,Dragon Pulse
+TM117,1960,the-indigo-disk,IX,304,Hyper Voice
+TM118,1961,the-indigo-disk,IX,257,Heat Wave
+TM119,1962,the-indigo-disk,IX,412,Energy Ball
+TM121,1964,the-indigo-disk,IX,484,Heavy Slam
+TM124,1967,the-indigo-disk,IX,861,Ice Spinner
+TM125,1968,the-indigo-disk,IX,53,Flamethrower
+TM126,1969,the-indigo-disk,IX,85,Thunderbolt
+TM127,1970,the-indigo-disk,IX,583,Play Rough
+TM128,1971,the-indigo-disk,IX,133,Amnesia
+TM129,1972,the-indigo-disk,IX,347,Calm Mind
+TM13,317,the-indigo-disk,IX,491,Acid Spray
+TM130,1973,the-indigo-disk,IX,270,Helping Hand
+TM131,1974,the-indigo-disk,IX,676,Pollen Puff
+TM133,1976,the-indigo-disk,IX,414,Earth Power
+TM135,1978,the-indigo-disk,IX,58,Ice Beam
+TM136,1979,the-indigo-disk,IX,604,Electric Terrain
+TM137,1980,the-indigo-disk,IX,580,Grassy Terrain
+TM138,1981,the-indigo-disk,IX,678,Psychic Terrain
+TM139,1982,the-indigo-disk,IX,581,Misty Terrain
+TM140,1983,the-indigo-disk,IX,417,Nasty Plot
+TM141,1984,the-indigo-disk,IX,126,Fire Blast
+TM142,1985,the-indigo-disk,IX,56,Hydro Pump
+TM143,1986,the-indigo-disk,IX,59,Blizzard
+TM144,1987,the-indigo-disk,IX,519,Fire Pledge
+TM145,1988,the-indigo-disk,IX,518,Water Pledge
+TM146,1989,the-indigo-disk,IX,520,Grass Pledge
+TM148,1991,the-indigo-disk,IX,188,Sludge Bomb
+TM149,1992,the-indigo-disk,IX,89,Earthquake
+TM150,1993,the-indigo-disk,IX,444,Stone Edge
+TM153,1996,the-indigo-disk,IX,307,Blast Burn
+TM154,1997,the-indigo-disk,IX,308,Hydro Cannon
+TM155,1998,the-indigo-disk,IX,338,Frenzy Plant
+TM156,1999,the-indigo-disk,IX,200,Outrage
+TM157,2000,the-indigo-disk,IX,315,Overheat
+TM158,2001,the-indigo-disk,IX,411,Focus Blast
+TM159,2002,the-indigo-disk,IX,437,Leaf Storm
+TM160,2003,the-indigo-disk,IX,542,Hurricane
+TM161,2004,the-indigo-disk,IX,433,Trick Room
+TM162,2005,the-indigo-disk,IX,405,Bug Buzz
+TM163,2006,the-indigo-disk,IX,63,Hyper Beam
+TM164,2007,the-indigo-disk,IX,413,Brave Bird
+TM165,2008,the-indigo-disk,IX,394,Flare Blitz
+TM166,2009,the-indigo-disk,IX,87,Thunder
+TM168,2011,the-indigo-disk,IX,76,Solar Beam
+TM171,2014,the-indigo-disk,IX,851,Tera Blast
+TM174,2163,the-indigo-disk,IX,114,Haze
+TM181,2170,the-indigo-disk,IX,282,Knock Off
+TM185,2174,the-indigo-disk,IX,679,Lunge
+TM186,2175,the-indigo-disk,IX,667,High Horsepower
+TM187,2176,the-indigo-disk,IX,333,Icicle Spear
+TM188,2177,the-indigo-disk,IX,503,Scald
+TM190,2179,the-indigo-disk,IX,669,Solar Blade
+TM193,2182,the-indigo-disk,IX,311,Weather Ball
+TM194,2183,the-indigo-disk,IX,803,Grassy Glide
+TM196,2185,the-indigo-disk,IX,812,Flip Turn
+TM197,2186,the-indigo-disk,IX,814,Dual Wingbeat
+TM200,2189,the-indigo-disk,IX,799,Scale Shot
+TM201,2190,the-indigo-disk,IX,802,Misty Explosion
+TM202,2191,the-indigo-disk,IX,220,Pain Split
+TM203,2192,the-indigo-disk,IX,244,Psych Up
+TM204,2193,the-indigo-disk,IX,38,Double-Edge
+TM205,2194,the-indigo-disk,IX,283,Endeavor
+TM206,2195,the-indigo-disk,IX,572,Petal Blizzard
+TM207,2196,the-indigo-disk,IX,915,Temper Flare
+TM208,2197,the-indigo-disk,IX,250,Whirlpool
+TM209,2198,the-indigo-disk,IX,330,Muddy Water
+TM210,2199,the-indigo-disk,IX,916,Supercell Slam
+TM211,2200,the-indigo-disk,IX,527,Electroweb
+TM212,2201,the-indigo-disk,IX,813,Triple Axel
+TM213,2202,the-indigo-disk,IX,811,Coaching
+TM214,2203,the-indigo-disk,IX,482,Sludge Wave
+TM215,2204,the-indigo-disk,IX,815,Scorching Sands
+TM216,2205,the-indigo-disk,IX,297,Feather Dance
+TM217,2206,the-indigo-disk,IX,248,Future Sight
+TM218,2207,the-indigo-disk,IX,797,Expanding Force
+TM219,2208,the-indigo-disk,IX,806,Skitter Smack
+TM220,2209,the-indigo-disk,IX,800,Meteor Beam
+TM221,2210,the-indigo-disk,IX,675,Throat Chop
+TM222,2211,the-indigo-disk,IX,784,Breaking Swipe
+TM223,2212,the-indigo-disk,IX,319,Metal Sound
+TM224,2213,the-indigo-disk,IX,174,Curse
+TM225,2214,the-indigo-disk,IX,912,Hard Press
+TM226,2215,the-indigo-disk,IX,913,Dragon Cheer
+TM227,2216,the-indigo-disk,IX,914,Alluring Voice
+TM228,2217,the-indigo-disk,IX,917,Psychic Noise
+TM229,2218,the-indigo-disk,IX,918,Upper Hand
+TM29,333,the-indigo-disk,IX,506,Hex
+TM30,334,the-indigo-disk,IX,555,Snarl
+TM34,338,the-indigo-disk,IX,196,Icy Wind
+TM39,343,the-indigo-disk,IX,490,Low Sweep
+TM41,345,the-indigo-disk,IX,500,Stored Power
+TM44,348,the-indigo-disk,IX,525,Dragon Tail
+TM49,353,the-indigo-disk,IX,241,Sunny Day
+TM50,354,the-indigo-disk,IX,240,Rain Dance
+TM51,355,the-indigo-disk,IX,201,Sandstorm
+TM52,356,the-indigo-disk,IX,883,Snowscape
+TM53,357,the-indigo-disk,IX,684,Smart Strike
+TM59,363,the-indigo-disk,IX,428,Zen Headbutt
+TM60,364,the-indigo-disk,IX,369,U-turn
+TM63,367,the-indigo-disk,IX,706,Psychic Fangs
+TM64,368,the-indigo-disk,IX,339,Bulk Up
+TM67,371,the-indigo-disk,IX,7,Fire Punch
+TM68,372,the-indigo-disk,IX,9,Thunder Punch
+TM69,373,the-indigo-disk,IX,8,Ice Punch
+TM74,378,the-indigo-disk,IX,115,Reflect
+TM75,379,the-indigo-disk,IX,113,Light Screen
+TM76,380,the-indigo-disk,IX,350,Rock Blast
+TM77,381,the-indigo-disk,IX,127,Waterfall
+TM78,382,the-indigo-disk,IX,337,Dragon Claw
+TM81,385,the-indigo-disk,IX,447,Grass Knot
+TM82,386,the-indigo-disk,IX,86,Thunder Wave
+TM83,387,the-indigo-disk,IX,398,Poison Jab
+TM86,390,the-indigo-disk,IX,157,Rock Slide
+TM87,391,the-indigo-disk,IX,269,Taunt
+TM88,392,the-indigo-disk,IX,14,Swords Dance
+TM89,393,the-indigo-disk,IX,776,Body Press
+TM93,659,the-indigo-disk,IX,430,Flash Cannon
+TM94,660,the-indigo-disk,IX,399,Dark Pulse
+TM99,748,the-indigo-disk,IX,442,Iron Head
+TM01,305,legends-za,IX,29,Headbutt
+TM02,306,legends-za,IX,337,Dragon Claw
+TM03,307,legends-za,IX,473,Psyshock
+TM04,308,legends-za,IX,249,Rock Smash
+TM05,309,legends-za,IX,46,Roar
+TM06,310,legends-za,IX,347,Calm Mind
+TM07,311,legends-za,IX,92,Toxic
+TM08,312,legends-za,IX,86,Thunder Wave
+TM09,313,legends-za,IX,812,Flip Turn
+TM10,314,legends-za,IX,280,Brick Break
+TM100,749,legends-za,IX,441,Gunk Shot
+TM101,1944,legends-za,IX,527,Electroweb
+TM102,1945,legends-za,IX,411,Focus Blast
+TM103,1946,legends-za,IX,526,Work Up
+TM104,1947,legends-za,IX,394,Flare Blitz
+TM105,1948,legends-za,IX,59,Blizzard
+TM106,1949,legends-za,IX,87,Thunder
+TM107,1950,legends-za,IX,370,Close Combat
+TM108,1951,legends-za,IX,4,Comet Punch
+TM109,1952,legends-za,IX,263,Facade
+TM11,315,legends-za,IX,339,Bulk Up
+TM110,1953,legends-za,IX,886,Chilling Water
+TM111,1954,legends-za,IX,47,Sing
+TM112,1955,legends-za,IX,491,Acid Spray
+TM113,1956,legends-za,IX,490,Low Sweep
+TM114,1957,legends-za,IX,488,Flame Charge
+TM115,1958,legends-za,IX,885,Trailblaze
+TM116,1959,legends-za,IX,6,Pay Day
+TM117,1960,legends-za,IX,318,Silver Wind
+TM118,1961,legends-za,IX,325,Shadow Punch
+TM119,1962,legends-za,IX,466,Ominous Wind
+TM12,316,legends-za,IX,157,Rock Slide
+TM120,1963,legends-za,IX,246,Ancient Power
+TM121,1964,legends-za,IX,259,Torment
+TM122,1965,legends-za,IX,206,False Swipe
+TM123,1966,legends-za,IX,305,Poison Fang
+TM124,1967,legends-za,IX,706,Psychic Fangs
+TM125,1968,legends-za,IX,102,Mimic
+TM126,1969,legends-za,IX,443,Magnet Bomb
+TM127,1970,legends-za,IX,138,Dream Eater
+TM128,1971,legends-za,IX,402,Seed Bomb
+TM129,1972,legends-za,IX,509,Circle Throw
+TM13,317,legends-za,IX,58,Ice Beam
+TM130,1973,legends-za,IX,451,Charge Beam
+TM131,1974,legends-za,IX,409,Drain Punch
+TM132,1975,legends-za,IX,458,Double Hit
+TM133,1976,legends-za,IX,299,Blaze Kick
+TM134,1977,legends-za,IX,814,Dual Wingbeat
+TM135,1978,legends-za,IX,530,Dual Chop
+TM136,1979,legends-za,IX,815,Scorching Sands
+TM137,1980,legends-za,IX,480,Storm Throw
+TM138,1981,legends-za,IX,524,Frost Breath
+TM139,1982,legends-za,IX,207,Swagger
+TM14,318,legends-za,IX,424,Fire Fang
+TM140,1983,legends-za,IX,330,Muddy Water
+TM141,1984,legends-za,IX,252,Fake Out
+TM142,1985,legends-za,IX,660,First Impression
+TM143,1986,legends-za,IX,799,Scale Shot
+TM144,1987,legends-za,IX,813,Triple Axel
+TM145,1988,legends-za,IX,13,Razor Wind
+TM146,1989,legends-za,IX,130,Skull Bash
+TM147,1990,legends-za,IX,161,Tri Attack
+TM148,1991,legends-za,IX,503,Scald
+TM149,1992,legends-za,IX,333,Icicle Spear
+TM15,319,legends-za,IX,423,Ice Fang
+TM150,1993,legends-za,IX,410,Vacuum Wave
+TM151,1994,legends-za,IX,80,Petal Dance
+TM152,1995,legends-za,IX,669,Solar Blade
+TM153,1996,legends-za,IX,143,Sky Attack
+TM154,1997,legends-za,IX,90,Fissure
+TM155,1998,legends-za,IX,329,Sheer Cold
+TM156,1999,legends-za,IX,800,Meteor Beam
+TM157,2000,legends-za,IX,796,Steel Beam
+TM158,2001,legends-za,IX,307,Blast Burn
+TM159,2002,legends-za,IX,308,Hydro Cannon
+TM16,320,legends-za,IX,113,Light Screen
+TM160,2003,legends-za,IX,338,Frenzy Plant
+TM17,321,legends-za,IX,182,Protect
+TM18,322,legends-za,IX,612,Power-Up Punch
+TM19,323,legends-za,IX,408,Power Gem
+TM20,324,legends-za,IX,583,Play Rough
+TM21,325,legends-za,IX,422,Thunder Fang
+TM22,326,legends-za,IX,332,Aerial Ace
+TM23,327,legends-za,IX,9,Thunder Punch
+TM24,328,legends-za,IX,8,Ice Punch
+TM25,329,legends-za,IX,242,Crunch
+TM26,330,legends-za,IX,412,Energy Ball
+TM27,331,legends-za,IX,129,Swift
+TM28,332,legends-za,IX,91,Dig
+TM29,333,legends-za,IX,7,Fire Punch
+TM30,334,legends-za,IX,14,Swords Dance
+TM31,335,legends-za,IX,115,Reflect
+TM32,336,legends-za,IX,104,Double Team
+TM33,337,legends-za,IX,34,Body Slam
+TM34,338,legends-za,IX,400,Night Slash
+TM35,339,legends-za,IX,203,Endure
+TM36,340,legends-za,IX,317,Rock Tomb
+TM37,341,legends-za,IX,446,Stealth Rock
+TM38,342,legends-za,IX,126,Fire Blast
+TM39,343,legends-za,IX,435,Discharge
+TM40,344,legends-za,IX,331,Bullet Seed
+TM41,345,legends-za,IX,352,Water Pulse
+TM42,346,legends-za,IX,202,Giga Drain
+TM43,347,legends-za,IX,19,Fly
+TM44,348,legends-za,IX,63,Hyper Beam
+TM45,349,legends-za,IX,282,Knock Off
+TM46,350,legends-za,IX,341,Mud Shot
+TM47,351,legends-za,IX,97,Agility
+TM48,352,legends-za,IX,120,Self-Destruct
+TM49,353,legends-za,IX,196,Icy Wind
+TM50,354,legends-za,IX,315,Overheat
+TM51,355,legends-za,IX,219,Safeguard
+TM52,356,legends-za,IX,414,Earth Power
+TM53,357,legends-za,IX,188,Sludge Bomb
+TM54,358,legends-za,IX,434,Draco Meteor
+TM55,359,legends-za,IX,416,Giga Impact
+TM56,360,legends-za,IX,38,Double-Edge
+TM57,361,legends-za,IX,261,Will-O-Wisp
+TM58,362,legends-za,IX,442,Iron Head
+TM59,363,legends-za,IX,428,Zen Headbutt
+TM60,364,legends-za,IX,248,Future Sight
+TM61,365,legends-za,IX,421,Shadow Claw
+TM62,366,legends-za,IX,53,Flamethrower
+TM63,367,legends-za,IX,94,Psychic
+TM64,368,legends-za,IX,76,Solar Beam
+TM65,369,legends-za,IX,444,Stone Edge
+TM66,370,legends-za,IX,521,Volt Switch
+TM67,371,legends-za,IX,85,Thunderbolt
+TM68,372,legends-za,IX,257,Heat Wave
+TM69,373,legends-za,IX,89,Earthquake
+TM70,374,legends-za,IX,250,Whirlpool
+TM71,375,legends-za,IX,304,Hyper Voice
+TM72,376,legends-za,IX,83,Fire Spin
+TM73,377,legends-za,IX,57,Surf
+TM74,378,legends-za,IX,247,Shadow Ball
+TM75,379,legends-za,IX,406,Dragon Pulse
+TM76,380,legends-za,IX,710,Liquidation
+TM77,381,legends-za,IX,398,Poison Jab
+TM78,382,legends-za,IX,523,Bulldoze
+TM79,383,legends-za,IX,542,Hurricane
+TM80,384,legends-za,IX,334,Iron Defense
+TM81,385,legends-za,IX,404,X-Scissor
+TM82,386,legends-za,IX,369,U-turn
+TM83,387,legends-za,IX,417,Nasty Plot
+TM84,388,legends-za,IX,430,Flash Cannon
+TM85,389,legends-za,IX,164,Substitute
+TM86,390,legends-za,IX,528,Wild Charge
+TM87,391,legends-za,IX,231,Iron Tail
+TM88,392,legends-za,IX,191,Spikes
+TM89,393,legends-za,IX,390,Toxic Spikes
+TM90,394,legends-za,IX,399,Dark Pulse
+TM91,395,legends-za,IX,174,Curse
+TM92,396,legends-za,IX,605,Dazzling Gleam
+TM93,659,legends-za,IX,200,Outrage
+TM94,660,legends-za,IX,18,Whirlwind
+TM95,661,legends-za,IX,269,Taunt
+TM96,745,legends-za,IX,56,Hydro Pump
+TM97,746,legends-za,IX,377,Heal Block
+TM98,747,legends-za,IX,127,Waterfall
+TM99,748,legends-za,IX,118,Metronome
+TM108,1951,mega-dimension,IX,4,Comet Punch
+TM109,1952,mega-dimension,IX,263,Facade
+TM110,1953,mega-dimension,IX,886,Chilling Water
+TM111,1954,mega-dimension,IX,47,Sing
+TM112,1955,mega-dimension,IX,491,Acid Spray
+TM113,1956,mega-dimension,IX,490,Low Sweep
+TM114,1957,mega-dimension,IX,488,Flame Charge
+TM115,1958,mega-dimension,IX,885,Trailblaze
+TM116,1959,mega-dimension,IX,6,Pay Day
+TM117,1960,mega-dimension,IX,318,Silver Wind
+TM118,1961,mega-dimension,IX,325,Shadow Punch
+TM119,1962,mega-dimension,IX,466,Ominous Wind
+TM120,1963,mega-dimension,IX,246,Ancient Power
+TM121,1964,mega-dimension,IX,259,Torment
+TM122,1965,mega-dimension,IX,206,False Swipe
+TM123,1966,mega-dimension,IX,305,Poison Fang
+TM124,1967,mega-dimension,IX,706,Psychic Fangs
+TM125,1968,mega-dimension,IX,102,Mimic
+TM126,1969,mega-dimension,IX,443,Magnet Bomb
+TM127,1970,mega-dimension,IX,138,Dream Eater
+TM128,1971,mega-dimension,IX,402,Seed Bomb
+TM129,1972,mega-dimension,IX,509,Circle Throw
+TM130,1973,mega-dimension,IX,451,Charge Beam
+TM131,1974,mega-dimension,IX,409,Drain Punch
+TM132,1975,mega-dimension,IX,458,Double Hit
+TM133,1976,mega-dimension,IX,299,Blaze Kick
+TM134,1977,mega-dimension,IX,814,Dual Wingbeat
+TM135,1978,mega-dimension,IX,530,Dual Chop
+TM136,1979,mega-dimension,IX,815,Scorching Sands
+TM137,1980,mega-dimension,IX,480,Storm Throw
+TM138,1981,mega-dimension,IX,524,Frost Breath
+TM139,1982,mega-dimension,IX,207,Swagger
+TM140,1983,mega-dimension,IX,330,Muddy Water
+TM141,1984,mega-dimension,IX,252,Fake Out
+TM142,1985,mega-dimension,IX,660,First Impression
+TM143,1986,mega-dimension,IX,799,Scale Shot
+TM144,1987,mega-dimension,IX,813,Triple Axel
+TM145,1988,mega-dimension,IX,13,Razor Wind
+TM146,1989,mega-dimension,IX,130,Skull Bash
+TM147,1990,mega-dimension,IX,161,Tri Attack
+TM148,1991,mega-dimension,IX,503,Scald
+TM149,1992,mega-dimension,IX,333,Icicle Spear
+TM150,1993,mega-dimension,IX,410,Vacuum Wave
+TM151,1994,mega-dimension,IX,80,Petal Dance
+TM152,1995,mega-dimension,IX,669,Solar Blade
+TM153,1996,mega-dimension,IX,143,Sky Attack
+TM154,1997,mega-dimension,IX,90,Fissure
+TM155,1998,mega-dimension,IX,329,Sheer Cold
+TM156,1999,mega-dimension,IX,800,Meteor Beam
+TM157,2000,mega-dimension,IX,796,Steel Beam
+TM158,2001,mega-dimension,IX,307,Blast Burn
+TM159,2002,mega-dimension,IX,308,Hydro Cannon
+TM160,2003,mega-dimension,IX,338,Frenzy Plant
