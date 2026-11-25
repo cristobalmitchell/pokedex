@@ -16,6 +16,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / 'data'
 IMAGES = ROOT / 'images'
+AUDIO = ROOT / 'audio'
 
 STATS = ['hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']
 TYPES = ['normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground',
@@ -154,13 +155,94 @@ def main():
     check(not pm.duplicated().any(), 'pokemon_moves: duplicate rows')
     check(pm.level.isna().eq(pm.method != 'Level up').all(), 'pokemon_moves: level set for a non level-up method')
 
+    # ---- species fields corrected in v2.1
+    abil = m[['abilities_0', 'abilities_1', 'abilities_hidden']]
+    check(m.abilities_0.notna().all() and m.abilities_2.isna().all(), 'pokemon: abilities_0 missing or abilities_2 set')
+    check(not abil.stack().dropna().str.contains(r'\(|- |^\s|\s$').any(),
+          'pokemon: an ability cell holds a form note, a joined pair or stray whitespace')
+    d_ab = default.set_index('national_number').loc[m.national_number, ['abilities_0', 'abilities_1', 'abilities_hidden']]
+    check((d_ab.fillna('').values == abil.fillna('').values).all(), 'pokemon: abilities disagree with pokemon_forms')
+    check(m.classification.str.endswith('Pokémon').all(), 'pokemon: classification must end with "Pokémon"')
+    check(m.japanese_name_kana.notna().all() and m.japanese_name_official.notna().all(),
+          'pokemon: Japanese name columns incomplete')
+
+    # ---- reference tables (v2.2)
+    ab = pd.read_csv(DATA / 'abilities.csv')
+    pab = pd.read_csv(DATA / 'pokemon_abilities.csv')
+    check(ab.ability_id.is_unique and ab.name.notna().all(), 'abilities: ability_id not unique or name missing')
+    check(set(abil.stack().dropna()) <= set(ab.name), 'pokemon: an ability is missing from abilities.csv')
+    check(set(forms[['abilities_0', 'abilities_1', 'abilities_hidden']].stack().dropna()) <= set(ab.name),
+          'pokemon_forms: an ability is missing from abilities.csv')
+    check(pab.ability_id.isin(ab.ability_id).all() and pab.pokemon_id.isin(forms.pokemon_id).all(),
+          'pokemon_abilities: unknown ability_id or pokemon_id')
+    check(pd.read_csv(DATA / 'items.csv').item_id.is_unique, 'items: item_id not unique')
+    na = pd.read_csv(DATA / 'natures.csv')
+    check(len(na) == 25 and na.is_neutral.sum() == 5, 'natures: expected 25 natures, 5 of them neutral')
+    tc = pd.read_csv(DATA / 'type_chart.csv')
+    check(len(tc) == 324 and all(CHART[r.attacking_type].get(r.defending_type, 1) == r.multiplier
+                                 for r in tc.itertuples()), 'type_chart: disagrees with the Gen VI+ type chart')
+    entries = pd.read_csv(DATA / 'pokedex_entries.csv')
+    check(entries.national_number.isin(m.national_number).all() and entries.text.str.len().gt(0).all(),
+          'pokedex_entries: unknown species or empty text')
+    check(set(entries[entries.language == 'en'].national_number) == set(m.national_number),
+          'pokedex_entries: a species has no English entry')
+    names = pd.read_csv(DATA / 'pokemon_names.csv')
+    en_names = names[names.language == 'en'].set_index('national_number').name
+    check((en_names.loc[m.national_number].values == m.english_name.values).all(),
+          'pokemon_names: English names disagree with pokemon')
+    enc = pd.read_csv(DATA / 'encounters.csv')
+    check(enc.encounter_id.is_unique and enc.national_number.isin(m.national_number).all(),
+          'encounters: encounter_id not unique or unknown species')
+    check((enc.min_level <= enc.max_level).all() and enc.max_level.between(1, 100).all(),
+          'encounters: level range invalid')
+    dexn = pd.read_csv(DATA / 'pokedex_numbers.csv')
+    nat = dexn[dexn.pokedex_identifier == 'national']
+    check(len(nat) == 1025 and (nat.national_number == nat.number).all(), 'pokedex_numbers: National Dex numbers off')
+    mach = pd.read_csv(DATA / 'machines.csv')
+    check(mach.move_id.isin(moves.move_id).all() and mach.machine.str.match(r'^(TM|HM|TR)\d+$').all(),
+          'machines: unknown move or malformed machine name')
+    vg = pd.read_csv(DATA / 'version_groups.csv')
+    check(vg.version_group.is_unique and set(pm.version_group) <= set(vg.version_group),
+          'version_groups: duplicate or missing version group')
+
+    # ---- cries (v3, committed)
+    cries = pd.read_csv(DATA / 'cries.csv')
+    audio_disk = sorted(f'{p.parent.name}/{p.name}' for p in AUDIO.glob('*/*') if p.is_file())
+    check(sorted(cries.audio_file) == audio_disk, 'cries: manifest and audio/ folder differ')
+    check((cries.file_name.str.rsplit('.', n=1).str[1] == cries.format).all(), 'cries: extension != format')
+    check(cries.duration_s.gt(0).all() and cries.national_number.isin(m.national_number).all()
+          and cries.form_id.isin(forms.form_id).all(), 'cries: bad duration, species or form')
+    check(set(cries[cries.cry_set == 'cries'].national_number) == set(m.national_number),
+          'cries: a species has no current cry')
+    check(cries.split.eq(cries.national_number.map(images.groupby('national_number').split.first())).all(),
+          'cries: split disagrees with images')
+
+    # ---- competitive (v3)
+    tiers = pd.read_csv(DATA / 'competitive_tiers.csv')
+    check(tiers.showdown_id.is_unique and tiers.national_number.isin(m.national_number).all()
+          and tiers.form_id.dropna().isin(forms.form_id).all(), 'competitive_tiers: bad key')
+    check(tiers.form_id.notna().mean() > 0.99, 'competitive_tiers: under 99% of Showdown entries mapped to a form')
+    if (DATA / 'smogon_usage.csv').exists():
+        su = pd.read_csv(DATA / 'smogon_usage.csv')
+        check(su.usage_pct.between(0, 100).all() and su['rank'].ge(1).all(), 'smogon_usage: bad usage or rank')
+        check(not su.duplicated(['period', 'format', 'pokemon']).any(), 'smogon_usage: duplicate rows')
+        check(su.national_number.notna().mean() > 0.99, 'smogon_usage: under 99% of rows mapped to a species')
+        check(su.national_number.dropna().isin(m.national_number).all(), 'smogon_usage: unknown national_number')
+
     # ---- images
-    on_disk = sorted(f'{p.parent.name}/{p.name}' for s in ('small_images', 'large_images', 'alt_images')
-                     for p in (IMAGES / s).glob('*.png'))
-    check(sorted(images.image_file) == on_disk, 'images: manifest and images/ folder differ')
     check(images.image_file.is_unique, 'images: duplicate image_file')
-    bad = [p.name for p in IMAGES.rglob('*') if p.is_file() and not SAFE_NAME.match(p.name)]
-    check(not bad, f'images: filenames Kaggle may reject: {bad[:5]}')
+    built = []
+    for s in images.image_set.unique():
+        folder = IMAGES / s
+        if not folder.exists():
+            continue  # v3 sets are built by build_media.py for Kaggle and not kept in git
+        built.append(s)
+        on_disk = sorted(f'{s}/{p.name}' for p in folder.iterdir() if p.is_file())
+        check(sorted(images[images.image_set == s].image_file) == on_disk, f'images: manifest and images/{s} differ')
+    check({'small_images', 'large_images', 'alt_images'} <= set(built), 'images: a git-tracked image set is missing')
+    bad = [n for n in pd.concat([images.file_name, cries.file_name]) if not SAFE_NAME.match(n)]
+    bad += [p.name for p in IMAGES.rglob('*') if p.is_file() and not SAFE_NAME.match(p.name)]
+    check(not bad, f'images/cries: filenames Kaggle may reject: {bad[:5]}')
     for s in ('small_images', 'large_images'):
         nums = sorted(images[images.image_set == s].national_number)
         check(nums == list(range(1, 1026)), f'images: {s} must cover #1..#1025 exactly once')
@@ -170,15 +252,21 @@ def main():
     check(images.groupby('national_number').split.nunique().eq(1).all(),
           'images: a species is spread over more than one split')
 
-    # ---- SQLite mirrors the CSVs
-    con = sqlite3.connect(DATA / 'pokedex.sqlite')
-    for table, df in [('pokemon', m), ('pokemon_forms', forms), ('evolutions', evo), ('moves', moves),
-                      ('pokemon_moves', pm), ('images', images), ('pokemon_stats', stats)]:
-        n = con.execute(f'SELECT COUNT(*) FROM {table}').fetchone()[0]
-        check(n == len(df), f'pokedex.sqlite: {table} has {n} rows, CSV has {len(df)}')
-    fk = con.execute('PRAGMA foreign_key_check').fetchall()
-    check(not fk, f'pokedex.sqlite: {len(fk)} foreign key violations')
-    con.close()
+    # ---- SQLite mirrors the CSVs (built by build_sqlite.py for Kaggle; not kept in git)
+    if (DATA / 'pokedex.sqlite').exists():
+        con = sqlite3.connect(DATA / 'pokedex.sqlite')
+        for p in sorted(DATA.glob('*.csv')):
+            if p.name == 'pokemon.csv':
+                continue
+            table = 'pokemon' if p.name == 'pokemon_utf8.csv' else p.stem
+            n = con.execute(f'SELECT COUNT(*) FROM {table}').fetchone()[0]
+            rows = sum(1 for _ in open(p, encoding='utf-8')) - 1 if table not in ('pokedex_entries', 'moves',
+                                                                                  'abilities', 'items') \
+                else len(pd.read_csv(p))
+            check(n == rows, f'pokedex.sqlite: {table} has {n} rows, CSV has {rows}')
+        fk = con.execute('PRAGMA foreign_key_check').fetchall()
+        check(not fk, f'pokedex.sqlite: {len(fk)} foreign key violations')
+        con.close()
 
     # ---- Kaggle metadata documents every column of every CSV, in order
     meta = json.loads((ROOT / 'dataset-metadata.json').read_text())
@@ -200,7 +288,8 @@ def main():
             print('  -', f)
         sys.exit(1)
     print(f'OK: {len(m)} species, {len(forms)} forms, {len(evo)} evolution methods, {len(moves)} moves, '
-          f'{len(pm):,} learnset rows, {len(images)} images')
+          f'{len(pm):,} learnset rows, {len(images)} images ({", ".join(sorted(built))} on disk), '
+          f'{len(cries)} cries, {len(entries):,} Pokédex entries, {len(enc):,} encounters')
 
 
 if __name__ == '__main__':
