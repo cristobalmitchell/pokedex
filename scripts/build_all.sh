@@ -2,8 +2,12 @@
 # Rebuild every table, image set, cry, the SQLite database and the Kaggle metadata, then validate.
 # Sources are cloned into .cache/ (ignored by git). Needs git, Python 3.10+ with pandas and mutagen.
 #
-#   bash scripts/build_all.sh            # everything, ready for a Kaggle upload
-#   SKIP_MEDIA=1 bash scripts/build_all.sh   # tables only (no 1 GB sprite download)
+#   bash scripts/build_all.sh                    # everything from the sources
+#   SKIP_COMPETITIVE=1 bash scripts/build_all.sh # reuse the committed Smogon tables (the first full
+#                                                # Smogon download is ~10,600 files, about 45 minutes)
+#   SKIP_MEDIA=1 bash scripts/build_all.sh       # tables only (no 1 GB sprite download)
+#
+# To prepare a Kaggle upload from a fresh clone: SKIP_COMPETITIVE=1 bash scripts/build_all.sh
 set -euo pipefail
 cd "$(dirname "$0")/.."
 CACHE=.cache
@@ -25,9 +29,11 @@ clone() {  # clone <repo> <dir> [sparse paths...]
 }
 
 clone PokeAPI/pokeapi pokeapi data/v2/csv
-clone smogon/pokemon-showdown pokemon-showdown data
 "$PY" scripts/build_tables.py "$CACHE/pokeapi/data/v2/csv"
-"$PY" scripts/build_competitive.py "$CACHE/pokemon-showdown" --cache "$CACHE/smogon"
+if [ -z "${SKIP_COMPETITIVE:-}" ]; then
+  clone smogon/pokemon-showdown pokemon-showdown data
+  "$PY" scripts/build_competitive.py "$CACHE/pokemon-showdown" --cache "$CACHE/smogon"
+fi
 if [ -z "${SKIP_MEDIA:-}" ]; then
   clone PokeAPI/sprites sprites sprites/pokemon/other/official-artwork sprites/pokemon/other/home \
     sprites/pokemon/other/showdown

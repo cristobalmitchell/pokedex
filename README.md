@@ -91,7 +91,7 @@ In `images.csv` and `cries.csv`, every file is linked to the exact form it shows
 | `build_metadata.py` | `dataset-metadata.json` from the column docs and `docs/kaggle_description.md` |
 | `validate.py` | the integrity checks; run before every upload |
 
-`SKIP_MEDIA=1 bash scripts/build_all.sh` rebuilds the tables without the 1 GB sprite download. `pokedex.ipynb` is the original scraper for the species table and the bundled artwork. `notebooks/pokedex_eda.ipynb` is a starter analysis ready to fork on Kaggle.
+To prepare a Kaggle upload from a fresh clone, run `SKIP_COMPETITIVE=1 bash scripts/build_all.sh`. It reuses the committed Smogon tables instead of downloading Smogon's 10,600 monthly files, which takes about 45 minutes. `SKIP_MEDIA=1` skips the 1 GB sprite download. `pokedex.ipynb` is the original scraper for the species table and the bundled artwork. `notebooks/pokedex_eda.ipynb` is a starter analysis ready to fork on Kaggle.
 
 ### What `validate.py` checks
 - **Keys:** keys and foreign keys in every table.
