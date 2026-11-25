@@ -1911,8 +1911,8 @@ national_number,english_name,stat_name,stat_value
 885,Dreepy,attack,60
 886,Drakloak,attack,80
 887,Dragapult,attack,120
-888,Zacian,attack,130
-889,Zamazenta,attack,130
+888,Zacian,attack,120
+889,Zamazenta,attack,120
 890,Eternatus,attack,85
 891,Kubfu,attack,90
 892,Urshifu,attack,130
@@ -2536,7 +2536,7 @@ national_number,english_name,stat_name,stat_value
 485,Heatran,defense,106
 486,Regigigas,defense,110
 487,Giratina,defense,120
-488,Cresselia,defense,120
+488,Cresselia,defense,110
 489,Phione,defense,80
 490,Manaphy,defense,100
 491,Darkrai,defense,90
@@ -4586,7 +4586,7 @@ national_number,english_name,stat_name,stat_value
 485,Heatran,sp_defense,106
 486,Regigigas,sp_defense,110
 487,Giratina,sp_defense,120
-488,Cresselia,sp_defense,130
+488,Cresselia,sp_defense,120
 489,Phione,sp_defense,80
 490,Manaphy,sp_defense,100
 491,Darkrai,sp_defense,90
